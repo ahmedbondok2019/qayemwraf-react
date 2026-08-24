@@ -25,8 +25,8 @@ export const Footer = () => {
 						</h3>
 						<p className="text-slate-400">
 							{isRtl 
-								? "احصل على أحدث عروض الأجهزة الطبية، والمقالات الصحية، وأخبار التكنولوجيا الطبية مباشرة في بريدك الإلكتروني." 
-								: "Get the latest medical equipment offers, health articles, and med-tech news directly to your inbox."}
+								? "احصل على أحدث عروض أنظمة التخزين، والمقالات الهندسية، وأخبار تجهيز المستودعات مباشرة في بريدك الإلكتروني." 
+								: "Get the latest storage system offers, engineering articles, and warehouse news directly to your inbox."}
 						</p>
 					</div>
 
@@ -74,19 +74,24 @@ export const Footer = () => {
 							{settings?.logo ? (
 								<img 
 									src={settings.logo} 
-									alt={settings.app_name || "EG Medical"} 
+									alt="Qayem & Raf" 
 									className="h-10 sm:h-12 w-auto object-contain brightness-0 invert" 
 								/>
 							) : (
-								<span className="text-2xl sm:text-3xl font-black text-white tracking-tight">
-									EG <span className="text-primary">Medical</span>
-								</span>
+								<div className="flex flex-col leading-none">
+									<span className="text-2xl sm:text-3xl font-black text-white tracking-tight">
+										Qayem & <span className="text-primary">Raf</span>
+									</span>
+									<span className="text-[10px] font-bold text-slate-400 tracking-wider uppercase mt-1">
+										{isRtl ? "لحلول التخزين المعدني" : "Storage Solutions"}
+									</span>
+								</div>
 							)}
 						</LocalizedLink>
 						<p className="text-slate-400 text-sm leading-relaxed">
 							{isRtl
-								? "نحن وكلاء وموزعون معتمدون لأكبر العلامات التجارية الطبية العالمية. نلتزم بأعلى معايير الشفافية والموثوقية لتوفير أفضل الأجهزة والمستلزمات للقطاع الطبي في مصر."
-								: "We are authorized agents and distributors for the world's leading medical brands. Committed to the highest standards of transparency and reliability to provide the best medical equipment."}
+								? "متخصصون في تصميم وتوريد وتركيب حلول التخزين المعدني للمؤسسات والمستودعات التجارية وفقاً لأعلى معايير الجودة والموثوقية."
+								: "Specialized in designing, supplying, and installing metal storage solutions for commercial institutions and warehouses according to the highest quality standards."}
 						</p>
 						<div className="flex items-center gap-4">
 							{settings?.social_links?.facebook && (
@@ -123,8 +128,8 @@ export const Footer = () => {
 							{isRtl ? "روابط سريعة" : "Quick Links"}
 						</h4>
 						<ul className="space-y-4">
-							<li><LocalizedLink to="/about" className="text-slate-400 hover:text-primary transition-colors inline-block">{isRtl ? "عن الشركة" : "About Us"}</LocalizedLink></li>
-							<li><LocalizedLink to="/categories" className="text-slate-400 hover:text-primary transition-colors inline-block">{isRtl ? "الأقسام الطبية" : "Medical Categories"}</LocalizedLink></li>
+							<li><LocalizedLink to="/about" className="text-slate-400 hover:text-primary transition-colors inline-block">{isRtl ? "عن المصنع" : "About Us"}</LocalizedLink></li>
+							<li><LocalizedLink to="/categories" className="text-slate-400 hover:text-primary transition-colors inline-block">{isRtl ? "سابقة أعمالنا ومنتجاتنا" : "Our Products & Portfolio"}</LocalizedLink></li>
 						</ul>
 					</div>
 
@@ -177,7 +182,7 @@ export const Footer = () => {
 				{/* Bottom Bar */}
 				<div className="pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
 					<p className="text-slate-500 text-sm">
-						&copy; {new Date().getFullYear()} {(settings?.app_name || "EG Medical").replace("EG Medical", "EGI Medical")}. {isRtl ? "جميع الحقوق محفوظة." : "All rights reserved."}
+						&copy; {new Date().getFullYear()} Qayem & Raf. {isRtl ? "جميع الحقوق محفوظة." : "All rights reserved."}
 					</p>
 					
 					<div className="flex items-center gap-6 text-sm text-slate-500">

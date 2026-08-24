@@ -68,8 +68,8 @@ export const Privacy = () => {
 									</h2>
 									<p>
 										{isRtl 
-											? "نقوم بجمع معلومات لمساعدتنا في تقديم وتحسين خدماتنا الصحية والطبية لك. تشمل هذه البيانات: الاسم، البريد الإلكتروني، رقم الهاتف، عنوان الشحن، وبيانات الوصفات الطبية (الروشتات) التي تقوم برفعها لتوفير الأجهزة والمستلزمات الملائمة."
-											: "We collect information to provide better medical supply services. This includes personal details (name, email, phone, shipping address), payment info, and prescription uploads necessary to verify correct medical device purchases."}
+											? "نقوم بجمع معلومات لمساعدتنا في تقديم وتحسين خدماتنا الخاصة بتجهيز المستودعات وحلول التخزين. تشمل هذه البيانات: الاسم، البريد الإلكتروني، رقم الهاتف، عنوان الشحن، وبيانات المقاسات والمخططات الهندسية التي تقوم برفعها لتوفير الأرفف المناسبة."
+											: "We collect information to provide better storage supply services. This includes personal details (name, email, phone, shipping address), payment info, and engineering drawings uploads necessary to verify correct shelving purchases."}
 									</p>
 								</div>
 
@@ -80,8 +80,8 @@ export const Privacy = () => {
 									</h2>
 									<p>
 										{isRtl
-											? "نستخدم معلوماتك لـ: معالجة شحناتك الطبية وتوصيلها، معالجة المدفوعات بأمان، تقديم الدعم الفني للأجهزة وتدريب العملاء عليها، وإرسال تحديثات حالة الطلب عبر الرسائل القصيرة والبريد الإلكتروني."
-											: "We process your information to process and deliver medical orders, process secure payments, provide customer technical support/training for devices, and send shipping/tracking updates via SMS or email."}
+											? "نستخدم معلوماتك لـ: معالجة شحناتك وتوصيلها، معالجة المدفوعات بأمان، تقديم الدعم الفني للأجهزة وتدريب العملاء عليها، وإرسال تحديثات حالة الطلب عبر الرسائل القصيرة والبريد الإلكتروني."
+											: "We process your information to process and deliver orders, process secure payments, provide customer technical support/training for devices, and send shipping/tracking updates via SMS or email."}
 									</p>
 								</div>
 
@@ -92,8 +92,8 @@ export const Privacy = () => {
 									</h2>
 									<p>
 										{isRtl
-											? "نحن لا نبيع أو نؤجر معلوماتك الشخصية أو الطبية لأي جهات خارجية. تتم مشاركة البيانات فقط مع شركات الشحن الطبية المتخصصة لتوصيل طلباتك، أو عند الالتزام بالمتطلبات القانونية والصحية الحكومية."
-											: "We do not sell, rent, or trade your personal or medical data with third parties. Data is only shared with specialized medical courier services to deliver products, or to comply with official health department guidelines."}
+											? "نحن لا نبيع أو نؤجر معلوماتك الشخصية أو تفاصيل مشاريعك لأي جهات خارجية. تتم مشاركة البيانات فقط مع شركات الشحن المتخصصة لتوصيل طلباتك، أو عند الالتزام بالمتطلبات القانونية والصناعية الحكومية."
+											: "We do not sell, rent, or trade your personal or project data with third parties. Data is only shared with specialized courier services to deliver products, or to comply with official industrial guidelines."}
 									</p>
 								</div>
 
@@ -104,8 +104,8 @@ export const Privacy = () => {
 									</h2>
 									<p>
 										{isRtl
-											? "نطبق تدابير أمنية تقنية وتنظيمية متطورة بما في ذلك بروتوكول التشفير SSL لحماية بياناتك من الوصول غير المصرح به أو الفقدان أو التعديل."
-											: "We implement advanced industry-standard technical security measures, including SSL encryption, to ensure your health records and personal information remain secure from unauthorized access."}
+											? "نطبق تدابير أمنية تقنية وتنظيمية متطورة بما في ذلك بروتوكول التشفير SSL لحماية بياناتك وسجلات مشاريعك من الوصول غير المصرح به أو الفقدان أو التعديل."
+											: "We implement advanced industry-standard technical security measures, including SSL encryption, to ensure your project records and personal information remain secure from unauthorized access."}
 									</p>
 								</div>
 							</>

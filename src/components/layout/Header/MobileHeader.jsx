@@ -163,7 +163,7 @@ export const MobileHeader = () => {
 						<LocalizedLink
 							to="/cart"
 							className="relative p-2 rounded-xl text-text-secondary hover:text-primary hover:bg-surface-2 transition-all active:scale-95"
-							aria-label={isRtl ? "السلة" : "Cart"}
+							aria-label={isRtl ? "طلبات التسعير" : "Quote"}
 						>
 							<ShoppingCart className="w-5 h-5" />
 							{cartCount > 0 && (
@@ -372,7 +372,7 @@ export const MobileHeader = () => {
 								className="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-surface border border-border/40 text-text-secondary hover:text-primary text-xs font-semibold shadow-sm transition-all relative"
 							>
 								<ShoppingCart className="w-4 h-4 text-secondary/80" />
-								<span>{isRtl ? "السلة" : "Cart"}</span>
+								<span>{isRtl ? "طلبات التسعير" : "Quote"}</span>
 								{cartCount > 0 && (
 									<span className="flex items-center justify-center min-w-[16px] h-4 px-1 rounded-full bg-secondary text-white text-[9px] font-bold leading-none">
 										{cartCount}

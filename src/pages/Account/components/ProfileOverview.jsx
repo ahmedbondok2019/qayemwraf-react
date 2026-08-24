@@ -26,7 +26,7 @@ export const ProfileOverview = ({ user }) => {
 		{ id: "orders", icon: Package, value: ordersCount, label: { en: "Total Orders", ar: "إجمالي الطلبات" }, color: "text-primary", bg: "bg-primary/10" },
 		{ id: "wishlist", icon: Heart, value: wishlistCount, label: { en: "Wishlist Items", ar: "المنتجات المفضلة" }, color: "text-danger", bg: "bg-danger/10" },
 		{ id: "addresses", icon: MapPin, value: addressesCount, label: { en: "Saved Addresses", ar: "العناوين المحفوظة" }, color: "text-success", bg: "bg-success/10" },
-		{ id: "cart", icon: ShoppingCart, value: cartCount, label: { en: "Shopping Cart", ar: "سلة التسوق" }, color: "text-warning", bg: "bg-warning/10" }
+		{ id: "cart", icon: ShoppingCart, value: cartCount, label: { en: "Quote Requests", ar: "طلبات التسعير" }, color: "text-warning", bg: "bg-warning/10" }
 	];
 
 	return (

@@ -33,8 +33,8 @@ export const homepageConfig = [
 	{
 		id: "b2b-catalog",
 		type: "cta",
-		title: { en: "Download the Complete Medical Catalog", ar: "حمّل كتالوج المنتجات الطبية الكامل" },
-		description: { en: "Browse over 10,000 medical products. Perfect for hospitals, clinics, and wholesale orders.", ar: "استعرض أكثر من 10,000 منتج طبي. مثالي للمستشفيات، العيادات، وطلبات الجملة." },
+		title: { en: "Download the Complete Storage Catalog", ar: "حمّل كتالوج حلول التخزين الكامل" },
+		description: { en: "Browse our extensive portfolio of metal shelving and storage solutions. Perfect for warehouses, commercial institutions, and heavy-duty applications.", ar: "استعرض سابقة أعمالنا ومجموعتنا الواسعة من حلول التخزين والأرفف المعدنية. مثالي للمستودعات، والمؤسسات التجارية، والأحمال الثقيلة." },
 		buttonText: { en: "Download PDF Catalog", ar: "تحميل الكتالوج بصيغة PDF" },
 		buttonLink: "#",
 		icon: "DownloadCloud"

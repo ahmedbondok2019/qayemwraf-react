@@ -41,8 +41,8 @@ export const FAQ = () => {
 				ar: "هل تقدمون شحن مجاني؟"
 			},
 			answer: {
-				en: "Yes, we offer free shipping on all orders over 50 EGP (or equivalent in USD for medical equipment) across Egypt.",
-				ar: "نعم، نقدم شحن مجاني لكافة الطلبات التي تزيد قيمتها عن 50 جنيهاً مصرياً (أو ما يعادلها للأجهزة الطبية) لجميع أنحاء مصر."
+				en: "Yes, we offer free delivery and installation evaluation for bulk warehouse storage orders across Egypt.",
+				ar: "نعم، نقدم تقييم مجاني للتركيب والشحن للطلبات الكبيرة الخاصة بتجهيز المستودعات في جميع أنحاء مصر."
 			}
 		},
 		{
@@ -61,24 +61,24 @@ export const FAQ = () => {
 			id: 4,
 			category: "payment",
 			question: {
-				en: "What is your return policy for medical devices?",
-				ar: "ما هي سياسة الإرجاع الخاصة بالأجهزة الطبية؟"
+				en: "What is your return policy for storage racks and shelves?",
+				ar: "ما هي سياسة الإرجاع الخاصة بوحدات الرفوف والتخزين؟"
 			},
 			answer: {
-				en: "Due to health regulations, medical devices can be returned within 14 days of receipt ONLY if the packaging is sealed, unopened, and in its original condition, unless the product has a manufacturing defect.",
-				ar: "نظراً للاشتراطات الصحية، يمكن إرجاع الأجهزة الطبية في غضون 14 يوماً من الاستلام فقط إذا كانت العبوة مغلقة وبحالتها الأصلية، ما لم يكن بالمنتج عيب صناعة."
+				en: "Standard shelves can be returned within 14 days if unassembled and in original condition. Custom-built racks are non-returnable unless there is a manufacturing defect.",
+				ar: "يمكن إرجاع الأرفف القياسية خلال 14 يوماً بشرط عدم تركيبها وبقائها في حالتها الأصلية. الأرفف المصنعة خصيصاً لا ترد إلا في حالة وجود عيب صناعة."
 			}
 		},
 		{
 			id: 5,
 			category: "general",
 			question: {
-				en: "Are your products authorized by the Ministry of Health?",
-				ar: "هل منتجاتكم معتمدة من وزارة الصحة؟"
+				en: "Do your products meet industrial safety standards?",
+				ar: "هل منتجاتكم مطابقة لمعايير السلامة الصناعية؟"
 			},
 			answer: {
-				en: "Absolutely. All medical devices, instruments, and consumables distributed by EG Medical are fully authorized by the Egyptian Drug Authority (EDA) and the Ministry of Health.",
-				ar: "بالتأكيد. جميع الأجهزة والأدوات الطبية والمستلزمات الموزعة مرخصة بالكامل من هيئة الدواء المصرية (EDA) ووزارة الصحة."
+				en: "Absolutely. All storage systems and racks manufactured by Qayem & Raf meet strict industrial safety and load-bearing standards.",
+				ar: "بالتأكيد. جميع أنظمة التخزين والأرفف المصنعة بواسطة قائم ورف تخضع لمعايير السلامة الصناعية الصارمة وتحمل الأوزان الثقيلة."
 			}
 		}
 	];

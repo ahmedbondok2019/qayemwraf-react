@@ -185,17 +185,17 @@ body {
   --foreground: #0F172A;
   
   /* ── Brand ── */
-  --primary: #2563EB;
-  --primary-foreground: #FFFFFF;
-  --primary-hover: #1D4ED8;
-  --primary-active: #1E40AF;
-  --primary-light: #EFF6FF;
+  --primary: #E0B03B;
+  --primary-foreground: #0F172A;
+  --primary-hover: #C79A2D;
+  --primary-active: #AE8522;
+  --primary-light: #FDF8E8;
 
-  --secondary: #0891B2;
+  --secondary: #1E293B;
   --secondary-foreground: #FFFFFF;
   
-  --accent: #10B981;
-  --accent-foreground: #FFFFFF;
+  --accent: #E0B03B;
+  --accent-foreground: #0F172A;
 
   /* ── Surfaces (Custom definitions) ── */
   --surface: #FFFFFF;
@@ -283,17 +283,17 @@ body {
   --foreground: #F8FAFC;
   
   /* ── Brand ── */
-  --primary: #60A5FA;
-  --primary-foreground: #020617;
-  --primary-hover: #93C5FD;
-  --primary-active: #3B82F6;
-  --primary-light: #172554;
+  --primary: #E0B03B;
+  --primary-foreground: #0F172A;
+  --primary-hover: #EDC864;
+  --primary-active: #F4DA8C;
+  --primary-light: #4A3810;
 
-  --secondary: #22D3EE;
-  --secondary-foreground: #020617;
+  --secondary: #334155;
+  --secondary-foreground: #F8FAFC;
   
-  --accent: #34D399;
-  --accent-foreground: #020617;
+  --accent: #E0B03B;
+  --accent-foreground: #0F172A;
 
   /* ── Surfaces ── */
   --surface: #0F172A;

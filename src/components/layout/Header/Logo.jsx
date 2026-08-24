@@ -15,14 +15,17 @@ export const Logo = () => {
 	return (
 		<LocalizedLink
 			to="/"
-			className="flex items-center select-none group focus-visible:ring-2 focus-visible:ring-ring/50 rounded-md outline-none shrink-0"
-			aria-label={isRtl ? "إيجي ميديكال - الصفحة الرئيسية" : "EGI Medical - Home"}
+			className="flex items-center gap-2 select-none group focus-visible:ring-2 focus-visible:ring-ring/50 rounded-md outline-none shrink-0"
+			aria-label={isRtl ? "قائم ورف - الصفحة الرئيسية" : "Qayem & Raf - Home"}
 		>
-			<img 
-				src="/images/logo.jpeg" 
-				alt="EGI Medical Logo" 
-				className="h-12 sm:h-16 w-auto object-contain rounded-md"
-			/>
+			<div className="flex flex-col leading-none">
+				<span className="text-2xl font-black tracking-tight text-foreground">
+					{isRtl ? "قائم ورف" : "Qayem & Raf"}
+				</span>
+				<span className="text-[10px] font-bold text-primary tracking-wider uppercase mt-1">
+					{isRtl ? "لحلول التخزين المعدني" : "Storage Solutions"}
+				</span>
+			</div>
 		</LocalizedLink>
 	);
 };

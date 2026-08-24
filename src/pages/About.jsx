@@ -33,19 +33,19 @@ export const About = () => {
 	];
 
 	const stats = [
-		{ value: "15,000+", label: { en: "Happy Customers", ar: "عميل يثق بنا" } },
-		{ value: "250+", label: { en: "Certified Devices", ar: "جهاز طبي معتمد" } },
-		{ value: "80+", label: { en: "Partner Facilities", ar: "مستشفى وعيادة شريكة" } },
-		{ value: "12+", label: { en: "Years of Excellence", ar: "عاماً من الخبرة" } }
+		{ value: "500+", label: { en: "Happy Customers", ar: "عميل يثق بنا" } },
+		{ value: "1200+", label: { en: "Completed Projects", ar: "مشروع تم تنفيذه" } },
+		{ value: "80+", label: { en: "Partner Facilities", ar: "مؤسسة وشركة شريكة" } },
+		{ value: "10+", label: { en: "Years of Excellence", ar: "أعوام من الخبرة" } }
 	];
 
 	const values = [
 		{
 			icon: ShieldCheck,
-			title: { en: "Certified Quality", ar: "جودة طبية معتمدة" },
+			title: { en: "Certified Quality", ar: "جودة هندسية معتمدة" },
 			description: {
-				en: "All products undergo rigorous testing and are fully approved by the Ministry of Health and EDA.",
-				ar: "تخضع جميع منتجاتنا لفحوصات جودة صارمة وهي معتمدة بالكامل من وزارة الصحة وهيئة الدواء المصرية."
+				en: "All products undergo rigorous testing to meet industrial safety and load capacity standards.",
+				ar: "تخضع جميع منتجاتنا لفحوصات جودة صارمة وتلبي معايير السلامة الصناعية وتحمل الأوزان."
 			},
 			glow: "hover:shadow-emerald-500/10 dark:hover:shadow-emerald-500/5"
 		},
@@ -53,17 +53,17 @@ export const About = () => {
 			icon: HeartHandshake,
 			title: { en: "Customer Centric", ar: "العميل أولاً دائماً" },
 			description: {
-				en: "We build long-term health partnerships, providing 24/7 technical support and outstanding post-sale services.",
-				ar: "نبني شراكات صحية طويلة الأمد، ونوفر الدعم الفني على مدار الساعة وخدمات ما بعد البيع المتميزة."
+				en: "We build long-term partnerships with our clients, providing engineering support and excellent post-sale services.",
+				ar: "نبني شراكات طويلة الأمد مع عملائنا، ونوفر الدعم الهندسي وخدمات ما بعد البيع المتميزة."
 			},
 			glow: "hover:shadow-blue-500/10 dark:hover:shadow-blue-500/5"
 		},
 		{
 			icon: Users,
-			title: { en: "Expert Guidance", ar: "فريق من الاستشاريين" },
+			title: { en: "Expert Guidance", ar: "فريق من المهندسين" },
 			description: {
-				en: "Guided by professional biomedical engineers and healthcare experts to source the safest equipment.",
-				ar: "نعمل تحت إشراف مهندسين طبيين وخبراء رعاية صحية لضمان اختيار وتوريد الأجهزة الأكثر أماناً."
+				en: "Guided by professional engineers to design and install the most efficient storage systems.",
+				ar: "نعمل تحت إشراف مهندسين متخصصين لضمان تصميم وتركيب أفضل أنظمة التخزين وأكثرها كفاءة."
 			},
 			glow: "hover:shadow-purple-500/10 dark:hover:shadow-purple-500/5"
 		}
@@ -84,17 +84,17 @@ export const About = () => {
 						<div className={cn("flex flex-col gap-6 text-start", pageImage ? "lg:col-span-7" : "lg:col-span-12")}>
 							<div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold w-fit">
 								<Activity className="w-3.5 h-3.5 animate-pulse" />
-								{isRtl ? "شريكك الطبي الموثوق" : "Your Trusted Medical Partner"}
+								{isRtl ? "شريكك الموثوق في أنظمة التخزين" : "Your Trusted Storage Partner"}
 							</div>
 							
 							<h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-slate-900 dark:text-white leading-tight tracking-tight">
 								{isRtl ? (
 									<>
-										الشركة الرائدة في <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-hover">التكنولوجيا الطبية</span> والهندسية
+										الشركة الرائدة في <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-hover">حلول التخزين المعدني</span> وتجهيز المستودعات
 									</>
 								) : (
 									<>
-										Pioneering in <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-hover">Medical Tech</span> & Engineering
+										Pioneering in <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-primary-hover">Metal Storage</span> & Warehousing
 									</>
 								)}
 							</h1>
@@ -112,8 +112,8 @@ export const About = () => {
 							) : (
 								<p className="text-base md:text-lg text-slate-600 dark:text-slate-400 leading-relaxed max-w-4xl">
 									{isRtl 
-										? "الشركة المصرية الألمانية للصناعات الهندسية هي شركة متخصصة في تصنيع وتوريد الاثاث الطبي عالي الجودة، مع التركيز على توفير حلول عملية ومبتكرة تخدم المستشفيات والعيادات والمراكز الطبية داخل مصر."
-										: "Egypt's premier portal for advanced medical engineering, supplying certified clinical equipment and homecare solutions to top hospitals, private practices, and patients nationwide."}
+										? "قائم ورف هي مؤسسة متخصصة في تصميم وتوريد وتركيب الأرفف وأنظمة التخزين المعدنية عالية الجودة للمستودعات والشركات والمؤسسات التجارية."
+										: "Qayem & Raf is specialized in designing, supplying, and installing high-quality metal shelving and storage systems for warehouses and commercial institutions."}
 								</p>
 							)}
 						</div>
@@ -150,8 +150,8 @@ export const About = () => {
 						</h2>
 						<p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm md:text-base">
 							{isRtl
-								? "تمكين كل فرد ومؤسسة طبية في مصر من الوصول إلى أحدث وأدق الأجهزة الطبية والرعاية الصحية بأفضل الأسعار وبأعلى معايير الجودة العالمية لحياة صحية أفضل."
-								: "To empower every healthcare provider and patient in Egypt by offering instant access to high-grade, verified medical technology under unmatched professional oversight."}
+								? "تمكين المؤسسات والشركات في مصر من تحسين مساحاتها التخزينية بأفضل الحلول المعدنية المبتكرة بأعلى معايير الجودة."
+								: "To empower institutions and companies in Egypt by optimizing their storage spaces with the best innovative metal solutions at the highest quality standards."}
 						</p>
 					</div>
 
@@ -166,8 +166,8 @@ export const About = () => {
 						</h2>
 						<p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm md:text-base">
 							{isRtl
-								? "أن نكون الشريك التكنولوجي الطبي الأول والأكثر موثوقية في الشرق الأوسط، والمساهمة الفعالة في التحول الرقمي لمنظومة الرعاية الصحية لتصبح أسهل وأكثر أماناً."
-								: "To become the premier medical technology facilitator in the Middle East, leading the path toward safer, digital-first distribution and clinical implementation."}
+								? "أن نكون الشريك الهندسي الأول والأكثر موثوقية في الشرق الأوسط في مجال التخزين وتجهيز المستودعات."
+								: "To be the premier and most reliable engineering partner in the Middle East for storage and warehouse equipping."}
 						</p>
 					</div>
 				</div>
@@ -196,7 +196,7 @@ export const About = () => {
 							{isRtl ? "القيم الأساسية التي نؤمن بها" : "Our Core Values"}
 						</h2>
 						<p className="text-sm text-slate-500 dark:text-slate-400">
-							{isRtl ? "ثقافتنا مبنية على رعاية المريض والدقة الهندسية والالتزام بالتميز" : "Our corporate culture is anchored on patient wellness, engineering precision, and integrity."}
+							{isRtl ? "ثقافتنا مبنية على الدقة الهندسية والالتزام بالتميز وتلبية احتياجات العملاء." : "Our culture is built on engineering precision, commitment to excellence, and meeting customer needs."}
 						</p>
 					</div>
 					<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -225,14 +225,14 @@ export const About = () => {
 							<div className="p-2 rounded-xl bg-amber-500/10 text-amber-500">
 								<Award className="w-6 h-6" />
 							</div>
-							<h3 className="text-xl font-black text-slate-900 dark:text-white">
-								{isRtl ? "مؤسسة معتمدة ومرخصة رسمياً" : "Official Licensed Medical Enterprise"}
+						<h3 className="text-xl font-black text-slate-900 dark:text-white">
+								{isRtl ? "مؤسسة هندسية معتمدة" : "Official Engineering Enterprise"}
 							</h3>
 						</div>
 						<p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed max-w-3xl">
 							{isRtl
-								? "نحن موزعون ومصنعون معتمدون ومرخصون من قبل هيئة الدواء المصرية (EDA) ووزارة الصحة، ونخضع لكافة شروط ومعايير الجودة العالمية المعتمدة لتقديم أفضل المنتجات وأكثرها أماناً."
-								: "We are authorized distributors registered under the Egyptian Drug Authority (EDA) and Ministry of Health, meeting international ISO guidelines for medical hardware and technical support."}
+								? "نحن مؤسسة رائدة تقدم حلول التخزين بأعلى معايير الصناعة، ونلتزم بتقديم منتجات قوية وآمنة للمستودعات بكافة أنواعها، تلبي كافة المعايير الهندسية ومعايير السلامة."
+								: "We are a leading institution providing storage solutions with the highest industry standards, committed to offering robust and safe products for all warehouses."}
 						</p>
 					</div>
 					
@@ -244,7 +244,7 @@ export const About = () => {
 						</div>
 						<div className="flex items-center gap-2 px-4 py-3 bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-2xl shadow-sm text-xs font-bold text-slate-700 dark:text-slate-300">
 							<CheckCircle2 className="w-4 h-4 text-primary" />
-							EDA APPROVED
+							INDUSTRIAL STANDARD
 						</div>
 					</div>
 				</div>

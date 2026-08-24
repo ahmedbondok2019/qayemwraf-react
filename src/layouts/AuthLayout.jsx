@@ -41,11 +41,11 @@ export const AuthLayout = () => {
 				
 				{/* Top Logo */}
 				<LocalizedLink to="/" className="flex items-center gap-3 relative z-20">
-					<img 
-						src="/images/logo.jpeg" 
-						alt="EGI Medical Logo" 
-						className="h-20 w-auto object-contain rounded-xl"
-					/>
+					<div className="flex flex-col leading-none">
+						<span className="text-3xl font-black tracking-tight text-white">
+							Qayem & <span className="text-primary">Raf</span>
+						</span>
+					</div>
 				</LocalizedLink>
 
 				{/* Center Content: Slogans overlaying the holographic Heart Cube Background */}
@@ -56,15 +56,15 @@ export const AuthLayout = () => {
 						<h1 className="text-4xl lg:text-5xl font-black text-white leading-[1.2] mb-4 select-none drop-shadow-md">
 							{isRtl ? (
 								<>
-									مستقبل الرعاية الصحية
-									<span className="block mt-2 bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">
+									مستقبل التخزين المعدني
+									<span className="block mt-2 bg-gradient-to-r from-primary via-yellow-400 to-amber-600 bg-clip-text text-transparent">
 										يبدأ من هنا
 									</span>
 								</>
 							) : (
 								<>
-									The Future of Healthcare
-									<span className="block mt-2 bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400 bg-clip-text text-transparent">
+									The Future of Metal Storage
+									<span className="block mt-2 bg-gradient-to-r from-primary via-yellow-400 to-amber-600 bg-clip-text text-transparent">
 										Starts Here
 									</span>
 								</>
@@ -72,8 +72,8 @@ export const AuthLayout = () => {
 						</h1>
 						<p className="text-sm text-slate-300 max-w-sm mx-auto leading-relaxed font-semibold drop-shadow-sm">
 							{isRtl 
-								? "انضم إلى منصة EGI Medical واستمتع بتجربة تسوق آمنة، سهلة وموثوقة لكل احتياجاتك الطبية."
-								: "Join the EGI Medical platform and enjoy a secure, easy, and reliable shopping experience for all your medical needs."}
+								? "اكتشف مجموعة قائم ورف المتكاملة لحلول التخزين المعدني، بتصاميم تناسب كافة المستودعات."
+								: "Discover Qayem & Raf's comprehensive range of metal storage solutions for all spaces and warehouses."}
 						</p>
 					</div>
 
@@ -113,10 +113,10 @@ export const AuthLayout = () => {
 							<HeartPulse className="w-4 h-4 text-cyan-400" />
 						</div>
 						<span className="text-[10px] font-black text-white leading-tight">
-							{isRtl ? "دعم طبي" : "Medical Support"}
+							{isRtl ? "دعم هندسي" : "Engineering Support"}
 						</span>
 						<span className="text-[8px] text-slate-400 mt-0.5">
-							{isRtl ? "فريق من الخبراء" : "Team of Experts"}
+							{isRtl ? "تركيب وتجهيز" : "Professional Installation"}
 						</span>
 					</div>
 
@@ -146,11 +146,11 @@ export const AuthLayout = () => {
 				<div className="flex justify-between w-full items-center gap-4 relative z-25">
 					<LanguageSwitcher />
 					<LocalizedLink to="/" className="inline-flex items-center gap-2 lg:hidden">
-						<img 
-							src="/images/logo.jpeg" 
-							alt="EGI Medical Logo" 
-							className="h-14 w-auto object-contain rounded-lg"
-						/>
+						<div className="flex flex-col leading-none">
+							<span className="text-2xl font-black tracking-tight text-white">
+								Qayem & <span className="text-primary">Raf</span>
+							</span>
+						</div>
 					</LocalizedLink>
 				</div>
 
@@ -170,7 +170,7 @@ export const AuthLayout = () => {
 
 				{/* Bottom Footer / Copyright */}
 				<div className="text-center text-xs text-slate-500 font-bold select-none py-2 relative z-25">
-					© 2026 EGI Medical. All rights reserved.
+					© 2026 Qayem & Raf. All rights reserved.
 				</div>
 
 			</div>

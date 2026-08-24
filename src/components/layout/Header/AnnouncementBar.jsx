@@ -34,8 +34,8 @@ export const AnnouncementBar = () => {
 						<Icon name="ShieldCheck" size="sm" className="text-primary shrink-0" />
 						<span className="line-clamp-1">
 							{settings?.why_choose_us?.subtitle || settings?.why_choose_us?.title || (isRtl
-								? "نحن نضع معايير جديدة للموثوقية والأمان في توفير المستلزمات والأجهزة الطبية"
-								: "We set new standards of reliability and safety in providing medical supplies")}
+								? "نحن نضع معايير جديدة للموثوقية والأمان في توفير أنظمة وحلول التخزين المعدني"
+								: "We set new standards of reliability and safety in providing metal storage solutions")}
 						</span>
 					</div>
 

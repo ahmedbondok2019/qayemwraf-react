@@ -65,7 +65,7 @@ export const HeaderActions = () => {
 			<ActionButton
 				to="/cart"
 				icon="ShoppingCart"
-				label={isRtl ? "السلة" : "Cart"}
+				label={isRtl ? "طلبات التسعير" : "Quote"}
 				count={cartCount}
 			/>
 		</div>

@@ -68,31 +68,31 @@ export const Terms = () => {
 									</h2>
 									<p>
 										{isRtl 
-											? "باستخدامك لموقعنا الإلكتروني وشراء مستلزماتك الطبية منه، فإنك توافق بالكامل على الالتزام بشروط الاستخدام المذكورة هنا وكافة القوانين الصحية والتجارية المصرية ذات الصلة."
-											: "By accessing and using this website to purchase medical supplies, you fully accept and agree to comply with these Terms of Service and all applicable health and commerce laws in Egypt."}
+											? "باستخدامك لموقعنا الإلكتروني وشراء منتجاتك منه، فإنك توافق بالكامل على الالتزام بشروط الاستخدام المذكورة هنا وكافة القوانين الصناعية والتجارية المصرية ذات الصلة."
+											: "By accessing and using this website to purchase storage supplies, you fully accept and agree to comply with these Terms of Service and all applicable industrial and commerce laws in Egypt."}
 									</p>
 								</div>
 
 								{/* Section 2 */}
 								<div className="flex flex-col gap-3">
 									<h2 className="text-xl font-extrabold text-text">
-										{isRtl ? "٢. أهلية شراء الأجهزة والمستلزمات الطبية" : "2. Purchase Eligibility"}
+										{isRtl ? "٢. أهلية تجهيز المشروعات" : "2. Purchase Eligibility"}
 									</h2>
 									<p>
 										{isRtl
-											? "قد تتطلب بعض الأجهزة الطبية المتخصصة وجود إشراف طبي أو تقديم رخصة مزاولة مهنة (مثل عيادات ومستشفيات). نحن نحتفظ بالحق في إلغاء أي طلب لا يستوفي الشروط أو التراخيص الطبية المطلوبة."
-											: "Certain professional-grade medical devices may require medical supervision or proof of registration (such as for clinics or hospitals). We reserve the right to cancel orders that do not meet professional medical purchase criteria."}
+											? "قد تتطلب بعض التجهيزات الصناعية المتخصصة تقديم تراخيص صناعية وتجارية (مثل المصانع والمستودعات الكبيرة). نحن نحتفظ بالحق في إلغاء أي طلب لا يستوفي الشروط أو التراخيص المطلوبة."
+											: "Certain professional-grade storage installations may require proof of registration (such as for factories or large warehouses). We reserve the right to cancel orders that do not meet professional purchase criteria."}
 									</p>
 								</div>
 
 								{/* Section 3 */}
 								<div className="flex flex-col gap-3">
 									<h2 className="text-xl font-extrabold text-text">
-										{isRtl ? "٣. دقة الأسعار والبيانات الطبية للمنتجات" : "3. Product Information & Pricing"}
+										{isRtl ? "٣. دقة الأسعار والبيانات الهندسية للمنتجات" : "3. Product Information & Pricing"}
 									</h2>
 									<p>
 										{isRtl
-											? "نسعى لتقديم أدق التفاصيل التقنية للأجهزة والأسعار. في حال وجود خطأ مطبعي في السعر أو المواصفات، سيتم التواصل معك فوراً وتعديل الطلب أو إلغائه واسترداد المبلغ بالكامل."
+											? "نسعى لتقديم أدق التفاصيل التقنية للأنظمة والأسعار. في حال وجود خطأ مطبعي في السعر أو المواصفات، سيتم التواصل معك فوراً وتعديل الطلب أو إلغائه واسترداد المبلغ بالكامل."
 											: "We strive for complete accuracy in hardware specifications and pricing. In the rare event of typographical errors, we reserve the right to contact you to adjust or cancel the order with a full refund."}
 									</p>
 								</div>
@@ -104,8 +104,8 @@ export const Terms = () => {
 									</h2>
 									<p>
 										{isRtl
-											? "لا تتحمل EG Medical المسؤولية عن أي أضرار ناتجة عن الاستخدام الخاطئ للأجهزة الطبية، أو عدم اتباع تعليمات الاستخدام والأمان المرفقة من قبل المصنعين."
-											: "EG Medical is not liable for any direct or indirect health damages resulting from the misuse of purchased medical devices, or the failure to follow the manufacturer's user manual and safety directions."}
+											? "لا تتحمل مؤسسة قائم ورف المسؤولية عن أي أضرار ناتجة عن الاستخدام الخاطئ لوحدات التخزين، أو عدم اتباع تعليمات الاستخدام والحمولة القصوى المرفقة من قبل المصنعين."
+											: "Qayem & Raf is not liable for any direct or indirect damages resulting from the misuse of purchased storage systems, or the failure to follow the manufacturer's user manual and load directions."}
 									</p>
 								</div>
 							</>
