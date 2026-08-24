@@ -1,0 +1,75 @@
+name: Deploy via SSH
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        env:
+          VITE_API_URL: "https://admin.egimedical.com/api/v1"
+        run: npm run build
+
+      - name: Clean stale directories & Prepare Target via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          port: ${{ secrets.SSH_PORT }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          timeout: 120s
+          command_timeout: 10m
+          script_stop: true
+          debug: true
+          script: |
+            echo "Creating target directory for frontend source..."
+            mkdir -p /home/u373210132/domains/egimedical.com/public_html/frontend/
+            echo "Removing stale pre-rendered directories (en and ar) to prevent Apache routing bypass..."
+            rm -rf /home/u373210132/domains/egimedical.com/public_html/en
+            rm -rf /home/u373210132/domains/egimedical.com/public_html/ar
+
+      - name: Deploy Build Files (dist) to Root public_html
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          port: ${{ secrets.SSH_PORT }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "dist/*"
+          target: "/home/u373210132/domains/egimedical.com/public_html/"
+          strip_components: 1
+          overwrite: true
+          timeout: 120s
+          command_timeout: 10m
+          debug: true
+
+      - name: Deploy Source Code to frontend Directory
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USERNAME }}
+          port: ${{ secrets.SSH_PORT }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: "*,!node_modules,!dist,!.git"
+          target: "/home/u373210132/domains/egimedical.com/public_html/frontend/"
+          overwrite: true
+          timeout: 120s
+          command_timeout: 10m
+          debug: true

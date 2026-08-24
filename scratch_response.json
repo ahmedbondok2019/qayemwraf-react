@@ -1,0 +1,1014 @@
+﻿{
+    "success":  true,
+    "message":  "تمت العملية بنجاح",
+    "data":  {
+                 "data":  [
+                              {
+                                  "id":  96,
+                                  "name":  "سرير 2 حركة كهربائى يتحول لكرسي",
+                                  "description":  "",
+                                  "slug":  "sryr-2-hrk-khrbay-ythol-lkrsy",
+                                  "meta_title":  "سرير 2 حركة كهربائى يتحول لكرسي",
+                                  "meta_description":  "",
+                                  "sku":  null,
+                                  "price":  40000,
+                                  "formatted_price":  "40,000.00 ج.م",
+                                  "special_price":  32000,
+                                  "formatted_special_price":  "32,000.00 ج.م",
+                                  "special_price_start":  null,
+                                  "special_price_end":  null,
+                                  "final_price":  32000,
+                                  "formatted_final_price":  "32,000.00 ج.م",
+                                  "currency":  {
+                                                   "code":  "EGP",
+                                                   "symbol":  "ج.م",
+                                                   "exchange_rate":  1
+                                               },
+                                  "image":  "https://egimedical.com/storage/uploads/products/6a673d7d032c9.webp",
+                                  "gallery":  [
+                                                  {
+                                                      "id":  174,
+                                                      "image":  "https://egimedical.com/storage/uploads/products/gallery/6a673d7e8d997.webp",
+                                                      "sort_order":  0
+                                                  }
+                                              ],
+                                  "categories":  [
+                                                     {
+                                                         "id":  1,
+                                                         "title":  "سرير طبي وغرف الاقامة",
+                                                         "name":  "سرير طبي وغرف الاقامة",
+                                                         "image":  "https://egimedical.com/website/images/category/1774856207.png",
+                                                         "link":  "1",
+                                                         "show_on_home":  true,
+                                                         "parent_id":  null,
+                                                         "sub_categories":  [
+
+                                                                            ],
+                                                         "fixed":  false
+                                                     }
+                                                 ],
+                                  "options":  [
+
+                                              ],
+                                  "quantity":  1,
+                                  "max_order_qty":  null,
+                                  "ignore_quantity":  false,
+                                  "is_best_seller":  false,
+                                  "best_seller_start":  null,
+                                  "best_seller_end":  null,
+                                  "weight":  0,
+                                  "viewed":  0,
+                                  "shipping_rule_id":  null,
+                                  "product_brand_id":  null,
+                                  "brand":  null,
+                                  "has_flash_sale":  false,
+                                  "flash_sale_price":  null,
+                                  "primary_image":  "https://egimedical.com/storage/uploads/products/6a673d7d032c9.webp",
+                                  "title":  "سرير 2 حركة كهربائى يتحول لكرسي",
+                                  "category_id":  1,
+                                  "category":  "سرير طبي وغرف الاقامة",
+                                  "store_name":  "Mushaf Home",
+                                  "rating":  0,
+                                  "rate_count":  0,
+                                  "sale_price":  32000,
+                                  "discount_percentage":  20,
+                                  "item_code":  null,
+                                  "images":  [
+                                                 {
+                                                     "image":  "https://egimedical.com/storage/uploads/products/gallery/6a673d7e8d997.webp"
+                                                 }
+                                             ],
+                                  "isFavorite":  false,
+                                  "countFavorite":  0,
+                                  "countOrder":  0,
+                                  "product_link":  "https://egimedical.com/products/96",
+                                  "product_rates":  [
+
+                                                    ],
+                                  "deal_of_day_end":  null
+                              },
+                              {
+                                  "id":  95,
+                                  "name":  "شاذلونج سرير كشف  كهربا",
+                                  "description":  "",
+                                  "slug":  "shathlong-sryr-kshf-khrba",
+                                  "meta_title":  "شاذلونج سرير كشف  كهربا",
+                                  "meta_description":  "",
+                                  "sku":  null,
+                                  "price":  25000,
+                                  "formatted_price":  "25,000.00 ج.م",
+                                  "special_price":  23000,
+                                  "formatted_special_price":  "23,000.00 ج.م",
+                                  "special_price_start":  null,
+                                  "special_price_end":  null,
+                                  "final_price":  23000,
+                                  "formatted_final_price":  "23,000.00 ج.م",
+                                  "currency":  {
+                                                   "code":  "EGP",
+                                                   "symbol":  "ج.م",
+                                                   "exchange_rate":  1
+                                               },
+                                  "image":  "https://egimedical.com/storage/uploads/products/6a65ad2c4c612.webp",
+                                  "gallery":  [
+                                                  {
+                                                      "id":  175,
+                                                      "image":  "https://egimedical.com/storage/uploads/products/gallery/6a686a50769e4.webp",
+                                                      "sort_order":  1
+                                                  },
+                                                  {
+                                                      "id":  176,
+                                                      "image":  "https://egimedical.com/storage/uploads/products/gallery/6a686a5096db8.webp",
+                                                      "sort_order":  2
+                                                  },
+                                                  {
+                                                      "id":  177,
+                                                      "image":  "https://egimedical.com/storage/uploads/products/gallery/6a686a50b4dc9.webp",
+                                                      "sort_order":  3
+                                                  }
+                                              ],
+                                  "categories":  [
+                                                     {
+                                                         "id":  2,
+                                                         "title":  "تجهيزات االعيادة (شاذلوج/ (سرير كشف) واطقم عيادة ومستلزمات الكشف)",
+                                                         "name":  "تجهيزات االعيادة (شاذلوج/ (سرير كشف) واطقم عيادة ومستلزمات الكشف)",
+                                                         "image":  "https://egimedical.com/website/images/category/1774856229.jpg",
+                                                         "link":  "2",
+                                                         "show_on_home":  true,
+                                                         "parent_id":  null,
+                                                         "sub_categories":  [
+
+                                                                            ],
+                                                         "fixed":  false
+                                                     }
+                                                 ],
+                                  "options":  [
+
+                                              ],
+                                  "quantity":  2,
+                                  "max_order_qty":  null,
+                                  "ignore_quantity":  false,
+                                  "is_best_seller":  true,
+                                  "best_seller_start":  null,
+                                  "best_seller_end":  null,
+                                  "weight":  0,
+                                  "viewed":  0,
+                                  "shipping_rule_id":  1,
+                                  "product_brand_id":  null,
+                                  "brand":  null,
+                                  "has_flash_sale":  false,
+                                  "flash_sale_price":  null,
+                                  "primary_image":  "https://egimedical.com/storage/uploads/products/6a65ad2c4c612.webp",
+                                  "title":  "شاذلونج سرير كشف  كهربا",
+                                  "category_id":  2,
+                                  "category":  "تجهيزات االعيادة (شاذلوج/ (سرير كشف) واطقم عيادة ومستلزمات الكشف)",
+                                  "store_name":  "Mushaf Home",
+                                  "rating":  0,
+                                  "rate_count":  0,
+                                  "sale_price":  23000,
+                                  "discount_percentage":  8,
+                                  "item_code":  null,
+                                  "images":  [
+                                                 {
+                                                     "image":  "https://egimedical.com/storage/uploads/products/gallery/6a686a50769e4.webp"
+                                                 },
+                                                 {
+                                                     "image":  "https://egimedical.com/storage/uploads/products/gallery/6a686a5096db8.webp"
+                                                 },
+                                                 {
+                                                     "image":  "https://egimedical.com/storage/uploads/products/gallery/6a686a50b4dc9.webp"
+                                                 }
+                                             ],
+                                  "isFavorite":  false,
+                                  "countFavorite":  0,
+                                  "countOrder":  0,
+                                  "product_link":  "https://egimedical.com/products/95",
+                                  "product_rates":  [
+
+                                                    ],
+                                  "deal_of_day_end":  null
+                              },
+                              {
+                                  "id":  94,
+                                  "name":  "سرير مريض أكسسوار مستورد ( 1 حركة أقتصادي ) نصف فولر بدون جوانب (شامل المرتبة)",
+                                  "description":  "\u003cp\u003eشامل المرتبة\u0026nbsp;\u003c/p\u003e\r\n\u003cp data-start=\"54\" data-end=\"82\"\u003e\u003cstrong data-start=\"54\" data-end=\"82\"\u003e(السرير شامل المرتبة)\u003c/strong\u003e\u003c/p\u003e\r\n\u003cp data-start=\"54\" data-end=\"82\"\u003e\u003cstrong data-start=\"54\" data-end=\"82\"\u003e🔹 مواصفات السرير الطبي:\u003c/strong\u003e\u003c/p\u003e\r\n\u003col data-start=\"84\" data-end=\"784\"\u003e\r\n\u003cli data-section-id=\"11o0olp\" data-start=\"84\" data-end=\"143\"\u003eشرائح صاج مجلفن بسمك 1 مم، مزودة بفتحات مكبوسة للداخل.\u003c/li\u003e\r\n\u003cli data-section-id=\"m9ny9w\" data-start=\"144\" data-end=\"219\"\u003eالسطح مقسم إلى جزئين، مع مفصلات قوية بسمك 17 مم لتحمل الاستخدام الشاق.\u003c/li\u003e\r\n\u003cli data-section-id=\"16jt4ub\" data-start=\"220\" data-end=\"258\"\u003eدهان إلكتروستاتيك معالج ضد الصدأ.\u003c/li\u003e\r\n\u003cli data-section-id=\"159bqjb\" data-start=\"297\" data-end=\"357\"\u003eعجلات مقاس 5 بوصة عالية التحمل (مزودة بفرامل لكل عجلة).\u003c/li\u003e\r\n\u003cli data-section-id=\"1vglget\" data-start=\"358\" data-end=\"410\"\u003eلوح الرأس والقدم مصنوع من بلاستيك ABS المستورد.\u003c/li\u003e\r\n\u003cli data-section-id=\"19oca5j\" data-start=\"411\" data-end=\"461\"\u003eجسم السرير مصنوع من علب 4\u0026times;8 سم، بسمك 1.25 مم.\u003c/li\u003e\r\n\u003cli data-section-id=\"sn4por\" data-start=\"462\" data-end=\"512\"\u003eالسرير مزود بدعامات إضافية لتحمل جميع الظروف.\u003c/li\u003e\r\n\u003cli data-section-id=\"1c2pqcz\" data-start=\"513\" data-end=\"577\"\u003eجميع اللحامات بأحدث ماكينات ثاني أكسيد الكربون بجودة عالية.\u003c/li\u003e\r\n\u003cli data-section-id=\"xs7hk6\" data-start=\"578\" data-end=\"665\"\u003eفتيل يدوي، مزود بيد معدن مطلية نيكل كروم أو بلاستيك ABS (مع حماية لنهاية الحركة).\u003c/li\u003e\r\n\u003cli data-section-id=\"1p28rem\" data-start=\"666\" data-end=\"784\"\u003eمزود بفتحتين لحامل المحلول (يمين ويسار المريض)، بالإضافة إلى حامل محاليل من الاستانلس ستيل بشعبة رباعية مستوردة.\u003c/li\u003e\r\n\u003c/ol\u003e\r\n\u003chr data-start=\"786\" data-end=\"789\"\u003e\r\n\u003cp data-start=\"791\" data-end=\"806\"\u003e\u003cstrong data-start=\"791\" data-end=\"806\"\u003e🔹 الحركات:\u003c/strong\u003e\u003c/p\u003e\r\n\u003cul data-start=\"807\" data-end=\"842\"\u003e\r\n\u003cli data-section-id=\"7zzxup\" data-start=\"807\" data-end=\"842\"\u003eزاوية حركة الظهر: من 0\u0026deg; إلى 85\u0026deg;\u003c/li\u003e\r\n\u003c/ul\u003e\r\n\u003chr data-start=\"844\" data-end=\"847\"\u003e\r\n\u003cp data-start=\"849\" data-end=\"864\"\u003e\u003cstrong data-start=\"849\" data-end=\"864\"\u003e🔹 الأبعاد:\u003c/strong\u003e\u003c/p\u003e\r\n\u003cdiv class=\"TyagGW_tableContainer\"\u003e\r\n\u003cdiv class=\"group TyagGW_tableWrapper flex flex-col-reverse w-fit\" tabindex=\"-1\"\u003e\r\n\u003ctable class=\"w-fit min-w-(--thread-content-width)\" border=\"1\" data-start=\"866\" data-end=\"1044\"\u003e\r\n\u003cthead data-start=\"866\" data-end=\"926\"\u003e\r\n\u003ctr data-start=\"866\" data-end=\"926\"\u003e\r\n\u003cth class=\"\" data-start=\"866\" data-end=\"883\" data-col-size=\"sm\"\u003eأقصى وزن (كجم)\u003c/th\u003e\r\n\u003cth class=\"\" data-start=\"883\" data-end=\"899\" data-col-size=\"sm\"\u003eالارتفاع (سم)\u003c/th\u003e\r\n\u003cth class=\"\" data-start=\"899\" data-end=\"912\" data-col-size=\"sm\"\u003eالعرض (سم)\u003c/th\u003e\r\n\u003cth class=\"\" data-start=\"912\" data-end=\"926\" data-col-size=\"sm\"\u003eالطول (سم)\u003c/th\u003e\r\n\u003c/tr\u003e\r\n\u003c/thead\u003e\r\n\u003ctbody data-start=\"986\" data-end=\"1044\"\u003e\r\n\u003ctr data-start=\"986\" data-end=\"1044\"\u003e\r\n\u003ctd data-start=\"986\" data-end=\"1002\" data-col-size=\"sm\"\u003e200\u003c/td\u003e\r\n\u003ctd data-col-size=\"sm\" data-start=\"1002\" data-end=\"1017\"\u003e50\u003c/td\u003e\r\n\u003ctd data-col-size=\"sm\" data-start=\"1017\" data-end=\"1030\"\u003e95\u003c/td\u003e\r\n\u003ctd data-col-size=\"sm\" data-start=\"1030\" data-end=\"1044\"\u003e205\u003c/td\u003e\r\n\u003c/tr\u003e\r\n\u003c/tbody\u003e\r\n\u003c/table\u003e\r\n\u003c/div\u003e\r\n\u003c/div\u003e",
+                                  "slug":  "sryr-mryd-akssoar-mstord-1-hrk-aktsady-nsf-folr-bdon-goanb-shaml-almrtb",
+                                  "meta_title":  "سرير مريض أكسسوار مستورد ( 1 حركة أقتصادي ) نصف فولر بدون جوانب (شامل المرتبة)",
+                                  "meta_description":  "",
+                                  "sku":  null,
+                                  "price":  15000,
+                                  "formatted_price":  "15,000.00 ج.م",
+                                  "special_price":  9800,
+                                  "formatted_special_price":  "9,800.00 ج.م",
+                                  "special_price_start":  null,
+                                  "special_price_end":  null,
+                                  "final_price":  9800,
+                                  "formatted_final_price":  "9,800.00 ج.م",
+                                  "currency":  {
+                                                   "code":  "EGP",
+                                                   "symbol":  "ج.م",
+                                                   "exchange_rate":  1
+                                               },
+                                  "image":  "https://egimedical.com/storage/uploads/products/6a60abc507e27.webp",
+                                  "gallery":  [
+                                                  {
+                                                      "id":  172,
+                                                      "image":  "https://egimedical.com/storage/uploads/products/gallery/6a60abc587b76.webp",
+                                                      "sort_order":  0
+                                                  }
+                                              ],
+                                  "categories":  [
+                                                     {
+                                                         "id":  1,
+                                                         "title":  "سرير طبي وغرف الاقامة",
+                                                         "name":  "سرير طبي وغرف الاقامة",
+                                                         "image":  "https://egimedical.com/website/images/category/1774856207.png",
+                                                         "link":  "1",
+                                                         "show_on_home":  true,
+                                                         "parent_id":  null,
+                                                         "sub_categories":  [
+
+                                                                            ],
+                                                         "fixed":  false
+                                                     }
+                                                 ],
+                                  "options":  [
+
+                                              ],
+                                  "quantity":  2,
+                                  "max_order_qty":  null,
+                                  "ignore_quantity":  false,
+                                  "is_best_seller":  false,
+                                  "best_seller_start":  null,
+                                  "best_seller_end":  null,
+                                  "weight":  0,
+                                  "viewed":  0,
+                                  "shipping_rule_id":  1,
+                                  "product_brand_id":  null,
+                                  "brand":  null,
+                                  "has_flash_sale":  false,
+                                  "flash_sale_price":  null,
+                                  "primary_image":  "https://egimedical.com/storage/uploads/products/6a60abc507e27.webp",
+                                  "title":  "سرير مريض أكسسوار مستورد ( 1 حركة أقتصادي ) نصف فولر بدون جوانب (شامل المرتبة)",
+                                  "category_id":  1,
+                                  "category":  "سرير طبي وغرف الاقامة",
+                                  "store_name":  "Mushaf Home",
+                                  "rating":  0,
+                                  "rate_count":  0,
+                                  "sale_price":  9800,
+                                  "discount_percentage":  35,
+                                  "item_code":  null,
+                                  "images":  [
+                                                 {
+                                                     "image":  "https://egimedical.com/storage/uploads/products/gallery/6a60abc587b76.webp"
+                                                 }
+                                             ],
+                                  "isFavorite":  false,
+                                  "countFavorite":  0,
+                                  "countOrder":  0,
+                                  "product_link":  "https://egimedical.com/products/94",
+                                  "product_rates":  [
+
+                                                    ],
+                                  "deal_of_day_end":  null
+                              },
+                              {
+                                  "id":  93,
+                                  "name":  "حامل اسطوانة",
+                                  "description":  "",
+                                  "slug":  "haml-astoan",
+                                  "meta_title":  "حامل اسطوانة",
+                                  "meta_description":  "",
+                                  "sku":  null,
+                                  "price":  2500,
+                                  "formatted_price":  "2,500.00 ج.م",
+                                  "special_price":  2000,
+                                  "formatted_special_price":  "2,000.00 ج.م",
+                                  "special_price_start":  null,
+                                  "special_price_end":  null,
+                                  "final_price":  2000,
+                                  "formatted_final_price":  "2,000.00 ج.م",
+                                  "currency":  {
+                                                   "code":  "EGP",
+                                                   "symbol":  "ج.م",
+                                                   "exchange_rate":  1
+                                               },
+                                  "image":  "https://egimedical.com/storage/uploads/products/6a5df95b0849b.webp",
+                                  "gallery":  [
+                                                  {
+                                                      "id":  171,
+                                                      "image":  "https://egimedical.com/storage/uploads/products/gallery/6a5df95b1a27c.webp",
+                                                      "sort_order":  0
+                                                  }
+                                              ],
+                                  "categories":  [
+                                                     {
+                                                         "id":  10,
+                                                         "title":  "ترولى  متنوع",
+                                                         "name":  "ترولى  متنوع",
+                                                         "image":  "https://egimedical.com/storage/website/images/category/img-38732026-04-01-12-19-16.jpg",
+                                                         "link":  "10",
+                                                         "show_on_home":  true,
+                                                         "parent_id":  null,
+                                                         "sub_categories":  [
+
+                                                                            ],
+                                                         "fixed":  false
+                                                     }
+                                                 ],
+                                  "options":  [
+
+                                              ],
+                                  "quantity":  2,
+                                  "max_order_qty":  null,
+                                  "ignore_quantity":  false,
+                                  "is_best_seller":  false,
+                                  "best_seller_start":  null,
+                                  "best_seller_end":  null,
+                                  "weight":  0,
+                                  "viewed":  0,
+                                  "shipping_rule_id":  null,
+                                  "product_brand_id":  null,
+                                  "brand":  null,
+                                  "has_flash_sale":  false,
+                                  "flash_sale_price":  null,
+                                  "primary_image":  "https://egimedical.com/storage/uploads/products/6a5df95b0849b.webp",
+                                  "title":  "حامل اسطوانة",
+                                  "category_id":  10,
+                                  "category":  "ترولى  متنوع",
+                                  "store_name":  "Mushaf Home",
+                                  "rating":  0,
+                                  "rate_count":  0,
+                                  "sale_price":  2000,
+                                  "discount_percentage":  20,
+                                  "item_code":  null,
+                                  "images":  [
+                                                 {
+                                                     "image":  "https://egimedical.com/storage/uploads/products/gallery/6a5df95b1a27c.webp"
+                                                 }
+                                             ],
+                                  "isFavorite":  false,
+                                  "countFavorite":  0,
+                                  "countOrder":  0,
+                                  "product_link":  "https://egimedical.com/products/93",
+                                  "product_rates":  [
+
+                                                    ],
+                                  "deal_of_day_end":  null
+                              },
+                              {
+                                  "id":  92,
+                                  "name":  "مفرش تقليب مريض",
+                                  "description":  "",
+                                  "slug":  "mfrsh-tklyb-mryd",
+                                  "meta_title":  "مفرش تقليب مريض",
+                                  "meta_description":  "",
+                                  "sku":  null,
+                                  "price":  800,
+                                  "formatted_price":  "800.00 ج.م",
+                                  "special_price":  700,
+                                  "formatted_special_price":  "700.00 ج.م",
+                                  "special_price_start":  null,
+                                  "special_price_end":  null,
+                                  "final_price":  700,
+                                  "formatted_final_price":  "700.00 ج.م",
+                                  "currency":  {
+                                                   "code":  "EGP",
+                                                   "symbol":  "ج.م",
+                                                   "exchange_rate":  1
+                                               },
+                                  "image":  "https://egimedical.com/storage/uploads/products/6a56275e385be.webp",
+                                  "gallery":  [
+                                                  {
+                                                      "id":  170,
+                                                      "image":  "https://egimedical.com/storage/uploads/products/gallery/6a56275e78c86.webp",
+                                                      "sort_order":  0
+                                                  }
+                                              ],
+                                  "categories":  [
+                                                     {
+                                                         "id":  19,
+                                                         "title":  "مراتب طبية",
+                                                         "name":  "مراتب طبية",
+                                                         "image":  "https://egimedical.com/storage/website/images/category/b838862c-5338-4474-ace1-bd05024541972026-04-06-11-43-54.jpg",
+                                                         "link":  "19",
+                                                         "show_on_home":  true,
+                                                         "parent_id":  null,
+                                                         "sub_categories":  [
+
+                                                                            ],
+                                                         "fixed":  false
+                                                     }
+                                                 ],
+                                  "options":  [
+
+                                              ],
+                                  "quantity":  3,
+                                  "max_order_qty":  null,
+                                  "ignore_quantity":  false,
+                                  "is_best_seller":  false,
+                                  "best_seller_start":  null,
+                                  "best_seller_end":  null,
+                                  "weight":  0,
+                                  "viewed":  0,
+                                  "shipping_rule_id":  null,
+                                  "product_brand_id":  null,
+                                  "brand":  null,
+                                  "has_flash_sale":  false,
+                                  "flash_sale_price":  null,
+                                  "primary_image":  "https://egimedical.com/storage/uploads/products/6a56275e385be.webp",
+                                  "title":  "مفرش تقليب مريض",
+                                  "category_id":  19,
+                                  "category":  "مراتب طبية",
+                                  "store_name":  "Mushaf Home",
+                                  "rating":  0,
+                                  "rate_count":  0,
+                                  "sale_price":  700,
+                                  "discount_percentage":  13,
+                                  "item_code":  null,
+                                  "images":  [
+                                                 {
+                                                     "image":  "https://egimedical.com/storage/uploads/products/gallery/6a56275e78c86.webp"
+                                                 }
+                                             ],
+                                  "isFavorite":  false,
+                                  "countFavorite":  0,
+                                  "countOrder":  0,
+                                  "product_link":  "https://egimedical.com/products/92",
+                                  "product_rates":  [
+
+                                                    ],
+                                  "deal_of_day_end":  null
+                              },
+                              {
+                                  "id":  91,
+                                  "name":  "سلم 2درجة نيكل",
+                                  "description":  "",
+                                  "slug":  "slm-2drg-nykl",
+                                  "meta_title":  "سلم 2درجة نيكل",
+                                  "meta_description":  "",
+                                  "sku":  null,
+                                  "price":  500,
+                                  "formatted_price":  "500.00 ج.م",
+                                  "special_price":  425,
+                                  "formatted_special_price":  "425.00 ج.م",
+                                  "special_price_start":  null,
+                                  "special_price_end":  null,
+                                  "final_price":  425,
+                                  "formatted_final_price":  "425.00 ج.م",
+                                  "currency":  {
+                                                   "code":  "EGP",
+                                                   "symbol":  "ج.م",
+                                                   "exchange_rate":  1
+                                               },
+                                  "image":  "https://egimedical.com/storage/uploads/products/6a4f8137c9320.webp",
+                                  "gallery":  [
+                                                  {
+                                                      "id":  168,
+                                                      "image":  "https://egimedical.com/storage/uploads/products/gallery/6a4f8138848d6.webp",
+                                                      "sort_order":  0
+                                                  }
+                                              ],
+                                  "categories":  [
+                                                     {
+                                                         "id":  2,
+                                                         "title":  "تجهيزات االعيادة (شاذلوج/ (سرير كشف) واطقم عيادة ومستلزمات الكشف)",
+                                                         "name":  "تجهيزات االعيادة (شاذلوج/ (سرير كشف) واطقم عيادة ومستلزمات الكشف)",
+                                                         "image":  "https://egimedical.com/website/images/category/1774856229.jpg",
+                                                         "link":  "2",
+                                                         "show_on_home":  true,
+                                                         "parent_id":  null,
+                                                         "sub_categories":  [
+
+                                                                            ],
+                                                         "fixed":  false
+                                                     }
+                                                 ],
+                                  "options":  [
+
+                                              ],
+                                  "quantity":  2,
+                                  "max_order_qty":  null,
+                                  "ignore_quantity":  false,
+                                  "is_best_seller":  true,
+                                  "best_seller_start":  null,
+                                  "best_seller_end":  null,
+                                  "weight":  0,
+                                  "viewed":  0,
+                                  "shipping_rule_id":  null,
+                                  "product_brand_id":  null,
+                                  "brand":  null,
+                                  "has_flash_sale":  false,
+                                  "flash_sale_price":  null,
+                                  "primary_image":  "https://egimedical.com/storage/uploads/products/6a4f8137c9320.webp",
+                                  "title":  "سلم 2درجة نيكل",
+                                  "category_id":  2,
+                                  "category":  "تجهيزات االعيادة (شاذلوج/ (سرير كشف) واطقم عيادة ومستلزمات الكشف)",
+                                  "store_name":  "Mushaf Home",
+                                  "rating":  0,
+                                  "rate_count":  0,
+                                  "sale_price":  425,
+                                  "discount_percentage":  15,
+                                  "item_code":  null,
+                                  "images":  [
+                                                 {
+                                                     "image":  "https://egimedical.com/storage/uploads/products/gallery/6a4f8138848d6.webp"
+                                                 }
+                                             ],
+                                  "isFavorite":  false,
+                                  "countFavorite":  0,
+                                  "countOrder":  0,
+                                  "product_link":  "https://egimedical.com/products/91",
+                                  "product_rates":  [
+
+                                                    ],
+                                  "deal_of_day_end":  null
+                              },
+                              {
+                                  "id":  90,
+                                  "name":  "سلم 1درجة دهان 40×40",
+                                  "description":  "",
+                                  "slug":  "slm-1drg-dhan-4040",
+                                  "meta_title":  "سلم 1درجة دهان 40×40",
+                                  "meta_description":  "",
+                                  "sku":  null,
+                                  "price":  600,
+                                  "formatted_price":  "600.00 ج.م",
+                                  "special_price":  575,
+                                  "formatted_special_price":  "575.00 ج.م",
+                                  "special_price_start":  null,
+                                  "special_price_end":  null,
+                                  "final_price":  575,
+                                  "formatted_final_price":  "575.00 ج.م",
+                                  "currency":  {
+                                                   "code":  "EGP",
+                                                   "symbol":  "ج.م",
+                                                   "exchange_rate":  1
+                                               },
+                                  "image":  "https://egimedical.com/storage/uploads/products/6a4f7faf9ad86.webp",
+                                  "gallery":  [
+                                                  {
+                                                      "id":  167,
+                                                      "image":  "https://egimedical.com/storage/uploads/products/gallery/6a4f7fb01cabf.webp",
+                                                      "sort_order":  0
+                                                  }
+                                              ],
+                                  "categories":  [
+                                                     {
+                                                         "id":  2,
+                                                         "title":  "تجهيزات االعيادة (شاذلوج/ (سرير كشف) واطقم عيادة ومستلزمات الكشف)",
+                                                         "name":  "تجهيزات االعيادة (شاذلوج/ (سرير كشف) واطقم عيادة ومستلزمات الكشف)",
+                                                         "image":  "https://egimedical.com/website/images/category/1774856229.jpg",
+                                                         "link":  "2",
+                                                         "show_on_home":  true,
+                                                         "parent_id":  null,
+                                                         "sub_categories":  [
+
+                                                                            ],
+                                                         "fixed":  false
+                                                     }
+                                                 ],
+                                  "options":  [
+
+                                              ],
+                                  "quantity":  3,
+                                  "max_order_qty":  null,
+                                  "ignore_quantity":  false,
+                                  "is_best_seller":  false,
+                                  "best_seller_start":  null,
+                                  "best_seller_end":  null,
+                                  "weight":  0,
+                                  "viewed":  0,
+                                  "shipping_rule_id":  null,
+                                  "product_brand_id":  null,
+                                  "brand":  null,
+                                  "has_flash_sale":  false,
+                                  "flash_sale_price":  null,
+                                  "primary_image":  "https://egimedical.com/storage/uploads/products/6a4f7faf9ad86.webp",
+                                  "title":  "سلم 1درجة دهان 40×40",
+                                  "category_id":  2,
+                                  "category":  "تجهيزات االعيادة (شاذلوج/ (سرير كشف) واطقم عيادة ومستلزمات الكشف)",
+                                  "store_name":  "Mushaf Home",
+                                  "rating":  0,
+                                  "rate_count":  0,
+                                  "sale_price":  575,
+                                  "discount_percentage":  4,
+                                  "item_code":  null,
+                                  "images":  [
+                                                 {
+                                                     "image":  "https://egimedical.com/storage/uploads/products/gallery/6a4f7fb01cabf.webp"
+                                                 }
+                                             ],
+                                  "isFavorite":  false,
+                                  "countFavorite":  0,
+                                  "countOrder":  0,
+                                  "product_link":  "https://egimedical.com/products/90",
+                                  "product_rates":  [
+
+                                                    ],
+                                  "deal_of_day_end":  null
+                              },
+                              {
+                                  "id":  89,
+                                  "name":  "سرير مريض أكسسوار مستورد ( 3 حركة ) كهرباء جوانب ABS (شامل المرتبة)",
+                                  "description":  "\u003cp data-start=\"94\" data-end=\"122\"\u003e\u003cstrong data-start=\"94\" data-end=\"122\"\u003e(السرير شامل المرتة وحامل المحاليل )\u003c/strong\u003e\u003c/p\u003e\r\n\u003cp data-start=\"94\" data-end=\"122\"\u003e\u003cstrong data-start=\"94\" data-end=\"122\"\u003e🔹 مواصفات السرير الطبي:\u0026nbsp;\u003c/strong\u003e\u003c/p\u003e\r\n\u003col data-start=\"124\" data-end=\"802\"\u003e\r\n\u003cli data-section-id=\"11o0olp\" data-start=\"124\" data-end=\"183\"\u003eشرائح صاج مجلفن بسمك 1 مم، مزودة بفتحات مكبوسة للداخل.\u003c/li\u003e\r\n\u003cli data-section-id=\"1ml4hof\" data-start=\"184\" data-end=\"261\"\u003eالسطح مقسم إلى 4 أجزاء، مع مفصلات قوية بسمك 17 مم لتحمل الاستخدام الشاق.\u003c/li\u003e\r\n\u003cli data-section-id=\"16jt4ub\" data-start=\"262\" data-end=\"300\"\u003eدهان إلكتروستاتيك معالج ضد الصدأ.\u003c/li\u003e\r\n\u003cli data-section-id=\"1hpxuq3\" data-start=\"301\" data-end=\"360\"\u003eأجناب زلاجة مستوردة abs.\u003c/li\u003e\r\n\u003cli data-section-id=\"159bqjb\" data-start=\"361\" data-end=\"421\"\u003eعجلات مقاس 5 بوصة عالية التحمل (مزودة بفرامل لكل عجلة).\u003c/li\u003e\r\n\u003cli data-section-id=\"1vglget\" data-start=\"422\" data-end=\"474\"\u003eلوح الرأس والقدم مصنوع من بلاستيك ABS المستورد.\u003c/li\u003e\r\n\u003cli data-section-id=\"19oca5j\" data-start=\"475\" data-end=\"525\"\u003eجسم السرير مصنوع من علب 4\u0026times;8 سم، بسمك 1.25 مم.\u003c/li\u003e\r\n\u003cli data-section-id=\"sn4por\" data-start=\"526\" data-end=\"576\"\u003eالسرير مزود بدعامات إضافية لتحمل جميع الظروف.\u003c/li\u003e\r\n\u003cli data-section-id=\"1e1k0z2\" data-start=\"577\" data-end=\"649\"\u003eجميع اللحامات باستخدام أحدث ماكينات ثاني أكسيد الكربون بجودة عالية.\u003c/li\u003e\r\n\u003cli data-section-id=\"wv9379\" data-start=\"650\" data-end=\"683\"\u003e3 مواتير هادئة (كتم الصوت).\u003c/li\u003e\r\n\u003cli data-section-id=\"1p28rem\" data-start=\"684\" data-end=\"802\"\u003eمزود بفتحتين لحامل المحلول (يمين ويسار المريض)، بالإضافة إلى حامل محاليل من الاستانلس ستيل بشعبة رباعية مستوردة.\u003c/li\u003e\r\n\u003c/ol\u003e\r\n\u003chr data-start=\"804\" data-end=\"807\"\u003e\r\n\u003cp data-start=\"809\" data-end=\"824\"\u003e\u003cstrong data-start=\"809\" data-end=\"824\"\u003e🔹 الحركات:\u003c/strong\u003e\u003c/p\u003e\r\n\u003cul data-start=\"825\" data-end=\"896\"\u003e\r\n\u003cli data-section-id=\"7zzxup\" data-start=\"825\" data-end=\"860\"\u003eزاوية حركة الظهر: من 0\u0026deg; إلى 85\u0026deg;\u003c/li\u003e\r\n\u003cli data-section-id=\"zpvxiy\" data-start=\"861\" data-end=\"896\"\u003eزاوية حركة الرجل: من 0\u0026deg; إلى 45\u0026deg;\u003c/li\u003e\r\n\u003c/ul\u003e\r\n\u003chr data-start=\"898\" data-end=\"901\"\u003e\r\n\u003cp data-start=\"903\" data-end=\"918\"\u003e\u003cstrong data-start=\"903\" data-end=\"918\"\u003e🔹 الأبعاد:\u003c/strong\u003e\u003c/p\u003e\r\n\u003cdiv class=\"TyagGW_tableContainer\"\u003e\r\n\u003cdiv class=\"group TyagGW_tableWrapper flex flex-col-reverse w-fit\" tabindex=\"-1\"\u003e\r\n\u003ctable class=\"w-fit min-w-(--thread-content-width)\" border=\"1\" data-start=\"920\" data-end=\"1098\"\u003e\r\n\u003cthead data-start=\"920\" data-end=\"980\"\u003e\r\n\u003ctr data-start=\"920\" data-end=\"980\"\u003e\r\n\u003cth class=\"\" data-start=\"920\" data-end=\"937\" data-col-size=\"sm\"\u003eأقصى وزن (كجم)\u003c/th\u003e\r\n\u003cth class=\"\" data-start=\"937\" data-end=\"953\" data-col-size=\"sm\"\u003eالارتفاع (سم)\u003c/th\u003e\r\n\u003cth class=\"\" data-start=\"953\" data-end=\"966\" data-col-size=\"sm\"\u003eالعرض (سم)\u003c/th\u003e\r\n\u003cth class=\"\" data-start=\"966\" data-end=\"980\" data-col-size=\"sm\"\u003eالطول (سم)\u003c/th\u003e\r\n\u003c/tr\u003e\r\n\u003c/thead\u003e\r\n\u003ctbody data-start=\"1040\" data-end=\"1098\"\u003e\r\n\u003ctr data-start=\"1040\" data-end=\"1098\"\u003e\r\n\u003ctd data-start=\"1040\" data-end=\"1056\" data-col-size=\"sm\"\u003e200\u003c/td\u003e\r\n\u003ctd data-col-size=\"sm\" data-start=\"1056\" data-end=\"1071\"\u003e37 \u0026ndash; 77\u003c/td\u003e\r\n\u003ctd data-col-size=\"sm\" data-start=\"1071\" data-end=\"1084\"\u003e95\u003c/td\u003e\r\n\u003ctd data-col-size=\"sm\" data-start=\"1084\" data-end=\"1098\"\u003e205\u003c/td\u003e\r\n\u003c/tr\u003e\r\n\u003c/tbody\u003e\r\n\u003c/table\u003e\r\n\u003c/div\u003e\r\n\u003c/div\u003e",
+                                  "slug":  "sryr-mryd-akssoar-mstord-3-hrk-khrbaaa-goanb-abs-shaml-almrtb",
+                                  "meta_title":  "سرير مريض أكسسوار مستورد ( 4 حركة ) كهرباء جوانب ABS (شامل المرتبة)",
+                                  "meta_description":  "\u003cp data-start=\"94\" data-end=\"122\"\u003e\u003cstrong data-start=\"94\" data-end=\"122\"\u003e(السرير شامل المرتة وحامل المحاليل )\u003c/strong\u003e\u003c/p\u003e\r\n\u003cp data-start=\"94\" data-end=\"122\"\u003e\u003cstrong data-start=\"94\" data-end=\"122\"\u003e🔹 مواصفات السرير الطبي:\u0026nbsp;\u003c/strong\u003e\u003c/p\u003e\r\n\u003col data-start=\"124\" data-end=\"802\"\u003e\r\n\u003cli data-section-id=\"11o0olp\" data-start=\"124\" data-end=\"183\"\u003eشرائح صاج مجلفن بسمك 1 مم، مزودة بفتحات مكبوسة للداخل.\u003c/li\u003e\r\n\u003cli data-section-id=\"1ml4hof\" data-start=\"184\" data-end=\"261\"\u003eالسطح مقسم إلى 4 أجزاء، مع مفصلات قوية بسمك 17 مم لتحمل الاستخدام الشاق.\u003c/li\u003e\r\n\u003cli data-section-id=\"16jt4ub\" data-start=\"262\" data-end=\"300\"\u003eدهان إلكتروستاتيك معالج ضد الصدأ.\u003c/li\u003e\r\n\u003cli data-section-id=\"1hpxuq3\" data-start=\"301\" data-end=\"360\"\u003eأجناب زلاجة مستوردة abs .\u003c/li\u003e\r\n\u003cli data-section-id=\"159bqjb\" data-start=\"361\" data-end=\"421\"\u003eعجلات مقاس 5 بوصة عالية التحمل (مزودة بفرامل لكل عجلة).\u003c/li\u003e\r\n\u003cli data-section-id=\"1vglget\" data-start=\"422\" data-end=\"474\"\u003eلوح الرأس والقدم مصنوع من بلاستيك ABS المستورد.\u003c/li\u003e\r\n\u003cli data-section-id=\"19oca5j\" data-start=\"475\" data-end=\"525\"\u003eجسم السرير مصنوع من علب 4\u0026times;8 سم، بسمك 1.25 مم.\u003c/li\u003e\r\n\u003cli data-section-id=\"sn4por\" data-start=\"526\" data-end=\"576\"\u003eالسرير مزود بدعامات إضافية لتحمل جميع الظروف.\u003c/li\u003e\r\n\u003cli data-section-id=\"1e1k0z2\" data-start=\"577\" data-end=\"649\"\u003eجميع اللحامات باستخدام أحدث ماكينات ثاني أكسيد الكربون بجودة عالية.\u003c/li\u003e\r\n\u003cli data-section-id=\"wv9379\" data-start=\"650\" data-end=\"683\"\u003e3 مواتير هادئة (كتم الصوت).\u003c/li\u003e\r\n\u003cli data-section-id=\"1p28rem\" data-start=\"684\" data-end=\"802\"\u003eمزود بفتحتين لحامل المحلول (يمين ويسار المريض)، بالإضافة إلى حامل محاليل من الاستانلس ستيل بشعبة رباعية مستوردة.\u003c/li\u003e\r\n\u003c/ol\u003e\r\n\u003chr data-start=\"804\" data-end=\"807\"\u003e\r\n\u003cp data-start=\"809\" data-end=\"824\"\u003e\u003cstrong data-start=\"809\" data-end=\"824\"\u003e🔹 الحركات:\u003c/strong\u003e\u003c/p\u003e\r\n\u003cul data-start=\"825\" data-end=\"896\"\u003e\r\n\u003cli data-section-id=\"7zzxup\" data-start=\"825\" data-end=\"860\"\u003eزاوية حركة الظهر: من 0\u0026deg; إلى 85\u0026deg;\u003c/li\u003e\r\n\u003cli data-section-id=\"zpvxiy\" data-start=\"861\" data-end=\"896\"\u003eزاوية حركة الرجل: من 0\u0026deg; إلى 45\u0026deg;\u003c/li\u003e\r\n\u003c/ul\u003e\r\n\u003chr data-start=\"898\" data-end=\"901\"\u003e\r\n\u003cp data-start=\"903\" data-end=\"918\"\u003e\u003cstrong data-start=\"903\" data-end=\"918\"\u003e🔹 الأبعاد:\u003c/strong\u003e\u003c/p\u003e\r\n\u003cdiv class=\"TyagGW_tableContainer\"\u003e\r\n\u003cdiv class=\"group TyagGW_tableWrapper flex flex-col-reverse w-fit\" tabindex=\"-1\"\u003e\r\n\u003ctable class=\"w-fit min-w-(--thread-content-width)\" border=\"1\" data-start=\"920\" data-end=\"1098\"\u003e\r\n\u003cthead data-start=\"920\" data-end=\"980\"\u003e\r\n\u003ctr data-start=\"920\" data-end=\"980\"\u003e\r\n\u003cth class=\"\" data-start=\"920\" data-end=\"937\" data-col-size=\"sm\"\u003eأقصى وزن (كجم)\u003c/th\u003e\r\n\u003cth class=\"\" data-start=\"937\" data-end=\"953\" data-col-size=\"sm\"\u003eالارتفاع (سم)\u003c/th\u003e\r\n\u003cth class=\"\" data-start=\"953\" data-end=\"966\" data-col-size=\"sm\"\u003eالعرض (سم)\u003c/th\u003e\r\n\u003cth class=\"\" data-start=\"966\" data-end=\"980\" data-col-size=\"sm\"\u003eالطول (سم)\u003c/th\u003e\r\n\u003c/tr\u003e\r\n\u003c/thead\u003e\r\n\u003ctbody data-start=\"1040\" data-end=\"1098\"\u003e\r\n\u003ctr data-start=\"1040\" data-end=\"1098\"\u003e\r\n\u003ctd data-start=\"1040\" data-end=\"1056\" data-col-size=\"sm\"\u003e200\u003c/td\u003e\r\n\u003ctd data-col-size=\"sm\" data-start=\"1056\" data-end=\"1071\"\u003e37 \u0026ndash; 77\u003c/td\u003e\r\n\u003ctd data-col-size=\"sm\" data-start=\"1071\" data-end=\"1084\"\u003e95\u003c/td\u003e\r\n\u003ctd data-col-size=\"sm\" data-start=\"1084\" data-end=\"1098\"\u003e205\u003c/td\u003e\r\n\u003c/tr\u003e\r\n\u003c/tbody\u003e\r\n\u003c/table\u003e\r\n\u003c/div\u003e\r\n\u003c/div\u003e",
+                                  "sku":  null,
+                                  "price":  33000,
+                                  "formatted_price":  "33,000.00 ج.م",
+                                  "special_price":  29500,
+                                  "formatted_special_price":  "29,500.00 ج.م",
+                                  "special_price_start":  null,
+                                  "special_price_end":  null,
+                                  "final_price":  29500,
+                                  "formatted_final_price":  "29,500.00 ج.م",
+                                  "currency":  {
+                                                   "code":  "EGP",
+                                                   "symbol":  "ج.م",
+                                                   "exchange_rate":  1
+                                               },
+                                  "image":  "https://egimedical.com/storage/uploads/products/6a4f70e4c222a.webp",
+                                  "gallery":  [
+                                                  {
+                                                      "id":  166,
+                                                      "image":  "https://egimedical.com/storage/uploads/products/gallery/6a4f70e53e77d.webp",
+                                                      "sort_order":  0
+                                                  }
+                                              ],
+                                  "categories":  [
+                                                     {
+                                                         "id":  1,
+                                                         "title":  "سرير طبي وغرف الاقامة",
+                                                         "name":  "سرير طبي وغرف الاقامة",
+                                                         "image":  "https://egimedical.com/website/images/category/1774856207.png",
+                                                         "link":  "1",
+                                                         "show_on_home":  true,
+                                                         "parent_id":  null,
+                                                         "sub_categories":  [
+
+                                                                            ],
+                                                         "fixed":  false
+                                                     }
+                                                 ],
+                                  "options":  [
+
+                                              ],
+                                  "quantity":  4,
+                                  "max_order_qty":  null,
+                                  "ignore_quantity":  false,
+                                  "is_best_seller":  false,
+                                  "best_seller_start":  null,
+                                  "best_seller_end":  null,
+                                  "weight":  0,
+                                  "viewed":  0,
+                                  "shipping_rule_id":  null,
+                                  "product_brand_id":  null,
+                                  "brand":  null,
+                                  "has_flash_sale":  false,
+                                  "flash_sale_price":  null,
+                                  "primary_image":  "https://egimedical.com/storage/uploads/products/6a4f70e4c222a.webp",
+                                  "title":  "سرير مريض أكسسوار مستورد ( 3 حركة ) كهرباء جوانب ABS (شامل المرتبة)",
+                                  "category_id":  1,
+                                  "category":  "سرير طبي وغرف الاقامة",
+                                  "store_name":  "Mushaf Home",
+                                  "rating":  0,
+                                  "rate_count":  0,
+                                  "sale_price":  29500,
+                                  "discount_percentage":  11,
+                                  "item_code":  null,
+                                  "images":  [
+                                                 {
+                                                     "image":  "https://egimedical.com/storage/uploads/products/gallery/6a4f70e53e77d.webp"
+                                                 }
+                                             ],
+                                  "isFavorite":  false,
+                                  "countFavorite":  0,
+                                  "countOrder":  0,
+                                  "product_link":  "https://egimedical.com/products/89",
+                                  "product_rates":  [
+
+                                                    ],
+                                  "deal_of_day_end":  null
+                              },
+                              {
+                                  "id":  88,
+                                  "name":  "طقم عيادة   3 قطعة  كشف",
+                                  "description":  "\u003ch3 data-section-id=\"8fa1q3\" data-start=\"54\" data-end=\"100\"\u003e\u003cspan role=\"text\"\u003e\u003cstrong data-start=\"58\" data-end=\"100\"\u003e🔹 مواصفات طقم الشازلونج والفحص الطبي:\u003c/strong\u003e\u003c/span\u003e\u003c/h3\u003e\r\n\u003col data-start=\"102\" data-end=\"546\"\u003e\r\n\u003cli data-section-id=\"za7fr5\" data-start=\"102\" data-end=\"148\"\u003eشاسيه معدني قوي التحمل، سمك المسك 1.2 مم.\u003c/li\u003e\r\n\u003cli data-section-id=\"17y7fsm\" data-start=\"149\" data-end=\"208\"\u003eمرتبة من الإسفنج، كثافة 22، ارتفاع 7 سم، مغطاة بالجلد.\u003c/li\u003e\r\n\u003cli data-section-id=\"8ood5n\" data-start=\"209\" data-end=\"244\"\u003eطلاء إلكتروستاتيك مقاوم للصدأ.\u003c/li\u003e\r\n\u003cli data-section-id=\"1tl6ed7\" data-start=\"245\" data-end=\"283\"\u003eامكانية تعديل مستوى ميل الظهر والقدم\u0026nbsp; متعدد المستويات للرفع.\u003c/li\u003e\r\n\u003cli data-section-id=\"1mxris4\" data-start=\"284\" data-end=\"506\"\u003eالطقم يتكون من:\r\n\u003cul data-start=\"308\" data-end=\"506\"\u003e\r\n\u003cli data-section-id=\"124mh55\" data-start=\"308\" data-end=\"348\"\u003eشازلونج الفحص مزود بعدد 3 درج وضلفة.\u003c/li\u003e\r\n\u003cli data-section-id=\"uzl1b\" data-start=\"352\" data-end=\"402\"\u003eكرسي طبيب هيدروليك بظهر أو بدون ظهر.\u003c/li\u003e\r\n\u003cli data-section-id=\"1fb8nmf\" data-start=\"450\" data-end=\"506\"\u003eسلم درجة واحدة من نفس لون الجلد، أبعاده 20\u0026times;40\u0026times;40 سم.\u003c/li\u003e\r\n\u003c/ul\u003e\r\n\u003c/li\u003e\r\n\u003cli data-section-id=\"1eevl03\" data-start=\"507\" data-end=\"546\"\u003eإمكانية تغيير لون الجلد حسب الطلب.\u003c/li\u003e\r\n\u003c/ol\u003e\r\n\u003chr data-start=\"548\" data-end=\"551\"\u003e\r\n\u003ch3 data-section-id=\"u4j335\" data-start=\"553\" data-end=\"572\"\u003e\u003cspan role=\"text\"\u003e\u003cstrong data-start=\"557\" data-end=\"572\"\u003e🔹 الأبعاد:\u003c/strong\u003e\u003c/span\u003e\u003c/h3\u003e\r\n\u003cdiv class=\"TyagGW_tableContainer\"\u003e\r\n\u003cdiv class=\"group TyagGW_tableWrapper flex flex-col-reverse w-fit\" tabindex=\"-1\"\u003e\r\n\u003ctable class=\"w-fit min-w-(--thread-content-width)\" border=\"1\" data-start=\"574\" data-end=\"752\"\u003e\r\n\u003cthead data-start=\"574\" data-end=\"634\"\u003e\r\n\u003ctr data-start=\"574\" data-end=\"634\"\u003e\r\n\u003cth class=\"\" data-start=\"574\" data-end=\"591\" data-col-size=\"sm\"\u003eأقصى وزن (كجم)\u003c/th\u003e\r\n\u003cth class=\"\" data-start=\"591\" data-end=\"607\" data-col-size=\"sm\"\u003eالارتفاع (سم)\u003c/th\u003e\r\n\u003cth class=\"\" data-start=\"607\" data-end=\"620\" data-col-size=\"sm\"\u003eالعرض (سم)\u003c/th\u003e\r\n\u003cth class=\"\" data-start=\"620\" data-end=\"634\" data-col-size=\"sm\"\u003eالطول (سم)\u003c/th\u003e\r\n\u003c/tr\u003e\r\n\u003c/thead\u003e\r\n\u003ctbody data-start=\"694\" data-end=\"752\"\u003e\r\n\u003ctr data-start=\"694\" data-end=\"752\"\u003e\r\n\u003ctd data-start=\"694\" data-end=\"710\" data-col-size=\"sm\"\u003e200\u003c/td\u003e\r\n\u003ctd data-col-size=\"sm\" data-start=\"710\" data-end=\"725\"\u003e75\u003c/td\u003e\r\n\u003ctd data-col-size=\"sm\" data-start=\"725\" data-end=\"738\"\u003e65\u003c/td\u003e\r\n\u003ctd data-col-size=\"sm\" data-start=\"738\" data-end=\"752\"\u003e180\u003c/td\u003e\r\n\u003c/tr\u003e\r\n\u003c/tbody\u003e\r\n\u003c/table\u003e\r\n\u003c/div\u003e\r\n\u003c/div\u003e",
+                                  "slug":  "tkm-aayad-3-ktaa-kshf",
+                                  "meta_title":  "طقم عيادة   3 قطعة  كشف",
+                                  "meta_description":  "",
+                                  "sku":  null,
+                                  "price":  20000,
+                                  "formatted_price":  "20,000.00 ج.م",
+                                  "special_price":  18500,
+                                  "formatted_special_price":  "18,500.00 ج.م",
+                                  "special_price_start":  null,
+                                  "special_price_end":  null,
+                                  "final_price":  18500,
+                                  "formatted_final_price":  "18,500.00 ج.م",
+                                  "currency":  {
+                                                   "code":  "EGP",
+                                                   "symbol":  "ج.م",
+                                                   "exchange_rate":  1
+                                               },
+                                  "image":  "https://egimedical.com/storage/uploads/products/6a3fbb8781720.webp",
+                                  "gallery":  [
+
+                                              ],
+                                  "categories":  [
+                                                     {
+                                                         "id":  2,
+                                                         "title":  "تجهيزات االعيادة (شاذلوج/ (سرير كشف) واطقم عيادة ومستلزمات الكشف)",
+                                                         "name":  "تجهيزات االعيادة (شاذلوج/ (سرير كشف) واطقم عيادة ومستلزمات الكشف)",
+                                                         "image":  "https://egimedical.com/website/images/category/1774856229.jpg",
+                                                         "link":  "2",
+                                                         "show_on_home":  true,
+                                                         "parent_id":  null,
+                                                         "sub_categories":  [
+
+                                                                            ],
+                                                         "fixed":  false
+                                                     }
+                                                 ],
+                                  "options":  [
+
+                                              ],
+                                  "quantity":  2,
+                                  "max_order_qty":  null,
+                                  "ignore_quantity":  false,
+                                  "is_best_seller":  false,
+                                  "best_seller_start":  null,
+                                  "best_seller_end":  null,
+                                  "weight":  0,
+                                  "viewed":  0,
+                                  "shipping_rule_id":  null,
+                                  "product_brand_id":  null,
+                                  "brand":  null,
+                                  "has_flash_sale":  false,
+                                  "flash_sale_price":  null,
+                                  "primary_image":  "https://egimedical.com/storage/uploads/products/6a3fbb8781720.webp",
+                                  "title":  "طقم عيادة   3 قطعة  كشف",
+                                  "category_id":  2,
+                                  "category":  "تجهيزات االعيادة (شاذلوج/ (سرير كشف) واطقم عيادة ومستلزمات الكشف)",
+                                  "store_name":  "Mushaf Home",
+                                  "rating":  0,
+                                  "rate_count":  0,
+                                  "sale_price":  18500,
+                                  "discount_percentage":  8,
+                                  "item_code":  null,
+                                  "images":  [
+
+                                             ],
+                                  "isFavorite":  false,
+                                  "countFavorite":  0,
+                                  "countOrder":  0,
+                                  "product_link":  "https://egimedical.com/products/88",
+                                  "product_rates":  [
+
+                                                    ],
+                                  "deal_of_day_end":  null
+                              },
+                              {
+                                  "id":  87,
+                                  "name":  "تروللي خدمات لغرف المرضي",
+                                  "description":  "",
+                                  "slug":  "trolly-khdmat-lghrf-almrdy",
+                                  "meta_title":  "تروللي خدمات لغرف المرضي",
+                                  "meta_description":  "",
+                                  "sku":  null,
+                                  "price":  5000,
+                                  "formatted_price":  "5,000.00 ج.م",
+                                  "special_price":  3350,
+                                  "formatted_special_price":  "3,350.00 ج.م",
+                                  "special_price_start":  null,
+                                  "special_price_end":  null,
+                                  "final_price":  3350,
+                                  "formatted_final_price":  "3,350.00 ج.م",
+                                  "currency":  {
+                                                   "code":  "EGP",
+                                                   "symbol":  "ج.م",
+                                                   "exchange_rate":  1
+                                               },
+                                  "image":  "https://egimedical.com/storage/uploads/products/6a269f53b6c03.webp",
+                                  "gallery":  [
+
+                                              ],
+                                  "categories":  [
+                                                     {
+                                                         "id":  10,
+                                                         "title":  "ترولى  متنوع",
+                                                         "name":  "ترولى  متنوع",
+                                                         "image":  "https://egimedical.com/storage/website/images/category/img-38732026-04-01-12-19-16.jpg",
+                                                         "link":  "10",
+                                                         "show_on_home":  true,
+                                                         "parent_id":  null,
+                                                         "sub_categories":  [
+
+                                                                            ],
+                                                         "fixed":  false
+                                                     }
+                                                 ],
+                                  "options":  [
+
+                                              ],
+                                  "quantity":  1,
+                                  "max_order_qty":  null,
+                                  "ignore_quantity":  false,
+                                  "is_best_seller":  false,
+                                  "best_seller_start":  null,
+                                  "best_seller_end":  null,
+                                  "weight":  0,
+                                  "viewed":  0,
+                                  "shipping_rule_id":  null,
+                                  "product_brand_id":  null,
+                                  "brand":  null,
+                                  "has_flash_sale":  false,
+                                  "flash_sale_price":  null,
+                                  "primary_image":  "https://egimedical.com/storage/uploads/products/6a269f53b6c03.webp",
+                                  "title":  "تروللي خدمات لغرف المرضي",
+                                  "category_id":  10,
+                                  "category":  "ترولى  متنوع",
+                                  "store_name":  "Mushaf Home",
+                                  "rating":  0,
+                                  "rate_count":  0,
+                                  "sale_price":  3350,
+                                  "discount_percentage":  33,
+                                  "item_code":  null,
+                                  "images":  [
+
+                                             ],
+                                  "isFavorite":  false,
+                                  "countFavorite":  0,
+                                  "countOrder":  0,
+                                  "product_link":  "https://egimedical.com/products/87",
+                                  "product_rates":  [
+
+                                                    ],
+                                  "deal_of_day_end":  null
+                              },
+                              {
+                                  "id":  86,
+                                  "name":  "تروللي غسيل غير نظيف دهان",
+                                  "description":  "",
+                                  "slug":  "trolly-ghsyl-ghyr-nthyf-dhan",
+                                  "meta_title":  "تروللي غسيل غير نظيف دهان",
+                                  "meta_description":  "",
+                                  "sku":  null,
+                                  "price":  3500,
+                                  "formatted_price":  "3,500.00 ج.م",
+                                  "special_price":  3000,
+                                  "formatted_special_price":  "3,000.00 ج.م",
+                                  "special_price_start":  null,
+                                  "special_price_end":  null,
+                                  "final_price":  3000,
+                                  "formatted_final_price":  "3,000.00 ج.م",
+                                  "currency":  {
+                                                   "code":  "EGP",
+                                                   "symbol":  "ج.م",
+                                                   "exchange_rate":  1
+                                               },
+                                  "image":  "https://egimedical.com/storage/uploads/products/6a269ec555c52.webp",
+                                  "gallery":  [
+
+                                              ],
+                                  "categories":  [
+                                                     {
+                                                         "id":  10,
+                                                         "title":  "ترولى  متنوع",
+                                                         "name":  "ترولى  متنوع",
+                                                         "image":  "https://egimedical.com/storage/website/images/category/img-38732026-04-01-12-19-16.jpg",
+                                                         "link":  "10",
+                                                         "show_on_home":  true,
+                                                         "parent_id":  null,
+                                                         "sub_categories":  [
+
+                                                                            ],
+                                                         "fixed":  false
+                                                     }
+                                                 ],
+                                  "options":  [
+
+                                              ],
+                                  "quantity":  1,
+                                  "max_order_qty":  null,
+                                  "ignore_quantity":  false,
+                                  "is_best_seller":  false,
+                                  "best_seller_start":  null,
+                                  "best_seller_end":  null,
+                                  "weight":  0,
+                                  "viewed":  0,
+                                  "shipping_rule_id":  null,
+                                  "product_brand_id":  null,
+                                  "brand":  null,
+                                  "has_flash_sale":  false,
+                                  "flash_sale_price":  null,
+                                  "primary_image":  "https://egimedical.com/storage/uploads/products/6a269ec555c52.webp",
+                                  "title":  "تروللي غسيل غير نظيف دهان",
+                                  "category_id":  10,
+                                  "category":  "ترولى  متنوع",
+                                  "store_name":  "Mushaf Home",
+                                  "rating":  0,
+                                  "rate_count":  0,
+                                  "sale_price":  3000,
+                                  "discount_percentage":  14,
+                                  "item_code":  null,
+                                  "images":  [
+
+                                             ],
+                                  "isFavorite":  false,
+                                  "countFavorite":  0,
+                                  "countOrder":  0,
+                                  "product_link":  "https://egimedical.com/products/86",
+                                  "product_rates":  [
+
+                                                    ],
+                                  "deal_of_day_end":  null
+                              },
+                              {
+                                  "id":  85,
+                                  "name":  "سرير طفل المصرية",
+                                  "description":  "\u003cp data-start=\"58\" data-end=\"86\"\u003e\u003cstrong data-start=\"58\" data-end=\"86\"\u003e🔹 مواصفات السرير الطبي:\u003c/strong\u003e\u003c/p\u003e\r\n\u003col data-start=\"88\" data-end=\"423\"\u003e\r\n\u003cli data-section-id=\"aowwir\" data-start=\"88\" data-end=\"116\"\u003eشاسيه معدني قوي التحمل.\u003c/li\u003e\r\n\u003cli data-section-id=\"i2b122\" data-start=\"117\" data-end=\"152\"\u003eطلاء إلكتروستاتيك مقاوم للصدأ.\u003c/li\u003e\r\n\u003cli data-section-id=\"b677uq\" data-start=\"153\" data-end=\"198\"\u003eمرتبة من الإسفنج مغطاة بالجلد أو القماش.\u003c/li\u003e\r\n\u003cli data-section-id=\"jh5iyq\" data-start=\"199\" data-end=\"246\"\u003eحوض من الحديد الشبك .غير قابل للحركة\u0026nbsp;\u003c/li\u003e\r\n\u003cli data-section-id=\"1ccvy1m\" data-start=\"304\" data-end=\"336\"\u003eالحوض سهل التنظيف والتعقيم.\u003c/li\u003e\r\n\u003cli data-section-id=\"pyy91f\" data-start=\"337\" data-end=\"369\"\u003eمتاح بجميع الألوان حسب الطلب ليتناسب مع الديكور.\u003c/li\u003e\r\n\u003c/ol\u003e\r\n\u003chr data-start=\"425\" data-end=\"428\"\u003e",
+                                  "slug":  "sryr-tfl-almsry",
+                                  "meta_title":  "سرير طفل المصرية شعبي",
+                                  "meta_description":  "",
+                                  "sku":  null,
+                                  "price":  5000,
+                                  "formatted_price":  "5,000.00 ج.م",
+                                  "special_price":  4000,
+                                  "formatted_special_price":  "4,000.00 ج.م",
+                                  "special_price_start":  null,
+                                  "special_price_end":  null,
+                                  "final_price":  4000,
+                                  "formatted_final_price":  "4,000.00 ج.م",
+                                  "currency":  {
+                                                   "code":  "EGP",
+                                                   "symbol":  "ج.م",
+                                                   "exchange_rate":  1
+                                               },
+                                  "image":  "https://egimedical.com/storage/uploads/products/6a269e34a035c.webp",
+                                  "gallery":  [
+
+                                              ],
+                                  "categories":  [
+                                                     {
+                                                         "id":  1,
+                                                         "title":  "سرير طبي وغرف الاقامة",
+                                                         "name":  "سرير طبي وغرف الاقامة",
+                                                         "image":  "https://egimedical.com/website/images/category/1774856207.png",
+                                                         "link":  "1",
+                                                         "show_on_home":  true,
+                                                         "parent_id":  null,
+                                                         "sub_categories":  [
+
+                                                                            ],
+                                                         "fixed":  false
+                                                     }
+                                                 ],
+                                  "options":  [
+
+                                              ],
+                                  "quantity":  2,
+                                  "max_order_qty":  null,
+                                  "ignore_quantity":  false,
+                                  "is_best_seller":  false,
+                                  "best_seller_start":  null,
+                                  "best_seller_end":  null,
+                                  "weight":  0,
+                                  "viewed":  0,
+                                  "shipping_rule_id":  null,
+                                  "product_brand_id":  null,
+                                  "brand":  null,
+                                  "has_flash_sale":  false,
+                                  "flash_sale_price":  null,
+                                  "primary_image":  "https://egimedical.com/storage/uploads/products/6a269e34a035c.webp",
+                                  "title":  "سرير طفل المصرية",
+                                  "category_id":  1,
+                                  "category":  "سرير طبي وغرف الاقامة",
+                                  "store_name":  "Mushaf Home",
+                                  "rating":  0,
+                                  "rate_count":  0,
+                                  "sale_price":  4000,
+                                  "discount_percentage":  20,
+                                  "item_code":  null,
+                                  "images":  [
+
+                                             ],
+                                  "isFavorite":  false,
+                                  "countFavorite":  0,
+                                  "countOrder":  0,
+                                  "product_link":  "https://egimedical.com/products/85",
+                                  "product_rates":  [
+
+                                                    ],
+                                  "deal_of_day_end":  null
+                              }
+                          ],
+                 "meta":  {
+                              "current_page":  1,
+                              "per_page":  12,
+                              "total":  83,
+                              "last_page":  7
+                          }
+             }
+}

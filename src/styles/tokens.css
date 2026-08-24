@@ -1,0 +1,5 @@
+/* 
+  tokens.css has been deprecated in favor of a Single Source of Truth architecture.
+  All Design Tokens, Shadcn Variables, Light/Dark Modes, and Tailwind v4 @theme configurations 
+  are now unified centrally inside globals.css
+*/
