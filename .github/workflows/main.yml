@@ -40,10 +40,10 @@ jobs:
           debug: true
           script: |
             echo "Creating target directory for frontend source..."
-            mkdir -p /home/u373210132/domains/egimedical.com/public_html/frontend/
+            mkdir -p /home/u908753193/domains/qayemwraf.com/public_html/frontend/
             echo "Removing stale pre-rendered directories (en and ar) to prevent Apache routing bypass..."
-            rm -rf /home/u373210132/domains/egimedical.com/public_html/en
-            rm -rf /home/u373210132/domains/egimedical.com/public_html/ar
+            rm -rf /home/u908753193/domains/qayemwraf.com/public_html/en
+            rm -rf /home/u908753193/domains/qayemwraf.com/public_html/ar
 
       - name: Deploy Build Files (dist) to Root public_html
         uses: appleboy/scp-action@v0.1.7
@@ -53,7 +53,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "dist/*"
-          target: "/home/u373210132/domains/egimedical.com/public_html/"
+          target: "/home/u908753193/domains/qayemwraf.com/public_html/"
           strip_components: 1
           overwrite: true
           timeout: 120s
@@ -68,7 +68,7 @@ jobs:
           port: ${{ secrets.SSH_PORT }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: "*,!node_modules,!dist,!.git"
-          target: "/home/u373210132/domains/egimedical.com/public_html/frontend/"
+          target: "/home/u908753193/domains/qayemwraf.com/public_html/frontend/"
           overwrite: true
           timeout: 120s
           command_timeout: 10m
