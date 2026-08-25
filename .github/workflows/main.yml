@@ -24,7 +24,7 @@ jobs:
 
       - name: Build project
         env:
-          VITE_API_URL: "https://admin.egimedical.com/api/v1"
+          VITE_API_URL: "https://qayemwraf.com/api/v1"
         run: npm run build
 
       - name: Clean stale directories & Prepare Target via SSH

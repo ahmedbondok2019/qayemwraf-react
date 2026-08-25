@@ -16,12 +16,12 @@ jobs:
           echo "Pinging backend to prevent cold start..."
           curl -s -o /dev/null -w "HTTP %{http_code} in %{time_total}s" \
             --max-time 60 \
-            "https://admin.egimedical.com/api/v1/categories?lang=en" \
+            "https://qayemwraf.com/api/v1/categories?lang=en" \
             || echo "Ping timed out (server may be warming up)"
 
       - name: Ping home API (ar)
         run: |
           curl -s -o /dev/null -w "HTTP %{http_code} in %{time_total}s" \
             --max-time 60 \
-            "https://admin.egimedical.com/api/v1/categories?lang=ar" \
+            "https://qayemwraf.com/api/v1/categories?lang=ar" \
             || echo "Ping timed out (server may be warming up)"
