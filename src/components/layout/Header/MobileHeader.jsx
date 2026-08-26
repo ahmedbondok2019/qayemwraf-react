@@ -158,21 +158,23 @@ export const MobileHeader = () => {
 					{/* Logo */}
 					<Logo />
 
-					{/* Right Actions */}
-					<div className="flex items-center gap-0.5">
-						<LocalizedLink
-							to="/cart"
-							className="relative p-2 rounded-xl text-text-secondary hover:text-primary hover:bg-surface-2 transition-all active:scale-95"
-							aria-label={isRtl ? "طلبات التسعير" : "Quote"}
-						>
-							<ShoppingCart className="w-5 h-5" />
-							{cartCount > 0 && (
-								<span className="absolute top-0.5 end-0.5 flex items-center justify-center min-w-[16px] h-4 px-1 rounded-full bg-secondary text-white text-[10px] font-bold leading-none">
-									{cartCount}
-								</span>
-							)}
-						</LocalizedLink>
-					</div>
+					{/* Right Actions - Hidden as requested */}
+					{false && (
+						<div className="flex items-center gap-0.5">
+							<LocalizedLink
+								to="/cart"
+								className="relative p-2 rounded-xl text-text-secondary hover:text-primary hover:bg-surface-2 transition-all active:scale-95"
+								aria-label={isRtl ? "طلبات التسعير" : "Quote"}
+							>
+								<ShoppingCart className="w-5 h-5" />
+								{cartCount > 0 && (
+									<span className="absolute top-0.5 end-0.5 flex items-center justify-center min-w-[16px] h-4 px-1 rounded-full bg-secondary text-white text-[10px] font-bold leading-none">
+										{cartCount}
+									</span>
+								)}
+							</LocalizedLink>
+						</div>
+					)}
 				</div>
 			</Container>
 
@@ -271,14 +273,17 @@ export const MobileHeader = () => {
 											<Package className="w-4 h-4 text-primary" />
 											{isRtl ? "الطلبات" : "Orders"}
 										</LocalizedLink>
-										<LocalizedLink 
-											to="/wishlist" 
-											onClick={close}
-											className="flex items-center gap-3 p-3 hover:bg-surface-2 rounded-lg text-text-secondary hover:text-primary transition-colors text-sm font-bold"
-										>
-											<Heart className="w-4 h-4 text-primary" />
-											{isRtl ? "المفضلة" : "Wishlist"}
-										</LocalizedLink>
+										{/* Wishlist - Hidden as requested */}
+										{false && (
+											<LocalizedLink 
+												to="/wishlist" 
+												onClick={close}
+												className="flex items-center gap-3 p-3 hover:bg-surface-2 rounded-lg text-text-secondary hover:text-primary transition-colors text-sm font-bold"
+											>
+												<Heart className="w-4 h-4 text-primary" />
+												{isRtl ? "المفضلة" : "Wishlist"}
+											</LocalizedLink>
+										)}
 										<button 
 											onClick={() => {
 												logout();
@@ -351,35 +356,37 @@ export const MobileHeader = () => {
 
 					{/* Drawer Footer — Switchers & Actions */}
 					<div className="p-4 border-t border-border bg-surface-2/40 space-y-2.5">
-						{/* Quick Actions Row */}
-						<div className="grid grid-cols-2 gap-2">
-							<LocalizedLink
-								to="/wishlist"
-								onClick={close}
-								className="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-surface border border-border/40 text-text-secondary hover:text-primary text-xs font-semibold shadow-sm transition-all relative"
-							>
-								<Heart className="w-4 h-4 text-danger/80" />
-								<span>{isRtl ? "المفضلة" : "Wishlist"}</span>
-								{wishlistCount > 0 && (
-									<span className="flex items-center justify-center min-w-[16px] h-4 px-1 rounded-full bg-primary text-white text-[9px] font-bold leading-none">
-										{wishlistCount}
-									</span>
-								)}
-							</LocalizedLink>
-							<LocalizedLink
-								to="/cart"
-								onClick={close}
-								className="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-surface border border-border/40 text-text-secondary hover:text-primary text-xs font-semibold shadow-sm transition-all relative"
-							>
-								<ShoppingCart className="w-4 h-4 text-secondary/80" />
-								<span>{isRtl ? "طلبات التسعير" : "Quote"}</span>
-								{cartCount > 0 && (
-									<span className="flex items-center justify-center min-w-[16px] h-4 px-1 rounded-full bg-secondary text-white text-[9px] font-bold leading-none">
-										{cartCount}
-									</span>
-								)}
-							</LocalizedLink>
-						</div>
+						{/* Quick Actions Row - Hidden as requested */}
+						{false && (
+							<div className="grid grid-cols-2 gap-2">
+								<LocalizedLink
+									to="/wishlist"
+									onClick={close}
+									className="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-surface border border-border/40 text-text-secondary hover:text-primary text-xs font-semibold shadow-sm transition-all relative"
+								>
+									<Heart className="w-4 h-4 text-danger/80" />
+									<span>{isRtl ? "المفضلة" : "Wishlist"}</span>
+									{wishlistCount > 0 && (
+										<span className="flex items-center justify-center min-w-[16px] h-4 px-1 rounded-full bg-primary text-white text-[9px] font-bold leading-none">
+											{wishlistCount}
+										</span>
+									)}
+								</LocalizedLink>
+								<LocalizedLink
+									to="/cart"
+									onClick={close}
+									className="flex items-center justify-center gap-2 py-2.5 rounded-xl bg-surface border border-border/40 text-text-secondary hover:text-primary text-xs font-semibold shadow-sm transition-all relative"
+								>
+									<ShoppingCart className="w-4 h-4 text-secondary/80" />
+									<span>{isRtl ? "طلبات التسعير" : "Quote"}</span>
+									{cartCount > 0 && (
+										<span className="flex items-center justify-center min-w-[16px] h-4 px-1 rounded-full bg-secondary text-white text-[9px] font-bold leading-none">
+											{cartCount}
+										</span>
+									)}
+								</LocalizedLink>
+							</div>
+						)}
 
 						{/* Language & Theme Row */}
 						<div className="grid grid-cols-2 gap-2">

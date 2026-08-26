@@ -53,21 +53,25 @@ export const HeaderActions = () => {
 
 	return (
 		<div className="flex items-center gap-2 lg:gap-6 shrink-0">
-			{/* Wishlist */}
-			<ActionButton
-				to="/wishlist"
-				icon="Heart"
-				label={isRtl ? "المفضلة" : "Wishlist"}
-				count={wishlistCount}
-			/>
+			{/* Wishlist - Hidden as requested */}
+			{false && (
+				<ActionButton
+					to="/wishlist"
+					icon="Heart"
+					label={isRtl ? "المفضلة" : "Wishlist"}
+					count={wishlistCount}
+				/>
+			)}
 
-			{/* Cart */}
-			<ActionButton
-				to="/cart"
-				icon="ShoppingCart"
-				label={isRtl ? "طلبات التسعير" : "Quote"}
-				count={cartCount}
-			/>
+			{/* Cart - Hidden as requested */}
+			{false && (
+				<ActionButton
+					to="/cart"
+					icon="ShoppingCart"
+					label={isRtl ? "طلبات التسعير" : "Quote"}
+					count={cartCount}
+				/>
+			)}
 		</div>
 	);
 };

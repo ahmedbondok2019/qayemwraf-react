@@ -55,11 +55,13 @@ export const ProductCard = ({ product, variant = PRODUCT_CARD_VARIANTS.DEFAULT, 
 				<div className={cn("absolute top-3 z-10 max-w-[60%]", isRtl ? "right-3" : "left-3")}>
 					<ProductBadges badges={product.badges} isOutOfStock={isOutOfStock} isRtl={isRtl} language={language} />
 				</div>
-				<ProductQuickActions 
-					isWishlisted={isWishlisted} 
-					onToggleWishlist={toggleWishlist} 
-					isRtl={isRtl} 
-				/>
+				{false && (
+					<ProductQuickActions 
+						isWishlisted={isWishlisted} 
+						onToggleWishlist={toggleWishlist} 
+						isRtl={isRtl} 
+					/>
+				)}
 				<ProductImage 
 					image={product.image} 
 					hoverImage={product.hoverImage} 

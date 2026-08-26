@@ -63,7 +63,7 @@ export const StickyAddToCart = ({ product, onAddToCart, showThreshold = 500 }) =
 					className="h-10 px-6 sm:px-8 bg-primary text-white font-bold text-sm rounded-lg flex items-center justify-center gap-2 hover:bg-primary-hover active:scale-[0.98] transition-all whitespace-nowrap shrink-0"
 				>
 					<ShoppingCart className="w-4 h-4" />
-					<span>{isRtl ? "أضف للسلة" : "Add to Cart"}</span>
+					<span>{isRtl ? "طلب الآن" : "Order Now"}</span>
 				</button>
 
 			</div>

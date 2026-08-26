@@ -22,7 +22,7 @@ export const ProductActions = ({ isOutOfStock, isAddingToCart, onAddToCart, isRt
 				) : (
 					<>
 						<ShoppingCart className="w-4 h-4 mr-2 rtl:mr-0 rtl:ml-2" />
-						{isOutOfStock ? (isRtl ? "نفذت الكمية" : "Out of Stock") : (isRtl ? "أضف للسلة" : "Add to Cart")}
+						{isOutOfStock ? (isRtl ? "نفذت الكمية" : "Out of Stock") : (isRtl ? "طلب الآن" : "Order Now")}
 					</>
 				)}
 			</Button>

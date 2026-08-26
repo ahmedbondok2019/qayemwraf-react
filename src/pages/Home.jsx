@@ -1,6 +1,7 @@
 import React from "react";
 
 import Hero from "@/components/home/Hero";
+import AboutUsSection from "@/components/home/AboutUsSection";
 import CategoryPills from "@/components/home/CategoryPills";
 import PromoSection from "@/components/home/Promo";
 import OfferBanners from "@/components/home/OfferBanners";
@@ -24,7 +25,12 @@ const Home = () => {
 			{homepageConfig.map((section) => {
 				switch (section.type) {
 					case "hero":
-						return <Hero key={section.id} sliders={homeData.sliders || []} isLoading={isLoading} />;
+						return (
+							<React.Fragment key={section.id}>
+								<Hero sliders={homeData.sliders || []} isLoading={isLoading} />
+								<AboutUsSection />
+							</React.Fragment>
+						);
 					case "categoryPills":
 						return <CategoryPills key={section.id} categories={homeData.categories || []} isLoading={isLoading} />;
 					case "trustBar":

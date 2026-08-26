@@ -1,4 +1,5 @@
 import { useState, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import { getStockState } from "../utils/product-card.helpers";
 import { useAppDispatch, useAppSelector } from "@/app/store/hooks";
 import { addToCart } from "@/features/cart/cartSlice";
@@ -14,6 +15,7 @@ export const useProductCard = (productData) => {
 	const { language } = useLanguage();
 	const isRtl = language === "ar";
 	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
 	
 	const [isHovered, setIsHovered] = useState(false);
 	const [isAddingToCart, setIsAddingToCart] = useState(false);
@@ -45,25 +47,11 @@ export const useProductCard = (productData) => {
 	}, [dispatch, productData, isWishlisted, isRtl]);
 
 
-	const handleAddToCart = useCallback(async (e) => {
+	const handleAddToCart = useCallback((e) => {
 		e.preventDefault();
 		e.stopPropagation();
-		if (isOutOfStock || !productData) return;
-		if (productData.stock?.quantity === undefined || productData.stock.quantity <= 0) {
-			toast.error(isRtl ? "هذا المنتج غير متوفر حالياً" : "This product is out of stock");
-			return;
-		}
-		
-		setIsAddingToCart(true);
-		
-		// Simulate a short network delay for better UX
-		await new Promise(resolve => setTimeout(resolve, 400));
-		
-		dispatch(addToCart({ product: productData, quantity: 1 }));
-		
-		setIsAddingToCart(false);
-		toast.success(isRtl ? "تم إضافة المنتج للسلة بنجاح" : "Product added to cart successfully");
-	}, [dispatch, isOutOfStock, productData, isRtl]);
+		navigate(`/${language}/contact`);
+	}, [navigate, language]);
 
 	return {
 		isHovered,

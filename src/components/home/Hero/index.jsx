@@ -102,39 +102,37 @@ export const Hero = ({ sliders = [], isLoading }) => {
 	//
 
 	if (isLoading && (!sliders || sliders.length === 0)) {
-		return <Section spacing="none" className="pt-4 sm:pt-6 pb-8 sm:pb-12"><Container><div className="min-h-[340px] bg-slate-100 animate-pulse w-full rounded-[32px]"></div></Container></Section>;
+		return <Section spacing="none" className="pt-0 pb-8 sm:pb-12"><div className="min-h-[340px] bg-slate-100 animate-pulse w-full"></div></Section>;
 	}
 
 	return (
-		<Section spacing="none" className="pt-4 sm:pt-6 pb-8 sm:pb-12 md:pb-16">
-			<Container>
-				<div className="relative rounded-[32px] overflow-hidden shadow-sm">
-					<HeroSlider onSlideChange={setActiveIndex}>
-						{slidesToDisplay.map((slide, index) => {
-							const isActive = index === activeIndex;
+		<Section spacing="none" className="pt-0 pb-8 sm:pb-12 md:pb-16 w-full">
+			<div className="w-full relative overflow-hidden shadow-sm">
+				<HeroSlider onSlideChange={setActiveIndex}>
+					{slidesToDisplay.map((slide, index) => {
+						const isActive = index === activeIndex;
 
-							return (
-								<div
-									key={slide.id || index}
-									className="relative flex-[0_0_100%] min-w-0 select-none"
-								>
-									{/*Full Background Image */}
-									{slide.image ? (
-										<img
-											src={slide.image}
-											alt={slide.title || "Hero Slider"}
-											className="w-full h-auto object-contain block"
-											loading={index === 0 ? "eager" : "lazy"}
-										/>
-									) : (
-										<div className={`w-full aspect-[2.5/1] ${slide.background || "bg-[#0a2342]"}`} />
-									)}
-								</div>
-							);
-						})}
-					</HeroSlider>
-				</div>
-			</Container>
+						return (
+							<div
+								key={slide.id || index}
+								className="relative flex-[0_0_100%] min-w-0 select-none"
+							>
+								{/*Full Background Image */}
+								{slide.image ? (
+									<img
+										src={slide.image}
+										alt={slide.title || "Hero Slider"}
+										className="w-full h-auto object-cover block"
+										loading={index === 0 ? "eager" : "lazy"}
+									/>
+								) : (
+									<div className={`w-full aspect-[2.5/1] ${slide.background || "bg-[#0a2342]"}`} />
+								)}
+							</div>
+						);
+					})}
+				</HeroSlider>
+			</div>
 		</Section>
 	);
 };

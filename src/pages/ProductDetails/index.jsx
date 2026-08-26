@@ -127,16 +127,11 @@ const ProductDetails = () => {
 	}, [slug, isRtl]);
 
 	const handleAddToCart = () => {
-		if (!product?.stock?.quantity || product.stock.quantity <= 0) return;
-		dispatch(addToCart({ product, quantity }));
-		toast.success(isRtl ? "تم إضافة المنتج للسلة بنجاح" : "Product added to cart successfully");
+		navigate(`/${language}/contact`);
 	};
 
 	const handleBuyNow = () => {
-		if (!product?.stock?.quantity || product.stock.quantity <= 0) return;
-		dispatch(addToCart({ product, quantity }));
-		toast.success(isRtl ? "تم إضافة المنتج للسلة بنجاح" : "Product added to cart successfully");
-		navigate(`/${language}/checkout`);
+		navigate(`/${language}/contact`);
 	};
 
 	const handleToggleWishlist = () => {

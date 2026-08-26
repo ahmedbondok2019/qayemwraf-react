@@ -1,7 +1,7 @@
 export const homepageConfig = [
 	{ id: "hero", type: "hero" },
 	{ id: "category-pills", type: "categoryPills" },
-	{ id: "trust-bar", type: "trustBar" },
+	// { id: "trust-bar", type: "trustBar" },
 
 	{
 		id: "flash-deals",
@@ -11,7 +11,7 @@ export const homepageConfig = [
 		title: { en: "Flash Deals", ar: "عروض فلاش ⚡" },
 		viewAllLink: "/flash-deals"
 	},
-	{ id: "promo", type: "promo" },
+	// { id: "promo", type: "promo" },
 	{
 		id: "latest-products",
 		type: "productSection",
@@ -20,7 +20,7 @@ export const homepageConfig = [
 		title: { en: "Latest Arrivals", ar: "أحدث المنتجات" },
 		viewAllLink: "/products"
 	},
-	{ id: "offer-banners", type: "offerBanners" },
+	// { id: "offer-banners", type: "offerBanners" },
 	{
 		id: "best-sellers",
 		type: "productSection",
