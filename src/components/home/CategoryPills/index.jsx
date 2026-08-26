@@ -2,12 +2,16 @@ import React from "react";
 import useEmblaCarousel from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
 import { useLanguage } from "@/app/providers/I18nProvider";
-
 import LocalizedLink from "@/components/ui/LocalizedLink";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ChevronLeft, ChevronRight, Layers, Sparkles } from "lucide-react";
 import Container from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
+import { cn } from "@/lib/utils";
 
+/**
+ * Modern Interactive Categories Hub
+ * High-end visual category showcase with top header controls, glass cards, and brand colors.
+ */
 export const CategoriesSection = ({ categories = [], isLoading }) => {
 	const { language } = useLanguage();
 	const isRtl = language === "ar";
@@ -18,105 +22,126 @@ export const CategoriesSection = ({ categories = [], isLoading }) => {
 			direction: isRtl ? "rtl" : "ltr",
 			align: "start",
 			skipSnaps: false,
+			dragFree: true
 		},
-		[Autoplay({ delay: 4000, stopOnInteraction: true })]
+		[Autoplay({ delay: 4500, stopOnInteraction: true })]
 	);
 
-	const scrollNext = () => {
-		if (emblaApi) emblaApi.scrollNext();
-	};
+	const scrollPrev = () => emblaApi && emblaApi.scrollPrev();
+	const scrollNext = () => emblaApi && emblaApi.scrollNext();
 
 	const categoriesToDisplay = categories || [];
 
 	if (isLoading && (!categories || categories.length === 0)) {
 		return (
-			<Section bg="background" spacing="xs" className="overflow-hidden">
+			<Section bg="background" spacing="sm" className="overflow-hidden">
 				<Container>
-					<div className="h-[280px] w-full bg-slate-100 animate-pulse rounded-[32px]"></div>
+					<div className="h-6 w-48 bg-slate-200 animate-pulse rounded-md mb-6"></div>
+					<div className="flex gap-4 overflow-hidden">
+						{[...Array(6)].map((_, i) => (
+							<div key={i} className="flex-[0_0_45%] sm:flex-[0_0_28%] md:flex-[0_0_20%] lg:flex-[0_0_16%]">
+								<div className="h-44 bg-slate-100 animate-pulse rounded-2xl w-full"></div>
+							</div>
+						))}
+					</div>
 				</Container>
 			</Section>
 		);
 	}
 
+	if (!isLoading && categoriesToDisplay.length === 0) return null;
+
 	return (
-		<Section bg="background" spacing="xs" className="overflow-hidden">
+		<Section bg="background" spacing="sm" className="overflow-hidden py-6 sm:py-10">
 			<Container>
-				<div className="bg-slate-50/60 dark:bg-slate-900/20 rounded-[32px] flex  flex-col md:flex-row gap-4 md:gap-6 border border-border/60 shadow-sm overflow-hidden">
-					{/* Text Side */}
-					<div className="relative z-10 w-full md:w-[24%] lg:w-[18%] flex flex-col items-start justify-center gap-3 bg-[#021d49] text-white p-6 rounded-2xl self-stretch shrink-0">
-						<h2 className="text-sm sm:text-base md:text-xl font-extrabold text-white leading-tight drop-shadow-sm">
-							{isRtl ? "تسوق حسب الاحتياجات الصحية" : "Shop by Health Needs"}
+				{/* Top Header Bar */}
+				<div className="flex items-end justify-between gap-4 mb-6">
+					<div>
+						<div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold mb-2">
+							<Sparkles size={14} />
+							<span>{isRtl ? "تصفح حسب التصنيف" : "Explore Categories"}</span>
+						</div>
+						<h2 className="text-xl sm:text-2xl md:text-3xl font-black text-text tracking-tight">
+							{isRtl ? "أقسام وتجهيزات التخزين" : "Storage & Equipment Categories"}
 						</h2>
+					</div>
+
+					{/* Navigation Controls */}
+					<div className="flex items-center gap-3">
 						<LocalizedLink
 							to="/categories"
-							className="group inline-flex items-center gap-1.5 text-orange-400 font-bold text-xs sm:text-sm transition-colors hover:text-orange-300 mt-1"
+							className="hidden sm:inline-flex items-center gap-1 text-xs font-bold text-primary hover:text-primary-hover transition-colors me-2"
 						>
-							{isRtl ? "عرض كل الأقسام" : "View all categories"}
-							{isRtl ? (
-								<ArrowLeft className="w-3.5 h-3.5 transition-transform group-hover:-translate-x-1" />
-							) : (
-								<ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-							)}
+							<span>{isRtl ? "كل الأقسام" : "All Categories"}</span>
+							{isRtl ? <ArrowLeft size={14} /> : <ArrowRight size={14} />}
 						</LocalizedLink>
+
+						<div className="flex items-center gap-1.5">
+							<button
+								onClick={scrollPrev}
+								className="w-9 h-9 rounded-full bg-surface border border-border hover:border-primary/40 shadow-sm hover:shadow text-text hover:text-primary flex items-center justify-center transition-all cursor-pointer"
+								aria-label="Previous Category"
+							>
+								{isRtl ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
+							</button>
+							<button
+								onClick={scrollNext}
+								className="w-9 h-9 rounded-full bg-surface border border-border hover:border-primary/40 shadow-sm hover:shadow text-text hover:text-primary flex items-center justify-center transition-all cursor-pointer"
+								aria-label="Next Category"
+							>
+								{isRtl ? <ChevronLeft size={18} /> : <ChevronRight size={18} />}
+							</button>
+						</div>
 					</div>
-					<div className="relativep-3 md:p-4  items-center overflow-hidden  shadow-sm ">
+				</div>
 
-						{/* Slider Side */}
-						<div className="relative z-10 w-full " dir={isRtl ? "rtl" : "ltr"}>
-							<div className="overflow-hidden" ref={emblaRef}>
-								<div className="flex touch-pan-y -ml-4 rtl:-mr-4 rtl:ml-0">
-									{categoriesToDisplay.map((need, index) => {
-										const getLocalized = (field) => {
-											if (!field) return "";
-											if (typeof field === "string") return field;
-											return field[language] || field.en || field.ar || "";
-										};
+				{/* Modern Horizontal Scroll Carousel */}
+				<div className="relative w-full" dir={isRtl ? "rtl" : "ltr"}>
+					<div className="overflow-hidden -mx-1 px-1 py-2" ref={emblaRef}>
+						<div className="flex touch-pan-y -ml-1.5 rtl:-mr-1.5 rtl:ml-0">
+							{categoriesToDisplay.map((item, index) => {
+								const getLocalized = (field) => {
+									if (!field) return "";
+									if (typeof field === "string") return field;
+									return field[language] || field.en || field.ar || "";
+								};
 
-										const title = getLocalized(need.title) || getLocalized(need.name);
-										const linkUrl = (need.link && typeof need.link === 'string' && need.link.startsWith('/'))
-											? need.link
-											: `/category/${need.id || need.link}`;
+								const title = getLocalized(item.title) || getLocalized(item.name);
+								const linkUrl =
+									item.link && typeof item.link === "string" && item.link.startsWith("/")
+										? item.link
+										: `/category/${item.id || item.link}`;
 
-										return (
-											<div
-												key={need.id || index}
-												className="flex-[0_0_100%] sm:flex-[0_0_30%] md:flex-[0_0_25%] lg:flex-[0_0_20%] min-w-0 pl-4 rtl:pr-4 rtl:pl-0"
-											>
-												<LocalizedLink
-													to={linkUrl}
-													className="group flex flex-col overflow-hidden rounded-[20px] bg-white dark:bg-slate-900 border border-orange-500/30 dark:border-slate-800 shadow-[0_4px_16px_rgba(0,0,0,0.06)] hover:shadow-lg hover:border-orange-500 transition-all duration-300 hover:-translate-y-1 h-full"
-												>
-													{/* Image Container */}
-													<div className="w-full aspect-[4/3] sm:aspect-square bg-slate-50/50 dark:bg-slate-800/20 flex items-center justify-center overflow-hidden border-b border-orange-500/20">
-														<img
-															src={need.image}
-															alt={title}
-															className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
-														/>
-													</div>
-
-													{/* Text Container below the image to prevent overlap */}
-													<div className="p-3.5 flex-grow flex items-center justify-center text-center bg-surface">
-														<span className="text-text font-extrabold text-xs sm:text-sm md:text-base leading-snug line-clamp-2">
-															{title}
-														</span>
-													</div>
-												</LocalizedLink>
+								return (
+									<div
+										key={item.id || index}
+										className="flex-[0_0_30%] sm:flex-[0_0_18%] md:flex-[0_0_14%] lg:flex-[0_0_11.11%] min-w-0 pl-1.5 rtl:pr-1.5 rtl:pl-0"
+									>
+										<LocalizedLink
+											to={linkUrl}
+											className="group flex flex-col items-center text-center transition-all duration-300 transform hover:-translate-y-1.5"
+										>
+											{/* Image Container with Circle Ring */}
+											<div className="relative w-24 h-24 sm:w-32 sm:h-32 rounded-full bg-white dark:bg-slate-900 flex items-center justify-center overflow-hidden mb-3 border border-border shadow-sm group-hover:border-primary group-hover:shadow-md transition-all duration-300">
+												<div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 rounded-full transition-colors duration-300" />
+												<img
+													src={item.image}
+													alt={title}
+													className="w-full h-full object-contain p-3 transition-transform duration-500 group-hover:scale-110"
+													loading="lazy"
+												/>
 											</div>
-										);
-									})}
-								</div>
-							</div>
 
-							{/* Next Arrow inside slider container */}
-							<div className="absolute top-1/2 -translate-y-1/2 right-0 rtl:right-auto rtl:left-0 z-10 hidden sm:flex pointer-events-none">
-								<div
-									onClick={scrollNext}
-									className="w-10 h-10 rounded-full bg-surface shadow-md border border-border/65 flex items-center justify-center text-primary pointer-events-auto cursor-pointer hover:bg-surface-2 transition-colors transform translate-x-1/3 rtl:-translate-x-1/3"
-								>
-									{isRtl ? <ArrowLeft className="w-5 h-5" /> : <ArrowRight className="w-5 h-5" />}
-								</div>
-							</div>
+											{/* Category Title */}
+											<div className="w-full px-1">
+												<h3 className="text-xs sm:text-sm font-bold text-text-secondary group-hover:text-primary transition-colors line-clamp-1 leading-snug">
+													{title}
+												</h3>
+											</div>
+										</LocalizedLink>
+									</div>
+								);
+							})}
 						</div>
 					</div>
 				</div>
@@ -126,5 +151,3 @@ export const CategoriesSection = ({ categories = [], isLoading }) => {
 };
 
 export default CategoriesSection;
-
-

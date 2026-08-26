@@ -181,7 +181,7 @@ body {
      ═══════════════════════════════════════════════════════════ */
 
   /* ── Base ── */
-  --background: #FFFFFF;
+  --background: #F8F9FA;
   --foreground: #0F172A;
   
   /* ── Brand ── */
@@ -199,9 +199,9 @@ body {
 
   /* ── Surfaces (Custom definitions) ── */
   --surface: #FFFFFF;
-  --surface-2: #F8FAFC;
+  --surface-2: #F1F3F5;
   --surface-elevated: #FFFFFF;
-  --surface-muted: #F1F5F9;
+  --surface-muted: #E9ECEF;
   
   /* ── Shadcn UI Aliases ── */
   --card: var(--surface);

@@ -6,6 +6,7 @@ import CategoryPills from "@/components/home/CategoryPills";
 import PromoSection from "@/components/home/Promo";
 import OfferBanners from "@/components/home/OfferBanners";
 import ProductSection from "@/components/home/ProductSection";
+import ProductGallerySection from "@/components/home/ProductGallerySection";
 import CallToAction from "@/components/home/CTA";
 import TrustBar from "@/components/home/TrustBar";
 import BlogSection from "@/components/home/BlogSection";
@@ -41,6 +42,20 @@ const Home = () => {
 						return <OfferBanners key={section.id} offers={homeData.offers || []} isLoading={isLoading} />;
 					case "blogSection":
 						return <BlogSection key={section.id} />;
+					case "productGallery": {
+						const products = latestProducts?.length ? latestProducts : homeData.latest_products || [];
+						return (
+							<ProductGallerySection
+								key={section.id}
+								title={section.title}
+								subtitle={section.subtitle}
+								viewAllLink={section.viewAllLink}
+								bg={section.bg}
+								products={products}
+								isLoading={isLoading || latestLoading}
+							/>
+						);
+					}
 					case "productSection":
 						let products = [];
 						let sectionLoading = isLoading;
@@ -64,17 +79,7 @@ const Home = () => {
 							/>
 						);
 					case "cta":
-						const catalog = homeData.catalog_download;
-						return (
-							<CallToAction
-								key={section.id}
-								title={catalog?.title || section.title}
-								description={catalog?.description || section.description}
-								buttonText={catalog?.button_text || section.buttonText}
-								buttonLink={catalog?.pdf_url || section.buttonLink}
-								iconName={section.icon}
-							/>
-						);
+						return <CallToAction key={section.id} />;
 					default:
 						return null;
 				}

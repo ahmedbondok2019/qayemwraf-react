@@ -7,17 +7,18 @@ export const homepageConfig = [
 		id: "flash-deals",
 		type: "productSection",
 		variant: "offer",
-		bg: "surface",
+		bg: "background",
 		title: { en: "Flash Deals", ar: "عروض فلاش ⚡" },
 		viewAllLink: "/flash-deals"
 	},
 	// { id: "promo", type: "promo" },
 	{
 		id: "latest-products",
-		type: "productSection",
-		variant: "default",
-		bg: "surface",
-		title: { en: "Latest Arrivals", ar: "أحدث المنتجات" },
+		type: "productGallery",
+		variant: "gallery",
+		bg: "background",
+		title: { en: "Discover Our Featured Products", ar: "اكتشف منتجاتنا المميزة" },
+		subtitle: { en: "A curated selection of heavy-duty metal shelving and modern storage systems", ar: "تشكيلة مختارة من أقوى أنظمة الأرفف وحلول التخزين المتطورة" },
 		viewAllLink: "/products"
 	},
 	// { id: "offer-banners", type: "offerBanners" },

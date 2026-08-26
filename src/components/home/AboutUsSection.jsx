@@ -40,7 +40,7 @@ export const AboutUsSection = () => {
 	];
 
 	return (
-		<section className="py-16 md:py-24 bg-surface-2 relative overflow-hidden border-y border-border/50">
+		<section className="py-16 md:py-24 relative overflow-hidden">
 			{/* Decorative background glow */}
 			<div className="absolute top-1/2 -left-24 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
 			<div className="absolute bottom-0 right-0 w-80 h-80 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
