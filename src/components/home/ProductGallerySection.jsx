@@ -103,11 +103,11 @@ export const ProductGallerySection = ({
 	];
 
 	return (
-		<Section bg={bg} spacing="md" className="overflow-hidden py-10 md:py-20">
+		<Section bg={bg} spacing="md" className="overflow-hidden">
 			<Container>
 				{/* Section Header */}
 				{(title || viewAllLink) && (
-					<div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+					<div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6">
 						<div>
 							{title && (
 								<h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-text tracking-tight">
@@ -154,17 +154,17 @@ export const ProductGallerySection = ({
 									<LocalizedLink
 										key={item.id || itemIdx}
 										to={item.link}
-										className="group relative block w-full rounded-2xl md:rounded-3xl overflow-hidden bg-surface border border-border shadow-sm hover:shadow-2xl hover:border-primary/50 transition-all duration-500 transform hover:-translate-y-1.5"
+										className="group relative block w-full rounded-2xl md:rounded-3xl overflow-hidden bg-white border-2 border-primary/25 shadow-sm hover:shadow-2xl hover:border-primary transition-all duration-500 transform hover:-translate-y-1.5"
 									>
-										<div className={cn("w-full relative overflow-hidden bg-surface-2", aspectClass)}>
+										<div className={cn("w-full relative overflow-hidden bg-white", aspectClass)}>
 											<img
 												src={item.image}
 												alt={item.title}
-												className="w-full h-full  transition-transform duration-700 ease-out group-hover:scale-108"
+												className="w-full h-full object-contain p-2.5 transition-transform duration-700 ease-out group-hover:scale-108"
 												loading="lazy"
 											/>
 											{/* Ambient hover shading */}
-											<div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300" />
+											<div className="absolute inset-0 bg-black/0 group-hover:bg-primary/5 transition-colors duration-300" />
 										</div>
 									</LocalizedLink>
 								);

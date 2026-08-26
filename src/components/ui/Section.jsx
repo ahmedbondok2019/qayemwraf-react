@@ -11,10 +11,10 @@ export const Section = ({
 }) => {
 	const spacingMap = {
 		none: "",
-		xs: "py-6 md:py-8",
-		sm: "py-8 md:py-12",
-		md: "py-8 md:py-10",
-		lg: "py-16 md:py-24",
+		xs: "py-3 md:py-4",
+		sm: "py-4 md:py-6",
+		md: "py-5 md:py-7",
+		lg: "py-8 md:py-12",
 	};
 
 	const bgMap = {
