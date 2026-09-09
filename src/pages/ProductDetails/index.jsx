@@ -50,8 +50,10 @@ const ProductDetails = () => {
 			try {
 				// Fetch product using the slug (or ID) from URL
 				const response = await api.get(`${API_ENDPOINTS.PRODUCTS}/${slug}`);
-				if (response && response.success) {
-					const data = response.data;
+				const isProdSuccess = response && (response.success === true || response.status === true || Array.isArray(response) || response.data);
+				if (isProdSuccess) {
+					const dataPayload = response.data || response;
+					const data = dataPayload?.data || dataPayload || response;
 					
 					// Map API data to the format expected by components
 					const priceVal = data.price || 0;

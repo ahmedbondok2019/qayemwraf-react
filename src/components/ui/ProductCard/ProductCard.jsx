@@ -65,7 +65,7 @@ export const ProductCard = ({ product, variant = PRODUCT_CARD_VARIANTS.DEFAULT, 
 				<ProductImage 
 					image={product.image} 
 					hoverImage={product.hoverImage} 
-					title={product.title?.[language] || product.title || product.name} 
+					title={typeof product.title === 'object' ? (product.title?.[language] || product.title?.ar || product.title?.en) : (product.title || product.name)}
 					isHovered={isHovered} 
 					isOutOfStock={isOutOfStock}
 				/>
@@ -73,7 +73,7 @@ export const ProductCard = ({ product, variant = PRODUCT_CARD_VARIANTS.DEFAULT, 
 
 			{/* Content Section */}
 			<div className="flex flex-col flex-grow p-4 pt-3">
-				<ProductTitle title={product.title?.[language] || product.title || product.name} />
+				<ProductTitle title={typeof product.title === 'object' ? (product.title?.[language] || product.title?.ar || product.title?.en) : (product.title || product.name)} />
 				
 				{/* Rating & Badges */}
 				<div className="flex items-center justify-between gap-2 mt-1.5 min-h-[20px]">

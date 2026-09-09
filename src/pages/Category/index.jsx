@@ -57,8 +57,9 @@ const Category = ({ isOffersRoute = false }) => {
 		const fetchCategories = async () => {
 			try {
 				const response = await api.get(API_ENDPOINTS.CATEGORIES);
-				if (response && response.success) {
-					setAllCategories(response.data || []);
+				const isCatSuccess = response && (response.success === true || response.status === true || Array.isArray(response) || response.data);
+				if (isCatSuccess) {
+					setAllCategories(response.data || response || []);
 				}
 			} catch (err) {
 				console.error("Failed to load global categories", err);
@@ -85,8 +86,12 @@ const Category = ({ isOffersRoute = false }) => {
 						in_stock: availability.includes("instock") ? 1 : undefined,
 					}
 				});
-				if (response && response.success) {
-					const dataPayload = response.data;
+				
+				console.log("Products API Response:", response);
+				const isProdSuccess = response && (response.success === true || response.status === true || Array.isArray(response) || response.data);
+				
+				if (isProdSuccess) {
+					const dataPayload = response.data || response;
 					const apiProducts = Array.isArray(dataPayload) ? dataPayload : (dataPayload?.data || []);
 					const mappedProducts = apiProducts.map(apiProd => {
 						const priceVal = apiProd.price || 0;
@@ -158,6 +163,7 @@ const Category = ({ isOffersRoute = false }) => {
 					setError(isRtl ? "حدث خطأ أثناء جلب المنتجات." : "Failed to load products.");
 				}
 			} catch (err) {
+				console.error("Products Fetch Error:", err);
 				setError(err?.message || (isRtl ? "حدث خطأ أثناء جلب المنتجات." : "Failed to load products."));
 			} finally {
 				setIsLoading(false);

@@ -67,11 +67,11 @@ export const PageHero = ({ title, subtitle, count, countLabel, breadcrumbs, bgIm
 					{/* Title & Subtitle */}
 					<div className="flex flex-col gap-2">
 						<h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-text tracking-tight">
-							{title?.[language] || title}
+							{typeof title === 'object' ? (title?.[language] || title?.ar || title?.en) : title}
 						</h1>
 						{subtitle && (
 							<p className="text-base sm:text-lg text-text-secondary max-w-2xl leading-relaxed">
-								{subtitle?.[language] || subtitle}
+								{typeof subtitle === 'object' ? (subtitle?.[language] || subtitle?.ar || subtitle?.en) : subtitle}
 							</p>
 						)}
 					</div>

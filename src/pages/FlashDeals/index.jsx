@@ -64,8 +64,11 @@ const FlashDeals = () => {
 		const fetchFlashDeals = async () => {
 			try {
 				const response = await api.get(API_ENDPOINTS.FLASH_SALES);
-				if (response && response.success) {
-					setDeals(response.data || []);
+				const isSuccess = response && (response.success === true || response.status === true || Array.isArray(response) || response.data);
+				if (isSuccess) {
+					const dataPayload = response.data || response;
+					const apiProducts = Array.isArray(dataPayload) ? dataPayload : (dataPayload?.data || []);
+					setDeals(apiProducts);
 				} else {
 					setError(isRtl ? "حدث خطأ أثناء جلب العروض." : "Failed to load flash deals.");
 				}

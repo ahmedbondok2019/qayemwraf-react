@@ -22,7 +22,7 @@ export const Breadcrumb = ({ items = [], className }) => {
 			<ol className="flex items-center gap-2 min-w-max text-sm">
 				{items.map((item, index) => {
 					const isLast = index === items.length - 1;
-					const label = item.label?.[language] || item.label;
+					const label = typeof item.label === 'object' ? (item.label?.[language] || item.label?.ar || item.label?.en) : item.label;
 					
 					return (
 						<li key={index} className="flex items-center gap-2">
