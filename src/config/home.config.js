@@ -17,9 +17,9 @@ export const homepageConfig = [
 		type: "productGallery",
 		variant: "gallery",
 		bg: "background",
-		title: { en: "Discover Our Featured Products", ar: "اكتشف منتجاتنا المميزة" },
-		subtitle: { en: "A curated selection of heavy-duty metal shelving and modern storage systems", ar: "تشكيلة مختارة من أقوى أنظمة الأرفف وحلول التخزين المتطورة" },
-		viewAllLink: "/products"
+		title: { en: "Our Completed Projects", ar: "سابقة أعمالنا ومشاريعنا" },
+		subtitle: { en: "A showcase of our industrial metal shelving and warehouse storage project fitouts", ar: "جولة مصورة لبعض مشاريعنا وتجهيزاتنا لمستودعات ومخازن كبرى الشركات" },
+		viewAllLink: "/projects"
 	},
 	// { id: "offer-banners", type: "offerBanners" },
 	{

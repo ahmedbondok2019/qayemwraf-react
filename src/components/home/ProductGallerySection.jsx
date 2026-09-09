@@ -126,7 +126,7 @@ export const ProductGallerySection = ({
 								to={viewAllLink}
 								className="group inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-primary-hover transition-all self-start sm:self-auto"
 							>
-								<span>{isRtl ? "عرض جميع المنتجات" : "View All Products"}</span>
+								<span>{isRtl ? "عرض كل المشاريع" : "View All Projects"}</span>
 								{isRtl ? (
 									<ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
 								) : (
