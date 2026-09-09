@@ -88,23 +88,28 @@ const ProductDetails = () => {
 						badges.push({ type: "sale", label: { en: `${data.discount_percentage}% OFF`, ar: `خصم ${data.discount_percentage}%` } });
 					}
 
+					const resolveI18n = (val, fallback) => {
+						if (val && typeof val === 'object') return val;
+						return { ar: val || fallback || "", en: val || fallback || "" };
+					};
+
 					const mappedProduct = {
 						id: `prod-${data.id}`,
 						_realId: data.id,
-						title: { ar: data.name || data.title || "", en: data.name || data.title || "" },
-						description: { ar: data.description || "", en: data.description || "" },
+						title: resolveI18n(data.name || data.title, ""),
+						description: resolveI18n(data.description, ""),
 						price: { current: currentPrice, original: originalPrice, discount: discountVal },
 						images: images,
 						categories: [{ 
 							id: String(data.category_id || ""), 
-							label: { en: data.category || "", ar: data.category || "" } 
+							label: resolveI18n(data.category, "")
 						}],
 						stock: { 
 							quantity: (data.quantity === -1 || data.ignore_quantity) ? 20 : (data.quantity || 0),
 							sku: data.sku || data.item_code || null
 						},
 						brand: { name: data.brand || data.store_name || "EG Medical" },
-						shortDescription: { ar: data.meta_description || "", en: data.meta_description || "" },
+						shortDescription: resolveI18n(data.meta_description, ""),
 						reviews: { rating: data.rating || 0, count: data.rate_count || 0 },
 						reviewsList: data.product_rates || [],
 						badges,
@@ -168,17 +173,20 @@ const ProductDetails = () => {
 			const currentPrice = apiProd.final_price || apiProd.special_price || apiProd.sale_price || priceVal;
 			const originalPrice = priceVal > currentPrice ? priceVal : null;
 			const discountVal = apiProd.discount_percentage || (originalPrice ? Math.round(((originalPrice - currentPrice) / originalPrice) * 100) : 0);
+			const resolveI18n = (val, fallback) => {
+				if (val && typeof val === 'object') return val;
+				return { ar: val || fallback || "", en: val || fallback || "" };
+			};
 			return {
 				id: `prod-${apiProd.id}`,
-				title: { ar: apiProd.title || apiProd.name || "", en: apiProd.title || apiProd.name || "" },
-				category: { ar: apiProd.category || "", en: apiProd.category || "", id: String(apiProd.category_id || "") },
-				brand: apiProd.brand || "",
-				image: apiProd.primary_image || apiProd.image || "",
+				title: resolveI18n(apiProd.title || apiProd.name, ""),
+				category: { ...resolveI18n(apiProd.category, ""), id: String(apiProd.category_id || "") },
+				image: apiProd.primary_image || apiProd.image || apiProd.category?.image || "",
 				price: { current: currentPrice, original: originalPrice, discount: discountVal },
 				reviews: { rating: apiProd.rating || 0, count: apiProd.rate_count || 0 },
 				stock: { quantity: apiProd.quantity || 0 },
 				badges: [],
-				link: apiProd.product_link || `/products/${apiProd.id}`,
+				link: apiProd.product_link || `/product/${apiProd.id}`,
 				_apiOriginal: apiProd
 			};
 		});

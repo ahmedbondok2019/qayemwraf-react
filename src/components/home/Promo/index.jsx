@@ -33,10 +33,15 @@ export const PromoSection = ({ offers }) => {
 			
 			const colorIdx = index % 3;
 
+			const resolveI18n = (val, fallback) => {
+				if (val && typeof val === 'object') return val;
+				return { ar: val || fallback || "", en: val || fallback || "" };
+			};
+
 			return {
 				id: offer.id || `offer-${index}`,
-				title: { ar: offer.title || offer.name || "", en: offer.title || offer.name || "" },
-				subtitle: { ar: offer.description || "", en: offer.description || "" },
+				title: resolveI18n(offer.title || offer.name, ""),
+				subtitle: resolveI18n(offer.description, ""),
 				buttonText: { ar: "تسوق الآن", en: "Shop Now" },
 				link: offer.link_type === 'category' ? `/category/${offer.category_id}` : (offer.link || "/"),
 				image: offer.image || offer.category?.image || "https://images.unsplash.com/photo-1584820927498-cafe8c1c969b?auto=format&fit=crop&q=80&w=600",

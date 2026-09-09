@@ -199,13 +199,18 @@ export const mapBlogData = (apiBlog) => {
 	// Strip HTML tags for the excerpt if needed, or just use meta_description
 	const plainExcerpt = apiBlog.meta_description ? apiBlog.meta_description.replace(/<[^>]+>/g, '') : contentHtml.replace(/<[^>]+>/g, '').substring(0, 150) + "...";
 
+	const resolveI18n = (val, fallback) => {
+		if (val && typeof val === 'object') return val;
+		return { ar: val || fallback || "", en: val || fallback || "" };
+	};
+
 	return {
 		id: apiBlog.id,
 		slug: apiBlog.slug || String(apiBlog.id),
-		title: { en: apiBlog.title || apiBlog.name || "", ar: apiBlog.title || apiBlog.name || "" },
+		title: resolveI18n(apiBlog.title || apiBlog.name, ""),
 		category: categoryObj,
-		excerpt: { en: plainExcerpt, ar: plainExcerpt },
-		content: { en: contentHtml, ar: contentHtml },
+		excerpt: resolveI18n(apiBlog.excerpt || plainExcerpt, ""),
+		content: resolveI18n(apiBlog.content || contentHtml, ""),
 		image: apiBlog.image || apiBlog.primary_image || "",
 		author: {
 			name: { en: apiBlog.author_name || "Admin", ar: apiBlog.author_name || "المدير" },

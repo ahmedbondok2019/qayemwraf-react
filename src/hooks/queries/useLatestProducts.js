@@ -12,21 +12,21 @@ export const mapBackendProduct = (apiProd) => {
 	} else if (apiProd.discount_percentage > 0) {
 		badges.push({ type: "sale", label: { en: `${apiProd.discount_percentage}% OFF`, ar: `خصم ${apiProd.discount_percentage}%` } });
 	}
+	const resolveI18n = (val, fallback) => {
+		if (val && typeof val === 'object') return val;
+		return { ar: val || fallback || "", en: val || fallback || "" };
+	};
+
 	return {
 		id: `prod-${apiProd.id}`,
-		title: { ar: apiProd.title || apiProd.name || "", en: apiProd.title || apiProd.name || "" },
-		category: { ar: apiProd.category || "", en: apiProd.category || "", id: String(apiProd.category_id || "") },
-		brand: apiProd.brand || "",
-		image: apiProd.primary_image || apiProd.image || "",
-		price: { 
-			current: currentPrice, 
-			original: originalPrice,
-			discount: apiProd.discount_percentage || (originalPrice ? Math.round(((originalPrice - currentPrice) / originalPrice) * 100) : 0)
-		},
+		title: resolveI18n(apiProd.title || apiProd.name, ""),
+		category: { ...resolveI18n(apiProd.category, ""), id: String(apiProd.category_id || "") },
+		image: apiProd.primary_image || apiProd.image || apiProd.category?.image || "",
+		price: { current: currentPrice, original: originalPrice },
 		reviews: { rating: apiProd.rating || 0, count: apiProd.rate_count || 0 },
 		stock: { quantity: apiProd.quantity || 0 },
 		badges,
-		link: apiProd.product_link || `/products/${apiProd.slug || apiProd.id}`,
+		link: apiProd.product_link || `/product/${apiProd.id}`,
 		_apiOriginal: apiProd
 	};
 };

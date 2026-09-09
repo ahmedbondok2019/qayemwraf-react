@@ -49,10 +49,15 @@ export const ProductSection = ({ title, subtitle, viewAllLink, variant = "defaul
 			badges.push({ type: "bestseller", label: { en: "Best Seller", ar: "الأكثر مبيعاً" } });
 		}
 
+		const resolveI18n = (val, fallback) => {
+			if (val && typeof val === 'object') return val;
+			return { ar: val || fallback || "", en: val || fallback || "" };
+		};
+
 		return {
 			id: `prod-${apiProd.id}`,
-			title: { ar: apiProd.title || apiProd.name || "", en: apiProd.title || apiProd.name || "" },
-			category: { ar: apiProd.category || "", en: apiProd.category || "", id: String(apiProd.category_id || "") },
+			title: resolveI18n(apiProd.title, apiProd.name),
+			category: { ...resolveI18n(apiProd.category, ""), id: String(apiProd.category_id || "") },
 			brand: apiProd.brand || "",
 			image: apiProd.primary_image || apiProd.image || "",
 			price: { current: currentPrice, original: originalPrice },
