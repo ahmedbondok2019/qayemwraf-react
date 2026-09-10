@@ -56,7 +56,15 @@ export const CategoriesSection = ({ categories = [], isLoading }) => {
 	const getLocalized = (field) => {
 		if (!field) return "";
 		if (typeof field === "string") return field;
-		return field[language] || field.en || field.ar || "";
+		if (typeof field === "number") return String(field);
+		if (typeof field === "object") {
+			const val = field[language] || field.ar || field.en || Object.values(field)[0] || "";
+			if (typeof val === "object" && val !== null) {
+				return val[language] || val.ar || val.en || "";
+			}
+			return typeof val === "string" ? val : "";
+		}
+		return String(field);
 	};
 
 	return (

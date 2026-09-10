@@ -155,7 +155,11 @@ export const Footer = () => {
 							{settings?.address && (
 								<li className="flex items-start gap-3 text-slate-400">
 									<MapPin className="w-5 h-5 text-orange-500 shrink-0 mt-0.5" />
-									<span>{settings.address}</span>
+									<span>
+										{typeof settings.address === 'object'
+											? (settings.address[language] || settings.address.ar || settings.address.en || "")
+											: settings.address}
+									</span>
 								</li>
 							)}
 							{settings?.phone && (

@@ -157,8 +157,12 @@ export const SearchBar = ({ className }) => {
 								>
 									<img src={prod.primary_image || prod.image || "https://placehold.co/100x100"} alt="" className="w-10 h-10 rounded-lg object-cover" />
 									<div className="flex flex-col flex-1">
-										<span className="font-bold text-sm text-text group-hover:text-primary transition-colors line-clamp-1">{prod.title || prod.name}</span>
-										<span className="text-xs text-text-muted font-bold">{prod.category}</span>
+										<span className="font-bold text-sm text-text group-hover:text-primary transition-colors line-clamp-1">
+											{typeof prod.title === 'object' ? (prod.title[language] || prod.title.ar || prod.title.en || "") : (prod.title || prod.name || "")}
+										</span>
+										<span className="text-xs text-text-muted font-bold">
+											{typeof prod.category === 'object' ? (prod.category[language] || prod.category.ar || prod.category.en || prod.category.title || prod.category.name || "") : (prod.category || "")}
+										</span>
 									</div>
 									<ChevronRight className={cn("w-4 h-4 text-text-muted opacity-0 group-hover:opacity-100 transition-all", isRtl && "rotate-180")} />
 								</LocalizedLink>

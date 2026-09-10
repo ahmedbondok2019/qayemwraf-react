@@ -220,7 +220,9 @@ export const Contact = () => {
 										<div className="flex flex-col">
 											<span className="text-xs text-text-muted font-bold">{isRtl ? "المقر الرئيسي" : "Headquarters"}</span>
 											<p className="text-sm text-text-secondary leading-relaxed mt-0.5">
-												{settings.address}
+												{typeof settings.address === 'object'
+													? (settings.address[language] || settings.address.ar || settings.address.en || "")
+													: settings.address}
 											</p>
 										</div>
 									</div>
@@ -234,7 +236,11 @@ export const Contact = () => {
 							<div className="absolute inset-0 bg-surface-2 flex flex-col items-center justify-center p-6 text-center gap-2">
 								<MapPin className="w-8 h-8 text-primary animate-bounce" />
 								<span className="font-extrabold text-sm text-text">{isRtl ? "موقعنا في مصر" : "Our Location"}</span>
-								<span className="text-xs text-text-muted max-w-xs">{settings?.address || "El-Badrshein, Egypt"}</span>
+								<span className="text-xs text-text-muted max-w-xs">
+									{typeof settings?.address === 'object'
+										? (settings.address[language] || settings.address.ar || settings.address.en || "")
+										: (settings?.address || "El-Badrshein, Egypt")}
+								</span>
 							</div>
 						</div>
 

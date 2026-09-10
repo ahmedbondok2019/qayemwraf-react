@@ -7,11 +7,26 @@ export const BlogCard = ({ blog }) => {
 	const { language } = useLanguage();
 	const isRtl = language === "ar";
 
-	const title = blog.title?.[language] || blog.title || "";
-	const excerpt = blog.description?.[language] || blog.description || blog.excerpt?.[language] || blog.excerpt || "";
-	const categoryName = blog.category?.title?.[language] || blog.category?.title || "";
-	const authorName = blog.author?.name?.[language] || blog.author?.name || "";
-	const readTime = blog.readTime?.[language] || blog.readTime || "";
+	const getSafeText = (val) => {
+		if (!val) return "";
+		if (typeof val === "string") return val;
+		if (typeof val === "number") return String(val);
+		if (typeof val === "object") {
+			const res = val[language] || val.ar || val.en || Object.values(val)[0];
+			if (typeof res === "string") return res;
+			if (typeof res === "object" && res !== null) {
+				return getSafeText(res);
+			}
+			return "";
+		}
+		return String(val);
+	};
+
+	const title = getSafeText(blog.title);
+	const excerpt = getSafeText(blog.description || blog.excerpt);
+	const categoryName = getSafeText(blog.category?.title || blog.category?.name || blog.category);
+	const authorName = getSafeText(blog.author?.name || blog.author || blog.Author);
+	const readTime = getSafeText(blog.readTime);
 
 	return (
 		<LocalizedLink
@@ -26,11 +41,11 @@ export const BlogCard = ({ blog }) => {
 					className="object-cover w-full h-full transform group-hover:scale-105 transition-transform duration-500"
 					loading="lazy"
 				/>
-				{categoryName && (
+				{categoryName ? (
 					<span className="absolute top-4 ltr:left-4 rtl:right-4 inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-orange-500/95 text-white shadow-sm">
 						{categoryName}
 					</span>
-				)}
+				) : null}
 			</div>
 
 			{/* Content Area */}

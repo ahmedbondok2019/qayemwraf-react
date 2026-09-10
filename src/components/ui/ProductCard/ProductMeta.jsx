@@ -14,13 +14,13 @@ export const ProductMeta = ({ sku, warranty, delivery, isRtl }) => {
 			{warranty && (
 				<div className="flex items-center gap-1.5">
 					<Shield className="w-3 h-3 text-success" />
-					<span>{warranty}</span>
+					<span>{typeof warranty === 'object' ? (warranty.ar || warranty.en || "") : warranty}</span>
 				</div>
 			)}
 			{delivery && (
 				<div className="flex items-center gap-1.5">
 					<Truck className="w-3 h-3 text-primary" />
-					<span>{delivery}</span>
+					<span>{typeof delivery === 'object' ? (delivery.ar || delivery.en || "") : delivery}</span>
 				</div>
 			)}
 		</div>

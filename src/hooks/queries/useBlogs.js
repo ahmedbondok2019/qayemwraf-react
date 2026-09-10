@@ -188,10 +188,16 @@ export const fallbackBlogs = [
 export const mapBlogData = (apiBlog) => {
 	if (!apiBlog) return null;
 
-	// Sometimes category is null in the response
-	const categoryObj = apiBlog.category && typeof apiBlog.category === 'object' 
-		? { id: String(apiBlog.category.id || "cat-0"), title: { en: apiBlog.category.name || "", ar: apiBlog.category.name || "" } }
-		: { id: "general", title: { en: "General", ar: "عام" } };
+	const resolveI18n = (val, fallback) => {
+		if (val && typeof val === 'object') return val;
+		return { ar: val || fallback || "", en: val || fallback || "" };
+	};
+
+	const catTitle = apiBlog.category?.title || apiBlog.category?.name || (typeof apiBlog.category === 'string' ? apiBlog.category : "عام");
+	const categoryObj = {
+		id: String(apiBlog.category?.id || "cat-0"),
+		title: resolveI18n(catTitle, "عام")
+	};
 
 	// Description often contains HTML from API
 	const contentHtml = apiBlog.description || "";
@@ -199,10 +205,7 @@ export const mapBlogData = (apiBlog) => {
 	// Strip HTML tags for the excerpt if needed, or just use meta_description
 	const plainExcerpt = apiBlog.meta_description ? apiBlog.meta_description.replace(/<[^>]+>/g, '') : contentHtml.replace(/<[^>]+>/g, '').substring(0, 150) + "...";
 
-	const resolveI18n = (val, fallback) => {
-		if (val && typeof val === 'object') return val;
-		return { ar: val || fallback || "", en: val || fallback || "" };
-	};
+	const authorName = apiBlog.author_name || apiBlog.Author || "Admin";
 
 	return {
 		id: apiBlog.id,
@@ -213,7 +216,7 @@ export const mapBlogData = (apiBlog) => {
 		content: resolveI18n(apiBlog.content || contentHtml, ""),
 		image: apiBlog.image || apiBlog.primary_image || "",
 		author: {
-			name: { en: apiBlog.author_name || "Admin", ar: apiBlog.author_name || "المدير" },
+			name: resolveI18n(authorName, "Admin"),
 			avatar: "https://ui-avatars.com/api/?name=Admin&background=random"
 		},
 		publishedAt: apiBlog.created_at || apiBlog.published_at || new Date().toISOString().split('T')[0],

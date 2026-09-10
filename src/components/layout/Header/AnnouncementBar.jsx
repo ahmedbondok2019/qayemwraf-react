@@ -34,9 +34,18 @@ export const AnnouncementBar = () => {
 					<div className="flex items-center gap-2 font-medium">
 						<Icon name="ShieldCheck" size="sm" className="text-white shrink-0" />
 						<span className="line-clamp-1 text-white">
-							{settings?.why_choose_us?.subtitle || settings?.why_choose_us?.title || (isRtl
-								? "نحن نضع معايير جديدة للموثوقية والأمان في توفير أنظمة وحلول التخزين المعدني"
-								: "We set new standards of reliability and safety in providing metal storage solutions")}
+							{(() => {
+								const val = settings?.why_choose_us?.subtitle || settings?.why_choose_us?.title;
+								if (val) {
+									if (typeof val === 'object') {
+										return val[language] || val.ar || val.en || "";
+									}
+									return String(val);
+								}
+								return isRtl
+									? "نحن نضع معايير جديدة للموثوقية والأمان في توفير أنظمة وحلول التخزين المعدني"
+									: "We set new standards of reliability and safety in providing metal storage solutions";
+							})()}
 						</span>
 					</div>
 
