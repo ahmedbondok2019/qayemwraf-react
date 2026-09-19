@@ -12,10 +12,11 @@ import { fetchWishlist } from "@/features/wishlist/wishlistSlice";
 export const AppLayout = () => {
 	const dispatch = useAppDispatch();
 
-	useEffect(() => {
-		dispatch(fetchCart());
-		dispatch(fetchWishlist());
-	}, [dispatch]);
+	// Cart and Wishlist endpoints are disabled by user on backend
+	// useEffect(() => {
+	// 	dispatch(fetchCart());
+	// 	dispatch(fetchWishlist());
+	// }, [dispatch]);
 
 	return (
 		<div className="min-h-screen flex flex-col bg-background text-text transition-colors duration-normal">

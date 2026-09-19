@@ -17,6 +17,8 @@ export const ROUTES = {
 	BEST_SELLERS: "/best-sellers",
 	BLOGS: "/blogs",
 	BLOG_DETAILS: "/blogs/:slug",
+	PROJECTS: "/projects",
+	PROJECT_DETAILS: "/projects/:slug",
 	FLASH_DEALS: "/flash-deals",
 	OFFERS: "/offers",
 	// Auth

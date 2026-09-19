@@ -29,7 +29,7 @@ const Home = () => {
 						return (
 							<React.Fragment key={section.id}>
 								<Hero sliders={homeData.sliders || []} isLoading={isLoading} />
-								<AboutUsSection />
+								<AboutUsSection data={homeData.about || homeData.about_us || homeData} isLoading={isLoading} />
 							</React.Fragment>
 						);
 					case "categoryPills":

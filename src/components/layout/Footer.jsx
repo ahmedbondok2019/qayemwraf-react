@@ -129,7 +129,8 @@ export const Footer = () => {
 						</h4>
 						<ul className="space-y-4">
 							<li><LocalizedLink to="/about" className="text-slate-400 hover:text-primary transition-colors inline-block">{isRtl ? "عن المصنع" : "About Us"}</LocalizedLink></li>
-							<li><LocalizedLink to="/categories" className="text-slate-400 hover:text-primary transition-colors inline-block">{isRtl ? "سابقة أعمالنا ومنتجاتنا" : "Our Products & Portfolio"}</LocalizedLink></li>
+							<li><LocalizedLink to="/projects" className="text-slate-400 hover:text-primary transition-colors inline-block">{isRtl ? "سابقة أعمالنا ومشاريعنا" : "Our Projects & Portfolio"}</LocalizedLink></li>
+							<li><LocalizedLink to="/products" className="text-slate-400 hover:text-primary transition-colors inline-block">{isRtl ? "كتالوج المنتجات" : "Product Catalog"}</LocalizedLink></li>
 						</ul>
 					</div>
 

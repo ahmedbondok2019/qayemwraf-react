@@ -42,7 +42,7 @@ export const ProductCard = ({ product, variant = PRODUCT_CARD_VARIANTS.DEFAULT, 
 		<LocalizedLink 
 			to={`/products/${targetSlug}`}
 			className={cn(
-				"group relative flex flex-col w-full bg-surface border border-orange-500/20 rounded-2xl overflow-hidden transition-all duration-300 hover:border-orange-500/45 hover:shadow-floating outline-none",
+				"group relative flex flex-col justify-between w-full h-full bg-surface border border-border/80 dark:border-slate-800/80 rounded-2xl overflow-hidden transition-all duration-300 hover:border-primary/60 dark:hover:border-primary/60 hover:shadow-xl hover:-translate-y-1 outline-none",
 				variant === PRODUCT_CARD_VARIANTS.COMPACT && "p-2",
 				variant === PRODUCT_CARD_VARIANTS.HORIZONTAL && "flex-row",
 				className

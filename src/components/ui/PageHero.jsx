@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useLanguage } from "@/app/providers/I18nProvider";
 import Container from "@/components/ui/Container";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 /**
  * PageHero Component
  * A compact internal page hero banner for non-homepage pages.
+ * Optimized with high-priority eager image loading and resource preloading.
  *
  * @variant API:
  * - title: { en, ar } — Main page heading
@@ -22,8 +23,27 @@ export const PageHero = ({ title, subtitle, count, countLabel, breadcrumbs, bgIm
 	const defaultCountLabel = { en: "Products", ar: "منتج" };
 	const resolvedCountLabel = countLabel || defaultCountLabel;
 
-	// Default subtle medical abstract background image
+	// Default backdrop image
 	const backdropUrl = bgImage || "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&q=80&w=1600";
+
+	// Dynamically inject a high-priority preload link for the hero image to boost LCP
+	useEffect(() => {
+		if (backdropUrl) {
+			const link = document.createElement("link");
+			link.rel = "preload";
+			link.as = "image";
+			link.href = backdropUrl;
+			link.setAttribute("fetchpriority", "high");
+			document.head.appendChild(link);
+			return () => {
+				try {
+					document.head.removeChild(link);
+				} catch {
+					// link might already be detached
+				}
+			};
+		}
+	}, [backdropUrl]);
 
 	return (
 		<div
@@ -32,11 +52,14 @@ export const PageHero = ({ title, subtitle, count, countLabel, breadcrumbs, bgIm
 				className
 			)}
 		>
-			{/* Subtle Background Image & Soft Gradient Overlay */}
+			{/* High-priority Background Image & Soft Gradient Overlay */}
 			<div className="absolute inset-0 pointer-events-none select-none overflow-hidden">
 				<img 
 					src={backdropUrl} 
 					alt="" 
+					loading="eager"
+					fetchPriority="high"
+					decoding="async"
 					className="w-full h-full object-cover opacity-35 dark:opacity-15 mix-blend-multiply dark:mix-blend-normal transition-opacity duration-300"
 				/>
 				<div className={cn(

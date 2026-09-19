@@ -26,6 +26,8 @@ import Terms from "@/pages/Terms";
 import BestSellers from "@/pages/BestSellers";
 import Blogs from "@/pages/Blogs/index";
 import BlogDetails from "@/pages/Blogs/BlogDetails";
+import Projects from "@/pages/Projects/index";
+import ProjectDetails from "@/pages/ProjectDetails/index";
 import FlashDeals from "@/pages/FlashDeals";
 
 // Auth Pages
@@ -102,6 +104,10 @@ export const routes = [
 						element: <About />,
 					},
 					{
+						path: "about-us",
+						element: <About />,
+					},
+					{
 						path: ROUTES.CONTACT.substring(1),
 						element: <Contact />,
 					},
@@ -128,6 +134,14 @@ export const routes = [
 					{
 						path: ROUTES.BLOG_DETAILS.substring(1),
 						element: <BlogDetails />,
+					},
+					{
+						path: ROUTES.PROJECTS.substring(1),
+						element: <Projects />,
+					},
+					{
+						path: ROUTES.PROJECT_DETAILS.substring(1),
+						element: <ProjectDetails />,
 					},
 					{
 						path: ROUTES.FLASH_DEALS.substring(1),

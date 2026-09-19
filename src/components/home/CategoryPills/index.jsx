@@ -1,57 +1,46 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useLanguage } from "@/app/providers/I18nProvider";
 import LocalizedLink from "@/components/ui/LocalizedLink";
-import { ArrowLeft, ArrowRight, Sparkles, Layers } from "lucide-react";
+import { ArrowLeft, ArrowRight, Sparkles, Layers, ChevronLeft, ChevronRight } from "lucide-react";
 import Container from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
 import { cn } from "@/lib/utils";
+import { resolveImageUrl, FALLBACK_IMAGES } from "@/lib/imageUtils";
 
 /**
- * Premium Showcased Categories Layout
- * Features a large highlight promo banner on the left (or right based on RTL/LTR)
- * and a grid of card categories with customized backgrounds, badge icons, and details.
+ * CategoriesSection Component
+ * Ultra-smooth, buttery interactive accordion showcase for storage & racking categories.
+ * Features persistent DOM mounting for zero-flicker transitions, spring-like flex expansion,
+ * glassmorphic badges, high-contrast readable vertical text pills, and bottom indicator dots.
  */
 export const CategoriesSection = ({ categories = [], isLoading }) => {
 	const { language } = useLanguage();
 	const isRtl = language === "ar";
+	const [activeIndex, setActiveIndex] = useState(0);
+	const hoverTimeoutRef = useRef(null);
 
-	const categoriesToDisplay = categories || [];
+	const categoriesToDisplay = categories && categories.length > 0 ? categories.slice(0, 6) : [];
 
-	if (isLoading && (!categories || categories.length === 0)) {
-		return (
-			<Section bg="background" spacing="sm" className="overflow-hidden">
-				<Container>
-					<div className="h-6 w-48 bg-slate-200 animate-pulse rounded-md mb-6"></div>
-					<div className="grid grid-cols-1 md:grid-cols-12 gap-6 h-[400px]">
-						<div className="md:col-span-4 bg-slate-100 animate-pulse rounded-3xl h-full"></div>
-						<div className="md:col-span-8 grid grid-cols-2 sm:grid-cols-3 gap-4 h-full">
-							{[...Array(6)].map((_, i) => (
-								<div key={i} className="bg-slate-100 animate-pulse rounded-2xl h-full w-full"></div>
-							))}
-						</div>
-					</div>
-				</Container>
-			</Section>
-		);
-	}
+	const handleCardHover = (index) => {
+		if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+		hoverTimeoutRef.current = setTimeout(() => {
+			setActiveIndex(index);
+		}, 40); // 40ms micro-debounce for ultra-smooth responsiveness
+	};
 
-	if (!isLoading && categoriesToDisplay.length === 0) return null;
+	const nextCategory = () => {
+		setActiveIndex((prev) => (prev + 1) % categoriesToDisplay.length);
+	};
 
-	// Extract first category for the large featured promo card
-	const featuredCategory = categoriesToDisplay[0];
-	const gridCategories = categoriesToDisplay.slice(1, 9); // Display next 8 categories in a grid
+	const prevCategory = () => {
+		setActiveIndex((prev) => (prev - 1 + categoriesToDisplay.length) % categoriesToDisplay.length);
+	};
 
-	// Premium background colors for grid cards to look exactly like the reference design
-	const cardColors = [
-		{ bg: "bg-blue-50/70 dark:bg-blue-950/20", border: "border-blue-100 dark:border-blue-900/40", text: "text-blue-600 dark:text-blue-400" },
-		{ bg: "bg-amber-50/70 dark:bg-amber-950/20", border: "border-amber-100 dark:border-amber-900/40", text: "text-amber-600 dark:text-amber-400" },
-		{ bg: "bg-purple-50/70 dark:bg-purple-950/20", border: "border-purple-100 dark:border-purple-900/40", text: "text-purple-600 dark:text-purple-400" },
-		{ bg: "bg-emerald-50/70 dark:bg-emerald-950/20", border: "border-emerald-100 dark:border-emerald-900/40", text: "text-emerald-600 dark:text-emerald-400" },
-		{ bg: "bg-rose-50/70 dark:bg-rose-950/20", border: "border-rose-100 dark:border-rose-900/40", text: "text-rose-600 dark:text-rose-400" },
-		{ bg: "bg-indigo-50/70 dark:bg-indigo-950/20", border: "border-indigo-100 dark:border-indigo-900/40", text: "text-indigo-600 dark:text-indigo-400" },
-		{ bg: "bg-sky-50/70 dark:bg-sky-950/20", border: "border-sky-100 dark:border-sky-900/40", text: "text-sky-600 dark:text-sky-400" },
-		{ bg: "bg-teal-50/70 dark:bg-teal-950/20", border: "border-teal-100 dark:border-teal-900/40", text: "text-teal-600 dark:text-teal-400" }
-	];
+	useEffect(() => {
+		return () => {
+			if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
+		};
+	}, []);
 
 	const getLocalized = (field) => {
 		if (!field) return "";
@@ -67,125 +56,255 @@ export const CategoriesSection = ({ categories = [], isLoading }) => {
 		return String(field);
 	};
 
+	if (isLoading && (!categories || categories.length === 0)) {
+		return (
+			<Section bg="background" spacing="sm" className="overflow-hidden py-8 sm:py-12">
+				<Container>
+					<div className="h-6 w-48 bg-surface animate-pulse rounded-full mb-8" />
+					<div className="h-[460px] w-full bg-surface animate-pulse rounded-3xl border border-border/40" />
+				</Container>
+			</Section>
+		);
+	}
+
+	if (!isLoading && categoriesToDisplay.length === 0) return null;
+
 	return (
-		<Section bg="background" spacing="sm" className="overflow-hidden py-8 sm:py-12">
+		<Section bg="background" spacing="sm" className="overflow-hidden py-8 sm:py-12 relative select-none">
+			{/* Ambient background glow effects */}
+			<div className="absolute top-1/3 start-0 w-80 h-80 bg-primary/5 rounded-full blur-3xl pointer-events-none" />
+			<div className="absolute bottom-0 end-0 w-96 h-96 bg-primary/8 rounded-full blur-3xl pointer-events-none" />
+
 			<Container>
-				{/* Top Title Bar */}
-				<div className="flex items-end justify-between gap-4 mb-8">
+				{/* Header Section */}
+				<div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-6 sm:mb-8">
 					<div>
-						<div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold mb-2">
-							<Sparkles size={14} />
-							<span>{isRtl ? "تصنيفات حصرية" : "Showcased Categories"}</span>
+						<div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold mb-3 shadow-xs">
+							<Sparkles size={14} className="animate-pulse" />
+							<span>{isRtl ? "تصنيفات حصرية ومنتجات رئيسية" : "Showcased Categories"}</span>
 						</div>
-						<h2 className="text-xl sm:text-2xl md:text-3xl font-black text-text tracking-tight">
-							{isRtl ? "أقسام وتجهيزات التخزين" : "Storage & Equipment Categories"}
+						<h2 className="text-2xl sm:text-3xl md:text-4xl font-black text-text tracking-tight leading-tight">
+							{isRtl ? "أقسام وتجهيزات التخزين المتكاملة" : "Storage & Racking Solutions"}
 						</h2>
 					</div>
-					<LocalizedLink
-						to="/categories"
-						className="group inline-flex items-center gap-1.5 text-xs font-bold text-primary hover:text-primary-hover transition-colors"
-					>
-						<span>{isRtl ? "كل الأقسام" : "All Categories"}</span>
-						{isRtl ? <ArrowLeft size={14} /> : <ArrowRight size={14} />}
-					</LocalizedLink>
+
+					<div className="flex items-center gap-3 self-start sm:self-auto">
+						{/* Desktop Navigation Arrows */}
+						<div className="hidden md:flex items-center gap-1.5 bg-surface border border-border/70 rounded-xl p-1 shadow-xs">
+							<button
+								type="button"
+								onClick={isRtl ? nextCategory : prevCategory}
+								className="w-8 h-8 rounded-lg flex items-center justify-center text-text hover:bg-surface-2 hover:text-primary transition-colors cursor-pointer"
+								aria-label="Previous category"
+							>
+								{isRtl ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
+							</button>
+							<button
+								type="button"
+								onClick={isRtl ? prevCategory : nextCategory}
+								className="w-8 h-8 rounded-lg flex items-center justify-center text-text hover:bg-surface-2 hover:text-primary transition-colors cursor-pointer"
+								aria-label="Next category"
+							>
+								{isRtl ? <ChevronLeft size={18} /> : <ChevronRight size={18} />}
+							</button>
+						</div>
+
+						<LocalizedLink
+							to="/categories"
+							className="group inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-surface border border-border/70 hover:border-primary/50 text-xs sm:text-sm font-bold text-text hover:text-primary transition-all duration-300 shadow-xs hover:shadow-md"
+						>
+							<span>{isRtl ? "تصفح جميع الأقسام" : "View All Categories"}</span>
+							{isRtl ? (
+								<ArrowLeft size={16} className="transition-transform group-hover:-translate-x-1" />
+							) : (
+								<ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
+							)}
+						</LocalizedLink>
+					</div>
 				</div>
 
-				{/* Two Column Layout (Large featured on one side, Grid on the other) */}
-				<div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-					
-					{/* Column 1: Featured Category Large Showcase (Col Span 4) */}
-					{featuredCategory && (() => {
-						const featuredTitle = getLocalized(featuredCategory.title) || getLocalized(featuredCategory.name);
-						const featuredLink = featuredCategory.link && typeof featuredCategory.link === "string" && featuredCategory.link.startsWith("/")
-							? featuredCategory.link
-							: `/category/${featuredCategory.id || featuredCategory.link}`;
-						
+				{/* Desktop & Tablet Interactive Expanding Accordion Showcase (Hidden on Mobile) */}
+				<div className="hidden md:flex gap-3 lg:gap-4 h-[440px] lg:h-[480px] w-full items-stretch">
+					{categoriesToDisplay.map((item, idx) => {
+						const isActive = activeIndex === idx;
+						const title = getLocalized(item.title) || getLocalized(item.name) || (isRtl ? "قسم التخزين" : "Category");
+						const subtitle = getLocalized(item.description) || (isRtl ? "مختلف المقاسات والأحمال القياسية" : "All dimensions & heavy-duty loads");
+						const linkUrl = item.link && typeof item.link === "string" && item.link.startsWith("/")
+							? item.link
+							: `/category/${item.id || item.slug || item.link}`;
+						const catImg = resolveImageUrl(item.image, FALLBACK_IMAGES.CATEGORY);
+
 						return (
-							<LocalizedLink
-								to={featuredLink}
-								className="lg:col-span-4 rounded-3xl bg-gradient-to-b from-blue-500/10 to-blue-600/20 border border-blue-500/20 p-6 md:p-8 flex flex-col justify-between shadow-sm relative group overflow-hidden min-h-[350px] lg:min-h-auto"
+							<div
+								key={item.id || idx}
+								onMouseEnter={() => handleCardHover(idx)}
+								onClick={() => setActiveIndex(idx)}
+								className={cn(
+									"relative rounded-3xl overflow-hidden cursor-pointer bg-surface",
+									"transition-[flex,border-color,box-shadow,transform] duration-700 ease-[cubic-bezier(0.25,1,0.5,1)] will-change-[flex]",
+									"border group",
+									isActive
+										? "flex-[4.2] lg:flex-[4.8] border-primary/60 shadow-2xl ring-2 ring-primary/25 z-20"
+										: "flex-[1] border-white/10 dark:border-slate-800/80 hover:border-primary/40 opacity-85 hover:opacity-100 z-10"
+								)}
 							>
-								{/* Decorative details */}
-								<div className="absolute top-0 right-0 w-36 h-36 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
-								
-								{/* Product Image inside the large layout */}
-								<div className="w-full flex items-center justify-center flex-grow py-4">
-									<img
-										src={featuredCategory.image}
-										alt={featuredTitle}
-										className="max-h-[220px] object-contain transition-transform duration-500 group-hover:scale-105"
-									/>
+								{/* Background Image filling 100% of card with smooth zoom & fallback */}
+								<img
+									src={catImg}
+									alt={title}
+									onError={(e) => { e.currentTarget.src = FALLBACK_IMAGES.CATEGORY; }}
+									className={cn(
+										"absolute inset-0 w-full h-full object-cover transition-transform duration-1000 ease-out",
+										isActive ? "scale-105" : "scale-100 group-hover:scale-105"
+									)}
+									loading="lazy"
+								/>
+
+								{/* Dynamic multi-gradient backdrop overlay */}
+								<div
+									className={cn(
+										"absolute inset-0 transition-opacity duration-700 ease-out",
+										isActive
+											? "bg-gradient-to-t from-black/95 via-black/45 to-black/15"
+											: "bg-gradient-to-t from-black/90 via-black/60 to-black/35 group-hover:from-black/80"
+									)}
+								/>
+
+								{/* ACTIVE STATE OVERLAY (Always mounted, silky smooth crossfade & slide) */}
+								<div
+									className={cn(
+										"absolute inset-0 p-6 lg:p-8 flex flex-col justify-between z-20 transition-all duration-500 ease-out",
+										isActive
+											? "opacity-100 translate-y-0 pointer-events-auto delay-100"
+											: "opacity-0 translate-y-4 pointer-events-none"
+									)}
+								>
+									{/* Top Header of Active Card */}
+									<div className="flex items-center justify-between">
+										<div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-white/20 text-white text-xs font-bold shadow-md">
+											<span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
+											<span>{isRtl ? `القسم 0${idx + 1}` : `Category 0${idx + 1}`}</span>
+										</div>
+
+										<div className="w-10 h-10 rounded-2xl bg-primary text-white flex items-center justify-center shadow-lg shadow-primary/30">
+											<Layers size={20} />
+										</div>
+									</div>
+
+									{/* Bottom Glassmorphic Panel of Active Card */}
+									<div className="bg-black/75 backdrop-blur-xl rounded-2xl p-5 sm:p-6 border border-white/20 shadow-2xl">
+										<div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+											<div className="space-y-1.5 flex-1 min-w-0">
+												<h3 className="text-lg sm:text-xl lg:text-2xl font-black text-white leading-tight drop-shadow-md">
+													{title}
+												</h3>
+												<p className="text-xs sm:text-sm text-slate-300 font-medium line-clamp-1">
+													{subtitle}
+												</p>
+											</div>
+
+											<LocalizedLink
+												to={linkUrl}
+												onClick={(e) => e.stopPropagation()}
+												className="inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-primary text-white font-bold text-xs sm:text-sm shadow-xl shadow-primary/35 hover:bg-primary-hover hover:scale-105 transition-all duration-300 shrink-0 self-start sm:self-auto"
+											>
+												<span>{isRtl ? "تصفح المنتجات" : "Explore Category"}</span>
+												{isRtl ? <ArrowLeft size={16} /> : <ArrowRight size={16} />}
+											</LocalizedLink>
+										</div>
+									</div>
 								</div>
 
-								{/* Bottom info bar */}
-								<div className="relative z-10 bg-white dark:bg-slate-900 rounded-2xl p-4 shadow-md flex items-center justify-between border border-border/40 mt-4">
-									<div className="flex items-center gap-3">
-										<div className="w-10 h-10 rounded-xl bg-blue-600 text-white flex items-center justify-center shrink-0">
-											<Layers size={18} />
-										</div>
-										<div>
-											<h3 className="text-sm font-bold text-text line-clamp-1">
-												{featuredTitle}
-											</h3>
-											<span className="text-[10px] text-text-muted">
-												{isRtl ? "مختلف المقاسات والأحمال" : "All dimensions & loads"}
+								{/* COLLAPSED STATE OVERLAY (Always mounted, silky smooth crossfade) */}
+								<div
+									className={cn(
+										"absolute inset-0 p-3 sm:p-4 flex flex-col justify-between items-center z-10 transition-all duration-400 ease-out",
+										isActive
+											? "opacity-0 scale-90 pointer-events-none"
+											: "opacity-100 scale-100 pointer-events-auto delay-75"
+									)}
+								>
+									{/* Category Number Badge */}
+									<div className="w-8 h-8 rounded-full bg-black/60 backdrop-blur-md border border-white/25 text-white text-xs font-black flex items-center justify-center shadow-lg">
+										0{idx + 1}
+									</div>
+
+									{/* High-Contrast Frosted Vertical Text Capsule */}
+									<div className="flex-1 flex items-center justify-center py-3 w-full">
+										<div className="px-2.5 py-4 rounded-full bg-black/55 backdrop-blur-md border border-white/15 flex items-center justify-center shadow-lg group-hover:border-primary/50 group-hover:bg-black/70 transition-all duration-300">
+											<span className="text-white font-extrabold text-xs lg:text-[13px] tracking-wide text-center drop-shadow-md [writing-mode:vertical-rl] rotate-180 group-hover:text-primary transition-colors whitespace-nowrap">
+												{title}
 											</span>
 										</div>
 									</div>
-									<span className="w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 group-hover:bg-blue-600 group-hover:text-white flex items-center justify-center transition-colors">
-										{isRtl ? <ArrowLeft size={16} /> : <ArrowRight size={16} />}
+
+									{/* Expand Chevron Icon */}
+									<div className="w-7 h-7 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-white/80 flex items-center justify-center group-hover:bg-primary group-hover:text-white group-hover:border-primary transition-all duration-300 shadow-sm">
+										{isRtl ? <ChevronLeft size={14} /> : <ChevronRight size={14} />}
+									</div>
+								</div>
+							</div>
+						);
+					})}
+				</div>
+
+				{/* Dot Progress Indicators for Desktop */}
+				<div className="hidden md:flex items-center justify-center gap-2 mt-5">
+					{categoriesToDisplay.map((_, idx) => (
+						<button
+							key={idx}
+							type="button"
+							onClick={() => setActiveIndex(idx)}
+							className={cn(
+								"h-2 rounded-full transition-all duration-500 cursor-pointer",
+								activeIndex === idx
+									? "w-8 bg-primary shadow-sm shadow-primary/50"
+									: "w-2 bg-border hover:bg-text-muted/50"
+							)}
+							aria-label={`Go to category ${idx + 1}`}
+						/>
+					))}
+				</div>
+
+				{/* Mobile Grid Showcase (Displayed on phones for optimal UX) */}
+				<div className="grid grid-cols-2 gap-3.5 md:hidden">
+					{categoriesToDisplay.map((item, idx) => {
+						const title = getLocalized(item.title) || getLocalized(item.name) || (isRtl ? "قسم التخزين" : "Category");
+						const linkUrl = item.link && typeof item.link === "string" && item.link.startsWith("/")
+							? item.link
+							: `/category/${item.id || item.slug || item.link}`;
+						const catImg = resolveImageUrl(item.image, FALLBACK_IMAGES.CATEGORY);
+
+						return (
+							<LocalizedLink
+								key={item.id || idx}
+								to={linkUrl}
+								className="group relative h-48 rounded-2xl overflow-hidden border border-border/80 shadow-md flex flex-col justify-end p-3.5 bg-surface"
+							>
+								{/* Full cover image */}
+								<img
+									src={catImg}
+									alt={title}
+									onError={(e) => { e.currentTarget.src = FALLBACK_IMAGES.CATEGORY; }}
+									className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-108"
+									loading="lazy"
+								/>
+								<div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-transparent" />
+
+								{/* Mobile content info */}
+								<div className="relative z-10 space-y-1">
+									<span className="inline-block text-[10px] font-bold text-primary bg-black/60 px-2 py-0.5 rounded backdrop-blur-sm border border-white/10">
+										0{idx + 1}
 									</span>
+									<h3 className="text-xs font-bold text-white line-clamp-2 leading-tight drop-shadow-md group-hover:text-primary transition-colors">
+										{title}
+									</h3>
 								</div>
 							</LocalizedLink>
 						);
-					})()}
-
-					{/* Column 2: 8-Category Grid (Col Span 8) */}
-					<div className="lg:col-span-8 grid grid-cols-2 sm:grid-cols-4 gap-4">
-						{gridCategories.map((item, idx) => {
-							const title = getLocalized(item.title) || getLocalized(item.name);
-							const linkUrl = item.link && typeof item.link === "string" && item.link.startsWith("/")
-								? item.link
-								: `/category/${item.id || item.link}`;
-							
-							const theme = cardColors[idx % cardColors.length];
-
-							return (
-								<LocalizedLink
-									key={item.id || idx}
-									to={linkUrl}
-									className="group rounded-2xl p-4 bg-white dark:bg-slate-900 border border-border/50 hover:border-primary/40 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between"
-								>
-									{/* Top: Photo on subtle premium colored backdrop */}
-									<div className={cn("w-full aspect-[4/3] rounded-xl flex items-center justify-center p-3 relative overflow-hidden", theme.bg, "border", theme.border)}>
-										<img
-											src={item.image}
-											alt={title}
-											className="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-108"
-										/>
-									</div>
-
-									{/* Bottom: Info Bar */}
-									<div className="mt-3.5 flex items-end justify-between">
-										<div className="space-y-0.5">
-											<h3 className="text-xs sm:text-sm font-bold text-text group-hover:text-primary transition-colors line-clamp-1">
-												{title}
-											</h3>
-											<span className="text-[10px] text-text-muted block">
-												{isRtl ? "مختلف المقاسات" : "All Dimensions"}
-											</span>
-										</div>
-
-										<span className={cn("w-6 h-6 rounded-full bg-slate-50 dark:bg-slate-800 flex items-center justify-center transition-colors group-hover:bg-primary group-hover:text-white shrink-0", theme.text)}>
-											{isRtl ? <ArrowLeft size={12} /> : <ArrowRight size={12} />}
-										</span>
-									</div>
-								</LocalizedLink>
-							);
-						})}
-					</div>
-
+					})}
 				</div>
+
 			</Container>
 		</Section>
 	);

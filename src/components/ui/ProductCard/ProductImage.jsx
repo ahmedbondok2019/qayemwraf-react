@@ -1,30 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import { cn } from "@/lib/utils";
+import { resolveImageUrl, FALLBACK_IMAGES } from "@/lib/imageUtils";
 
 export const ProductImage = ({ image, hoverImage, title, isHovered, isOutOfStock }) => {
+	const [imgSrc, setImgSrc] = useState(() => resolveImageUrl(image, FALLBACK_IMAGES.PRODUCT));
+	const [hoverSrc, setHoverSrc] = useState(() => (hoverImage ? resolveImageUrl(hoverImage, FALLBACK_IMAGES.PRODUCT) : null));
+
 	return (
 		<div className={cn(
-			"relative w-full aspect-square bg-surface-2 p-4 flex items-center justify-center overflow-hidden mix-blend-multiply dark:mix-blend-normal dark:bg-white",
+			"relative w-full aspect-[4/3] bg-slate-100 dark:bg-slate-900/60 flex items-center justify-center overflow-hidden",
 			isOutOfStock && "grayscale opacity-80"
 		)}>
 			<img
-				src={image || "https://placehold.co/400x400?text=EG+Medical"}
+				src={imgSrc}
 				alt={title || "Product Image"}
+				onError={() => setImgSrc(FALLBACK_IMAGES.PRODUCT)}
 				className={cn(
-					"object-contain w-full h-full transition-transform duration-500",
-					isHovered ? "scale-105" : "scale-100"
+					"w-full h-full object-cover transition-transform duration-700 ease-out",
+					isHovered ? "scale-108" : "scale-100"
 				)}
+				loading="lazy"
 			/>
-			{hoverImage && (
+			{hoverSrc && (
 				<img
-					src={hoverImage}
-					alt={title}
+					src={hoverSrc}
+					alt={title || "Product Image Hover"}
+					onError={() => setHoverSrc(null)}
 					className={cn(
-						"absolute inset-0 object-contain w-full h-full p-4 transition-opacity duration-500 bg-surface-2 dark:bg-white",
+						"absolute inset-0 w-full h-full object-cover transition-opacity duration-500",
 						isHovered ? "opacity-100" : "opacity-0"
 					)}
+					loading="lazy"
 				/>
 			)}
+			{/* Subtle bottom shadow overlay for smooth blend into card */}
+			<div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none opacity-60" />
 		</div>
 	);
 };
+
+export default ProductImage;

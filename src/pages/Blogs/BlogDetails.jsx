@@ -142,6 +142,9 @@ export const BlogDetails = () => {
 						<img
 							src={blog.image}
 							alt={title}
+							loading="eager"
+							fetchPriority="high"
+							decoding="async"
 							className="object-cover w-full h-full"
 						/>
 					</div>

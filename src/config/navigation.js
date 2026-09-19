@@ -14,6 +14,13 @@ export const navigationLinks = [
 		name: { en: "All Categories", ar: "كل الأقسام" },
 		path: "/categories"
 	},
+	{
+		id: "projects",
+		name: { en: "Our Projects", ar: "سابقة الأعمال" },
+		path: "/projects",
+		badge: { en: "Portfolio", ar: "مشاريعنا" },
+		badgeVariant: "primary"
+	},
 	{ 
 		id: "best-sellers",
 		name: { en: "Best Sellers", ar: "الأكثر مبيعاً" }, 

@@ -1,6 +1,4 @@
-import LocalizedLink from "@/components/ui/LocalizedLink";
 import React from "react";
-import { } from "react-router-dom";
 
 export const ProductTitle = ({ title }) => {
 	const displayText = typeof title === 'object'
@@ -8,8 +6,10 @@ export const ProductTitle = ({ title }) => {
 		: (title || "");
 
 	return (
-		<h3 className="text-sm font-bold text-text leading-tight truncate group-hover:text-primary transition-colors">
+		<h3 className="text-xs sm:text-[13.5px] font-bold text-text leading-snug line-clamp-2 min-h-[36px] group-hover:text-primary transition-colors">
 			{displayText}
 		</h3>
 	);
 };
+
+export default ProductTitle;

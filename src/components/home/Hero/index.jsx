@@ -101,6 +101,26 @@ export const Hero = ({ sliders = [], isLoading }) => {
 
 	//
 
+	// Preload the first active slide image immediately to maximize LCP performance
+	React.useEffect(() => {
+		const firstImage = slidesToDisplay[0]?.image;
+		if (firstImage) {
+			const link = document.createElement("link");
+			link.rel = "preload";
+			link.as = "image";
+			link.href = firstImage;
+			link.setAttribute("fetchpriority", "high");
+			document.head.appendChild(link);
+			return () => {
+				try {
+					document.head.removeChild(link);
+				} catch {
+					// safe cleanup
+				}
+			};
+		}
+	}, [slidesToDisplay[0]?.image]);
+
 	if (isLoading && (!sliders || sliders.length === 0)) {
 		return <Section spacing="none" className="pt-0 pb-8 sm:pb-12"><div className="min-h-[340px] bg-slate-100 animate-pulse w-full"></div></Section>;
 	}
@@ -124,6 +144,8 @@ export const Hero = ({ sliders = [], isLoading }) => {
 										alt={slide.title || "Hero Slider"}
 										className="w-full h-auto object-cover block"
 										loading={index === 0 ? "eager" : "lazy"}
+										fetchPriority={index === 0 ? "high" : "auto"}
+										decoding={index === 0 ? "sync" : "async"}
 									/>
 								) : (
 									<div className={`w-full aspect-[2.5/1] ${slide.background || "bg-[#0a2342]"}`} />
