@@ -75,7 +75,7 @@ export const Footer = () => {
 								<img 
 									src={settings.logo} 
 									alt="Qayem & Raf" 
-									className="h-10 sm:h-12 w-auto object-contain brightness-0 invert" 
+									className="h-10 sm:h-12 w-auto object-contain rounded-lg shadow-sm" 
 								/>
 							) : (
 								<div className="flex flex-col leading-none">

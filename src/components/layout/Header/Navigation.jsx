@@ -82,21 +82,11 @@ export const Navigation = () => {
 								<LocalizedLink
 									key={link.id || link.path}
 									to={link.path}
-									className={cn(
-										"relative inline-flex items-center gap-1.5 py-4 text-[15.5px] font-bold transition-all duration-300 select-none whitespace-nowrap group",
-										link.isOffer
-											? "text-secondary hover:text-secondary-hover"
-											: "text-text-secondary hover:text-primary"
-									)}
+									className="relative inline-flex items-center py-4 text-[15px] font-bold text-text-secondary hover:text-primary transition-colors duration-200 select-none whitespace-nowrap group"
 								>
 									<span className="relative z-10">{linkName}</span>
-									{link.badge && (
-										<Badge variant={link.badgeVariant || "primary"} size="sm" className="h-5 px-1.5 text-[10px] font-extrabold -translate-y-2">
-											{link.badge[language]}
-										</Badge>
-									)}
 									{/* Animated Underline */}
-									<span className="absolute bottom-0 left-1/2 w-0 h-[3px] bg-current transition-all duration-300 -translate-x-1/2 group-hover:w-full rounded-t-full opacity-0 group-hover:opacity-100" />
+									<span className="absolute bottom-0 left-1/2 w-0 h-[3px] bg-primary transition-all duration-300 -translate-x-1/2 group-hover:w-full rounded-t-full opacity-0 group-hover:opacity-100" />
 								</LocalizedLink>
 							);
 						})}

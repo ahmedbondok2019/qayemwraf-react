@@ -28,6 +28,7 @@ export const API_ENDPOINTS = {
 	SUB_CATEGORIES: "/sub-categories",
 	RATE_PRODUCT: "/rate-product",
 	PAGES: "/pages",
+	ABOUT: "/about",
 };
 
 export default API_ENDPOINTS;

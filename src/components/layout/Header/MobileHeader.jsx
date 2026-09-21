@@ -231,8 +231,8 @@ export const MobileHeader = () => {
 
 					{/* Scrollable Navigation Area */}
 					<nav className="flex-1 overflow-y-auto py-4 px-3 space-y-4" aria-label="Mobile navigation">
-						{/* Welcome Card & Profile Options */}
-						{isAuthenticated ? (
+						{/* Welcome Card & Profile Options - Temporarily hidden */}
+						{false && (isAuthenticated ? (
 							<div className="flex flex-col gap-1.5">
 								<button
 									onClick={() => setIsProfileMenuOpen(!isProfileMenuOpen)}
@@ -315,7 +315,7 @@ export const MobileHeader = () => {
 									</span>
 								</div>
 							</LocalizedLink>
-						)}
+						))}
 
 						{/* Links list */}
 						<div className="space-y-1">
@@ -328,25 +328,10 @@ export const MobileHeader = () => {
 										key={link.id || link.path}
 										to={link.path}
 										onClick={close}
-										className={cn(
-											"flex items-center gap-3.5 px-4 py-3 text-sm font-semibold rounded-xl transition-all duration-200 select-none",
-											link.isOffer
-												? "text-secondary hover:bg-secondary/5"
-												: "text-text-secondary hover:text-primary hover:bg-primary/5"
-										)}
+										className="flex items-center gap-3.5 px-4 py-3 text-sm font-semibold rounded-xl text-text-secondary hover:text-primary hover:bg-primary/5 transition-all duration-200 select-none"
 									>
 										{IconComponent && <IconComponent className="w-4.5 h-4.5 shrink-0 opacity-80" />}
 										<span className="flex-1 text-start">{linkName}</span>
-										{link.badge && (
-											<span className={cn(
-												"px-2 py-0.5 text-[9px] font-extrabold rounded-full uppercase tracking-wider shrink-0",
-												link.badgeVariant === "danger" 
-													? "bg-danger/10 text-danger border border-danger/20" 
-													: "bg-success/10 text-success border border-success/20"
-											)}>
-												{link.badge[language]}
-											</span>
-										)}
 										<ChevronRight className={cn("w-4 h-4 opacity-30 shrink-0", isRtl && "rotate-180")} />
 									</LocalizedLink>
 								);

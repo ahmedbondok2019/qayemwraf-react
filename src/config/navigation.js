@@ -17,23 +17,17 @@ export const navigationLinks = [
 	{
 		id: "projects",
 		name: { en: "Our Projects", ar: "سابقة الأعمال" },
-		path: "/projects",
-		badge: { en: "Portfolio", ar: "مشاريعنا" },
-		badgeVariant: "primary"
+		path: "/projects"
 	},
 	{ 
 		id: "best-sellers",
 		name: { en: "Best Sellers", ar: "الأكثر مبيعاً" }, 
-		path: "/best-sellers",
-		badge: { en: "Top", ar: "مميز" },
-		badgeVariant: "success"
+		path: "/best-sellers"
 	},
 	{ 
 		id: "flash-deals",
-		name: { en: "Flash Deals", ar: "عروض خاطفة" }, 
-		path: "/flash-deals",
-		badge: { en: "HOT", ar: "🔥 عروض" },
-		badgeVariant: "danger"
+		name: { en: "Offers & Deals", ar: "عروض وتخفيضات" }, 
+		path: "/flash-deals"
 	},
 	{ 
 		id: "blogs",
