@@ -4,6 +4,7 @@ import { useLanguage } from "@/app/providers/I18nProvider";
 import Container from "@/components/ui/Container";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import LocalizedLink from "@/components/ui/LocalizedLink";
+import SEO from "@/components/common/SEO";
 import {
 	ProjectGallery,
 	ProjectSpecs,
@@ -87,8 +88,19 @@ export const ProjectDetails = () => {
 		{ label: title }
 	];
 
+	const rawDesc = resolveText(project.description);
+	const cleanDesc = typeof rawDesc === "string" ? rawDesc.replace(/<[^>]*>?/gm, "").slice(0, 160) : "";
+
 	return (
 		<div className="flex flex-col w-full min-h-screen bg-background pb-16">
+			<SEO
+				title={`${title} - مشروع تجهيز مخازن وأرفف`}
+				description={cleanDesc || `تفاصيل مشروع ${title} لتجهيز المستودعات والمخازن بأنظمة أرفف التخزين المعدنية من قايم ورف.`}
+				keywords={`${title}, ${categoryTitle}, تجهيز مخازن, ارفف مخازن, مشاريع قايم ورف, ارفف مستودعات`}
+				image={project.primary_image || project.gallery?.[0] || "/android-chrome-512x512.png"}
+				canonical={`https://qayemwraf.com/${language}/projects/${slug}`}
+			/>
+
 			{/* Breadcrumb Navigation Header */}
 			<div className="border-b border-border/60 bg-surface/50">
 				<Container className="py-4">

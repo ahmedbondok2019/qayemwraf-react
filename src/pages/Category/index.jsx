@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { PageHero } from "@/components/ui/PageHero";
 import { useLanguage } from "@/app/providers/I18nProvider";
+import SEO from "@/components/common/SEO";
 import api from "@/services/api/client";
 import { API_ENDPOINTS } from "@/services/api/endpoints";
 
@@ -289,17 +290,52 @@ const Category = ({ isOffersRoute = false }) => {
 		);
 	}
 
+	const pageTitle = isOffers
+		? (isRtl ? "عروض وتخفيضات أرفف التخزين" : "Storage Racks Offers & Deals")
+		: isAllProducts
+		? (isRtl ? "كتالوج وحدات رفوف التخزين وأرفف المخازن" : "Storage Racks & Shelving Catalog")
+		: `${displayCategoryName} - ${isRtl ? "أرفف وحلول تخزين" : "Storage Racks"}`;
+
+	const pageDescription = isOffers
+		? (isRtl ? "اكتشف أقوى عروض وتخفيضات وحدات رفوف التخزين وأرفف المخازن والمحلات من قايم ورف بأعلى جودة." : "Explore the best offers on storage racking units and warehouse shelving from Qayem & Raf.")
+		: (isRtl ? `تصفح تشكيلة ${displayCategoryName} - أحدث أنظمة ووحدات رفوف التخزين المعدنية وأرفف المخازن والمحلات بأفضل الأسعار في مصر من قايم ورف.` : `Browse our selection of ${displayCategoryName} storage solutions and industrial shelving.`);
+
+	const categorySchema = {
+		"@context": "https://schema.org",
+		"@type": "CollectionPage",
+		"name": pageTitle,
+		"description": pageDescription,
+		"url": typeof window !== "undefined" ? window.location.href : `https://qayemwraf.com/category/${rawSlug}`,
+		"mainEntity": {
+			"@type": "ItemList",
+			"itemListElement": products.slice(0, 10).map((prod, idx) => ({
+				"@type": "ListItem",
+				"position": idx + 1,
+				"url": typeof window !== "undefined" ? `${window.location.origin}/product/${prod._apiOriginal?.id || prod.id}` : `https://qayemwraf.com/product/${prod.id}`,
+				"name": typeof prod.title === "object" ? prod.title[language] || prod.title.ar : prod.title
+			}))
+		}
+	};
+
 	return (
 		<div className="flex flex-col w-full min-h-screen bg-background pb-10">
+			<SEO
+				title={pageTitle}
+				description={pageDescription}
+				keywords={`${displayCategoryName}, وحدة رفوف تخزين, ارفف تخزين, ارفف مخازن, ارفف محلات, ارفف صاج, قايم ورف, اسعار ارفف التخزين`}
+				canonical={`https://qayemwraf.com/${language}/${isOffers ? "flash-deals" : isAllProducts ? "products" : `category/${rawSlug}`}`}
+				schema={categorySchema}
+			/>
+
 			{/* 1. Internal Hero */}
 			<PageHero
 				title={{ en: displayCategoryName, ar: displayCategoryName }}
 				subtitle={
 					isOffers
-					? { en: "Discover our latest offers and exclusive deals on medical supplies.", ar: "اكتشف أحدث العروض والتخفيضات الحصرية على المستلزمات الطبية." }
+					? { en: "Discover our latest offers and exclusive deals on storage systems and racking units.", ar: "اكتشف أحدث العروض والتخفيضات الحصرية على وحدات رفوف التخزين وأنظمة الأرفف المعدنية." }
 					: isAllProducts 
-					? { en: "Discover our complete catalog of certified medical equipment and supplies.", ar: "اكتشف الكتالوج الكامل للمعدات والمستلزمات الطبية المعتمدة." }
-					: { en: "Explore our curated selection of high-quality products in this category.", ar: "استكشف تشكيلتنا المختارة من المنتجات عالية الجودة في هذا القسم." }
+					? { en: "Discover our complete catalog of certified industrial storage racks and metal shelving.", ar: "اكتشف الكتالوج الكامل لوحدات رفوف التخزين الذكية، أرفف المخازن والمستودعات، وأرفف المحلات." }
+					: { en: "Explore our curated selection of high-quality storage racks and metal solutions.", ar: "استكشف تشكيلتنا المتميزة من وحدات وأرفف التخزين والمشغولات المعدنية بأعلى معايير المتانة." }
 				}
 				count={totalItems}
 				breadcrumbs={breadcrumbItems}

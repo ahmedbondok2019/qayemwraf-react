@@ -4,6 +4,7 @@ import Container from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
 import PageHero from "@/components/ui/PageHero";
 import LocalizedLink from "@/components/ui/LocalizedLink";
+import SEO from "@/components/common/SEO";
 import { ProjectCard, ProjectsSkeleton, ProjectsPagination } from "./components";
 import { useProjects } from "@/hooks/queries/useProjects";
 import { Sparkles, PhoneCall, ArrowLeft, ArrowRight, FolderSearch } from "lucide-react";
@@ -62,6 +63,13 @@ export const Projects = () => {
 
 	return (
 		<div className="flex flex-col w-full min-h-screen bg-background pb-16">
+			<SEO
+				title={isRtl ? "مشاريع تجهيز المخازن والمستودعات وسابقة الأعمال" : "Warehouse & Storage Solutions Projects Portfolio"}
+				description={isRtl ? "استعرض سابقة أعمال ومشاريع قايم ورف في تجهيز المخازن والمستودعات، تركيب أرفف الأحمال الثقيلة والمتوسطة والمشغولات المعدنية لكبرى الشركات في مصر." : "Explore Qayem & Raf portfolio of warehouse racking and metal storage projects."}
+				keywords={isRtl ? "تجهيز مخازن, تجهيز مستودعات, تركيب ارفف مخازن, مشاريع قايم ورف, ارفف احمال ثقيلة, تصنيع مشغولات معدنية" : "warehouse racking projects, storage fitouts, industrial shelving installations, Egypt"}
+				canonical={`https://qayemwraf.com/${language}/projects`}
+			/>
+
 			{/* Page Hero Banner */}
 			<PageHero
 				title={pageTitle}

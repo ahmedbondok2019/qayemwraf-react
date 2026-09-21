@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useLanguage } from "@/app/providers/I18nProvider";
 import Container from "@/components/ui/Container";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import SEO from "@/components/common/SEO";
 import { Search, ChevronDown, HelpCircle, Package, Receipt, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -98,8 +99,28 @@ export const FAQ = () => {
 		return matchesCategory && matchesSearch;
 	});
 
+	const faqSchema = {
+		"@context": "https://schema.org",
+		"@type": "FAQPage",
+		"mainEntity": faqs.map(item => ({
+			"@type": "Question",
+			"name": item.question[language] || item.question.ar,
+			"acceptedAnswer": {
+				"@type": "Answer",
+				"text": item.answer[language] || item.answer.ar
+			}
+		}))
+	};
+
 	return (
 		<div className="flex flex-col w-full min-h-screen bg-background pb-16">
+			<SEO
+				title={isRtl ? "الأسئلة الشائعة حول أرفف وحلول التخزين" : "Frequently Asked Questions about Storage Racks"}
+				description={isRtl ? "إجابات شاملة لجميع استفساراتكم حول أنظمة وأرفف التخزين، الشحن والتركيب، وضمان الجودة من قايم ورف." : "Answers to common questions about industrial racking, delivery, and storage systems."}
+				keywords={isRtl ? "اسئلة شائعة ارفف تخزين, تركيب ارفف مخازن, ضمان ارفف صاج, اسعار ارفف قايم ورف" : "FAQ storage racks, warehouse shelving questions, Egypt"}
+				canonical={`https://qayemwraf.com/${language}/faq`}
+				schema={faqSchema}
+			/>
 			
 			{/* Hero Banner */}
 			<div className="bg-surface border-b border-border/60 py-10 mb-12">

@@ -2,6 +2,7 @@ import React from "react";
 import { useLanguage } from "@/app/providers/I18nProvider";
 import Container from "@/components/ui/Container";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import SEO from "@/components/common/SEO";
 import { AlertTriangle, Clock, BookOpen } from "lucide-react";
 import { usePages } from "@/hooks/queries/usePages";
 
@@ -24,6 +25,11 @@ export const Terms = () => {
 
 	return (
 		<div className="flex flex-col w-full min-h-screen bg-background pb-16">
+			<SEO
+				title={isRtl ? "شروط الاستخدام والخدمة" : "Terms of Service"}
+				description={isRtl ? "شروط وأحكام استخدام موقع قايم ورف للمشغولات المعدنية وحلول التخزين وضمانات التوريد." : "Terms of Service and supply agreements for Qayem & Raf storage solutions."}
+				canonical={`https://qayemwraf.com/${language}/terms`}
+			/>
 			
 			{/* Hero Banner */}
 			<div className="bg-surface border-b border-border/60 py-10 mb-12">

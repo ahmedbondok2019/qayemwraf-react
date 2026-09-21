@@ -3,6 +3,7 @@ import { useLanguage } from "@/app/providers/I18nProvider";
 import Container from "@/components/ui/Container";
 import { PageHero } from "@/components/ui/PageHero";
 import BlogCard from "@/components/ui/BlogCard";
+import SEO from "@/components/common/SEO";
 import { Search } from "lucide-react";
 import { useBlogs } from "@/hooks/queries/useBlogs";
 
@@ -46,14 +47,21 @@ export const Blogs = () => {
 
 	const breadcrumbItems = [
 		{ label: { en: "Home", ar: "الرئيسية" }, link: "/" },
-		{ label: { en: "Medical Blog", ar: "المدونة الطبية" } }
+		{ label: { en: "Storage & Metal Works Blog", ar: "مدونة أنظمة وحلول التخزين" } }
 	];
 
 	return (
 		<div className="flex flex-col w-full min-h-screen bg-background pb-16">
+			<SEO
+				title={isRtl ? "مدونة حلول التخزين والمستودعات والمشغولات المعدنية" : "Storage Solutions & Industrial Racking Blog"}
+				description={isRtl ? "اقرأ أحدث المقالات والأدلة الهندسية حول تصميم وتجهيز المخازن، اختيار وحدات رفوف التخزين، ومعايير السلامة الصناعية من خبراء قايم ورف." : "Read expert guides and insights about warehouse racking, storage shelving, and custom metal fabrication."}
+				keywords={isRtl ? "مدونة تخزين, مقالات تجهيز مخازن, نصائح شراء ارفف تخزين, ارفف مستودعات, قايم ورف" : "storage blog, warehouse racking guide, shelving articles, Egypt"}
+				canonical={`https://qayemwraf.com/${language}/blogs`}
+			/>
+
 			<PageHero
-				title={{ en: "Medical Blog & Insights", ar: "المدونة الطبية والمعرفة" }}
-				subtitle={{ en: "Read the latest guides, tips, and articles about medical equipment and care.", ar: "اقرأ أحدث الأدلة والنصائح والمقالات الطبية حول الرعاية المنزلية وتجهيزات العيادات." }}
+				title={{ en: "Storage & Metal Works Blog", ar: "مدونة حلول وأنظمة التخزين" }}
+				subtitle={{ en: "Read the latest engineering guides, tips, and articles about warehouse shelving and metal storage.", ar: "اقرأ أحدث الأدلة والنصائح الهندسية حول تجهيز المستودعات، وحدات الرفوف، والمشغولات المعدنية." }}
 				count={filteredBlogs.length}
 				breadcrumbs={breadcrumbItems}
 			/>

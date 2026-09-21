@@ -4,6 +4,7 @@ import { useLanguage } from "@/app/providers/I18nProvider";
 import Container from "@/components/ui/Container";
 import LocalizedLink from "@/components/ui/LocalizedLink";
 import BlogCard from "@/components/ui/BlogCard";
+import SEO from "@/components/common/SEO";
 import { Calendar, Clock, ChevronRight, ChevronLeft } from "lucide-react";
 import { useBlogBySlug, useBlogs } from "@/hooks/queries/useBlogs";
 
@@ -67,8 +68,39 @@ export const BlogDetails = () => {
 	const authorName = blog.author?.name?.[language] || blog.author?.name || "";
 	const readTime = blog.readTime?.[language] || blog.readTime || "";
 
+	const articleSchema = {
+		"@context": "https://schema.org",
+		"@type": "BlogPosting",
+		"headline": title,
+		"description": excerpt || title,
+		"image": blog.image || "https://qayemwraf.com/android-chrome-512x512.png",
+		"author": {
+			"@type": "Organization",
+			"name": isRtl ? "قايم ورف" : "Qayem & Raf"
+		},
+		"publisher": {
+			"@type": "Organization",
+			"name": "قايم ورف للمشغولات المعدنية وحلول التخزين",
+			"logo": {
+				"@type": "ImageObject",
+				"url": "https://qayemwraf.com/android-chrome-512x512.png"
+			}
+		},
+		"datePublished": blog.date || "2026-01-01"
+	};
+
 	return (
 		<div className="min-h-screen bg-background pb-20">
+			<SEO
+				title={`${title} - مدونة قايم ورف`}
+				description={excerpt || `اقرأ مقال ${title} على مدونة قايم ورف لحلول التخزين والمشغولات المعدنية.`}
+				keywords={`${title}, ${categoryName}, مقالات تخزين, ارفف مخازن, قايم ورف`}
+				image={blog.image || "/android-chrome-512x512.png"}
+				type="article"
+				canonical={`https://qayemwraf.com/${language}/blogs/${slug}`}
+				schema={articleSchema}
+			/>
+
 			{/* Breadcrumbs Navigation */}
 			<div className="bg-slate-50 dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 py-4">
 				<Container>

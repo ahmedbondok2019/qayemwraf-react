@@ -2,6 +2,7 @@ import React from "react";
 import { useLanguage } from "@/app/providers/I18nProvider";
 import Container from "@/components/ui/Container";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import SEO from "@/components/common/SEO";
 import { 
 	Award, 
 	ShieldCheck, 
@@ -179,6 +180,13 @@ export const About = () => {
 
 	return (
 		<div className="flex flex-col w-full min-h-screen bg-background pb-20 overflow-hidden relative">
+			<SEO
+				title={isRtl ? "عن قايم ورف | ريادة تصنيع وحدات رفوف التخزين والمشغولات المعدنية" : "About Qayem & Raf | Leading Metal Storage Solutions"}
+				description={isRtl ? "تعرف على قايم ورف، الشركة الرائدة في مصر لتصميم وتصنيع وتوريد أنظمة ووحدات رفوف التخزين للمخازن، المستودعات، والمشغولات المعدنية بخبرة أكثر من 15 عاماً." : "Learn about Qayem & Raf, the leading manufacturer of industrial storage racks and metal works in Egypt."}
+				keywords={isRtl ? "عن قايم ورف, مصنع ارفف تخزين, شركات تجهيز مخازن في مصر, مصنع مشغولات معدنية" : "about Qayem & Raf, metal storage manufacturer, Egypt"}
+				canonical={`https://qayemwraf.com/${language}/about`}
+			/>
+
 			{/* Decorative ambient background glows */}
 			<div className="absolute top-0 left-1/4 w-[550px] h-[550px] bg-primary/5 rounded-full blur-3xl pointer-events-none -translate-y-1/2" />
 			<div className="absolute top-[35%] right-0 w-[450px] h-[450px] bg-secondary/5 rounded-full blur-3xl pointer-events-none translate-x-1/3" />

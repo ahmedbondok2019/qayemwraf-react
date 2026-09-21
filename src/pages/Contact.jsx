@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useLanguage } from "@/app/providers/I18nProvider";
 import Container from "@/components/ui/Container";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import SEO from "@/components/common/SEO";
 import { Phone, Mail, MapPin, Check, Send, MessageCircle } from "lucide-react";
 import { useSettings } from "@/hooks/queries/useSettings";
 import api from "@/services/api/client";
@@ -53,6 +54,12 @@ export const Contact = () => {
 
 	return (
 		<div className="flex flex-col w-full min-h-screen bg-background pb-16">
+			<SEO
+				title={isRtl ? "تواصل معنا | طلب عروض أسعار واستشارات أرفف التخزين" : "Contact Us | Storage Racks Inquiries & Quotes"}
+				description={isRtl ? "تواصل مع فريق قايم ورف لطلب عروض أسعار تجهيز المستودعات والمخازن، أرفف المحلات، والاستشارات الهندسية للمشغولات المعدنية في مصر." : "Get in touch with Qayem & Raf for warehouse shelving quotations, custom storage solutions, and metal fabrication consultations."}
+				keywords={isRtl ? "تواصل مع قايم ورف, رقم قايم ورف, طلب عرض سعر ارفف, عناوين معارض قايم ورف" : "contact Qayem and Raf, warehouse racking quote, Egypt"}
+				canonical={`https://qayemwraf.com/${language}/contact`}
+			/>
 			
 			{/* Hero Banner */}
 			<div className="bg-surface border-b border-border/60 py-10 mb-12">

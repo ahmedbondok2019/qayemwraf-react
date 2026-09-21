@@ -2,6 +2,7 @@ import React from "react";
 import { useLanguage } from "@/app/providers/I18nProvider";
 import Container from "@/components/ui/Container";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
+import SEO from "@/components/common/SEO";
 import { ShieldAlert, BookOpen, Clock } from "lucide-react";
 import { usePages } from "@/hooks/queries/usePages";
 
@@ -24,6 +25,11 @@ export const Privacy = () => {
 
 	return (
 		<div className="flex flex-col w-full min-h-screen bg-background pb-16">
+			<SEO
+				title={isRtl ? "سياسة الخصوصية وسرية البيانات" : "Privacy Policy"}
+				description={isRtl ? "سياسة الخصوصية وحماية بيانات العملاء لموقع قايم ورف للمشغولات المعدنية وحلول التخزين." : "Privacy policy and data protection principles for Qayem & Raf users."}
+				canonical={`https://qayemwraf.com/${language}/privacy`}
+			/>
 			
 			{/* Hero Banner */}
 			<div className="bg-surface border-b border-border/60 py-10 mb-12">

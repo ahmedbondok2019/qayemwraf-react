@@ -1,0 +1,15 @@
+# Robots.txt for Qayem & Raf (قايم ورف)
+User-agent: *
+Allow: /
+Allow: /images/
+Allow: /assets/
+Disallow: /admin/
+Disallow: /account/
+Disallow: /checkout/
+Disallow: /cart/
+Disallow: /api/
+Disallow: /*?*sort=
+Disallow: /*?*page=
+
+# Sitemaps
+Sitemap: https://qayemwraf.com/sitemap.xml

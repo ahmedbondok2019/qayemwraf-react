@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from "@/app/store/hooks";
 import { addToCart } from "@/features/cart/cartSlice";
 import { toggleWishlist, selectIsWishlisted } from "@/features/wishlist/wishlistSlice";
 import { toast } from "sonner";
+import SEO from "@/components/common/SEO";
 import ProductGallery from "./components/ProductGallery";
 import ProductInfo from "./components/ProductInfo";
 import ProductActions from "./components/ProductActions";
@@ -199,9 +200,40 @@ const ProductDetails = () => {
 		{ label: product.title }
 	];
 
+	const productTitle = typeof product.title === "object" ? product.title[language] || product.title.ar || product.title.en : product.title;
+	const productDesc = typeof product.description === "object" ? product.description[language] || product.description.ar || product.description.en : product.description;
+	const cleanDesc = typeof productDesc === "string" ? productDesc.replace(/<[^>]*>?/gm, "").slice(0, 160) : "";
+
+	const productSchema = {
+		"@context": "https://schema.org/",
+		"@type": "Product",
+		"name": productTitle,
+		"image": product.images || [],
+		"description": cleanDesc || `${productTitle} - وحدة رفوف وتخزين معدنية من قايم ورف`,
+		"brand": {
+			"@type": "Brand",
+			"name": isRtl ? "قايم ورف" : "Qayem & Raf"
+		},
+		"offers": {
+			"@type": "Offer",
+			"url": typeof window !== "undefined" ? window.location.href : `https://qayemwraf.com/product/${slug}`,
+			"priceCurrency": "EGP",
+			"price": product.price?.current || 0,
+			"availability": (product.stock?.quantity ?? 1) > 0 ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+			"itemCondition": "https://schema.org/NewCondition"
+		}
+	};
+
 	return (
 		<div className="flex flex-col w-full min-h-screen bg-background pb-10">
-
+			<SEO
+				title={`${productTitle} - أرفف ووحدات تخزين`}
+				description={cleanDesc || `اشتري ${productTitle} بأعلى جودة وضمان من قايم ورف للمشغولات المعدنية وحلول التخزين.`}
+				keywords={`${productTitle}, وحدة رفوف تخزين, ارفف مخازن, ارفف معدنية, قايم ورف, اسعار ارفف التخزين`}
+				image={product.images?.[0] || "/android-chrome-512x512.png"}
+				type="product"
+				schema={productSchema}
+			/>
 
 			<Container className="pt-4 sm:pt-6">
 				{/* Top Section: Gallery & Info */}
