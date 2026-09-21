@@ -44,8 +44,8 @@ export const Hero = ({ sliders = [], isLoading }) => {
 		}
 
 		const defaultDescription = language === "ar"
-			? "تصنيع وتوفير أحدث الأجهزة والمستلزمات الطبية للمستشفيات والعيادات والأفراد بجودة ألمانية ومعايير عالمية."
-			: "Manufacturing and providing the latest medical devices and equipment for hospitals and clinics with international standards.";
+			? "تصميم وتصنيع وتوريد أحدث أنظمة ووحدات رفوف التخزين الذكية، أرفف المخازن والمستودعات والمشغولات المعدنية بأعلى معايير الجودة والمتانة."
+			: "Design, manufacturing and supply of smart storage racking systems, warehouse shelves, and heavy-duty metal products with international standards.";
 
 		return {
 			id: apiSlide.id || index,
@@ -122,33 +122,37 @@ export const Hero = ({ sliders = [], isLoading }) => {
 	}, [slidesToDisplay[0]?.image]);
 
 	if (isLoading && (!sliders || sliders.length === 0)) {
-		return <Section spacing="none" className="pt-0 pb-8 sm:pb-12"><div className="min-h-[340px] bg-slate-100 animate-pulse w-full"></div></Section>;
+		return (
+			<Section spacing="none" className="pt-0 pb-8 sm:pb-12 md:pb-16 w-full">
+				<div className="w-full aspect-[1600/542] min-h-[160px] bg-slate-100 dark:bg-slate-800 animate-pulse rounded-xs"></div>
+			</Section>
+		);
 	}
 
 	return (
 		<Section spacing="none" className="pt-0 pb-8 sm:pb-12 md:pb-16 w-full">
-			<div className="w-full relative overflow-hidden shadow-sm">
+			<div className="w-full relative overflow-hidden shadow-xs">
 				<HeroSlider onSlideChange={setActiveIndex}>
 					{slidesToDisplay.map((slide, index) => {
-						const isActive = index === activeIndex;
-
 						return (
 							<div
 								key={slide.id || index}
-								className="relative flex-[0_0_100%] min-w-0 select-none"
+								className="relative flex-[0_0_100%] min-w-0 select-none aspect-[1600/542] overflow-hidden bg-slate-100 dark:bg-slate-800"
 							>
 								{/*Full Background Image */}
 								{slide.image ? (
 									<img
 										src={slide.image}
-										alt={slide.title || "Hero Slider"}
-										className="w-full h-auto object-cover block"
+										alt={slide.title || "قايم ورف لحلول التخزين"}
+										width="1600"
+										height="542"
+										className="w-full h-full object-cover block"
 										loading={index === 0 ? "eager" : "lazy"}
 										fetchPriority={index === 0 ? "high" : "auto"}
 										decoding={index === 0 ? "sync" : "async"}
 									/>
 								) : (
-									<div className={`w-full aspect-[2.5/1] ${slide.background || "bg-[#0a2342]"}`} />
+									<div className={`w-full h-full ${slide.background || "bg-[#0a2342]"}`} />
 								)}
 							</div>
 						);

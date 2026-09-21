@@ -54,17 +54,7 @@ const formatProductIdForFrontend = (productId) => {
 	return String(productId);
 };
 
-/**
- * Helper to construct absolute URLs for images starting with relative database paths.
- */
-const resolveImageUrl = (url) => {
-	if (!url) return "";
-	if (url.startsWith("http://") || url.startsWith("https://") || url.startsWith("data:")) {
-		return url;
-	}
-	const cleanPath = url.startsWith("/") ? url.substring(1) : url;
-	return `https://egimedical.com/${cleanPath}`;
-};
+import { resolveImageUrl } from "@/lib/imageUtils";
 
 /**
  * Localize helper to ensure titles and localized values always support { en, ar } structure.

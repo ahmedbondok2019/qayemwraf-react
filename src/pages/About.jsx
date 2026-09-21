@@ -130,15 +130,15 @@ export const About = () => {
 	// Gallery & Images
 	const defaultGallery = [
 		{
-			image: "https://admin.qayemwraf.com/website/images/about/engineering_studies.jpg",
+			image: FALLBACK_IMAGES.ABOUT_1,
 			title: isRtl ? "دراسات هندسية واستشارات مساحية" : "Engineering Studies & Layout Planning"
 		},
 		{
-			image: "https://admin.qayemwraf.com/website/images/about/warehouse_equipment.jpg",
+			image: FALLBACK_IMAGES.ABOUT_2,
 			title: isRtl ? "تجهيز مستودعات - أنظمة تخزين متطورة" : "Warehouse Equipping - Advanced Racking"
 		},
 		{
-			image: "https://admin.qayemwraf.com/website/images/about/durability_steel.jpg",
+			image: FALLBACK_IMAGES.ABOUT_3,
 			title: isRtl ? "أعلى معايير المتانة والصلب المعالج" : "Heavy Duty Treated Steel Standards"
 		}
 	];

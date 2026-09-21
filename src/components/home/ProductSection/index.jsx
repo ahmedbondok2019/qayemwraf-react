@@ -9,6 +9,7 @@ import Section from "@/components/ui/Section";
 import Container from "@/components/ui/Container";
 import ProductCard from "@/components/ui/ProductCard";
 import { cn } from "@/lib/utils";
+import { resolveImageUrl, FALLBACK_IMAGES } from "@/lib/imageUtils";
 
 
 /**
@@ -59,7 +60,7 @@ export const ProductSection = ({ title, subtitle, viewAllLink, variant = "defaul
 			title: resolveI18n(apiProd.title, apiProd.name),
 			category: { ...resolveI18n(apiProd.category, ""), id: String(apiProd.category_id || "") },
 			brand: apiProd.brand || "",
-			image: apiProd.primary_image || apiProd.image || "",
+			image: resolveImageUrl(apiProd.primary_image || apiProd.image, FALLBACK_IMAGES.PRODUCT),
 			price: { current: currentPrice, original: originalPrice },
 			reviews: { rating: apiProd.rating || 0, count: apiProd.rate_count || 0 },
 			stock: { quantity: apiProd.quantity || 0 },

@@ -6,6 +6,14 @@ export const ProductImage = ({ image, hoverImage, title, isHovered, isOutOfStock
 	const [imgSrc, setImgSrc] = useState(() => resolveImageUrl(image, FALLBACK_IMAGES.PRODUCT));
 	const [hoverSrc, setHoverSrc] = useState(() => (hoverImage ? resolveImageUrl(hoverImage, FALLBACK_IMAGES.PRODUCT) : null));
 
+	React.useEffect(() => {
+		setImgSrc(resolveImageUrl(image, FALLBACK_IMAGES.PRODUCT));
+	}, [image]);
+
+	React.useEffect(() => {
+		setHoverSrc(hoverImage ? resolveImageUrl(hoverImage, FALLBACK_IMAGES.PRODUCT) : null);
+	}, [hoverImage]);
+
 	return (
 		<div className={cn(
 			"relative w-full aspect-[4/3] bg-slate-100 dark:bg-slate-900/60 flex items-center justify-center overflow-hidden",

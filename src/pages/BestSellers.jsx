@@ -5,6 +5,7 @@ import { PageHero } from "@/components/ui/PageHero";
 import ProductCard from "@/components/ui/ProductCard";
 import { ProductCardSkeleton } from "@/components/ui/ProductCard";
 import { useBestSellers } from "@/hooks/queries/useBestSellers";
+import { resolveImageUrl, FALLBACK_IMAGES } from "@/lib/imageUtils";
 
 /**
  * Helper to format a numeric ID back to frontend mock-compatible 'prod-X' format.
@@ -19,18 +20,6 @@ const formatProductIdForFrontend = (productId) => {
 		return `prod-${parsed}`;
 	}
 	return String(productId);
-};
-
-/**
- * Helper to construct absolute URLs for images starting with relative database paths.
- */
-const resolveImageUrl = (url) => {
-	if (!url) return "";
-	if (url.startsWith("http://") || url.startsWith("https://") || url.startsWith("data:")) {
-		return url;
-	}
-	const cleanPath = url.startsWith("/") ? url.substring(1) : url;
-	return `https://egimedical.com/${cleanPath}`;
 };
 
 /**

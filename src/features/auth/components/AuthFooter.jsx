@@ -19,8 +19,8 @@ export const AuthFooter = () => {
 			</div>
 			<p className="mt-2 text-[10px] text-text-muted/60 leading-normal max-w-xs">
 				{isRtl
-					? "من خلال المتابعة، فإنك توافق على الشروط الطبية والترخيصات المطلوبة لشراء وتوزيع الأجهزة والمستلزمات الطبية."
-					: "By proceeding, you agree to our medical terms and required licensing guidelines for healthcare supply purchases."}
+					? "من خلال المتابعة، فإنك توافق على الشروط والأحكام وسياسات التعامل مع قايم ورف لتوريد وحدات التخزين والمشغولات المعدنية."
+					: "By proceeding, you agree to our terms and conditions for storage systems and metal fabrication supply."}
 			</p>
 		</div>
 	);

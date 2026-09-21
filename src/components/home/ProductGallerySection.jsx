@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import Section from "@/components/ui/Section";
 import Container from "@/components/ui/Container";
 import { cn } from "@/lib/utils";
+import { resolveImageUrl, FALLBACK_IMAGES } from "@/lib/imageUtils";
 
 /**
  * ProductGallerySection
@@ -47,7 +48,7 @@ export const ProductGallerySection = ({
 
 			return {
 				id: apiProd.id || idx,
-				image: apiProd.primary_image || apiProd.image,
+				image: resolveImageUrl(apiProd.primary_image || apiProd.image, FALLBACK_IMAGES.PRODUCT),
 				title: resolvedTitle,
 				category: resolvedCategory,
 				year,
@@ -156,6 +157,7 @@ export const ProductGallerySection = ({
 										<img
 											src={item.image}
 											alt={item.title}
+											onError={(e) => { e.currentTarget.src = FALLBACK_IMAGES.PRODUCT; }}
 											className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
 											loading="lazy"
 										/>
