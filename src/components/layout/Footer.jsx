@@ -15,54 +15,59 @@ export const Footer = () => {
 	return (
 		<footer className="bg-slate-900 pt-10 sm:pt-16 pb-6 sm:pb-8 text-slate-300 border-t border-slate-800">
 			<Container>
-				{/* Top Section - Newsletter */}
-				<div className="bg-slate-800/50 rounded-2xl sm:rounded-3xl p-6 sm:p-8 md:p-12 mb-10 sm:mb-16 border border-slate-700/50 flex flex-col md:flex-row items-center justify-between gap-6 sm:gap-8 relative overflow-hidden">
-					<div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl pointer-events-none" />
-					
-					<div className="md:w-1/2 relative z-10">
-						<h3 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-white mb-2 sm:mb-3">
-							{isRtl ? "اشترك في نشرتنا البريدية" : "Subscribe to Our Newsletter"}
-						</h3>
-						<p className="text-slate-400">
-							{isRtl 
-								? "احصل على أحدث عروض أنظمة التخزين، والمقالات الهندسية، وأخبار تجهيز المستودعات مباشرة في بريدك الإلكتروني." 
-								: "Get the latest storage system offers, engineering articles, and warehouse news directly to your inbox."}
-						</p>
-					</div>
-
-					<form className="w-full md:w-1/2 relative z-10 flex items-center" onSubmit={(e) => {
-						e.preventDefault();
-						toast.success(isRtl ? "تم الاشتراك بنجاح!" : "Subscribed successfully!");
-						e.target.reset();
-					}}>
-						<div className="flex flex-col sm:relative sm:block w-full gap-3 sm:gap-0">
-							<div className="relative w-full">
-								<div className="absolute inset-y-0 flex items-center px-4 pointer-events-none text-slate-400">
-									<Mail className="w-5 h-5" />
+				{/* Top Section - Google Maps Location */}
+				<div className="bg-slate-800/60 rounded-2xl sm:rounded-3xl p-5 sm:p-7 md:p-8 mb-10 sm:mb-16 border border-slate-700/60 relative overflow-hidden shadow-xl">
+					<div className="flex flex-col lg:flex-row items-stretch justify-between gap-6 relative z-10">
+						{/* Location Details & Directions */}
+						<div className="lg:w-1/3 flex flex-col justify-between space-y-4">
+							<div>
+								<div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold mb-3">
+									<MapPin className="w-3.5 h-3.5 text-primary" />
+									<span>{isRtl ? "موقع المعرض والمبيعات" : "Showroom & Sales Location"}</span>
 								</div>
-								<input
-									type="email"
-									aria-label={isRtl ? "البريد الإلكتروني للنشرة" : "Newsletter email"}
-									placeholder={isRtl ? "أدخل بريدك الإلكتروني..." : "Enter your email address..."}
-									className={cn(
-										"w-full h-12 sm:h-14 bg-slate-900/50 border border-slate-700 rounded-full text-white placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all text-sm sm:text-base",
-										isRtl ? "pr-10 sm:pr-12 pl-4 sm:pl-32 text-right" : "pl-10 sm:pl-12 pr-4 sm:pr-32 text-left"
-									)}
-									required
-								/>
+								<h3 className="text-xl sm:text-2xl font-extrabold text-white mb-2">
+									{isRtl ? "تفضل بزيارتنا في المعرض" : "Visit Our Showroom"}
+								</h3>
+								<p className="text-slate-400 text-sm leading-relaxed mb-4">
+									{isRtl
+										? "35 عمارات التوفيقية، شرق مدينة نصر (امتداد مصطفى النحاس - قرب النادي الأهلي)، القاهرة."
+										: "35 Al-Tawfiqia Buildings, East Nasr City (Mustafa El-Nahas Ext - near Al-Ahly Club), Cairo, Egypt."}
+								</p>
+								<div className="space-y-2 text-xs text-slate-300">
+									<div className="flex items-center gap-2">
+										<span className="w-2 h-2 rounded-full bg-success"></span>
+										<span>{isRtl ? "مواعيد العمل: يومياً من 9:00 ص إلى 10:00 م" : "Working Hours: Daily 9:00 AM - 10:00 PM"}</span>
+									</div>
+									<div className="flex items-center gap-2">
+										<span className="w-2 h-2 rounded-full bg-primary"></span>
+										<span>{isRtl ? "معاينة وفحص كافة أنواع الأرفف والمشغولات" : "Inspect all rack samples & metal works in person"}</span>
+									</div>
+								</div>
 							</div>
-							<button
-								type="submit"
-								className={cn(
-									"w-full sm:w-auto sm:absolute sm:inset-y-1.5 flex items-center justify-center gap-2 px-6 h-12 sm:h-auto bg-primary hover:bg-primary-hover text-white rounded-full font-semibold transition-all duration-300 shrink-0",
-									isRtl ? "sm:left-1.5" : "sm:right-1.5"
-								)}
+
+							<a
+								href="https://maps.app.goo.gl/u9Zs1ikL4h1uVDFa8"
+								target="_blank"
+								rel="noopener noreferrer"
+								className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3 bg-primary hover:bg-primary-hover text-white rounded-xl font-bold text-sm shadow-md transition-all hover:shadow-primary/20 hover:-translate-y-0.5"
 							>
-								<span>{isRtl ? "اشتراك" : "Subscribe"}</span>
-								<Send className={cn("w-4 h-4", isRtl && "rotate-180")} />
-							</button>
+								<MapPin className="w-4 h-4" />
+								<span>{isRtl ? "فتح الموقع على Google Maps" : "Open in Google Maps"}</span>
+							</a>
 						</div>
-					</form>
+
+						{/* Map Iframe */}
+						<div className="lg:w-2/3 w-full h-64 sm:h-72 md:h-80 rounded-2xl overflow-hidden border border-slate-700/80 shadow-inner relative bg-slate-900">
+							<iframe
+								title={isRtl ? "موقع قايم ورف على الخريطة" : "Qayem & Raf Google Map"}
+								src="https://maps.google.com/maps?q=30.0384,31.3655&hl=ar&z=15&output=embed"
+								className="w-full h-full border-0"
+								loading="lazy"
+								allowFullScreen
+								referrerPolicy="no-referrer-when-downgrade"
+							/>
+						</div>
+					</div>
 				</div>
 
 				{/* Main Footer Links */}
@@ -144,14 +149,37 @@ export const Footer = () => {
 							{isRtl ? "تواصل معنا" : "Contact Us"}
 						</h4>
 						<ul className="space-y-4 text-sm">
-							{settings?.address && (
+							{/* Showroom Address */}
+							{(settings?.showroom_address || settings?.address) && (
 								<li className="flex items-start gap-3 text-slate-400">
 									<MapPin className="w-5 h-5 text-orange-500 shrink-0 mt-0.5" />
-									<span>
-										{typeof settings.address === 'object'
-											? (settings.address[language] || settings.address.ar || settings.address.en || "")
-											: settings.address}
-									</span>
+									<div className="flex flex-col">
+										<span className="text-xs font-semibold text-white/90">
+											{isRtl ? "عنوان المعرض:" : "Showroom Address:"}
+										</span>
+										<span className="text-xs leading-relaxed text-slate-300">
+											{(() => {
+												const val = settings.showroom_address || settings.address;
+												return typeof val === 'object' ? (val[language] || val.ar || val.en || "") : val;
+											})()}
+										</span>
+									</div>
+								</li>
+							)}
+							{/* Factory Address */}
+							{settings?.factory_address && (
+								<li className="flex items-start gap-3 text-slate-400">
+									<MapPin className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+									<div className="flex flex-col">
+										<span className="text-xs font-semibold text-white/90">
+											{isRtl ? "عنوان المصنع:" : "Factory Address:"}
+										</span>
+										<span className="text-xs leading-relaxed text-slate-300">
+											{typeof settings.factory_address === 'object'
+												? (settings.factory_address[language] || settings.factory_address.ar || settings.factory_address.en || "")
+												: settings.factory_address}
+										</span>
+									</div>
 								</li>
 							)}
 							{settings?.phone && (

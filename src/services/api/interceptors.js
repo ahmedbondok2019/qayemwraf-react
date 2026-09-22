@@ -10,6 +10,21 @@ export const setupInterceptors = (axiosInstance) => {
 			if (token) {
 				config.headers.Authorization = `Bearer ${token}`;
 			}
+
+			// Automatically send current active language
+			const currentLang = localStorage.getItem("app_lang") || (window.location.pathname.startsWith("/en") ? "en" : "ar");
+			config.headers["Accept-Language"] = currentLang;
+			config.headers["X-Locale"] = currentLang;
+			config.headers["X-Language"] = currentLang;
+
+			// Add lang to query params if not already set
+			if (!config.params) {
+				config.params = {};
+			}
+			if (!config.params.lang && !config.params.locale) {
+				config.params.lang = currentLang;
+			}
+
 			return config;
 		},
 		(error) => {

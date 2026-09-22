@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import api from "@/services/api/client";
 import { API_ENDPOINTS } from "@/services/api/endpoints";
+import { useLanguage } from "@/app/providers/I18nProvider";
 
 export const mapBackendProduct = (apiProd) => {
 	const priceVal = apiProd.price || 0;
@@ -32,8 +33,10 @@ export const mapBackendProduct = (apiProd) => {
 };
 
 export const useLatestProducts = () => {
+	const { language } = useLanguage();
+
 	return useQuery({
-		queryKey: ["latestProducts"],
+		queryKey: ["latestProducts", language],
 		queryFn: async () => {
 			try {
 				const res = await api.get(API_ENDPOINTS.LATEST_PRODUCTS);

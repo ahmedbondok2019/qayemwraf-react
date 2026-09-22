@@ -22,10 +22,7 @@ export const resolveImageUrl = (url, fallback = FALLBACK_IMAGES.PRODUCT) => {
 
 	const trimmed = url.trim();
 
-	// Replace old egimedical domain with actual backend domain
-	if (trimmed.includes("egimedical.com")) {
-		return trimmed.replace(/^https?:\/\/(?:www\.)?egimedical\.com\//, "https://admin.qayemwraf.com/");
-	}
+	// Fix frontend domain mistakenly returned for storage assets
 
 	// Fix frontend domain mistakenly returned for storage assets
 	if (trimmed.startsWith("https://qayemwraf.com/storage/") || trimmed.startsWith("http://qayemwraf.com/storage/")) {

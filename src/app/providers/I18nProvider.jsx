@@ -1,13 +1,20 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { STORAGE_KEYS } from "@/constants/storage";
 import { LANGUAGES, LANGUAGE_DETAILS } from "@/constants/languages";
+import queryClient from "@/lib/react-query/queryClient";
 
 const LanguageContext = createContext(null);
 
 export const I18nProvider = ({ children }) => {
-	const [language, setLanguage] = useState(
-		() => localStorage.getItem(STORAGE_KEYS.LANGUAGE) || LANGUAGES.AR
-	);
+	const getInitialLanguage = () => {
+		const pathLang = window.location.pathname.split("/")[1];
+		if (pathLang === LANGUAGES.EN || pathLang === LANGUAGES.AR) {
+			return pathLang;
+		}
+		return localStorage.getItem(STORAGE_KEYS.LANGUAGE) || LANGUAGES.AR;
+	};
+
+	const [language, setLanguage] = useState(getInitialLanguage);
 
 	useEffect(() => {
 		const root = window.document.documentElement;
@@ -15,6 +22,11 @@ export const I18nProvider = ({ children }) => {
 		root.setAttribute("lang", details.code);
 		root.setAttribute("dir", details.dir);
 		localStorage.setItem(STORAGE_KEYS.LANGUAGE, language);
+		localStorage.setItem("qayem_lang", language);
+		localStorage.setItem("app_lang", language);
+		
+		// Invalidate queries so fresh translated data is fetched from API
+		queryClient.invalidateQueries();
 	}, [language]);
 
 	const toggleLanguage = () => {

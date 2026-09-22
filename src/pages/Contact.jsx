@@ -218,18 +218,40 @@ export const Contact = () => {
 									</div>
 								)}
 
-								{/* Address */}
-								{settings?.address && (
+								{/* Showroom Address */}
+								{(settings?.showroom_address || settings?.address) && (
 									<div className="flex items-start gap-4">
 										<div className="w-10 h-10 bg-warning/10 text-warning rounded-xl flex items-center justify-center shrink-0">
 											<MapPin className="w-5 h-5" />
 										</div>
 										<div className="flex flex-col">
-											<span className="text-xs text-text-muted font-bold">{isRtl ? "المقر الرئيسي" : "Headquarters"}</span>
-											<p className="text-sm text-text-secondary leading-relaxed mt-0.5">
-												{typeof settings.address === 'object'
-													? (settings.address[language] || settings.address.ar || settings.address.en || "")
-													: settings.address}
+											<span className="text-xs text-text-muted font-bold">
+												{isRtl ? "عنوان المعرض :" : "Showroom Address:"}
+											</span>
+											<p className="text-sm font-semibold text-text leading-relaxed mt-0.5">
+												{(() => {
+													const val = settings.showroom_address || settings.address;
+													return typeof val === 'object' ? (val[language] || val.ar || val.en || "") : val;
+												})()}
+											</p>
+										</div>
+									</div>
+								)}
+
+								{/* Factory Address */}
+								{settings?.factory_address && (
+									<div className="flex items-start gap-4">
+										<div className="w-10 h-10 bg-primary/10 text-primary rounded-xl flex items-center justify-center shrink-0">
+											<MapPin className="w-5 h-5" />
+										</div>
+										<div className="flex flex-col">
+											<span className="text-xs text-text-muted font-bold">
+												{isRtl ? "عنوان المصنع :" : "Factory Address:"}
+											</span>
+											<p className="text-sm font-semibold text-text leading-relaxed mt-0.5">
+												{typeof settings.factory_address === 'object'
+													? (settings.factory_address[language] || settings.factory_address.ar || settings.factory_address.en || "")
+													: settings.factory_address}
 											</p>
 										</div>
 									</div>
@@ -238,18 +260,7 @@ export const Contact = () => {
 							</div>
 						</div>
 
-						{/* Map Placeholder */}
-						<div className="bg-surface border border-border/50 rounded-3xl overflow-hidden h-60 relative shadow-sm">
-							<div className="absolute inset-0 bg-surface-2 flex flex-col items-center justify-center p-6 text-center gap-2">
-								<MapPin className="w-8 h-8 text-primary animate-bounce" />
-								<span className="font-extrabold text-sm text-text">{isRtl ? "موقعنا في مصر" : "Our Location"}</span>
-								<span className="text-xs text-text-muted max-w-xs">
-									{typeof settings?.address === 'object'
-										? (settings.address[language] || settings.address.ar || settings.address.en || "")
-										: (settings?.address || "El-Badrshein, Egypt")}
-								</span>
-							</div>
-						</div>
+
 
 					</div>
 
