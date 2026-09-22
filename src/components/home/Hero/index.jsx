@@ -28,8 +28,38 @@ export const Hero = ({ sliders = [], isLoading }) => {
 	const { language } = useLanguage();
 	const [activeIndex, setActiveIndex] = useState(0);
 
+	const defaultDescription = language === "ar"
+		? "تصميم وتصنيع وتوريد أحدث أنظمة ووحدات رفوف التخزين الذكية، أرفف المخازن والمستودعات والمشغولات المعدنية بأعلى معايير الجودة والمتانة."
+		: "Design, manufacturing and supply of smart storage racking systems, warehouse shelves, and heavy-duty metal products with international standards.";
+
+	const defaultSlides = [
+		{
+			id: 1,
+			title: "قائم ورف لحلول التخزين والمشغولات المعدنية",
+			description: defaultDescription,
+			image: "https://admin.qayemwraf.com/storage/website/images/sliders/1789989022.png",
+			link: "/shop"
+		},
+		{
+			id: 2,
+			title: "وحدات تخزين هيفي ديوتي للمخازن والمستودعات",
+			description: defaultDescription,
+			image: "https://admin.qayemwraf.com/storage/website/images/sliders/1789989231.png",
+			link: "/category/5"
+		},
+		{
+			id: 3,
+			title: "وحدات أرفف قياسية للمحلات والشركات",
+			description: defaultDescription,
+			image: "https://admin.qayemwraf.com/storage/website/images/sliders/1789989122.png",
+			link: "/category/2"
+		}
+	];
+
+	const rawSliders = sliders && sliders.length > 0 ? sliders : defaultSlides;
+
 	// Bind API data to the slider layout exactly as it is
-	const slidesToDisplay = (sliders || []).map((apiSlide, index) => {
+	const slidesToDisplay = rawSliders.map((apiSlide, index) => {
 
 		// Build dynamic link from API fields
 		let actionLink = "/shop";
@@ -42,10 +72,6 @@ export const Hero = ({ sliders = [], isLoading }) => {
 		} else if (apiSlide.link_id && apiSlide.link_type === "product") {
 			actionLink = `/product/${apiSlide.link_id}`;
 		}
-
-		const defaultDescription = language === "ar"
-			? "تصميم وتصنيع وتوريد أحدث أنظمة ووحدات رفوف التخزين الذكية، أرفف المخازن والمستودعات والمشغولات المعدنية بأعلى معايير الجودة والمتانة."
-			: "Design, manufacturing and supply of smart storage racking systems, warehouse shelves, and heavy-duty metal products with international standards.";
 
 		return {
 			id: apiSlide.id || index,

@@ -105,16 +105,25 @@ export const AboutUsSection = ({ data = {}, isLoading = false }) => {
 	// Extract API values with resilient fallbacks
 	const badge = resolveText(rawData.badge || data.badge, isRtl ? "عن قائم ورف" : "About Qayem W Raf");
 	
-	const title = resolveText(
-		rawData.title || data.title,
-		isRtl
-			? "الرائدون في تقديم أنظمة وحلول التخزين المعدني المتكاملة"
-			: "Leaders in Providing Integrated Metal Storage Solutions"
-	);
+	const isBookstorePlaceholder = (html) => {
+		if (!html) return false;
+		const str = String(html).toLowerCase();
+		return str.includes("مكتبتنا") || str.includes("bookstore") || str.includes("كتب لجميع") || str.includes("الكتب");
+	};
 
-	const content = rawData.content || data.content || (isRtl
-		? "<p>شركة قائم ورف متخصصة في تصميم، تصنيع، وتوريد كافة حلول التخزين والمستلزمات المعدنية للمخازن والشركات والمصانع. نلتزم بأعلى معايير المتانة والسلامة لتوفير بيئة تخزين منظمة وفعالة تلبي تطلعات عملائنا.</p>"
-		: "<p>Qayem W Raf specializes in designing, manufacturing, and supplying comprehensive storage solutions and metal equipment for warehouses and companies, committed to high durability and safety standards.</p>");
+	const rawTitle = rawData.title || data.title;
+	const title = !rawTitle || isBookstorePlaceholder(rawTitle) || rawTitle === "من نحن"
+		? (isRtl
+			? "الرائدون في تقديم أنظمة وحلول التخزين المعدني المتكاملة"
+			: "Leaders in Providing Integrated Metal Storage Solutions")
+		: resolveText(rawTitle);
+
+	const rawContent = rawData.content || data.content;
+	const content = !rawContent || isBookstorePlaceholder(rawContent)
+		? (isRtl
+			? "<p>شركة قائم ورف متخصصة في تصميم، تصنيع، وتوريد كافة حلول التخزين والمستلزمات المعدنية للمخازن والشركات والمصانع. نلتزم بأعلى معايير المتانة والسلامة لتوفير بيئة تخزين منظمة وفعالة تلبي تطلعات عملائنا.</p>"
+			: "<p>Qayem W Raf specializes in designing, manufacturing, and supplying comprehensive storage solutions and metal equipment for warehouses and companies, committed to high durability and safety standards.</p>")
+		: rawContent;
 
 	// Stats parsing
 	const rawStats = rawData.stats || data.stats;

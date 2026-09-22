@@ -21,8 +21,9 @@ const withSuspense = (Component) => (
 	</Suspense>
 );
 
+import Home from "@/pages/Home";
+
 // App Pages (Code-split with React.lazy)
-const Home = lazy(() => import("@/pages/Home"));
 const About = lazy(() => import("@/pages/About"));
 const Products = lazy(() => import("@/pages/Products/index"));
 const ProductDetails = lazy(() => import("@/pages/ProductDetails/index"));
@@ -71,7 +72,7 @@ export const routes = [
 				children: [
 					{
 						index: true,
-						element: withSuspense(Home),
+						element: <Home />,
 					},
 					{
 						path: ROUTES.PRODUCTS.substring(1),
