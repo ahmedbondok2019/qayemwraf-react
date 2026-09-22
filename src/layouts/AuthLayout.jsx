@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import { useLanguage } from "@/app/providers/I18nProvider";
 import LanguageSwitcher from "@/components/layout/Header/LanguageSwitcher";
 import LocalizedLink from "@/components/ui/LocalizedLink";
-import { HeartPulse, ShieldCheck, Truck, CheckCircle2 } from "lucide-react";
+import { Wrench, ShieldCheck, Truck, CheckCircle2 } from "lucide-react";
 import authIllustration from "@/assets/auth-illustration.png";
 
 export const AuthLayout = () => {
@@ -30,7 +30,7 @@ export const AuthLayout = () => {
 				<div className="absolute inset-0 z-0 pointer-events-none">
 					<img 
 						src={authIllustration} 
-						alt="EG Medical Backdrop" 
+						alt="Qayem & Raf Backdrop" 
 						className="w-full h-full object-cover object-center opacity-40 mix-blend-screen animate-[pulse_15s_ease-in-out_infinite]"
 					/>
 					{/* Overlays for premium blending and readability */}
@@ -110,7 +110,7 @@ export const AuthLayout = () => {
 					{/* Card 3 */}
 					<div className="flex flex-col items-center text-center p-3 rounded-2xl bg-slate-900/40 border border-slate-850 backdrop-blur-md">
 						<div className="w-8 h-8 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-2">
-							<HeartPulse className="w-4 h-4 text-cyan-400" />
+							<Wrench className="w-4 h-4 text-cyan-400" />
 						</div>
 						<span className="text-[10px] font-black text-white leading-tight">
 							{isRtl ? "دعم هندسي" : "Engineering Support"}

@@ -9,7 +9,6 @@ import RatingSummary from "./RatingSummary";
 import ReviewCard from "./ReviewCard";
 import QnASubtab from "./QnASubtab";
 import TrustBadges from "./TrustBadges";
-import MedicalDisclaimer from "./MedicalDisclaimer";
 
 export const ProductTabs = ({ productId, description, specifications, reviews }) => {
 	const { language } = useLanguage();
@@ -173,7 +172,6 @@ export const ProductTabs = ({ productId, description, specifications, reviews })
 							{isRtl ? "ميزات إضافية وضمانات" : "Additional Features & Guarantees"}
 						</h3>
 						<TrustBadges />
-						<MedicalDisclaimer />
 					</div>
 				</div>
 

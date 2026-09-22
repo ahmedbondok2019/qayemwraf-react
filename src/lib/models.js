@@ -1,5 +1,5 @@
 /**
- * @fileoverview Domain Models for EG-Medical E-Commerce
+ * @fileoverview Domain Models for Qayem & Raf E-Commerce
  * These JSDoc definitions serve as the source of truth for the primary data structures.
  */
 

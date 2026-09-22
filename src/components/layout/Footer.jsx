@@ -70,21 +70,13 @@ export const Footer = () => {
 					
 					{/* Brand Info */}
 					<div className="space-y-6">
-						<LocalizedLink to="/" className="inline-block group">
-							<div className="flex items-center gap-3">
+						<LocalizedLink to="/" className="inline-block group" aria-label={isRtl ? "قايم ورف للمشغولات المعدنية وحلول التخزين" : "Qayem & Raf"}>
+							<div className="flex items-center">
 								<img 
 									src={settings?.logo || "/images/logo.jpg"} 
 									alt={isRtl ? "قايم ورف للمشغولات المعدنية وحلول التخزين" : "Qayem & Raf"} 
-									className="h-11 sm:h-12 w-auto object-contain rounded-xl shadow-sm" 
+									className="h-12 sm:h-14 w-auto object-contain rounded-xl shadow-sm" 
 								/>
-								<div className="flex flex-col leading-none">
-									<span className="text-2xl sm:text-3xl font-black text-white tracking-tight group-hover:text-primary transition-colors">
-										{isRtl ? "قايم ورف" : "Qayem & Raf"}
-									</span>
-									<span className="text-[10px] font-bold text-slate-400 tracking-wider uppercase mt-1">
-										{isRtl ? "للمشغولات المعدنية وحلول التخزين" : "Metal Works & Storage Solutions"}
-									</span>
-								</div>
 							</div>
 						</LocalizedLink>
 						<p className="text-slate-400 text-sm leading-relaxed">

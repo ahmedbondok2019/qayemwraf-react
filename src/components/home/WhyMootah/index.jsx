@@ -2,12 +2,12 @@ import React from "react";
 import { useLanguage } from "@/app/providers/I18nProvider";
 import { Section } from "@/components/ui/Section";
 import Container from "@/components/ui/Container";
-import { ShieldCheck, Award, Stethoscope, Wrench, CheckCircle, Star, Heart, TrendingUp, Settings } from "lucide-react";
+import { ShieldCheck, Award, Wrench, CheckCircle, Star, Heart, TrendingUp, Settings, HardHat } from "lucide-react";
 
 const ICON_MAP = {
 	"shield_check": ShieldCheck,
 	"award": Award,
-	"stethoscope": Stethoscope,
+	"hard_hat": HardHat,
 	"wrench": Wrench,
 	"star": Star,
 	"heart": Heart,
@@ -17,28 +17,28 @@ const ICON_MAP = {
 
 const valueProps = [
 	{
-		id: "original",
+		id: "quality",
 		icon: ShieldCheck,
-		title: { en: "100% Original", ar: "منتجات أصلية 100%" },
-		desc: { en: "Directly imported from certified global manufacturers.", ar: "مستوردة مباشرة من المصنعين العالميين المعتمدين." }
+		title: { en: "High Grade Steel", ar: "أعلى جودة صاج وفولاذ" },
+		desc: { en: "Manufactured from cold-rolled steel with superior load capacity.", ar: "تصنيع من أجود خامات الصاج المدرفل على البارد لتحمل أقصى الأوزان." }
 	},
 	{
-		id: "distributor",
+		id: "engineering",
 		icon: Award,
-		title: { en: "Official Distributor", ar: "موزع رسمي معتمد" },
-		desc: { en: "Authorized agent for top medical equipment brands in Egypt.", ar: "الوكيل والموزع المعتمد لأكبر ماركات الأجهزة الطبية." }
+		title: { en: "Certified Engineering", ar: "مطابقة للمواصفات القياسية" },
+		desc: { en: "Engineered to withstand heavy loads and rigorous warehouse usage.", ar: "تصميم هندسي متقن ومطابق لأعلى معايير الأمان والسلامة الصناعية." }
 	},
 	{
 		id: "experts",
-		icon: Stethoscope,
-		title: { en: "Medical Experts", ar: "استشارات طبية متخصصة" },
-		desc: { en: "Biomedical engineers ready to assist with setup & specs.", ar: "مهندسون متخصصون لمساعدتك في اختيار الجهاز المناسب." }
+		icon: HardHat,
+		title: { en: "Storage Specialists", ar: "استشارات وتخطيط مساحات" },
+		desc: { en: "Engineering team ready to assist with warehouse layout & specs.", ar: "فريق هندسي متخصص لمساعدتك في استغلال وتخطيط كل متر في مستودعك." }
 	},
 	{
 		id: "warranty",
 		icon: Wrench,
-		title: { en: "Official Warranty & Maintenance", ar: "ضمان وصيانة معتمدة" },
-		desc: { en: "Full manufacturer warranty and local spare parts availability.", ar: "ضمان الوكيل الشامل وتوافر قطع الغيار الأصلية والصيانة." }
+		title: { en: "Fast Supply & Installation", ar: "سرعة في التوريد والتركيب" },
+		desc: { en: "Complete warranty, on-site assembly, and after-sales support.", ar: "ضمان شامل وتوريد سريع مع تركيب احترافي وخدمة ما بعد البيع." }
 	}
 ];
 
@@ -46,8 +46,8 @@ export const WhyMootah = ({ data }) => {
 	const { language } = useLanguage();
 	const isRtl = language === "ar";
 
-	const title = data?.title || (isRtl ? "لماذا تختار EG Medical؟" : "Why Choose EG Medical?");
-	const subtitle = data?.subtitle || (isRtl ? "نحن نضع معايير جديدة للموثوقية والأمان في توفير المستلزمات والأجهزة الطبية" : "Setting new standards for trust, quality, and safety in medical device distribution");
+	const title = data?.title || (isRtl ? "لماذا تختار قايم ورف؟" : "Why Choose Qayem & Raf?");
+	const subtitle = data?.subtitle || (isRtl ? "نحن نضع معايير جديدة للجودة والمتانة في تصنيع وتوريد أنظمة الرفوف والمشغولات المعدنية" : "Setting new standards for quality, strength, and durability in storage systems and metal works");
 
 	const itemsToDisplay = data?.items && data.items.length > 0 ? data.items.map(item => ({
 		id: item.id,

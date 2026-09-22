@@ -2,8 +2,8 @@ import React from "react";
 import { cn } from "@/lib/utils";
 
 export const Card = ({ className, children, ...props }) => {
-	// Implements the Medical Design Card Base:
-	// White background, 20px radius, border-light, floating shadow, interactive hover state
+	// Implements the Design Card Base:
+	// Surface background, 20px radius, border-light, floating shadow, interactive hover state
 	return (
 		<div
 			className={cn(

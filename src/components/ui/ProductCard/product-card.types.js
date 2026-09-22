@@ -51,8 +51,8 @@
  * @property {ProductInventory} [stock] - Stock availability
  * @property {ProductBadge[]} [badges] - Badges to display (New, Sale)
  * @property {ProductMeta} [meta] - Metadata (SKU, Warranty)
- * @property {boolean} [isPrescriptionRequired] - Indicates if a medical prescription is needed
- * @property {boolean} [isOfficialDistributor] - Indicates if sold by official distributor
+ * @property {boolean} [isCustomMade] - Indicates if custom fabrication is available
+ * @property {boolean} [isOfficialDistributor] - Indicates if sold by official manufacturer / distributor
  */
 
 export {};

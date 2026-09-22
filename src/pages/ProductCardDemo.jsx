@@ -8,12 +8,12 @@ import { PRODUCT_CARD_VARIANTS, PRODUCT_STATES } from "@/components/ui/ProductCa
 
 const mockBaseProduct = {
 	id: "demo-1",
-	title: { en: "OMRON M2 Basic Blood Pressure Monitor", ar: "جهاز قياس ضغط الدم أومرون M2 الأساسي" },
-	category: { en: "Medical Devices", ar: "أجهزة طبية", id: "cat-1" },
-	brand: "OMRON",
-	image: "https://images.unsplash.com/photo-1631549916768-4119b2e5f926?auto=format&fit=crop&q=80&w=400&h=400",
-	price: { current: 35.00, original: 45.00 },
-	reviews: { rating: 4.8, count: 236 },
+	title: { en: "Heavy Duty Warehouse Storage Rack 200x100x200 cm", ar: "وحدة أرفف تخزين مستودعات أحمال ثقيلة 200×100×200 سم" },
+	category: { en: "Warehouse Shelving", ar: "أرفف المخازن والمستودعات", id: "cat-1" },
+	brand: "قايم ورف",
+	image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=400&h=400",
+	price: { current: 1850.00, original: 2200.00 },
+	reviews: { rating: 4.9, count: 128 },
 	stock: { quantity: 15 },
 	badges: [
 		{ type: "new", label: { en: "New", ar: "جديد" } }

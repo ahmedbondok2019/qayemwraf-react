@@ -1,39 +1,38 @@
 export const collectionsData = [
 	{
-		id: "home-care",
-		title: { en: "Home Care Essentials", ar: "أساسيات الرعاية المنزلية" },
-		subtitle: { en: "Everything you need for home recovery", ar: "كل ما تحتاجه للتعافي في المنزل" },
-		// We use a high quality medical-related unsplash image for home care
-		image: "https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?q=80&w=800&auto=format&fit=crop",
-		link: "/collections/home-care",
+		id: "warehouse-fitouts",
+		title: { en: "Warehouse Fitouts & Racks", ar: "تجهيزات المستودعات الكبرى" },
+		subtitle: { en: "Heavy-duty pallet racking and multi-tier systems", ar: "أنظمة تخزين أحمال ثقيلة وباليت راك بأعلى المعايير" },
+		image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&auto=format&fit=crop",
+		link: "/category/warehouse-shelving",
 		size: "large"
 	},
 	{
-		id: "diabetes",
-		title: { en: "Diabetes Care", ar: "العناية بمرضى السكري" },
-		image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=500&auto=format&fit=crop",
-		link: "/collections/diabetes",
+		id: "supermarket-displays",
+		title: { en: "Supermarket Shelving", ar: "أرفف السوبرماركت والمتاجر" },
+		image: "https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=500&auto=format&fit=crop",
+		link: "/category/retail-shelving",
 		size: "small"
 	},
 	{
-		id: "mobility",
-		title: { en: "Mobility Collection", ar: "مجموعة الحركة والتنقل" },
-		image: "https://images.unsplash.com/photo-1598006830588-b5706ee92e46?q=80&w=500&auto=format&fit=crop",
-		link: "/collections/mobility",
+		id: "metal-lockers",
+		title: { en: "Industrial Metal Lockers", ar: "دواليب ولوكرات صاج" },
+		image: "https://images.unsplash.com/photo-1584820927498-cafe8c1c969b?q=80&w=500&auto=format&fit=crop",
+		link: "/category/storage-cabinets",
 		size: "small"
 	},
 	{
-		id: "respiratory",
-		title: { en: "Respiratory Collection", ar: "صحة الجهاز التنفسي" },
-		image: "https://images.unsplash.com/photo-1584036533827-45bce166ad94?q=80&w=500&auto=format&fit=crop",
-		link: "/collections/respiratory",
+		id: "medium-storage",
+		title: { en: "Longspan Storage Racks", ar: "أرفف لونج سبان متوسطة" },
+		image: "https://images.unsplash.com/photo-1587293852726-70cdb56c2866?q=80&w=500&auto=format&fit=crop",
+		link: "/category/medium-duty",
 		size: "small"
 	},
 	{
-		id: "hospital",
-		title: { en: "Hospital Essentials", ar: "مستلزمات المستشفيات" },
-		image: "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=500&auto=format&fit=crop",
-		link: "/collections/hospital",
+		id: "custom-fabrication",
+		title: { en: "Factory Workstations & Carts", ar: "تروليات وطاولات ورش" },
+		image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=500&auto=format&fit=crop",
+		link: "/category/custom-metal",
 		size: "small"
 	}
 ];

@@ -8,11 +8,11 @@ import { useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
 const SUGGESTIONS = [
-	{ id: "bp", name: { en: "Blood Pressure", ar: "جهاز ضغط الدم" }, query: "blood pressure" },
-	{ id: "sugar", name: { en: "Sugar", ar: "قياس السكر" }, query: "sugar" },
-	{ id: "wheelchair", name: { en: "Wheelchair", ar: "كرسي متحرك" }, query: "wheelchair" },
-	{ id: "oxygen", name: { en: "Oxygen", ar: "أكسجين" }, query: "oxygen" },
-	{ id: "mask", name: { en: "Face Masks", ar: "كمامات طبية" }, query: "mask" },
+	{ id: "pallet-racks", name: { en: "Pallet Racks", ar: "أرفف باليت راك" }, query: "pallet racks" },
+	{ id: "warehouse-shelves", name: { en: "Warehouse Shelving", ar: "أرفف مخازن" }, query: "warehouse" },
+	{ id: "supermarket-racks", name: { en: "Supermarket Racks", ar: "أرفف سوبرماركت" }, query: "supermarket" },
+	{ id: "storage-cabinets", name: { en: "Metal Cabinets", ar: "دواليب صاج" }, query: "cabinet" },
+	{ id: "heavy-duty", name: { en: "Heavy Duty", ar: "أحمال ثقيلة" }, query: "heavy duty" },
 ];
 
 export const SmartFinder = () => {
@@ -24,7 +24,7 @@ export const SmartFinder = () => {
 	const handleSearch = (e) => {
 		e.preventDefault();
 		if (searchQuery.trim()) {
-			navigate(`/${language}/products?q=${encodeURIComponent(searchQuery.trim())}`);
+			navigate(`/${language}/products?search=${encodeURIComponent(searchQuery.trim())}`);
 		}
 	};
 
@@ -53,7 +53,7 @@ export const SmartFinder = () => {
 							type="text"
 							value={searchQuery}
 							onChange={(e) => setSearchQuery(e.target.value)}
-							placeholder={isRtl ? "ابحث عن الأجهزة الطبية، المستلزمات..." : "Search for medical devices, consumables..."}
+							placeholder={isRtl ? "ابحث عن وحدات الرفوف، أرفف التخزين، المشغولات المعدنية..." : "Search for storage racks, warehouse shelving, metal works..."}
 							className={cn(
 								"w-full h-16 md:h-20 bg-surface-2/50 hover:bg-surface-2 focus:bg-surface text-lg md:text-xl text-text rounded-[2rem] outline-none shadow-sm hover:shadow-md focus:shadow-xl focus:ring-4 focus:ring-primary/10 border border-border transition-all duration-300 placeholder:text-text-muted/60 font-medium",
 								isRtl ? "pr-16 pl-6 text-right" : "pl-16 pr-6 text-left"

@@ -1,15 +1,15 @@
 export const ROLES = {
 	USER: "user",
-	DOCTOR: "doctor",
+	CLIENT: "client",
 	DISTRIBUTOR: "distributor",
 	ADMIN: "admin"
 };
 
 export const AUTH_STORAGE_KEYS = {
-	ACCESS_TOKEN: "eg_access_token",
-	REFRESH_TOKEN: "eg_refresh_token",
-	USER: "eg_user_info",
-	REMEMBER_ME: "eg_remember_me"
+	ACCESS_TOKEN: "qayem_access_token",
+	REFRESH_TOKEN: "qayem_refresh_token",
+	USER: "qayem_user_info",
+	REMEMBER_ME: "qayem_remember_me"
 };
 
 export const OTP_TIMER_SECONDS = 60;

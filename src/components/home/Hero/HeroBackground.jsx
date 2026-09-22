@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 
 /**
  * HeroBackground Component
- * Renders the clean medical background with decorative shapes (Dot grid pattern).
+ * Renders the clean background with decorative shapes (Dot grid pattern).
  */
 export const HeroBackground = ({ className, bgClass = "bg-[#F4F7FC]" }) => {
 	return (

@@ -8,7 +8,7 @@ export const useCurrentUser = () => {
 		isAuthenticated,
 		isLoading: loading,
 		isAdmin: user?.role === "admin",
-		isDoctor: user?.role === "doctor",
+		isClient: user?.role === "client",
 		isDistributor: user?.role === "distributor"
 	};
 };

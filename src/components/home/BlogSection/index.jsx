@@ -44,10 +44,10 @@ export const BlogSection = () => {
 				<div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4 mb-8 sm:mb-10">
 					<div className="flex flex-col gap-2">
 						<h2 className="text-xl sm:text-h2 font-bold text-slate-900 dark:text-white leading-tight">
-							{isRtl ? "آخر الأخبار والمقالات الطبية" : "Latest News & Medical Articles"}
+							{isRtl ? "أحدث المقالات والنصائح الهندسية" : "Latest Storage Articles & Engineering Tips"}
 						</h2>
 						<p className="text-sm sm:text-body text-slate-500 dark:text-slate-400">
-							{isRtl ? "دليلك الشامل ومصادرك الطبية الموثوقة للعناية بالمرضى وتجهيز العيادات" : "Your guide and trusted medical resources for patient care and clinic equipment."}
+							{isRtl ? "دليلك الشامل لتجهيز المستودعات، اختيار وحدات الرفوف، وتحسين مساحات التخزين" : "Your comprehensive guide for warehouse fitouts, racking selection, and storage optimization."}
 						</p>
 					</div>
 

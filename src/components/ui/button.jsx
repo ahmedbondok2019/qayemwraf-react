@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
   // Base Interactive States (Hover, Focus, Pressed, Disabled)
-  // Incorporates the Medical Design Language specifications
+  // Incorporates the Design Language specifications
   "group inline-flex shrink-0 items-center justify-center whitespace-nowrap transition-all duration-200 outline-none select-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background active:scale-[0.98] active:translate-y-px disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0",
   {
     variants: {
@@ -17,7 +17,7 @@ const buttonVariants = cva(
         danger: "bg-danger text-white border border-transparent hover:opacity-90 hover:-translate-y-[1px] hover:shadow-raised focus-visible:ring-danger",
       },
       size: {
-        // Core Medical Size: Height 48px, Padding 28px horizontally
+        // Standard Size: Height 48px, Padding 28px horizontally
         default: "h-12 px-7 rounded-[14px] text-base font-semibold",
         sm: "h-10 px-5 rounded-[12px] text-sm font-medium",
         lg: "h-14 px-8 rounded-[16px] text-lg font-semibold",

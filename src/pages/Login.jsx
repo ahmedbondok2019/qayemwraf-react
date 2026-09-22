@@ -73,7 +73,7 @@ export const Login = () => {
 					{isRtl ? "مرحباً بك مجدداً 👋" : "Welcome Back 👋"}
 				</h2>
 				<p className="text-sm font-semibold text-slate-400">
-					{isRtl ? "قم بتسجيل الدخول للوصول إلى حسابك الطبي" : "Sign in to access your medical account"}
+					{isRtl ? "قم بتسجيل الدخول للوصول إلى حسابك ومتابعة طلباتك" : "Sign in to access your account and manage orders"}
 				</p>
 			</div>
 

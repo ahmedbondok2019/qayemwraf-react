@@ -5,12 +5,14 @@ import { useLanguage } from "@/app/providers/I18nProvider";
 import Container from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
 import SectionHeader from "@/components/ui/SectionHeader";
-import { featuredCategories } from "./featured-categories.data";
+import { useCategories } from "@/hooks/queries/useCategories";
 import { FeaturedCategoriesCard } from "./FeaturedCategoriesCard";
 
 export const FeaturedCategories = () => {
 	const { language } = useLanguage();
 	const isRtl = language === "ar";
+	const { data: responseData } = useCategories();
+	const categories = responseData?.data || (Array.isArray(responseData) ? responseData : []);
 
 	const [emblaRef] = useEmblaCarousel(
 		{
@@ -28,8 +30,8 @@ export const FeaturedCategories = () => {
 	};
 
 	const headerSubtitle = {
-		en: "Explore our top medical supply and equipment categories",
-		ar: "استكشف أبرز أقسام المستلزمات والمعدات الطبية الرئيسية",
+		en: "Explore our top storage solutions and metal shelving categories",
+		ar: "استكشف أبرز أقسام أنظمة التخزين والأرفف والمشغولات المعدنية",
 	};
 
 	return (
@@ -41,7 +43,7 @@ export const FeaturedCategories = () => {
 				<div className="w-full relative mt-8" dir={isRtl ? "rtl" : "ltr"}>
 					<div className="overflow-hidden" ref={emblaRef}>
 						<div className="flex touch-pan-y -ml-4 rtl:-mr-4 rtl:ml-0">
-							{featuredCategories.map((category) => (
+							{categories.map((category) => (
 								<div
 									key={category.id}
 									className="flex-[0_0_82%] sm:flex-[0_0_48%] md:flex-[0_0_36%] lg:flex-[0_0_30%] min-w-0 pl-4 rtl:pr-4 rtl:pl-0"

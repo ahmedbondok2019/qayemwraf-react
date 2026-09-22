@@ -19,8 +19,8 @@ export const ErrorState = ({ onRetry, message }) => {
 			
 			<p className="text-red-700/80 max-w-sm mb-8 text-base font-medium">
 				{message || (isRtl 
-					? "لم نتمكن من تحميل المنتجات الطبية المطلوبة. يرجى التحقق من اتصالك والمحاولة مرة أخرى." 
-					: "We couldn't load the requested medical products. Please check your connection and try again.")}
+					? "لم نتمكن من تحميل المنتجات المطلوبة. يرجى التحقق من اتصالك والمحاولة مرة أخرى." 
+					: "We couldn't load the requested products. Please check your connection and try again.")}
 			</p>
 
 			{onRetry && (

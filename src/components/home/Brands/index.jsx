@@ -8,12 +8,12 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import { BadgeCheck } from "lucide-react";
 
 const richBrands = [
-	{ id: 1, name: "Omron", count: "120+", logo: "Omron", bgClass: "bg-[#1E3A8A]" }, // Navy
-	{ id: 2, name: "Accu-Chek", count: "45+", logo: "AccuChek", bgClass: "bg-[#047857]" }, // Emerald
-	{ id: 3, name: "Yuwell", count: "80+", logo: "Yuwell", bgClass: "bg-[#BE123C]" }, // Rose
-	{ id: 4, name: "Ensure", count: "30+", logo: "Ensure", bgClass: "bg-[#4338CA]" }, // Indigo
-	{ id: 5, name: "Johnson's", count: "200+", logo: "Johnson", bgClass: "bg-[#C2410C]" }, // Orange
-	{ id: 6, name: "Littmann", count: "25+", logo: "Littmann", bgClass: "bg-[#0F172A]" }, // Slate
+	{ id: 1, name: "Qayem Racks", count: "120+", logo: "Qayem", bgClass: "bg-[#1E3A8A]" },
+	{ id: 2, name: "Heavy Steel", count: "45+", logo: "Steel", bgClass: "bg-[#047857]" },
+	{ id: 3, name: "Warehouse Pro", count: "80+", logo: "Warehouse", bgClass: "bg-[#BE123C]" },
+	{ id: 4, name: "Storage Tech", count: "30+", logo: "Storage", bgClass: "bg-[#4338CA]" },
+	{ id: 5, name: "Metal Craft", count: "200+", logo: "Metal", bgClass: "bg-[#C2410C]" },
+	{ id: 6, name: "Safe Store", count: "25+", logo: "SafeStore", bgClass: "bg-[#0F172A]" },
 ];
 
 export const BrandsShowcase = () => {
@@ -25,10 +25,10 @@ export const BrandsShowcase = () => {
 			<Container>
 				<div className="text-center max-w-xl mx-auto mb-8 sm:mb-10">
 					<h2 className="text-2xl sm:text-3xl font-extrabold text-text-heading mb-2">
-						{isRtl ? "العلامات التجارية الرسمية الشريكة" : "Official Partner Brands"}
+						{isRtl ? "أنظمة وحلول التخزين المعتمدة" : "Certified Storage Systems"}
 					</h2>
 					<p className="text-text-secondary text-sm">
-						{isRtl ? "نحن وكلاء وموزعون معتمدون لأرقى الماركات الطبية العالمية" : "Authorized distributor for world-leading medical healthcare brands"}
+						{isRtl ? "حلول وأنظمة تخزين معتمدة وموثوقة من كبرى المؤسسات والشركات في مصر" : "Trusted and certified storage systems for leading enterprises and warehouses"}
 					</p>
 				</div>
 

@@ -30,9 +30,7 @@ export const AnnouncementBar = () => {
 							{(() => {
 								const val = settings?.why_choose_us?.subtitle || settings?.why_choose_us?.title;
 								if (val) {
-									if (typeof val === 'object') {
-										return val[language] || val.ar || val.en || "";
-									}
+									if (typeof val === 'object') return val[language] || val.ar || val.en || "";
 									return String(val);
 								}
 								return isRtl

@@ -110,7 +110,7 @@ export const BlogDetails = () => {
 						</LocalizedLink>
 						{isRtl ? <ChevronLeft className="w-3.5 h-3.5" /> : <ChevronRight className="w-3.5 h-3.5" />}
 						<LocalizedLink to="/blogs" className="hover:text-primary transition-colors">
-							{isRtl ? "المدونة الطبية" : "Blog"}
+							{isRtl ? "المدونة" : "Blog"}
 						</LocalizedLink>
 						{isRtl ? <ChevronLeft className="w-3.5 h-3.5" /> : <ChevronRight className="w-3.5 h-3.5" />}
 						<span className="text-slate-800 dark:text-white font-bold line-clamp-1 max-w-[200px] sm:max-w-xs">
@@ -148,7 +148,7 @@ export const BlogDetails = () => {
 										{authorName}
 									</div>
 									<div className="text-xs text-slate-500 dark:text-slate-400">
-										{isRtl ? "مستشار طبي ومحرر محتوى" : "Medical Advisor & Editor"}
+										{isRtl ? "استشاري حلول وأنظمة التخزين" : "Storage Solutions Consultant & Editor"}
 									</div>
 								</div>
 							</div>

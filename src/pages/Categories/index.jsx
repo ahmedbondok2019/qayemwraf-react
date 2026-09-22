@@ -41,8 +41,8 @@ const Categories = () => {
 	return (
 		<div className="flex flex-col w-full min-h-screen bg-background pb-16">
 			<PageHero
-				title={{ en: "Medical Categories", ar: "الأقسام الطبية" }}
-				subtitle={{ en: "Browse our comprehensive directory of medical equipment and supplies.", ar: "تصفح الدليل الشامل للمعدات والمستلزمات الطبية." }}
+				title={{ en: "Storage Categories", ar: "أقسام وتصنيفات المنتجات" }}
+				subtitle={{ en: "Browse our comprehensive directory of storage solutions, warehouse shelving, and metal works.", ar: "تصفح الدليل الشامل لحلول التخزين، أرفف المخازن والمستودعات، والمشغولات المعدنية." }}
 				count={categories.length}
 				breadcrumbs={breadcrumbItems}
 			/>
@@ -108,7 +108,7 @@ const Categories = () => {
 											</ul>
 										) : (
 											<p className="text-sm text-slate-500 dark:text-slate-400 mb-6">
-												{isRtl ? "اكتشف مجموعة واسعة من أحدث الأجهزة." : "Discover a wide range of latest devices."}
+												{isRtl ? "اكتشف مجموعة واسعة من وحدات الرفوف وأنظمة التخزين." : "Discover a wide range of shelving units and storage systems."}
 											</p>
 										)}
 

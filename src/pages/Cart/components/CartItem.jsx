@@ -24,7 +24,7 @@ export const CartItem = ({ item, onUpdateQuantity, onRemove, onSaveForLater }) =
 			<Link to={`/products/${productSlug}`} className="shrink-0">
 				<div className="w-24 h-24 sm:w-32 sm:h-32 rounded-xl border border-border/50 overflow-hidden bg-white">
 					<img 
-						src={product?.images?.[0] || product?.image || "https://placehold.co/400x400?text=EG+Medical"} 
+						src={product?.images?.[0] || product?.image || "https://placehold.co/400x400?text=Qayem+and+Raf"} 
 						alt={product?.title?.[language] || product?.title || product?.name || "Product"} 
 						className={cn("w-full h-full object-cover", isOutOfStock && "opacity-50 grayscale")}
 					/>

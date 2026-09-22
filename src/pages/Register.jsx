@@ -103,7 +103,7 @@ export const Register = () => {
 					{isRtl ? "إنشاء حساب جديد" : "Create New Account"}
 				</h2>
 				<p className="text-xs font-semibold text-slate-400">
-					{isRtl ? "خطوة واحدة تفصلك عن تجربة صحية أفضل" : "One step away from a better health experience"}
+					{isRtl ? "خطوة واحدة تفصلك عن تجربة تسوق وتخزين أفضل" : "One step away from a better storage solution experience"}
 				</p>
 			</div>
 

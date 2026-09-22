@@ -90,7 +90,7 @@ export const QnASubtab = () => {
 							) : (
 								<div className="flex items-start gap-3 pt-3 border-t border-border/40 text-text-muted italic text-xs">
 									<span className="w-6 h-6 bg-border/20 rounded-full flex items-center justify-center shrink-0 mt-0.5">A</span>
-									<p>{isRtl ? "لم يتم الرد على هذا السؤال بعد. سيقوم خبير طبي بالرد قريباً." : "Not answered yet. A medical expert will respond shortly."}</p>
+									<p>{isRtl ? "لم يتم الرد على هذا السؤال بعد. سيقوم أحد خبرائنا ومهندسينا بالرد قريباً." : "Not answered yet. Our technical engineering team will respond shortly."}</p>
 								</div>
 							)}
 						</div>

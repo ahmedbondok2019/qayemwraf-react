@@ -70,8 +70,8 @@ export const Contact = () => {
 					</h1>
 					<p className="text-lg text-text-secondary max-w-3xl leading-relaxed">
 						{isRtl
-							? "هل لديك أي استفسار أو اقتراح؟ نحن هنا لمساعدتك والإجابة على أسئلتك على مدار الساعة."
-							: "Have any questions or business inquiries? Our dedicated medical sales and support team is here to assist you 24/7."}
+							? "هل لديك أي استفسار أو طلب عرض أسعار لتجهيز مستودعك؟ فريقنا الهندسي وخدمة العملاء في خدمتك دائماً."
+							: "Have any questions or quotation inquiries? Our dedicated sales and engineering support team is here to assist you."}
 					</p>
 				</Container>
 			</div>
@@ -92,8 +92,8 @@ export const Contact = () => {
 								</h3>
 								<p className="text-text-secondary max-w-sm leading-relaxed text-sm">
 									{isRtl
-										? "شكراً لتواصلك معنا. سيقوم أحد ممثلي الدعم الطبي لدينا بالرد عليك عبر البريد الإلكتروني في غضون 24 ساعة."
-										: "Thank you for contacting us. One of our biomedical specialists will reach back to you within 24 hours."}
+										? "شكراً لتواصلك معنا. سيقوم أحد مهندسينا وممثلي خدمة العملاء لدينا بالرد عليك في أقرب وقت."
+										: "Thank you for contacting us. One of our technical engineers or sales specialists will reach back to you shortly."}
 								</p>
 							</div>
 						) : (

@@ -6,7 +6,6 @@ import { cn } from "@/lib/utils";
 import PriceBox from "./PriceBox";
 import StockBadge from "./StockBadge";
 import TrustBadges from "./TrustBadges";
-import MedicalDisclaimer from "./MedicalDisclaimer";
 
 export const ProductInfo = ({ product }) => {
 	const { language } = useLanguage();

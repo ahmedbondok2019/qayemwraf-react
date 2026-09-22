@@ -109,7 +109,7 @@ const ProductDetails = () => {
 							quantity: (data.quantity === -1 || data.ignore_quantity) ? 20 : (data.quantity || 0),
 							sku: data.sku || data.item_code || null
 						},
-						brand: { name: data.brand || data.store_name || "EG Medical" },
+						brand: { name: data.brand || data.store_name || "قايم ورف" },
 						shortDescription: resolveI18n(data.meta_description, ""),
 						reviews: { rating: data.rating || 0, count: data.rate_count || 0 },
 						reviewsList: data.product_rates || [],

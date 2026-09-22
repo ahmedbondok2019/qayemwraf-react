@@ -3,12 +3,12 @@
  * Centralizing keys prevents typos and collision.
  */
 export const STORAGE_KEYS = {
-	CART: "eg_medical_cart",
-	WISHLIST: "eg_medical_wishlist",
-	COMPARE: "eg_medical_compare",
-	LANGUAGE: "eg_medical_lang",
-	THEME: "eg_medical_theme",
-	AUTH_TOKEN: "eg_medical_auth_token",
-	USER: "eg_medical_user",
-	TEMP_USER_ID: "eg_medical_temp_user_id",
+	CART: "qayem_cart",
+	WISHLIST: "qayem_wishlist",
+	COMPARE: "qayem_compare",
+	LANGUAGE: "qayem_lang",
+	THEME: "qayem_theme",
+	AUTH_TOKEN: "qayem_auth_token",
+	USER: "qayem_user",
+	TEMP_USER_ID: "qayem_temp_user_id",
 };

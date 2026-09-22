@@ -122,7 +122,7 @@ export const BestSellers = () => {
 		<div className="flex flex-col w-full min-h-screen bg-background pb-16">
 			<PageHero
 				title={{ en: "Best Sellers", ar: "الأكثر مبيعاً" }}
-				subtitle={{ en: "Discover our most popular and trusted medical equipment chosen by professionals.", ar: "اكتشف أجهزتنا الطبية الأكثر شعبية وثقة والمختارة من قبل المحترفين." }}
+				subtitle={{ en: "Discover our most popular and trusted storage systems chosen by professionals.", ar: "اكتشف منتجاتنا وحلول التخزين الأكثر طلباً وشهرة والمفضلة لدى عملائنا." }}
 				count={products.length}
 				breadcrumbs={breadcrumbItems}
 			/>

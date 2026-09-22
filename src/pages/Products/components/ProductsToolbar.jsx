@@ -49,7 +49,7 @@ export const ProductsToolbar = ({
 			{/* Result Count - Premium Layout */}
 			<div className="flex flex-col gap-1 w-full lg:w-auto text-start">
 				<h2 className="text-xl sm:text-2xl font-bold text-text">
-					{isRtl ? `${totalItems} منتج طبي` : `${totalItems} Medical Products`}
+					{isRtl ? `${totalItems} منتج` : `${totalItems} Products`}
 				</h2>
 				<span className="text-sm font-medium text-text-secondary">
 					{isRtl 

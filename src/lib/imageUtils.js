@@ -22,37 +22,17 @@ export const resolveImageUrl = (url, fallback = FALLBACK_IMAGES.PRODUCT) => {
 
 	const trimmed = url.trim();
 
-	// If it contains placehold.co with EG Medical, replace with high quality fallback
-	if (trimmed.includes("placehold.co") && (trimmed.includes("EG+Medical") || trimmed.includes("eg-medical"))) {
-		return fallback;
+	// Replace old egimedical domain with actual backend domain
+	if (trimmed.includes("egimedical.com")) {
+		return trimmed.replace(/^https?:\/\/(?:www\.)?egimedical\.com\//, "https://admin.qayemwraf.com/");
 	}
 
-	// Intercept legacy bookstore dummy images or missing about images that return 422 from backend
-	if (
-		trimmed.includes("_fixed") ||
-		trimmed.includes("book1") ||
-		trimmed.includes("book2") ||
-		trimmed.includes("book3") ||
-		trimmed.includes("book4") ||
-		trimmed.includes("website/images/about") ||
-		trimmed.includes("warehouse_equipment") ||
-		trimmed.includes("durability_steel") ||
-		trimmed.includes("engineering_studies")
-	) {
-		return fallback;
-	}
-
-	// Fix domain mismatch: if API returns https://qayemwraf.com/ replace with https://admin.qayemwraf.com/
-	if (trimmed.startsWith("https://qayemwraf.com/") || trimmed.startsWith("http://qayemwraf.com/")) {
+	// Fix frontend domain mistakenly returned for storage assets
+	if (trimmed.startsWith("https://qayemwraf.com/storage/") || trimmed.startsWith("http://qayemwraf.com/storage/")) {
 		return trimmed.replace(/^https?:\/\/qayemwraf\.com\//, "https://admin.qayemwraf.com/");
 	}
 
-	// Fix old egimedical domain if present
-	if (trimmed.includes("egimedical.com")) {
-		return fallback;
-	}
-
-	// If relative path
+	// If relative path from backend storage or website assets
 	if (trimmed.startsWith("/storage/") || trimmed.startsWith("storage/")) {
 		const path = trimmed.startsWith("/") ? trimmed : `/${trimmed}`;
 		return `https://admin.qayemwraf.com${path}`;

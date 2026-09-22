@@ -7,7 +7,7 @@ import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { collectionsData } from "./collections.data";
 
-export const MedicalCollections = () => {
+export const StorageCollections = () => {
 	const { language } = useLanguage();
 	const isRtl = language === "ar";
 
@@ -18,16 +18,16 @@ export const MedicalCollections = () => {
 				<div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 sm:gap-6 mb-8 sm:mb-12">
 					<div className="max-w-2xl">
 						<h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-text-heading mb-2 sm:mb-4 tracking-tight">
-							{isRtl ? "المجموعات الطبية" : "Medical Collections"}
+							{isRtl ? "مجموعات وحلول التخزين" : "Storage Collections"}
 						</h2>
 						<p className="text-sm sm:text-base lg:text-lg text-text-secondary">
 							{isRtl
-								? "استكشف مجموعاتنا المصنفة بعناية لتلبية كافة احتياجاتك الصحية بضغطة زر."
-								: "Explore our carefully curated collections designed to meet all your healthcare needs."}
+								? "استكشف مجموعاتنا وحلولنا الهندسية المصممة لتلبية متطلبات المخازن والشركات والمحلات."
+								: "Explore our carefully engineered storage collections designed to meet all warehouse and retail demands."}
 						</p>
 					</div>
 					<LocalizedLink
-						to="/collections"
+						to="/categories"
 						className="inline-flex items-center gap-2 font-semibold text-primary hover:text-primary-hover transition-colors group"
 					>
 						{isRtl ? "عرض كل المجموعات" : "View All Collections"}
@@ -98,4 +98,4 @@ export const MedicalCollections = () => {
 	);
 };
 
-export default MedicalCollections;
+export default StorageCollections;

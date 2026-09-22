@@ -28,21 +28,21 @@ export const TrustSection = () => {
 					<div className="space-y-8">
 						<div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 text-white text-sm font-bold backdrop-blur-md border border-white/20">
 							<ShieldCheck className="w-4 h-4 text-white" />
-							{isRtl ? "الموزع الرسمي المعتمد في مصر" : "Authorized Official Distributor in Egypt"}
+							{isRtl ? "رواد تصنيع وتوريد أنظمة التخزين" : "Leaders in Storage Manufacturing & Supply"}
 						</div>
 
 						<h2 className="text-display font-bold leading-tight">
 							{isRtl ? (
-								<>شريكك الموثوق <span className="text-primary-light">EG Medical</span> للأجهزة الطبية العالمية</>
+								<>شريكك الموثوق <span className="text-primary-light">قايم ورف</span> لأنظمة التخزين والمشغولات المعدنية</>
 							) : (
-								<>Your Trusted <span className="text-primary-light">EG Medical</span> Partner for Global Medical Devices</>
+								<>Your Trusted <span className="text-primary-light">Qayem & Raf</span> Partner for Storage Solutions & Metal Works</>
 							)}
 						</h2>
 
 						<p className="text-white/80 text-lg leading-relaxed max-w-xl">
 							{isRtl
-								? "نحن نفخر بكوننا الموزع الرسمي والوكيل المعتمد لأكبر العلامات التجارية الطبية العالمية. نضمن لك منتجات أصلية 100%، ضمان الوكيل، ودعم فني متخصص."
-								: "We take pride in being the official distributor and authorized agent for the world's leading medical brands. We guarantee 100% original products, official warranties, and specialized technical support."}
+								? "نحن نفخر بكوننا رواد تصنيع وتوريد أحدث أنظمة التخزين الذكية، أرفف المستودعات، والمشغولات المعدنية في مصر. نضمن لك أعلى جودة خامات، متانة تدوم طويلاً، ودعم فني وهندسي متكامل."
+								: "We take pride in being a leading manufacturer and supplier of smart storage racking systems, warehouse shelving, and metal works in Egypt. We guarantee the highest quality steel, long-lasting durability, and comprehensive engineering support."}
 						</p>
 
 						{/* Trust Numbers */}
@@ -73,8 +73,8 @@ export const TrustSection = () => {
 						{/* Cert 1 */}
 						<div className="row-span-2 rounded-[32px] bg-white/10 backdrop-blur-md border border-white/20 p-8 flex flex-col items-center justify-center text-center hover:bg-white/15 transition-colors">
 							<Award className="w-16 h-16 text-primary-light mb-4" />
-							<h3 className="text-xl font-bold text-white mb-2">{isRtl ? "ضمان الوكيل" : "Official Warranty"}</h3>
-							<p className="text-white/70 text-sm">{isRtl ? "تغطية شاملة وصيانة معتمدة لجميع الأجهزة" : "Comprehensive coverage & certified maintenance"}</p>
+							<h3 className="text-xl font-bold text-white mb-2">{isRtl ? "ضمان الجودة والمتانة" : "Quality & Strength Warranty"}</h3>
+							<p className="text-white/70 text-sm">{isRtl ? "تغطية شاملة ومطابقة لأعلى المواصفات الهندسية" : "Comprehensive warranty & certified industrial engineering"}</p>
 						</div>
 
 						{/* Cert 2 */}

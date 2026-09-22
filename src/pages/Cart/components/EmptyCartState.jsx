@@ -25,8 +25,8 @@ export const EmptyCartState = () => {
 			
 			<p className="text-text-secondary max-w-sm mb-8 leading-relaxed">
 				{isRtl 
-					? "يبدو أنك لم تضف أي منتجات طبية إلى السلة بعد. تصفح متجرنا لاكتشاف أفضل العروض." 
-					: "Looks like you haven't added any medical products to your cart yet. Browse our store to discover great deals."}
+					? "يبدو أنك لم تضف أي منتجات إلى السلة بعد. تصفح متجرنا لاكتشاف أفضل العروض والمنتجات." 
+					: "Looks like you haven't added any products to your cart yet. Browse our store to discover great deals."}
 			</p>
 
 			<Link 

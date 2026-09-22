@@ -10,46 +10,46 @@ import { cn } from "@/lib/utils";
 
 const categoriesData = [
 	{
-		id: "hospital-equipment",
-		title: { en: "Hospital Equipment", ar: "معدات المستشفيات" },
-		desc: { en: "Operating room, ICU, and ward furniture", ar: "تجهيزات غرف العمليات والعناية المركزة" },
-		image: "https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=800&auto=format&fit=crop",
-		link: "/category/hospital-equipment"
+		id: "warehouse-shelving",
+		title: { en: "Warehouse Shelving", ar: "أرفف المخازن والمستودعات" },
+		desc: { en: "Heavy duty pallet racking and high capacity storage", ar: "أنظمة باليت راك وأرفف أحمال ثقيلة للمستودعات" },
+		image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&auto=format&fit=crop",
+		link: "/category/warehouse-shelving"
 	},
 	{
-		id: "home-care",
-		title: { en: "Home Care", ar: "الرعاية المنزلية" },
-		desc: { en: "Beds, oxygen concentrators, and aids", ar: "أسرة طبية، مولدات أكسجين ومستلزمات" },
-		image: "https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?q=80&w=800&auto=format&fit=crop",
-		link: "/category/home-care"
+		id: "retail-shelving",
+		title: { en: "Supermarket & Store Racks", ar: "أرفف السوبرماركت والمحلات" },
+		desc: { en: "Gondola island shelves, wall displays, and accessories", ar: "أرفف جزيرة وسطية، وحدات حائطية، واستاندات عرض" },
+		image: "https://images.unsplash.com/photo-1553413077-190dd305871c?q=80&w=800&auto=format&fit=crop",
+		link: "/category/retail-shelving"
 	},
 	{
-		id: "patient-monitoring",
-		title: { en: "Patient Monitoring", ar: "مراقبة العلامات الحيوية" },
-		desc: { en: "ECG, multipara monitors, pulse oximeters", ar: "أجهزة رسم القلب وشاشات متابعة المريض" },
-		image: "https://images.unsplash.com/photo-1551076805-e1869033e561?q=80&w=800&auto=format&fit=crop",
-		link: "/category/patient-monitoring"
+		id: "medium-duty",
+		title: { en: "Medium & Light Duty Shelving", ar: "أرفف أحمال متوسطة وخفيفة" },
+		desc: { en: "Longspan and boltless steel shelves for manual picking", ar: "أرفف لونج سبان وصاج بدون مسامير لسهولة الترتيب" },
+		image: "https://images.unsplash.com/photo-1587293852726-70cdb56c2866?q=80&w=800&auto=format&fit=crop",
+		link: "/category/medium-duty"
 	},
 	{
-		id: "diagnostics",
-		title: { en: "Diagnostics", ar: "أجهزة التشخيص" },
-		desc: { en: "Ultrasound, X-ray, and lab analyzers", ar: "أجهزة السونار، الأشعة، والتحاليل" },
-		image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=800&auto=format&fit=crop",
-		link: "/category/diagnostics"
+		id: "storage-cabinets",
+		title: { en: "Metal Cabinets & Lockers", ar: "دواليب ولوكرات صاج" },
+		desc: { en: "Industrial storage cabinets and staff lockers", ar: "دواليب صاج سميك ولوكرات حفظ أمانات وملفات" },
+		image: "https://images.unsplash.com/photo-1584820927498-cafe8c1c969b?q=80&w=800&auto=format&fit=crop",
+		link: "/category/storage-cabinets"
 	},
 	{
-		id: "orthopedic",
-		title: { en: "Orthopedic", ar: "العظام والحركة" },
-		desc: { en: "Braces, supports, and mobility aids", ar: "دعامات، جبائر ومستلزمات العظام" },
-		image: "https://images.unsplash.com/photo-1598006830588-b5706ee92e46?q=80&w=800&auto=format&fit=crop",
-		link: "/category/orthopedic"
+		id: "cantilever-racks",
+		title: { en: "Cantilever Racks", ar: "أرفف كانتليفر للمواسير والأخشاب" },
+		desc: { en: "Specialized storage for long and bulky industrial materials", ar: "حلول تخزين للأطوال والأنابيب والألواح الخشبية والمعدنية" },
+		image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=800&auto=format&fit=crop",
+		link: "/category/cantilever"
 	},
 	{
-		id: "rehabilitation",
-		title: { en: "Rehabilitation", ar: "العلاج الطبيعي والتأهيل" },
-		desc: { en: "Physiotherapy equipment & wheelchairs", ar: "أجهزة العلاج الطبيعي والكراسي المتحركة" },
-		image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?q=80&w=800&auto=format&fit=crop",
-		link: "/category/rehabilitation"
+		id: "custom-metal",
+		title: { en: "Custom Metal Fabrication", ar: "المشغولات المعدنية المخصصة" },
+		desc: { en: "Workbenches, transport trolleys, and tailored steel fitouts", ar: "تروليات بضائع، طاولات تشغيل صاج، وتفصيل حسب الطلب" },
+		image: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?q=80&w=800&auto=format&fit=crop",
+		link: "/category/custom-metal"
 	}
 ];
 
@@ -91,7 +91,7 @@ export const ShopByCategory = ({ categories = [], isLoading }) => {
 							{isRtl ? "تسوق حسب القسم الرئيسي" : "Featured Categories"}
 						</h2>
 						<p className="text-text-secondary text-sm sm:text-base lg:text-lg">
-							{isRtl ? "الأقسام الطبية الشاملة المعتمدة لتسهيل تصفحك" : "Comprehensive certified medical categories for easy navigation"}
+							{isRtl ? "أقسام وتصنيفات حلول التخزين والمشغولات المعدنية" : "Comprehensive storage solutions and metal fabrication categories"}
 						</p>
 					</div>
 

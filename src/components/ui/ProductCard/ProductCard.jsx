@@ -87,7 +87,7 @@ export const ProductCard = ({ product, variant = PRODUCT_CARD_VARIANTS.DEFAULT, 
 					) : <div />}
 				</div>
 
-				{variant === PRODUCT_CARD_VARIANTS.MEDICAL && (
+				{variant === PRODUCT_CARD_VARIANTS.INDUSTRIAL && (
 					<ProductMeta sku={product.meta?.sku} warranty={product.meta?.warranty?.[language]} delivery={product.meta?.delivery?.[language]} isRtl={isRtl} />
 				)}
 				

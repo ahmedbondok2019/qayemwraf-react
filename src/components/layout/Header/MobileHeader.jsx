@@ -23,7 +23,7 @@ import {
 	Percent,
 	Info,
 	PhoneCall,
-	Stethoscope
+	Headphones
 } from "lucide-react";
 import Container from "@/components/ui/Container";
 import Logo from "./Logo";
@@ -51,7 +51,7 @@ const getLinkIcon = (id) => {
 		case "contact":
 			return PhoneCall;
 		case "consultation":
-			return Stethoscope;
+			return Headphones;
 		default:
 			return ChevronRight;
 	}

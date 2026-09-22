@@ -1,5 +1,5 @@
 export const appConfig = {
-	name: "EG-Medical",
+	name: "Qayem & Raf",
 	version: "1.0.0",
 	defaultLanguage: "ar",
 	defaultTheme: "dark",

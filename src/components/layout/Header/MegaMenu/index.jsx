@@ -3,7 +3,7 @@ import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { useCategories } from "@/hooks/queries/useCategories";
-import { ChevronLeft, ChevronRight, Stethoscope } from "lucide-react";
+import { ChevronLeft, ChevronRight, Layers } from "lucide-react";
 
 const getLocalizedValue = (value) => {
 	if (!value) return { en: "", ar: "" };
@@ -88,8 +88,8 @@ export const MegaMenu = ({ isOpen, language, isRtl, onClose }) => {
 						{/* Header Strip */}
 						<div className="bg-slate-50 dark:bg-slate-900/50 border-b border-slate-100 dark:border-slate-800 px-6 py-4 flex items-center justify-between">
 							<span className="font-bold text-slate-800 dark:text-white text-sm flex items-center gap-2">
-								<Stethoscope className="w-4 h-4 text-primary" />
-								{isRtl ? "استكشف الأقسام الطبية" : "Explore Medical Categories"}
+								<Layers className="w-4 h-4 text-primary" />
+								{isRtl ? "استكشف أقسام وحلول التخزين" : "Explore Storage Categories"}
 							</span>
 							<LocalizedLink 
 								to="/categories" 
@@ -113,8 +113,8 @@ export const MegaMenu = ({ isOpen, language, isRtl, onClose }) => {
 										subtitle = subCats.slice(0, 3).map(s => getLocalizedValue(s.title || s.name)[language]).join(' • ');
 									} else {
 										subtitle = language === "ar" 
-											? "أحدث المعدات والأجهزة" 
-											: "Latest equipment & devices";
+											? "أحدث أنظمة ووحدات التخزين" 
+											: "Latest storage systems & units";
 									}
 
 									return (

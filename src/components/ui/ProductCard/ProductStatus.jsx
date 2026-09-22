@@ -16,8 +16,8 @@ export const ProductStatus = ({ state, isRtl }) => {
 				return { bg: "bg-warning/10", text: "text-warning", label: { en: "Limited Stock", ar: "كمية محدودة" } };
 			case PRODUCT_STATES.COMING_SOON:
 				return { bg: "bg-primary/10", text: "text-primary", label: { en: "Coming Soon", ar: "قريباً" } };
-			case PRODUCT_STATES.PRESCRIPTION_REQUIRED:
-				return { bg: "bg-info/10", text: "text-info", label: { en: "Prescription Required", ar: "وصفة طبية مطلوبة" } };
+			case PRODUCT_STATES.CUSTOM_MANUFACTURING:
+				return { bg: "bg-info/10", text: "text-info", label: { en: "Custom Made", ar: "تصنيع بالطلب" } };
 			default:
 				return null;
 		}

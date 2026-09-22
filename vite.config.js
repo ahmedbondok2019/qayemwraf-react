@@ -43,7 +43,7 @@ export default defineConfig({
 	server: {
 		proxy: {
 			"/api": {
-				target: "https://admin.egimedical.com",
+				target: "https://admin.qayemwraf.com",
 				changeOrigin: true,
 				secure: false,
 				xfwd: false,
