@@ -5,7 +5,7 @@ import { PhoneCall, MessageCircle, ArrowLeft, ArrowRight, Sparkles, CheckCircle2
 import Container from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
 import { useSettings } from "@/hooks/queries/useSettings";
-import { trackWhatsAppClick, getWhatsAppUrl, normalizeWhatsAppNumber } from "@/lib/analytics";
+import { trackWhatsAppClick, getWhatsAppUrl, normalizeWhatsAppNumber } from "@/lib/siteEvents";
 
 /**
  * Premium Conversion-Driven CTA Section

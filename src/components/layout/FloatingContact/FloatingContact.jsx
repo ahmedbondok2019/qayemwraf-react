@@ -3,7 +3,7 @@ import { useLanguage } from "@/app/providers/I18nProvider";
 import { useSettings } from "@/hooks/queries/useSettings";
 import { cn } from "@/lib/utils";
 import { X, Sparkles, Phone, MessageSquare } from "lucide-react";
-import { trackWhatsAppClick, getWhatsAppUrl, normalizeWhatsAppNumber } from "@/lib/analytics";
+import { trackWhatsAppClick, getWhatsAppUrl, normalizeWhatsAppNumber } from "@/lib/siteEvents";
 
 /**
  * FloatingContact Component

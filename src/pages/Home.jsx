@@ -22,8 +22,8 @@ const Home = () => {
 	const { data, isLoading, error } = useHome();
 	// Extract home data from the API response (interceptor returns response.data already)
 	const homeData = data?.data || {};
-
-	const { data: latestProducts, isLoading: latestLoading } = useLatestProducts();
+	const latestProducts = homeData.latest_products || homeData.latestProducts || [];
+	const latestLoading = false;
 
 	const homeSchema = {
 		"@context": "https://schema.org",
@@ -79,7 +79,7 @@ const Home = () => {
 					case "blogSection":
 						return <BlogSection key={section.id} />;
 					case "productGallery": {
-						const products = latestProducts?.length ? latestProducts : homeData.latest_products || [];
+						const products = homeData.projects?.length ? homeData.projects : [];
 						return (
 							<ProductGallerySection
 								key={section.id}
@@ -88,7 +88,7 @@ const Home = () => {
 								viewAllLink={section.viewAllLink}
 								bg={section.bg}
 								products={products}
-								isLoading={isLoading || latestLoading}
+								isLoading={isLoading}
 							/>
 						);
 					}
@@ -97,10 +97,10 @@ const Home = () => {
 						let sectionLoading = isLoading;
 						if (section.id === "flash-deals") products = homeData.flash_sales || [];
 						if (section.id === "latest-products") {
-							products = latestProducts?.length ? latestProducts : homeData.latest_products || [];
-							sectionLoading = isLoading || latestLoading;
+							products = latestProducts;
+							sectionLoading = isLoading;
 						}
-						if (section.id === "best-sellers") products = homeData.top_sellers || [];
+						if (section.id === "best-sellers") products = homeData.top_sellers || homeData.best_sellers || [];
 
 						return (
 							<ProductSection

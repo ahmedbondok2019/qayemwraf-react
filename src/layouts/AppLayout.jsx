@@ -9,13 +9,13 @@ import FloatingContact from "@/components/layout/FloatingContact";
 import { useAppDispatch } from "@/app/store/hooks";
 import { fetchCart } from "@/features/cart/cartSlice";
 import { fetchWishlist } from "@/features/wishlist/wishlistSlice";
-import useAnalytics from "@/hooks/useAnalytics";
+import useSiteEvents from "@/hooks/useSiteEvents";
 
 export const AppLayout = () => {
 	const dispatch = useAppDispatch();
 
 	// Initialize GA4 SPA page tracking + WhatsApp click tracking
-	useAnalytics();
+	useSiteEvents();
 
 	// Cart and Wishlist endpoints are disabled by user on backend
 	// useEffect(() => {

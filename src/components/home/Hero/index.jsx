@@ -27,6 +27,7 @@ const defaultFeatures = [
 export const Hero = ({ sliders = [], isLoading }) => {
 	const { language } = useLanguage();
 	const [activeIndex, setActiveIndex] = useState(0);
+	const [failedImages, setFailedImages] = useState({});
 
 	const defaultDescription = language === "ar"
 		? "تصميم وتصنيع وتوريد أحدث أنظمة ووحدات رفوف التخزين الذكية، أرفف المخازن والمستودعات والمشغولات المعدنية بأعلى معايير الجودة والمتانة."
@@ -34,25 +35,32 @@ export const Hero = ({ sliders = [], isLoading }) => {
 
 	const defaultSlides = [
 		{
-			id: 1,
-			title: "قائم ورف لحلول التخزين والمشغولات المعدنية",
+			id: 2,
+			title: "وحدات أرفف قياسية للمحلات والشركات",
 			description: defaultDescription,
-			image: "https://admin.qayemwraf.com/storage/website/images/sliders/1789989022.png",
-			link: "/shop"
+			image: "https://admin.qayemwraf.com/storage/website/images/sliders/1790321193.webp",
+			link: "/category/2"
 		},
 		{
-			id: 2,
-			title: "وحدات تخزين هيفي ديوتي للمخازن والمستودعات",
+			id: 1,
+			title: "وحدات أرفف تخزين خفيفة ومتوسطة",
 			description: defaultDescription,
-			image: "https://admin.qayemwraf.com/storage/website/images/sliders/1789989231.png",
-			link: "/category/5"
+			image: "https://admin.qayemwraf.com/storage/website/images/sliders/1790323233.webp",
+			link: "/category/1"
 		},
 		{
 			id: 3,
-			title: "وحدات أرفف قياسية للمحلات والشركات",
+			title: "وحدات تخزين هيفي ديوتي للمخازن والمستودعات",
 			description: defaultDescription,
-			image: "https://admin.qayemwraf.com/storage/website/images/sliders/1789989122.png",
-			link: "/category/2"
+			image: "https://admin.qayemwraf.com/storage/website/images/sliders/1790325200.jpg",
+			link: "/category/5"
+		},
+		{
+			id: 4,
+			title: "راكات هيفي ديوتي حمولة طن و 2طن و3طن",
+			description: defaultDescription,
+			image: "https://admin.qayemwraf.com/storage/website/images/sliders/1790324735.jpg",
+			link: "/category/5"
 		}
 	];
 
@@ -166,7 +174,7 @@ export const Hero = ({ sliders = [], isLoading }) => {
 								className="relative flex-[0_0_100%] min-w-0 select-none h-[60vh] sm:h-[75vh] md:h-[calc(100vh-130px)] min-h-[380px] overflow-hidden bg-slate-100 dark:bg-slate-800"
 							>
 								{/*Full Background Image */}
-								{slide.image ? (
+								{slide.image && !failedImages[slide.id || index] ? (
 									<img
 										src={slide.image}
 										alt={slide.title || "قايم ورف لحلول التخزين"}
@@ -174,9 +182,16 @@ export const Hero = ({ sliders = [], isLoading }) => {
 										loading={index === 0 ? "eager" : "lazy"}
 										fetchPriority={index === 0 ? "high" : "auto"}
 										decoding={index === 0 ? "sync" : "async"}
+										onError={() => {
+											setFailedImages((prev) => ({ ...prev, [slide.id || index]: true }));
+										}}
 									/>
 								) : (
-									<div className={`w-full h-full ${slide.background || "bg-[#0a2342]"}`} />
+									<div className={`w-full h-full ${slide.background || "bg-[#0a2342]"} flex items-center justify-center`}>
+										<div className="text-center p-6 text-white/80">
+											<h3 className="text-2xl font-bold">{slide.title}</h3>
+										</div>
+									</div>
 								)}
 							</div>
 						);

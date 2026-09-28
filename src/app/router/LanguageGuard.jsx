@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useParams, Navigate, Outlet, useLocation } from "react-router-dom";
 import { useLanguage } from "@/app/providers/I18nProvider";
 import { LANGUAGES } from "@/constants/languages";
-import { trackPageView, initGlobalWhatsAppTracker } from "@/lib/analytics";
+import { trackPageView, initGlobalWhatsAppTracker } from "@/lib/siteEvents";
 
 export const LanguageGuard = () => {
 	const { lang } = useParams();

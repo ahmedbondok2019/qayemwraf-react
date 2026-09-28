@@ -17,7 +17,7 @@ import {
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import { useSettings } from "@/hooks/queries/useSettings";
-import { trackWhatsAppClick, getWhatsAppUrl, normalizeWhatsAppNumber } from "@/lib/analytics";
+import { trackWhatsAppClick, getWhatsAppUrl, normalizeWhatsAppNumber } from "@/lib/siteEvents";
 
 export const ProjectSidebar = ({ project }) => {
 	const { language } = useLanguage();

@@ -8,7 +8,7 @@ import { useSettings } from "@/hooks/queries/useSettings";
 import { resolveShowroomData } from "@/lib/showroomUtils";
 import api from "@/services/api/client";
 import API_ENDPOINTS from "@/services/api/endpoints";
-import { trackWhatsAppClick, getWhatsAppUrl, normalizeWhatsAppNumber } from "@/lib/analytics";
+import { trackWhatsAppClick, getWhatsAppUrl, normalizeWhatsAppNumber } from "@/lib/siteEvents";
 
 export const Contact = () => {
 	const { language } = useLanguage();

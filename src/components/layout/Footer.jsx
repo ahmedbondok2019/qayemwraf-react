@@ -6,7 +6,7 @@ import { Mail, Phone, MapPin, Send, Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useSettings } from "@/hooks/queries/useSettings";
 import { resolveShowroomData } from "@/lib/showroomUtils";
-import { trackWhatsAppClick, getWhatsAppUrl, normalizeWhatsAppNumber } from "@/lib/analytics";
+import { trackWhatsAppClick, getWhatsAppUrl, normalizeWhatsAppNumber } from "@/lib/siteEvents";
 import { toast } from "sonner";
 
 export const Footer = () => {
