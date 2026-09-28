@@ -42,9 +42,13 @@ export const mapBlogData = (apiBlog) => {
 	};
 };
 
+import { useLanguage } from "@/app/providers/I18nProvider";
+
 export const useBlogs = () => {
+	const { language } = useLanguage();
+
 	return useQuery({
-		queryKey: ["blogs"],
+		queryKey: ["blogs", language],
 		queryFn: async () => {
 			const res = await api.get(API_ENDPOINTS.BLOGS);
 			const list = res?.data?.data || res?.data || res;
@@ -57,8 +61,10 @@ export const useBlogs = () => {
 };
 
 export const useBlogBySlug = (slug) => {
+	const { language } = useLanguage();
+
 	return useQuery({
-		queryKey: ["blog", slug],
+		queryKey: ["blog", slug, language],
 		queryFn: async () => {
 			const res = await api.get(`${API_ENDPOINTS.BLOGS}/${slug}`);
 			const post = res?.data?.data || res?.data || res;

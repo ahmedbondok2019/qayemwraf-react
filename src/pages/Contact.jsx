@@ -3,8 +3,9 @@ import { useLanguage } from "@/app/providers/I18nProvider";
 import Container from "@/components/ui/Container";
 import { Breadcrumb } from "@/components/ui/Breadcrumb";
 import SEO from "@/components/common/SEO";
-import { Phone, Mail, MapPin, Check, Send, MessageCircle } from "lucide-react";
+import { Phone, Mail, MapPin, Check, Send, MessageCircle, Clock, ExternalLink } from "lucide-react";
 import { useSettings } from "@/hooks/queries/useSettings";
+import { resolveShowroomData } from "@/lib/showroomUtils";
 import api from "@/services/api/client";
 import API_ENDPOINTS from "@/services/api/endpoints";
 
@@ -12,6 +13,7 @@ export const Contact = () => {
 	const { language } = useLanguage();
 	const isRtl = language === "ar";
 	const { data: settings } = useSettings();
+	const showroom = resolveShowroomData(settings, language);
 
 	const breadcrumbItems = [
 		{ label: { en: "Home", ar: "الرئيسية" }, link: "/" },
@@ -77,7 +79,7 @@ export const Contact = () => {
 			</div>
 
 			<Container>
-				<div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+				<div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-12">
 					
 					{/* Left: Contact Form */}
 					<div className="lg:col-span-7 bg-surface border border-border/50 rounded-3xl p-6 sm:p-8 shadow-sm">
@@ -152,7 +154,7 @@ export const Contact = () => {
 								<button 
 									type="submit"
 									disabled={isLoading}
-									className="h-14 px-8 bg-primary hover:bg-primary-hover text-white font-extrabold rounded-xl transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 active:scale-[0.98] disabled:opacity-75 disabled:cursor-not-allowed"
+									className="h-14 px-8 bg-primary hover:bg-primary-hover text-white font-extrabold rounded-xl transition-all shadow-lg shadow-primary/20 flex items-center justify-center gap-2 active:scale-[0.98] disabled:opacity-75 disabled:cursor-not-allowed cursor-pointer"
 								>
 									{isLoading ? (
 										<span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -218,8 +220,25 @@ export const Contact = () => {
 									</div>
 								)}
 
+								{/* Working Hours */}
+								{showroom.workingHours && (
+									<div className="flex items-start gap-4">
+										<div className="w-10 h-10 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 rounded-xl flex items-center justify-center shrink-0">
+											<Clock className="w-5 h-5" />
+										</div>
+										<div className="flex flex-col">
+											<span className="text-xs text-text-muted font-bold">
+												{isRtl ? "أوقات العمل:" : "Working Hours:"}
+											</span>
+											<p className="text-sm font-semibold text-text leading-relaxed mt-0.5">
+												{showroom.workingHours}
+											</p>
+										</div>
+									</div>
+								)}
+
 								{/* Showroom Address */}
-								{(settings?.showroom_address || settings?.address) && (
+								{showroom.address && (
 									<div className="flex items-start gap-4">
 										<div className="w-10 h-10 bg-warning/10 text-warning rounded-xl flex items-center justify-center shrink-0">
 											<MapPin className="w-5 h-5" />
@@ -229,10 +248,7 @@ export const Contact = () => {
 												{isRtl ? "عنوان المعرض :" : "Showroom Address:"}
 											</span>
 											<p className="text-sm font-semibold text-text leading-relaxed mt-0.5">
-												{(() => {
-													const val = settings.showroom_address || settings.address;
-													return typeof val === 'object' ? (val[language] || val.ar || val.en || "") : val;
-												})()}
+												{showroom.address}
 											</p>
 										</div>
 									</div>
@@ -260,10 +276,67 @@ export const Contact = () => {
 							</div>
 						</div>
 
-
-
 					</div>
 
+				</div>
+
+				{/* Showroom & Google Map Section */}
+				<div className="bg-surface border border-border/60 rounded-3xl p-6 sm:p-8 md:p-10 shadow-sm relative overflow-hidden">
+					<div className="flex flex-col lg:flex-row items-stretch justify-between gap-8 relative z-10">
+						{/* Location Details & Directions */}
+						<div className="lg:w-5/12 flex flex-col justify-between space-y-6">
+							<div>
+								<div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold mb-3">
+									<MapPin className="w-4 h-4 text-primary" />
+									<span>{showroom.tag}</span>
+								</div>
+								<h2 className="text-2xl sm:text-3xl font-extrabold text-text mb-3">
+									{showroom.title}
+								</h2>
+								<p className="text-text-secondary text-sm sm:text-base leading-relaxed mb-5">
+									{showroom.address}
+								</p>
+
+								<div className="space-y-3 bg-surface-2 p-4 sm:p-5 rounded-2xl border border-border/60">
+									{showroom.workingHours && (
+										<div className="flex items-center gap-3 text-xs sm:text-sm">
+											<span className="w-2.5 h-2.5 rounded-full bg-success shrink-0" />
+											<span className="font-bold text-text">{showroom.workingHours}</span>
+										</div>
+									)}
+									{showroom.features && (
+										<div className="flex items-center gap-3 text-xs sm:text-sm text-text-secondary">
+											<span className="w-2.5 h-2.5 rounded-full bg-primary shrink-0" />
+											<span>{showroom.features}</span>
+										</div>
+									)}
+								</div>
+							</div>
+
+							<a
+								href={showroom.mapUrl}
+								target="_blank"
+								rel="noopener noreferrer"
+								className="inline-flex items-center justify-center gap-2.5 w-full sm:w-auto px-7 py-3.5 bg-primary hover:bg-primary-hover text-white rounded-xl font-extrabold text-sm shadow-md transition-all hover:shadow-primary/20 hover:-translate-y-0.5 active:scale-95"
+							>
+								<MapPin className="w-4 h-4" />
+								<span>{showroom.mapButtonText}</span>
+								<ExternalLink className="w-3.5 h-3.5 opacity-70" />
+							</a>
+						</div>
+
+						{/* Google Maps Iframe */}
+						<div className="lg:w-7/12 w-full h-72 sm:h-80 md:h-96 rounded-2xl overflow-hidden border border-border/80 shadow-inner relative bg-surface-2">
+							<iframe
+								title={showroom.title || (isRtl ? "موقع قايم ورف على الخريطة" : "Qayem & Raf Google Map")}
+								src={showroom.mapIframe}
+								className="w-full h-full border-0"
+								loading="lazy"
+								allowFullScreen
+								referrerPolicy="no-referrer-when-downgrade"
+							/>
+						</div>
+					</div>
 				</div>
 			</Container>
 
@@ -272,3 +345,4 @@ export const Contact = () => {
 };
 
 export default Contact;
+

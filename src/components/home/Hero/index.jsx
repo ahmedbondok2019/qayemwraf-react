@@ -149,29 +149,27 @@ export const Hero = ({ sliders = [], isLoading }) => {
 
 	if (isLoading && (!sliders || sliders.length === 0)) {
 		return (
-			<Section spacing="none" className="pt-0 pb-8 sm:pb-12 md:pb-16 w-full">
-				<div className="w-full aspect-[1600/542] min-h-[160px] bg-slate-100 dark:bg-slate-800 animate-pulse rounded-xs"></div>
-			</Section>
+			<section className="w-full p-0 m-0">
+				<div className="w-full h-[60vh] sm:h-[75vh] md:h-[calc(100vh-130px)] min-h-[380px] bg-slate-100 dark:bg-slate-800 animate-pulse"></div>
+			</section>
 		);
 	}
 
 	return (
-		<Section spacing="none" className="pt-0 pb-8 sm:pb-12 md:pb-16 w-full">
-			<div className="w-full relative overflow-hidden shadow-xs">
+		<section className="w-full p-0 m-0 relative overflow-hidden">
+			<div className="w-full relative overflow-hidden">
 				<HeroSlider onSlideChange={setActiveIndex}>
 					{slidesToDisplay.map((slide, index) => {
 						return (
 							<div
 								key={slide.id || index}
-								className="relative flex-[0_0_100%] min-w-0 select-none aspect-[1600/542] overflow-hidden bg-slate-100 dark:bg-slate-800"
+								className="relative flex-[0_0_100%] min-w-0 select-none h-[60vh] sm:h-[75vh] md:h-[calc(100vh-130px)] min-h-[380px] overflow-hidden bg-slate-100 dark:bg-slate-800"
 							>
 								{/*Full Background Image */}
 								{slide.image ? (
 									<img
 										src={slide.image}
 										alt={slide.title || "قايم ورف لحلول التخزين"}
-										width="1600"
-										height="542"
 										className="w-full h-full object-cover block"
 										loading={index === 0 ? "eager" : "lazy"}
 										fetchPriority={index === 0 ? "high" : "auto"}
@@ -185,7 +183,7 @@ export const Hero = ({ sliders = [], isLoading }) => {
 					})}
 				</HeroSlider>
 			</div>
-		</Section>
+		</section>
 	);
 };
 

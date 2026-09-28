@@ -25,8 +25,8 @@ export const I18nProvider = ({ children }) => {
 		localStorage.setItem("qayem_lang", language);
 		localStorage.setItem("app_lang", language);
 		
-		// Invalidate queries so fresh translated data is fetched from API
-		queryClient.invalidateQueries();
+		// Invalidate only currently active queries on screen to avoid storming the API
+		queryClient.invalidateQueries({ type: "active" });
 	}, [language]);
 
 	const toggleLanguage = () => {

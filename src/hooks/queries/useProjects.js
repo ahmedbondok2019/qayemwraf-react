@@ -77,9 +77,13 @@ export const mapBackendProject = (apiProj) => {
 	};
 };
 
+import { useLanguage } from "@/app/providers/I18nProvider";
+
 export const useProjects = (filters = {}) => {
+	const { language } = useLanguage();
+
 	return useQuery({
-		queryKey: ["projects", filters],
+		queryKey: ["projects", filters, language],
 		queryFn: async () => {
 			const res = await api.get(API_ENDPOINTS.PROJECTS || "/projects", { params: filters });
 			const isSuccess =
@@ -109,8 +113,10 @@ export const useProjects = (filters = {}) => {
 };
 
 export const useProjectDetails = (slug) => {
+	const { language } = useLanguage();
+
 	return useQuery({
-		queryKey: ["projectDetails", slug],
+		queryKey: ["projectDetails", slug, language],
 		queryFn: async () => {
 			if (!slug) return null;
 			const endpoint = `${API_ENDPOINTS.PROJECTS || "/projects"}/${slug}`;
@@ -137,8 +143,10 @@ export const useProjectDetails = (slug) => {
 };
 
 export const useRelatedProjects = (currentSlug) => {
+	const { language } = useLanguage();
+
 	return useQuery({
-		queryKey: ["relatedProjects", currentSlug],
+		queryKey: ["relatedProjects", currentSlug, language],
 		queryFn: async () => {
 			try {
 				const res = await api.get(API_ENDPOINTS.PROJECTS || "/projects");

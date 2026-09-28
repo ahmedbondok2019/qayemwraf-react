@@ -2,15 +2,17 @@ import React from "react";
 import { useLanguage } from "@/app/providers/I18nProvider";
 import Container from "@/components/ui/Container";
 import LocalizedLink from "@/components/ui/LocalizedLink";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useSettings } from "@/hooks/queries/useSettings";
+import { resolveShowroomData } from "@/lib/showroomUtils";
 import { toast } from "sonner";
 
 export const Footer = () => {
 	const { language } = useLanguage();
 	const isRtl = language === "ar";
 	const { data: settings } = useSettings();
+	const showroom = resolveShowroomData(settings, language);
 
 	return (
 		<footer className="bg-slate-900 pt-10 sm:pt-16 pb-6 sm:pb-8 text-slate-300 border-t border-slate-800">
@@ -23,44 +25,46 @@ export const Footer = () => {
 							<div>
 								<div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold mb-3">
 									<MapPin className="w-3.5 h-3.5 text-primary" />
-									<span>{isRtl ? "موقع المعرض والمبيعات" : "Showroom & Sales Location"}</span>
+									<span>{showroom.tag}</span>
 								</div>
 								<h3 className="text-xl sm:text-2xl font-extrabold text-white mb-2">
-									{isRtl ? "تفضل بزيارتنا في المعرض" : "Visit Our Showroom"}
+									{showroom.title}
 								</h3>
 								<p className="text-slate-400 text-sm leading-relaxed mb-4">
-									{isRtl
-										? "35 عمارات التوفيقية، شرق مدينة نصر (امتداد مصطفى النحاس - قرب النادي الأهلي)، القاهرة."
-										: "35 Al-Tawfiqia Buildings, East Nasr City (Mustafa El-Nahas Ext - near Al-Ahly Club), Cairo, Egypt."}
+									{showroom.address}
 								</p>
 								<div className="space-y-2 text-xs text-slate-300">
-									<div className="flex items-center gap-2">
-										<span className="w-2 h-2 rounded-full bg-success"></span>
-										<span>{isRtl ? "مواعيد العمل: يومياً من 9:00 ص إلى 10:00 م" : "Working Hours: Daily 9:00 AM - 10:00 PM"}</span>
-									</div>
-									<div className="flex items-center gap-2">
-										<span className="w-2 h-2 rounded-full bg-primary"></span>
-										<span>{isRtl ? "معاينة وفحص كافة أنواع الأرفف والمشغولات" : "Inspect all rack samples & metal works in person"}</span>
-									</div>
+									{showroom.workingHours && (
+										<div className="flex items-center gap-2">
+											<span className="w-2 h-2 rounded-full bg-success"></span>
+											<span>{showroom.workingHours}</span>
+										</div>
+									)}
+									{showroom.features && (
+										<div className="flex items-center gap-2">
+											<span className="w-2 h-2 rounded-full bg-primary"></span>
+											<span>{showroom.features}</span>
+										</div>
+									)}
 								</div>
 							</div>
 
 							<a
-								href="https://maps.app.goo.gl/u9Zs1ikL4h1uVDFa8"
+								href={showroom.mapUrl}
 								target="_blank"
 								rel="noopener noreferrer"
 								className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-6 py-3 bg-primary hover:bg-primary-hover text-white rounded-xl font-bold text-sm shadow-md transition-all hover:shadow-primary/20 hover:-translate-y-0.5"
 							>
 								<MapPin className="w-4 h-4" />
-								<span>{isRtl ? "فتح الموقع على Google Maps" : "Open in Google Maps"}</span>
+								<span>{showroom.mapButtonText}</span>
 							</a>
 						</div>
 
 						{/* Map Iframe */}
 						<div className="lg:w-2/3 w-full h-64 sm:h-72 md:h-80 rounded-2xl overflow-hidden border border-slate-700/80 shadow-inner relative bg-slate-900">
 							<iframe
-								title={isRtl ? "موقع قايم ورف على الخريطة" : "Qayem & Raf Google Map"}
-								src="https://maps.google.com/maps?q=30.0384,31.3655&hl=ar&z=15&output=embed"
+								title={showroom.title || (isRtl ? "موقع قايم ورف على الخريطة" : "Qayem & Raf Google Map")}
+								src={showroom.mapIframe}
 								className="w-full h-full border-0"
 								loading="lazy"
 								allowFullScreen
@@ -150,7 +154,7 @@ export const Footer = () => {
 						</h4>
 						<ul className="space-y-4 text-sm">
 							{/* Showroom Address */}
-							{(settings?.showroom_address || settings?.address) && (
+							{showroom.address && (
 								<li className="flex items-start gap-3 text-slate-400">
 									<MapPin className="w-5 h-5 text-orange-500 shrink-0 mt-0.5" />
 									<div className="flex flex-col">
@@ -158,10 +162,21 @@ export const Footer = () => {
 											{isRtl ? "عنوان المعرض:" : "Showroom Address:"}
 										</span>
 										<span className="text-xs leading-relaxed text-slate-300">
-											{(() => {
-												const val = settings.showroom_address || settings.address;
-												return typeof val === 'object' ? (val[language] || val.ar || val.en || "") : val;
-											})()}
+											{showroom.address}
+										</span>
+									</div>
+								</li>
+							)}
+							{/* Working Hours */}
+							{showroom.workingHours && (
+								<li className="flex items-start gap-3 text-slate-400">
+									<Clock className="w-5 h-5 text-emerald-400 shrink-0 mt-0.5" />
+									<div className="flex flex-col">
+										<span className="text-xs font-semibold text-white/90">
+											{isRtl ? "أوقات العمل:" : "Working Hours:"}
+										</span>
+										<span className="text-xs leading-relaxed text-slate-300">
+											{showroom.workingHours}
 										</span>
 									</div>
 								</li>
