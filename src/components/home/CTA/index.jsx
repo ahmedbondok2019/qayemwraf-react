@@ -5,7 +5,7 @@ import { PhoneCall, MessageCircle, ArrowLeft, ArrowRight, Sparkles, CheckCircle2
 import Container from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
 import { useSettings } from "@/hooks/queries/useSettings";
-import { trackWhatsAppClick } from "@/lib/analytics";
+import { trackWhatsAppClick, getWhatsAppUrl, normalizeWhatsAppNumber } from "@/lib/analytics";
 
 /**
  * Premium Conversion-Driven CTA Section
@@ -16,9 +16,10 @@ export const CallToAction = () => {
 	const isRtl = language === "ar";
 	const { data: settings } = useSettings();
 
-	const phone = settings?.phone || "01203036736";
-	const whatsapp = settings?.whatsapp || settings?.phone || "01203036736";
-	const cleanWhatsapp = whatsapp.replace(/[^0-9]/g, "");
+	const phone = settings?.phone || "01154813836";
+	const rawWhatsapp = settings?.social_links?.whatsapp || settings?.whatsapp || phone;
+	const cleanWhatsapp = normalizeWhatsAppNumber(rawWhatsapp);
+	const whatsappUrl = getWhatsAppUrl(cleanWhatsapp);
 
 	const highlights = [
 		{ text: isRtl ? "معاينة ودراسة مساحات مجانية" : "Free On-Site Inspection & Study" },
@@ -88,10 +89,12 @@ export const CallToAction = () => {
 
 								{/* WhatsApp Button */}
 								<a
-									href={`https://wa.me/${cleanWhatsapp}`}
+									href={whatsappUrl}
 									target="_blank"
 									rel="noopener noreferrer"
-									onClick={() => trackWhatsAppClick("cta_section", { url: `https://wa.me/${cleanWhatsapp}`, phone: cleanWhatsapp })}
+									data-analytics-action="whatsapp"
+									data-analytics-location="cta_section"
+									onClick={() => trackWhatsAppClick("cta_section", { url: whatsappUrl, phone: cleanWhatsapp })}
 									className="flex items-center justify-center gap-3 w-full py-3.5 px-6 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition-all duration-300 hover:shadow-lg hover:shadow-emerald-600/10 transform hover:-translate-y-0.5"
 								>
 									<MessageCircle size={18} />

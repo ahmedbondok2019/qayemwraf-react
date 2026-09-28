@@ -3,7 +3,7 @@ import { useLanguage } from "@/app/providers/I18nProvider";
 import { useSettings } from "@/hooks/queries/useSettings";
 import { cn } from "@/lib/utils";
 import { X, Sparkles, Phone, MessageSquare } from "lucide-react";
-import { trackWhatsAppClick } from "@/lib/analytics";
+import { trackWhatsAppClick, getWhatsAppUrl, normalizeWhatsAppNumber } from "@/lib/analytics";
 
 /**
  * FloatingContact Component
@@ -17,17 +17,13 @@ export const FloatingContact = () => {
 
 	const [isBubbleVisible, setIsBubbleVisible] = useState(true);
 
-	// WhatsApp number resolution
+	// WhatsApp number resolution - standardized to 201154813836
 	const rawWhatsapp = settings?.social_links?.whatsapp || settings?.phone || "01154813836";
-	let cleanWhatsapp = rawWhatsapp.replace(/\D/g, "");
-	if (cleanWhatsapp.startsWith("01")) {
-		cleanWhatsapp = "2" + cleanWhatsapp;
-	} else if (!cleanWhatsapp.startsWith("20") && cleanWhatsapp.length === 10 && cleanWhatsapp.startsWith("1")) {
-		cleanWhatsapp = "20" + cleanWhatsapp;
-	}
-	const whatsappUrl = `https://wa.me/${cleanWhatsapp}?text=${encodeURIComponent(
+	const cleanWhatsapp = normalizeWhatsAppNumber(rawWhatsapp);
+	const whatsappUrl = getWhatsAppUrl(
+		cleanWhatsapp,
 		isRtl ? "مرحباً، أود الاستفسار عن تفاصيل وأسعار حلول التخزين والأرفف المعدنية لدى قائم ورف." : "Hello, I would like to inquire about Qayem & Raf storage systems and shelving."
-	)}`;
+	);
 
 	// Messenger / Facebook resolution
 	const facebookUrl = settings?.social_links?.facebook || "https://facebook.com";
@@ -145,6 +141,8 @@ export const FloatingContact = () => {
 					href={whatsappUrl}
 					target="_blank"
 					rel="noopener noreferrer"
+					data-analytics-action="whatsapp"
+					data-analytics-location="floating_button"
 					onClick={() => trackWhatsAppClick("floating_button", { url: whatsappUrl, phone: cleanWhatsapp })}
 					aria-label={isRtl ? "تواصل عبر واتساب" : "Chat on WhatsApp"}
 					className="flex items-center justify-center w-12.5 h-12.5 sm:w-13.5 sm:h-13.5 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-lg shadow-[#25D366]/25 hover:shadow-xl hover:shadow-[#25D366]/40 hover:scale-110 active:scale-95 transition-all duration-300"

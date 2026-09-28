@@ -8,7 +8,7 @@ import { useSettings } from "@/hooks/queries/useSettings";
 import { resolveShowroomData } from "@/lib/showroomUtils";
 import api from "@/services/api/client";
 import API_ENDPOINTS from "@/services/api/endpoints";
-import { trackWhatsAppClick } from "@/lib/analytics";
+import { trackWhatsAppClick, getWhatsAppUrl, normalizeWhatsAppNumber } from "@/lib/analytics";
 
 export const Contact = () => {
 	const { language } = useLanguage();
@@ -194,26 +194,32 @@ export const Contact = () => {
 								)}
 
 								{/* WhatsApp */}
-								{settings?.social_links?.whatsapp && (
-									<div className="flex items-start gap-4">
-										<div className="w-10 h-10 bg-success/10 text-success rounded-xl flex items-center justify-center shrink-0">
-											<MessageCircle className="w-5 h-5" />
+								{settings?.social_links?.whatsapp && (() => {
+									const cleanNumber = normalizeWhatsAppNumber(settings.social_links.whatsapp);
+									const waUrl = getWhatsAppUrl(cleanNumber);
+									return (
+										<div className="flex items-start gap-4">
+											<div className="w-10 h-10 bg-success/10 text-success rounded-xl flex items-center justify-center shrink-0">
+												<MessageCircle className="w-5 h-5" />
+											</div>
+											<div className="flex flex-col">
+												<span className="text-xs text-text-muted font-bold">{isRtl ? "واتساب المبيعات" : "Sales WhatsApp"}</span>
+												<a 
+													href={waUrl} 
+													target="_blank"
+													rel="noopener noreferrer"
+													data-analytics-action="whatsapp"
+													data-analytics-location="contact_page"
+													onClick={() => trackWhatsAppClick("contact_page", { url: waUrl, phone: cleanNumber })}
+													className="font-extrabold text-text hover:text-success transition-colors mt-0.5" 
+													dir="ltr"
+												>
+													{settings.social_links.whatsapp}
+												</a>
+											</div>
 										</div>
-										<div className="flex flex-col">
-											<span className="text-xs text-text-muted font-bold">{isRtl ? "واتساب المبيعات" : "Sales WhatsApp"}</span>
-											<a 
-												href={`https://wa.me/${settings.social_links.whatsapp.replace(/\D/g, '')}`} 
-												target="_blank"
-												rel="noopener noreferrer"
-												onClick={() => trackWhatsAppClick("contact_page", { url: `https://wa.me/${settings.social_links.whatsapp.replace(/\D/g, '')}`, phone: settings.social_links.whatsapp })}
-												className="font-extrabold text-text hover:text-success transition-colors mt-0.5" 
-												dir="ltr"
-											>
-												{settings.social_links.whatsapp}
-											</a>
-										</div>
-									</div>
-								)}
+									);
+								})()}
 
 								{/* Email */}
 								{settings?.contact_email && (

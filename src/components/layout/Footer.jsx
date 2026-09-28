@@ -6,7 +6,7 @@ import { Mail, Phone, MapPin, Send, Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useSettings } from "@/hooks/queries/useSettings";
 import { resolveShowroomData } from "@/lib/showroomUtils";
-import { trackWhatsAppClick } from "@/lib/analytics";
+import { trackWhatsAppClick, getWhatsAppUrl, normalizeWhatsAppNumber } from "@/lib/analytics";
 import { toast } from "sonner";
 
 export const Footer = () => {
@@ -115,17 +115,24 @@ export const Footer = () => {
 									<svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
 								</a>
 							)}
-							{settings?.social_links?.whatsapp && (
-								<a 
-									href={`https://wa.me/${settings.social_links.whatsapp.replace(/\D/g, '')}`} 
-									target="_blank" 
-									rel="noopener noreferrer" 
-									onClick={() => trackWhatsAppClick("footer_social", { url: `https://wa.me/${settings.social_links.whatsapp.replace(/\D/g, '')}`, phone: settings.social_links.whatsapp })}
-									className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-success hover:text-white transition-all text-slate-400"
-								>
-									<svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.717-1.458L0 24zm6.59-4.846c1.6.95 3.197 1.45 4.817 1.453 5.461 0 9.902-4.44 9.905-9.902.002-2.646-1.02-5.133-2.878-6.993-1.858-1.859-4.343-2.882-6.996-2.883-5.462 0-9.907 4.446-9.91 9.908-.002 1.84.481 3.637 1.4 5.202l-1.023 3.733 3.829-1.004-.337.218zm10.742-7.394c-.266-.134-1.583-.78-1.83-.87-.246-.09-.425-.134-.604.134-.18.268-.696.87-.852 1.05-.156.18-.312.2-.578.066-.266-.134-1.123-.414-2.14-1.321-.79-.704-1.323-1.572-1.479-1.84-.156-.268-.016-.413.118-.546.12-.12.266-.312.4-.468.133-.156.178-.268.266-.446.088-.178.044-.334-.022-.468-.067-.134-.604-1.456-.827-1.99-.217-.524-.457-.453-.624-.461-.16-.008-.344-.01-.527-.01-.18 0-.476.068-.724.34-.248.272-.946.924-.946 2.256 0 1.332.969 2.616 1.104 2.8.134.183 1.907 2.91 4.62 4.08.647.278 1.151.444 1.545.57.65.207 1.242.177 1.71.107.521-.078 1.583-.647 1.808-1.272.224-.624.224-1.157.157-1.272-.068-.114-.247-.206-.513-.34z"/></svg>
-								</a>
-							)}
+							{settings?.social_links?.whatsapp && (() => {
+								const cleanNumber = normalizeWhatsAppNumber(settings.social_links.whatsapp);
+								const waUrl = getWhatsAppUrl(cleanNumber);
+								return (
+									<a 
+										href={waUrl} 
+										target="_blank" 
+										rel="noopener noreferrer" 
+										data-analytics-action="whatsapp"
+										data-analytics-location="footer"
+										onClick={() => trackWhatsAppClick("footer_social", { url: waUrl, phone: cleanNumber })}
+										className="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-success hover:text-white transition-all text-slate-400"
+										aria-label={isRtl ? "واتساب" : "WhatsApp"}
+									>
+										<svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.717-1.458L0 24zm6.59-4.846c1.6.95 3.197 1.45 4.817 1.453 5.461 0 9.902-4.44 9.905-9.902.002-2.646-1.02-5.133-2.878-6.993-1.858-1.859-4.343-2.882-6.996-2.883-5.462 0-9.907 4.446-9.91 9.908-.002 1.84.481 3.637 1.4 5.202l-1.023 3.733 3.829-1.004-.337.218zm10.742-7.394c-.266-.134-1.583-.78-1.83-.87-.246-.09-.425-.134-.604.134-.18.268-.696.87-.852 1.05-.156.18-.312.2-.578.066-.266-.134-1.123-.414-2.14-1.321-.79-.704-1.323-1.572-1.479-1.84-.156-.268-.016-.413.118-.546.12-.12.266-.312.4-.468.133-.156.178-.268.266-.446.088-.178.044-.334-.022-.468-.067-.134-.604-1.456-.827-1.99-.217-.524-.457-.453-.624-.461-.16-.008-.344-.01-.527-.01-.18 0-.476.068-.724.34-.248.272-.946.924-.946 2.256 0 1.332.969 2.616 1.104 2.8.134.183 1.907 2.91 4.62 4.08.647.278 1.151.444 1.545.57.65.207 1.242.177 1.71.107.521-.078 1.583-.647 1.808-1.272.224-.624.224-1.157.157-1.272-.068-.114-.247-.206-.513-.34z"/></svg>
+									</a>
+								);
+							})()}
 						</div>
 					</div>
 

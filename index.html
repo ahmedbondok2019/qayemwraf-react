@@ -15,6 +15,48 @@
     gtag('config', 'G-E6GPE8CKF7', {
       send_page_view: true
     });
+
+    // Native WhatsApp Click Tracker for GA4 & Google Ads Conversions
+    document.addEventListener('click', function(e) {
+      try {
+        var el = e.target && e.target.closest ? e.target.closest('a, button') : null;
+        if (!el) return;
+        var href = el.href || el.getAttribute('href') || '';
+        var isWa = (
+          href.indexOf('wa.me/201154813836') !== -1 ||
+          href.indexOf('wa.me') !== -1 ||
+          href.indexOf('whatsapp.com') !== -1 ||
+          el.getAttribute('data-analytics-action') === 'whatsapp'
+        );
+        if (isWa) {
+          if (el.__ga_tracked) return;
+          el.__ga_tracked = true;
+          setTimeout(function() { el.__ga_tracked = false; }, 800);
+
+          var loc = el.getAttribute('data-analytics-location') || (el.closest('footer') ? 'footer' : (el.closest('aside') ? 'floating_button' : 'general'));
+          var eventParams = {
+            event_category: 'Contact',
+            event_label: 'WhatsApp - ' + loc,
+            button_location: loc,
+            link_url: href || 'https://wa.me/201154813836',
+            link_domain: 'wa.me',
+            phone_number: '201154813836',
+            value: 1,
+            currency: 'EGP',
+            transport_type: 'beacon',
+            send_to: 'G-E6GPE8CKF7'
+          };
+
+          if (typeof window.gtag === 'function') {
+            window.gtag('event', 'whatsapp_click', eventParams);
+          }
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push(Object.assign({ event: 'whatsapp_click' }, eventParams));
+        }
+      } catch (err) {
+        // fail-safe
+      }
+    }, true);
   </script>
 
   <!-- Primary Meta Tags & Google Search Title -->

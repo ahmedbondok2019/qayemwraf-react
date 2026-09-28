@@ -17,7 +17,7 @@ import {
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import { useSettings } from "@/hooks/queries/useSettings";
-import { trackWhatsAppClick } from "@/lib/analytics";
+import { trackWhatsAppClick, getWhatsAppUrl, normalizeWhatsAppNumber } from "@/lib/analytics";
 
 export const ProjectSidebar = ({ project }) => {
 	const { language } = useLanguage();
@@ -27,12 +27,7 @@ export const ProjectSidebar = ({ project }) => {
 	if (!project) return null;
 
 	const rawWhatsapp = settings?.social_links?.whatsapp || settings?.phone || "01154813836";
-	let cleanWhatsapp = rawWhatsapp.replace(/\D/g, "");
-	if (cleanWhatsapp.startsWith("01")) {
-		cleanWhatsapp = "2" + cleanWhatsapp;
-	} else if (!cleanWhatsapp.startsWith("20") && cleanWhatsapp.length === 10 && cleanWhatsapp.startsWith("1")) {
-		cleanWhatsapp = "20" + cleanWhatsapp;
-	}
+	const cleanWhatsapp = normalizeWhatsAppNumber(rawWhatsapp);
 
 	const resolveText = (val) => {
 		if (!val) return "";
@@ -174,16 +169,26 @@ export const ProjectSidebar = ({ project }) => {
 						</a>
 					)}
 
-					<a
-						href={`https://wa.me/${cleanWhatsapp}?text=${encodeURIComponent(isRtl ? `مرحباً، أود الاستفسار عن تفاصيل مشروع: ${resolveText(project.title)}` : `Hello, I would like to inquire about project: ${resolveText(project.title)}`)}`}
-						target="_blank"
-						rel="noopener noreferrer"
-						onClick={() => trackWhatsAppClick("project_sidebar_inquiry", { url: `https://wa.me/${cleanWhatsapp}`, phone: cleanWhatsapp, project_id: project.id })}
-						className="w-full flex items-center justify-center gap-2 py-3 px-5 rounded-full bg-white/15 hover:bg-white/25 text-white font-semibold text-sm border border-white/20 transition-all"
-					>
-						<MessageSquare className="w-4 h-4" />
-						<span>{isRtl ? "محادثة فورية عبر واتساب" : "Chat on WhatsApp"}</span>
-					</a>
+					{(() => {
+						const inquiryText = isRtl
+							? `مرحباً، أود الاستفسار عن تفاصيل مشروع: ${resolveText(project.title)}`
+							: `Hello, I would like to inquire about project: ${resolveText(project.title)}`;
+						const waUrl = getWhatsAppUrl(cleanWhatsapp, inquiryText);
+						return (
+							<a
+								href={waUrl}
+								target="_blank"
+								rel="noopener noreferrer"
+								data-analytics-action="whatsapp"
+								data-analytics-location="project_sidebar_inquiry"
+								onClick={() => trackWhatsAppClick("project_sidebar_inquiry", { url: waUrl, phone: cleanWhatsapp, project_id: project.id })}
+								className="w-full flex items-center justify-center gap-2 py-3 px-5 rounded-full bg-white/15 hover:bg-white/25 text-white font-semibold text-sm border border-white/20 transition-all"
+							>
+								<MessageSquare className="w-4 h-4" />
+								<span>{isRtl ? "محادثة فورية عبر واتساب" : "Chat on WhatsApp"}</span>
+							</a>
+						);
+					})()}
 				</div>
 			</div>
 
@@ -195,6 +200,8 @@ export const ProjectSidebar = ({ project }) => {
 				<div className="flex items-center gap-3">
 					<button
 						type="button"
+						data-analytics-action="whatsapp"
+						data-analytics-location="project_sidebar_share"
 						onClick={handleShareWhatsApp}
 						className="flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-surface-2 hover:bg-success/15 hover:text-success text-text-secondary text-xs font-bold transition-colors cursor-pointer border border-border/60"
 					>

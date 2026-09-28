@@ -1,14 +1,45 @@
 export const GA_MEASUREMENT_ID = "G-E6GPE8CKF7";
+export const DEFAULT_WHATSAPP_NUMBER = "201154813836";
 
 /**
- * Safely calls window.gtag if available
+ * Normalizes any phone number into an international Egyptian WhatsApp format (e.g. 201154813836)
+ */
+export const normalizeWhatsAppNumber = (rawPhone = DEFAULT_WHATSAPP_NUMBER) => {
+	if (!rawPhone) return DEFAULT_WHATSAPP_NUMBER;
+	let clean = String(rawPhone).replace(/\D/g, "");
+	if (!clean) return DEFAULT_WHATSAPP_NUMBER;
+
+	if (clean.startsWith("01")) {
+		clean = "2" + clean;
+	} else if (!clean.startsWith("20") && clean.length === 10 && clean.startsWith("1")) {
+		clean = "20" + clean;
+	} else if (clean.length === 11 && clean.startsWith("0")) {
+		clean = "2" + clean.slice(1);
+	}
+
+	return clean.startsWith("20") ? clean : DEFAULT_WHATSAPP_NUMBER;
+};
+
+/**
+ * Generates a clean WhatsApp URL containing wa.me/201154813836
+ */
+export const getWhatsAppUrl = (rawPhone = DEFAULT_WHATSAPP_NUMBER, message = "") => {
+	const phone = normalizeWhatsAppNumber(rawPhone);
+	const base = `https://wa.me/${phone}`;
+	return message ? `${base}?text=${encodeURIComponent(message)}` : base;
+};
+
+/**
+ * Safely calls window.gtag if available and syncs dataLayer
  */
 export const gtag = (...args) => {
-	if (typeof window !== "undefined" && typeof window.gtag === "function") {
-		window.gtag(...args);
-	} else if (typeof window !== "undefined") {
-		window.dataLayer = window.dataLayer || [];
-		window.dataLayer.push(args);
+	if (typeof window !== "undefined") {
+		if (typeof window.gtag === "function") {
+			window.gtag(...args);
+		} else {
+			window.dataLayer = window.dataLayer || [];
+			window.dataLayer.push(args);
+		}
 	}
 };
 
@@ -28,53 +59,73 @@ export const trackPageView = (path, title) => {
 };
 
 /**
- * Tracks a custom GA4 event
+ * Tracks a custom GA4 event with beacon transport to guarantee delivery on navigation
  */
 export const trackEvent = (eventName, params = {}) => {
 	gtag("event", eventName, {
-		...params,
+		transport_type: "beacon",
 		send_to: GA_MEASUREMENT_ID,
+		...params,
 	});
 };
 
 /**
  * Tracks WhatsApp button clicks for Google Ads & GA4 conversions
- * @param {string} location - e.g. "floating_button", "cta_section", "contact_page", "footer", "project_sidebar", "header"
+ * Event name: "whatsapp_click"
+ * Measurement ID: "G-E6GPE8CKF7"
+ * @param {string} location - e.g. "floating_button", "cta_section", "contact_page", "footer", "project_sidebar"
  * @param {Object} extra - additional parameters (e.g. { url: "...", phone: "201154813836" })
  */
 export const trackWhatsAppClick = (location = "general", extra = {}) => {
-	const linkUrl = extra.url || "https://wa.me/201154813836";
+	const phone = normalizeWhatsAppNumber(extra.phone || DEFAULT_WHATSAPP_NUMBER);
+	const linkUrl = extra.url || getWhatsAppUrl(phone);
 
-	const params = {
-		event_category: "Engagement",
+	const eventParams = {
+		event_category: "Contact",
 		event_label: `WhatsApp - ${location}`,
 		button_location: location,
 		link_url: linkUrl,
-		phone_number: "201154813836",
+		link_domain: "wa.me",
+		phone_number: phone,
+		value: 1,
+		currency: "EGP",
+		transport_type: "beacon",
+		send_to: GA_MEASUREMENT_ID,
 		...extra,
 	};
 
-	// 1. Custom event for Google Analytics & Google Ads
-	trackEvent("whatsapp_click", params);
+	// 1. Primary GA4 Event: whatsapp_click (For GA4 & Google Ads Conversion)
+	trackEvent("whatsapp_click", eventParams);
 
-	// 2. Standard Google Lead & Contact Events (Recognized natively as Conversions in Google Ads)
+	// 2. Push event object to dataLayer for Google Tag Manager (GTM)
+	if (typeof window !== "undefined") {
+		window.dataLayer = window.dataLayer || [];
+		window.dataLayer.push({
+			event: "whatsapp_click",
+			...eventParams,
+		});
+	}
+
+	// 3. Google Standard Conversion events (recognized natively by Google Ads when linked)
 	trackEvent("generate_lead", {
 		currency: "EGP",
 		value: 1,
 		lead_type: "whatsapp",
 		button_location: location,
 		link_url: linkUrl,
+		transport_type: "beacon",
 	});
 
 	trackEvent("contact", {
 		method: "whatsapp",
 		button_location: location,
 		link_url: linkUrl,
+		transport_type: "beacon",
 	});
 };
 
 /**
- * Global click listener to automatically intercept any WhatsApp links
+ * Global click listener to automatically intercept any WhatsApp links (wa.me/201154813836)
  */
 export const initGlobalWhatsAppTracker = () => {
 	if (typeof window === "undefined" || window.__ga_whatsapp_tracker_initialized) return;
@@ -83,23 +134,24 @@ export const initGlobalWhatsAppTracker = () => {
 	document.addEventListener(
 		"click",
 		(event) => {
-			const target = event.target.closest("a, button");
+			const target = event.target && event.target.closest ? event.target.closest("a, button") : null;
 			if (!target) return;
 
-			const href = target.getAttribute("href") || "";
+			const href = target.href || target.getAttribute("href") || "";
 			const isWhatsApp =
+				href.includes("wa.me/201154813836") ||
 				href.includes("wa.me") ||
 				href.includes("whatsapp.com") ||
 				href.startsWith("whatsapp:") ||
 				target.dataset.analyticsAction === "whatsapp";
 
 			if (isWhatsApp) {
-				// Avoid double-tracking within 500ms
+				// Prevent duplicate triggers within 800ms
 				if (target.__ga_tracked) return;
 				target.__ga_tracked = true;
 				setTimeout(() => {
 					target.__ga_tracked = false;
-				}, 500);
+				}, 800);
 
 				const inferredLocation =
 					target.dataset.analyticsLocation ||
@@ -107,11 +159,13 @@ export const initGlobalWhatsAppTracker = () => {
 						? "footer"
 						: target.closest("header")
 						? "header"
-						: target.closest(".floating-contact") || target.closest("aside")
+						: target.closest("aside")
 						? "floating_button"
+						: target.closest(".cta-section")
+						? "cta_section"
 						: "general");
 
-				trackWhatsAppClick(inferredLocation, { url: href });
+				trackWhatsAppClick(inferredLocation, { url: href, phone: DEFAULT_WHATSAPP_NUMBER });
 			}
 		},
 		{ capture: true, passive: true }
@@ -120,6 +174,9 @@ export const initGlobalWhatsAppTracker = () => {
 
 export default {
 	GA_MEASUREMENT_ID,
+	DEFAULT_WHATSAPP_NUMBER,
+	normalizeWhatsAppNumber,
+	getWhatsAppUrl,
 	gtag,
 	trackPageView,
 	trackEvent,
