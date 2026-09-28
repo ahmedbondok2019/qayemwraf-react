@@ -3,6 +3,7 @@ import { useLanguage } from "@/app/providers/I18nProvider";
 import { useSettings } from "@/hooks/queries/useSettings";
 import { cn } from "@/lib/utils";
 import { X, Sparkles, Phone, MessageSquare } from "lucide-react";
+import { trackWhatsAppClick } from "@/lib/analytics";
 
 /**
  * FloatingContact Component
@@ -144,6 +145,7 @@ export const FloatingContact = () => {
 					href={whatsappUrl}
 					target="_blank"
 					rel="noopener noreferrer"
+					onClick={() => trackWhatsAppClick("floating_button", { url: whatsappUrl, phone: cleanWhatsapp })}
 					aria-label={isRtl ? "تواصل عبر واتساب" : "Chat on WhatsApp"}
 					className="flex items-center justify-center w-12.5 h-12.5 sm:w-13.5 sm:h-13.5 rounded-full bg-[#25D366] hover:bg-[#20bd5a] text-white shadow-lg shadow-[#25D366]/25 hover:shadow-xl hover:shadow-[#25D366]/40 hover:scale-110 active:scale-95 transition-all duration-300"
 				>

@@ -1,13 +1,27 @@
 import { useEffect } from "react";
-import { useParams, Navigate, Outlet } from "react-router-dom";
+import { useParams, Navigate, Outlet, useLocation } from "react-router-dom";
 import { useLanguage } from "@/app/providers/I18nProvider";
 import { LANGUAGES } from "@/constants/languages";
+import { trackPageView, initGlobalWhatsAppTracker } from "@/lib/analytics";
 
 export const LanguageGuard = () => {
 	const { lang } = useParams();
 	const { language, setLanguage } = useLanguage();
+	const location = useLocation();
 
 	const isValidLang = Object.values(LANGUAGES).includes(lang);
+
+	// Initialize global WhatsApp click tracking once
+	useEffect(() => {
+		initGlobalWhatsAppTracker();
+	}, []);
+
+	// Track SPA page view on route changes in Google Analytics 4
+	useEffect(() => {
+		if (isValidLang) {
+			trackPageView(location.pathname + location.search);
+		}
+	}, [location.pathname, location.search, isValidLang]);
 
 	useEffect(() => {
 		if (isValidLang && lang !== language) {

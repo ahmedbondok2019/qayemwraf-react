@@ -5,6 +5,7 @@ import { PhoneCall, MessageCircle, ArrowLeft, ArrowRight, Sparkles, CheckCircle2
 import Container from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
 import { useSettings } from "@/hooks/queries/useSettings";
+import { trackWhatsAppClick } from "@/lib/analytics";
 
 /**
  * Premium Conversion-Driven CTA Section
@@ -90,6 +91,7 @@ export const CallToAction = () => {
 									href={`https://wa.me/${cleanWhatsapp}`}
 									target="_blank"
 									rel="noopener noreferrer"
+									onClick={() => trackWhatsAppClick("cta_section", { url: `https://wa.me/${cleanWhatsapp}`, phone: cleanWhatsapp })}
 									className="flex items-center justify-center gap-3 w-full py-3.5 px-6 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm transition-all duration-300 hover:shadow-lg hover:shadow-emerald-600/10 transform hover:-translate-y-0.5"
 								>
 									<MessageCircle size={18} />

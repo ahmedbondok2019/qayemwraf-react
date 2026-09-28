@@ -8,6 +8,7 @@ import { useSettings } from "@/hooks/queries/useSettings";
 import { resolveShowroomData } from "@/lib/showroomUtils";
 import api from "@/services/api/client";
 import API_ENDPOINTS from "@/services/api/endpoints";
+import { trackWhatsAppClick } from "@/lib/analytics";
 
 export const Contact = () => {
 	const { language } = useLanguage();
@@ -200,7 +201,14 @@ export const Contact = () => {
 										</div>
 										<div className="flex flex-col">
 											<span className="text-xs text-text-muted font-bold">{isRtl ? "واتساب المبيعات" : "Sales WhatsApp"}</span>
-											<a href={`https://wa.me/${settings.social_links.whatsapp.replace(/\D/g, '')}`} className="font-extrabold text-text hover:text-success transition-colors mt-0.5" dir="ltr">
+											<a 
+												href={`https://wa.me/${settings.social_links.whatsapp.replace(/\D/g, '')}`} 
+												target="_blank"
+												rel="noopener noreferrer"
+												onClick={() => trackWhatsAppClick("contact_page", { url: `https://wa.me/${settings.social_links.whatsapp.replace(/\D/g, '')}`, phone: settings.social_links.whatsapp })}
+												className="font-extrabold text-text hover:text-success transition-colors mt-0.5" 
+												dir="ltr"
+											>
 												{settings.social_links.whatsapp}
 											</a>
 										</div>

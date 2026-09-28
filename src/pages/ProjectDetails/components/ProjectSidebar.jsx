@@ -16,12 +16,23 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
+import { useSettings } from "@/hooks/queries/useSettings";
+import { trackWhatsAppClick } from "@/lib/analytics";
 
 export const ProjectSidebar = ({ project }) => {
 	const { language } = useLanguage();
 	const isRtl = language === "ar";
+	const { data: settings } = useSettings();
 
 	if (!project) return null;
+
+	const rawWhatsapp = settings?.social_links?.whatsapp || settings?.phone || "01154813836";
+	let cleanWhatsapp = rawWhatsapp.replace(/\D/g, "");
+	if (cleanWhatsapp.startsWith("01")) {
+		cleanWhatsapp = "2" + cleanWhatsapp;
+	} else if (!cleanWhatsapp.startsWith("20") && cleanWhatsapp.length === 10 && cleanWhatsapp.startsWith("1")) {
+		cleanWhatsapp = "20" + cleanWhatsapp;
+	}
 
 	const resolveText = (val) => {
 		if (!val) return "";
@@ -44,6 +55,7 @@ export const ProjectSidebar = ({ project }) => {
 		const text = encodeURIComponent(
 			`${resolveText(project.title)} - ${window.location.href}`
 		);
+		trackWhatsAppClick("project_sidebar_share", { url: `https://wa.me/?text=${text}`, project_id: project.id });
 		window.open(`https://wa.me/?text=${text}`, "_blank");
 	};
 
@@ -163,9 +175,10 @@ export const ProjectSidebar = ({ project }) => {
 					)}
 
 					<a
-						href="https://wa.me/201000000000"
+						href={`https://wa.me/${cleanWhatsapp}?text=${encodeURIComponent(isRtl ? `مرحباً، أود الاستفسار عن تفاصيل مشروع: ${resolveText(project.title)}` : `Hello, I would like to inquire about project: ${resolveText(project.title)}`)}`}
 						target="_blank"
 						rel="noopener noreferrer"
+						onClick={() => trackWhatsAppClick("project_sidebar_inquiry", { url: `https://wa.me/${cleanWhatsapp}`, phone: cleanWhatsapp, project_id: project.id })}
 						className="w-full flex items-center justify-center gap-2 py-3 px-5 rounded-full bg-white/15 hover:bg-white/25 text-white font-semibold text-sm border border-white/20 transition-all"
 					>
 						<MessageSquare className="w-4 h-4" />
