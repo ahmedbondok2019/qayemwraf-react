@@ -72,13 +72,17 @@ export const OfferBanners = ({ offers = [], isLoading }) => {
 					<div className="w-full">
 						<LocalizedLink
 							to={banners[0].link}
-							className="block group overflow-hidden rounded-[2rem] border border-black/5 dark:border-white/5 shadow-sm hover:shadow-xl transition-all duration-300 bg-surface"
+							className="block group overflow-hidden rounded-[2rem] border border-black/5 dark:border-white/5 shadow-sm hover:shadow-xl transition-all duration-300 bg-surface relative min-h-[220px] sm:min-h-[340px] max-h-[460px] flex items-center justify-center"
 						>
+							<div 
+								className="absolute inset-0 bg-cover bg-center filter blur-2xl opacity-20 scale-125 pointer-events-none"
+								style={{ backgroundImage: `url(${banners[0].image})` }}
+							/>
 							<img
 								src={banners[0].image}
 								alt={banners[0].title}
 								loading="lazy"
-								className="w-full h-auto max-h-[480px] object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+								className="relative z-10 w-auto h-auto max-h-[440px] max-w-full object-contain p-2 sm:p-4 transition-transform duration-700 group-hover:scale-[1.02]"
 							/>
 						</LocalizedLink>
 					</div>
@@ -89,13 +93,17 @@ export const OfferBanners = ({ offers = [], isLoading }) => {
 							<LocalizedLink
 								key={banner.id}
 								to={banner.link}
-								className="block group overflow-hidden rounded-[2rem] border border-black/5 dark:border-white/5 shadow-sm hover:shadow-xl transition-all duration-300 bg-surface h-full"
+								className="block group overflow-hidden rounded-[2rem] border border-black/5 dark:border-white/5 shadow-sm hover:shadow-xl transition-all duration-300 bg-surface relative min-h-[220px] sm:min-h-[280px] max-h-[380px] flex items-center justify-center h-full"
 							>
+								<div 
+									className="absolute inset-0 bg-cover bg-center filter blur-2xl opacity-20 scale-125 pointer-events-none"
+									style={{ backgroundImage: `url(${banner.image})` }}
+								/>
 								<img
 									src={banner.image}
 									alt={banner.title}
 									loading="lazy"
-									className="w-full h-auto max-h-[360px] object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+									className="relative z-10 w-auto h-auto max-h-[340px] max-w-full object-contain p-2 transition-transform duration-700 group-hover:scale-[1.02]"
 								/>
 							</LocalizedLink>
 						))}
@@ -112,13 +120,17 @@ export const OfferBanners = ({ offers = [], isLoading }) => {
 									>
 										<LocalizedLink
 											to={banner.link}
-											className="block group overflow-hidden rounded-[2rem] border border-black/5 dark:border-white/5 shadow-sm hover:shadow-xl transition-all duration-300 bg-surface h-full"
+											className="block group overflow-hidden rounded-[2rem] border border-black/5 dark:border-white/5 shadow-sm hover:shadow-xl transition-all duration-300 bg-surface relative min-h-[220px] sm:min-h-[280px] max-h-[340px] flex items-center justify-center h-full"
 										>
+											<div 
+												className="absolute inset-0 bg-cover bg-center filter blur-2xl opacity-20 scale-125 pointer-events-none"
+												style={{ backgroundImage: `url(${banner.image})` }}
+											/>
 											<img
 												src={banner.image}
 												alt={banner.title}
 												loading="lazy"
-												className="w-full h-auto max-h-[320px] object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+												className="relative z-10 w-auto h-auto max-h-[300px] max-w-full object-contain p-2 transition-transform duration-700 group-hover:scale-[1.02]"
 											/>
 										</LocalizedLink>
 									</div>

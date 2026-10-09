@@ -193,14 +193,19 @@ const FlashDeals = () => {
 											>
 												{/* Banner Image */}
 												{imageUrl && (
-													<LocalizedLink to={link} className="block overflow-hidden relative aspect-[16/9] sm:aspect-[21/9] md:aspect-[16/9] bg-slate-100 dark:bg-slate-800">
+													<LocalizedLink to={link} className="block overflow-hidden relative min-h-[260px] sm:min-h-[320px] max-h-[400px] bg-slate-100 dark:bg-slate-900/60 flex items-center justify-center">
+														{/* Ambient glow matching the image */}
+														<div 
+															className="absolute inset-0 bg-cover bg-center filter blur-2xl opacity-20 scale-125 pointer-events-none"
+															style={{ backgroundImage: `url(${imageUrl})` }}
+														/>
 														<img
 															src={imageUrl}
 															alt={titleText || "Offer Banner"}
 															loading="lazy"
-															className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+															className="relative z-10 w-auto h-auto max-h-[360px] max-w-full object-contain p-2 transition-transform duration-700 group-hover:scale-105"
 														/>
-														<div className="absolute top-4 start-4">
+														<div className="absolute top-4 start-4 z-20">
 															<span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-danger text-white shadow-md">
 																<Tag className="w-3.5 h-3.5" />
 																{isRtl ? "عرض خاص" : "Special Offer"}
