@@ -160,7 +160,7 @@ export const routes = [
 					},
 					{
 						path: ROUTES.OFFERS.substring(1),
-						element: <Category isOffersRoute={true} />,
+						element: withSuspense(FlashDeals),
 					},
 					// Protected Routes directly accessible
 					{
