@@ -62,6 +62,7 @@ const FlashDeals = () => {
 
 	const [offers, setOffers] = useState([]);
 	const [deals, setDeals] = useState([]);
+	const [categoriesList, setCategoriesList] = useState([]);
 	const [isLoading, setIsLoading] = useState(true);
 	const [error, setError] = useState(null);
 
@@ -69,10 +70,11 @@ const FlashDeals = () => {
 		setIsLoading(true);
 		setError(null);
 		try {
-			// Fetch both promotional offer banners and flash sales simultaneously
-			const [offersRes, flashSalesRes] = await Promise.allSettled([
+			// Fetch promotional offer banners, flash sales, and categories simultaneously
+			const [offersRes, flashSalesRes, categoriesRes] = await Promise.allSettled([
 				api.get(API_ENDPOINTS.OFFERS || "/offers"),
-				api.get(API_ENDPOINTS.FLASH_SALES || "/flash-sales")
+				api.get(API_ENDPOINTS.FLASH_SALES || "/flash-sales"),
+				api.get(API_ENDPOINTS.CATEGORIES || "/categories")
 			]);
 
 			if (offersRes.status === "fulfilled") {
@@ -92,6 +94,16 @@ const FlashDeals = () => {
 					const dataPayload = res.data || res;
 					const items = Array.isArray(dataPayload) ? dataPayload : (dataPayload?.data || []);
 					setDeals(items);
+				}
+			}
+
+			if (categoriesRes.status === "fulfilled") {
+				const res = categoriesRes.value;
+				const isSuccess = res && (res.success === true || res.status === true || Array.isArray(res) || res.data);
+				if (isSuccess) {
+					const dataPayload = res.data || res;
+					const items = Array.isArray(dataPayload) ? dataPayload : (dataPayload?.data || []);
+					setCategoriesList(items);
 				}
 			}
 		} catch (err) {
@@ -167,9 +179,38 @@ const FlashDeals = () => {
 
 								<div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
 									{offers.map((offer, idx) => {
+										// Resolve category slug: priority: category.slug -> category_slug -> category lookup in categoriesList -> offer.slug -> fallback to category_id
+										let targetSlug = offer.category?.slug || offer.category_slug;
+										if (!targetSlug || !isNaN(Number(targetSlug))) {
+											// Try to find matching category from categoriesList
+											const offerCatId = offer.category?.id || offer.category_id;
+											const offerTitle = typeof offer.title === "object"
+												? (offer.title?.ar || offer.title?.en || "")
+												: (offer.title || offer.name || "");
+
+											const matchedCat = categoriesList.find(c => {
+												if (offerCatId && String(c.id) === String(offerCatId)) return true;
+												const cTitle = typeof c.title === "object" ? (c.title?.ar || c.title?.en || "") : (c.title || c.name || "");
+												if (offerTitle && cTitle && (cTitle.includes(offerTitle) || offerTitle.includes(cTitle))) return true;
+												return false;
+											});
+
+											if (matchedCat && matchedCat.slug && isNaN(Number(matchedCat.slug))) {
+												targetSlug = matchedCat.slug;
+											} else if (matchedCat && matchedCat.link && isNaN(Number(matchedCat.link))) {
+												targetSlug = matchedCat.link;
+											} else if (offer.slug && isNaN(Number(offer.slug))) {
+												targetSlug = offer.slug;
+											}
+										}
+
 										let link = "/products";
-										if (offer.category_id) {
-											link = `/category/${offer.category_id}`;
+										if (targetSlug && isNaN(Number(targetSlug))) {
+											link = `/category/${targetSlug}`;
+										} else if (offer.link && offer.link !== "https://qayemwraf.com" && offer.link !== "https://qayemwraf.com/" && !offer.link.startsWith("http")) {
+											link = offer.link.startsWith("/") ? offer.link : `/${offer.link}`;
+										} else if (offer.category_id || offer.category?.id) {
+											link = `/category/${offer.category_id || offer.category?.id}`;
 										} else if (offer.link && offer.link !== "https://qayemwraf.com" && offer.link !== "https://qayemwraf.com/") {
 											link = offer.link;
 										} else if (offer.url && offer.url !== "https://qayemwraf.com" && offer.url !== "https://qayemwraf.com/") {

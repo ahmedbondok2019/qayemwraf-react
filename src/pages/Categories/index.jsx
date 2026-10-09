@@ -69,7 +69,7 @@ const Categories = () => {
 							return (
 								<LocalizedLink
 									key={category.id}
-									to={`/category/${category.id}`}
+									to={`/category/${category.slug || category.id}`}
 									className="group flex flex-col bg-white dark:bg-slate-900 border border-slate-100 dark:border-slate-800 rounded-3xl overflow-hidden hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] transition-all duration-300"
 								>
 									{/* Image Section */}

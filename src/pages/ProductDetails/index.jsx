@@ -196,7 +196,7 @@ const ProductDetails = () => {
 	const breadcrumbItems = [
 		{ label: { en: "Home", ar: "الرئيسية" }, link: "/" },
 		{ label: { en: "Products", ar: "المنتجات" }, link: "/products" },
-		{ label: product.categories?.[0]?.label || { en: "Category", ar: "القسم" }, link: `/category/${product.categories?.[0]?.id}` },
+		{ label: product.categories?.[0]?.label || { en: "Category", ar: "القسم" }, link: `/category/${product.categories?.[0]?.slug || product.categories?.[0]?.id}` },
 		{ label: product.title }
 	];
 

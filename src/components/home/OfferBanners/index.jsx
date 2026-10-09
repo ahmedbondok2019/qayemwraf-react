@@ -26,9 +26,18 @@ export const OfferBanners = ({ offers = [], isLoading }) => {
 	// Filter and map offers
 	const banners = (offers || [])
 		.map((offer, index) => {
+			const targetSlug = offer.category?.slug 
+				|| offer.category_slug 
+				|| (offer.category?.link && isNaN(Number(offer.category.link)) ? offer.category.link : null)
+				|| (offer.slug && isNaN(Number(offer.slug)) ? offer.slug : null);
+
 			let link = "/flash-deals";
-			if (offer.category_id) {
-				link = `/category/${offer.category_id}`;
+			if (targetSlug && isNaN(Number(targetSlug))) {
+				link = `/category/${targetSlug}`;
+			} else if (offer.link && offer.link !== "https://qayemwraf.com" && offer.link !== "https://qayemwraf.com/" && !offer.link.startsWith("http")) {
+				link = offer.link.startsWith("/") ? offer.link : `/${offer.link}`;
+			} else if (offer.category_id || offer.category?.id) {
+				link = `/category/${offer.category_id || offer.category?.id}`;
 			} else if (offer.link && offer.link !== "https://qayemwraf.com" && offer.link !== "https://qayemwraf.com/") {
 				link = offer.link;
 			} else if (offer.url && offer.url !== "https://qayemwraf.com" && offer.url !== "https://qayemwraf.com/") {
