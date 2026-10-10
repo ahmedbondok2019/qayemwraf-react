@@ -5,7 +5,7 @@ export const productApi = {
 	getProducts: (params) => api.get(API_ENDPOINTS.PRODUCTS, { params }),
 	getProductBySlug: (slug) => api.get(`${API_ENDPOINTS.PRODUCTS}/${slug}`),
 	searchProducts: (query) => api.get(`${API_ENDPOINTS.PRODUCTS}/search`, { params: { q: query } }),
-	getOffers: () => api.get(`${API_ENDPOINTS.PRODUCTS}/offers`),
+	getOffers: () => api.get(API_ENDPOINTS.OFFERS),
 };
 
 export default productApi;

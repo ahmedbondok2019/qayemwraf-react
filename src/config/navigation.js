@@ -25,9 +25,9 @@ export const navigationLinks = [
 		path: "/best-sellers"
 	},
 	{ 
-		id: "flash-deals",
+		id: "offers",
 		name: { en: "Offers & Deals", ar: "عروض وتخفيضات" }, 
-		path: "/flash-deals"
+		path: "/offers"
 	},
 	{ 
 		id: "blogs",

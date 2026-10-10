@@ -44,6 +44,7 @@ const BlogDetails = lazy(() => import("@/pages/Blogs/BlogDetails"));
 const Projects = lazy(() => import("@/pages/Projects/index"));
 const ProjectDetails = lazy(() => import("@/pages/ProjectDetails/index"));
 const FlashDeals = lazy(() => import("@/pages/FlashDeals"));
+const Offers = lazy(() => import("@/pages/Offers"));
 
 // Auth Pages
 const Login = lazy(() => import("@/pages/Login"));
@@ -156,11 +157,11 @@ export const routes = [
 					},
 					{
 						path: ROUTES.FLASH_DEALS.substring(1),
-						element: withSuspense(FlashDeals),
+						element: withSuspense(Offers),
 					},
 					{
 						path: ROUTES.OFFERS.substring(1),
-						element: <Category isOffersRoute={true} />,
+						element: withSuspense(Offers),
 					},
 					// Protected Routes directly accessible
 					{
