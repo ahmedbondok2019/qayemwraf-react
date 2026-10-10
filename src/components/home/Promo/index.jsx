@@ -43,7 +43,9 @@ export const PromoSection = ({ offers }) => {
 				title: resolveI18n(offer.title || offer.name, ""),
 				subtitle: resolveI18n(offer.description, ""),
 				buttonText: { ar: "تسوق الآن", en: "Shop Now" },
-				link: offer.link_type === 'category' ? `/category/${offer.category_id}` : (offer.link || "/"),
+				link: offer.link_type === 'category' 
+					? `/category/${offer.category?.slug || offer.category_slug || (offer.slug && isNaN(Number(offer.slug)) ? offer.slug : offer.category_id)}` 
+					: (offer.link || "/"),
 				image: offer.image || offer.category?.image || "https://images.unsplash.com/photo-1584820927498-cafe8c1c969b?auto=format&fit=crop&q=80&w=600",
 				badge: offer.filters?.flash_sale ? { ar: "عرض خاص", en: "Special Offer" } : null,
 				bgClass: bgClasses[colorIdx],

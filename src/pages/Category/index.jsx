@@ -126,14 +126,14 @@ const Category = ({ isOffersRoute = false }) => {
 					// Client-side filtering fallback to ensure the UI is 100% accurate
 					let filtered = mappedProducts;
 					
-					// 1. Filter by category
-					const activeCategories = categories.length > 0 ? categories : (rawSlug !== "all-categories" ? [rawSlug] : []);
-					if (activeCategories.length > 0) {
+					// 1. Filter by category (only when user explicitly selected category filters in the sidebar)
+					if (categories.length > 0) {
 						filtered = filtered.filter(p => {
-							const prodCategoryIds = p.categories && p.categories.length > 0 
-								? p.categories.map(c => String(c.id)) 
-								: [String(p.category?.id || p._apiOriginal?.category_id || "")];
-							return prodCategoryIds.some(id => activeCategories.includes(id));
+							const prodCategoryIds = (p.categories && p.categories.length > 0 
+								? p.categories.flatMap(c => [String(c.id || ''), String(c.slug || '')])
+								: [String(p.category?.id || p._apiOriginal?.category_id || ''), String(p.category?.slug || p._apiOriginal?.category_slug || '')]
+							).filter(Boolean);
+							return prodCategoryIds.some(id => categories.includes(id));
 						});
 					}
 
@@ -161,8 +161,22 @@ const Category = ({ isOffersRoute = false }) => {
 						setTotalItems(filtered.length);
 					}
 					
-					// Set real category name from the first product
-					if (mappedProducts.length > 0) {
+					// Set real category name from allCategories (matching slug or id) or first product
+					if (allCategories && allCategories.length > 0 && rawSlug !== "all-categories") {
+						const foundCat = allCategories.find(c => 
+							String(c.id) === String(rawSlug) || 
+							c.slug === rawSlug || 
+							c.link === rawSlug
+						);
+						if (foundCat) {
+							const catTitle = typeof foundCat.title === 'object'
+								? foundCat.title
+								: { ar: foundCat.name || foundCat.title || "", en: foundCat.title || foundCat.name || "" };
+							setCategoryName(catTitle);
+						} else if (mappedProducts.length > 0) {
+							setCategoryName(mappedProducts[0].category);
+						}
+					} else if (mappedProducts.length > 0) {
 						setCategoryName(mappedProducts[0].category);
 					}
 				} else {
@@ -176,7 +190,24 @@ const Category = ({ isOffersRoute = false }) => {
 			}
 		};
 		fetchProducts();
-	}, [state, rawSlug, isRtl, searchQuery]);
+	}, [state, rawSlug, isRtl, searchQuery, allCategories]);
+
+	// Sync category name when allCategories loads
+	useEffect(() => {
+		if (rawSlug !== "all-categories" && allCategories.length > 0) {
+			const foundCat = allCategories.find(c => 
+				String(c.id) === String(rawSlug) || 
+				c.slug === rawSlug || 
+				c.link === rawSlug
+			);
+			if (foundCat) {
+				const catTitle = typeof foundCat.title === 'object'
+					? foundCat.title
+					: { ar: foundCat.name || foundCat.title || "", en: foundCat.title || foundCat.name || "" };
+				setCategoryName(catTitle);
+			}
+		}
+	}, [allCategories, rawSlug]);
 
 	const itemsPerPage = 12;
 

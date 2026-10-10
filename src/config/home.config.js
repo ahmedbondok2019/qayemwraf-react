@@ -21,7 +21,7 @@ export const homepageConfig = [
 		subtitle: { en: "A showcase of our industrial metal shelving and warehouse storage project fitouts", ar: "جولة مصورة لبعض مشاريعنا وتجهيزاتنا لمستودعات ومخازن كبرى الشركات" },
 		viewAllLink: "/projects"
 	},
-	// { id: "offer-banners", type: "offerBanners" },
+	{ id: "offer-banners", type: "offerBanners" },
 	{
 		id: "best-sellers",
 		type: "productSection",

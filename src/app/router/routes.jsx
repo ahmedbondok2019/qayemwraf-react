@@ -161,7 +161,7 @@ export const routes = [
 					},
 					{
 						path: ROUTES.OFFERS.substring(1),
-						element: withSuspense(Offers),
+						element: withSuspense(FlashDeals),
 					},
 					// Protected Routes directly accessible
 					{

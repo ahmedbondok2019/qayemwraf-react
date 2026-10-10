@@ -73,6 +73,8 @@ export const Hero = ({ sliders = [], isLoading }) => {
 		let actionLink = "/shop";
 		if (apiSlide.link) {
 			actionLink = apiSlide.link;
+		} else if (apiSlide.category?.slug || apiSlide.category_slug) {
+			actionLink = `/category/${apiSlide.category?.slug || apiSlide.category_slug}`;
 		} else if (apiSlide.category_id) {
 			actionLink = `/category/${apiSlide.category_id}`;
 		} else if (apiSlide.link_id && apiSlide.link_type === "category") {

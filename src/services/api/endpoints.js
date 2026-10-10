@@ -18,7 +18,7 @@ export const API_ENDPOINTS = {
 	BEST_SELLERS: "/best-sellers",
 	BLOGS: "/blogs",
 	PROJECTS: "/projects",
-	FLASH_SALES: "/offers",
+	FLASH_SALES: "/flash-sales",
 	OFFERS: "/offers",
 	LATEST_PRODUCTS: "/latest-products",
 	PROFILE: "/profile",

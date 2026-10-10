@@ -5,6 +5,14 @@ import { useLanguage } from "@/app/providers/I18nProvider";
 export const LocalizedLink = ({ to, children, ...props }) => {
 	const { language } = useLanguage();
 
+	if (typeof to === "string" && (/^(https?:|\/\/|mailto:|tel:)/i.test(to))) {
+		return (
+			<a href={to} {...props}>
+				{children}
+			</a>
+		);
+	}
+
 	let localizedTo = to;
 	if (typeof to === "string" && to.startsWith("/")) {
 		localizedTo = `/${language}${to}`;

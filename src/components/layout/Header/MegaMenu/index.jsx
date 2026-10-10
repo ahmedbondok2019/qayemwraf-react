@@ -120,7 +120,7 @@ export const MegaMenu = ({ isOpen, language, isRtl, onClose }) => {
 									return (
 										<LocalizedLink
 											key={category.id}
-											to={`/category/${category.id}`}
+											to={`/category/${category.slug || category.id}`}
 											onClick={onClose}
 											className="group flex items-start gap-4 p-4 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-900 border border-transparent hover:border-slate-100 dark:hover:border-slate-800 transition-all duration-300"
 										>
