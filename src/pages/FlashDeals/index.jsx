@@ -9,9 +9,9 @@ import EmptyState from "@/pages/Products/components/States/EmptyState";
 import Container from "@/components/ui/Container";
 import ProductCard from "@/components/ui/ProductCard";
 import Section from "@/components/ui/Section";
-import LocalizedLink from "@/components/ui/LocalizedLink";
 import SEO from "@/components/common/SEO";
-import { Timer, ArrowLeft, ArrowRight, Sparkles, Tag } from "lucide-react";
+import { Timer, Sparkles, ArrowLeft, ArrowRight } from "lucide-react";
+import { OfferCard } from "@/components/ui/OfferCard";
 
 // Real Countdown Timer component
 const CountdownTimer = ({ initialSeconds }) => {
@@ -132,7 +132,8 @@ const FlashDeals = () => {
 		);
 	}
 
-	const hasOffers = offers.length > 0;
+	const displayOffers = offers;
+	const hasOffers = displayOffers.length > 0;
 	const hasDeals = deals.length > 0;
 	const isEmpty = !hasOffers && !hasDeals;
 
@@ -177,118 +178,14 @@ const FlashDeals = () => {
 									</div>
 								</div>
 
-								<div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
-									{offers.map((offer, idx) => {
-										// Resolve category slug: priority: category.slug -> category_slug -> category lookup in categoriesList -> offer.slug -> fallback to category_id
-										let targetSlug = offer.category?.slug || offer.category_slug;
-										if (!targetSlug || !isNaN(Number(targetSlug))) {
-											// Try to find matching category from categoriesList
-											const offerCatId = offer.category?.id || offer.category_id;
-											const offerTitle = typeof offer.title === "object"
-												? (offer.title?.ar || offer.title?.en || "")
-												: (offer.title || offer.name || "");
-
-											const matchedCat = categoriesList.find(c => {
-												if (offerCatId && String(c.id) === String(offerCatId)) return true;
-												const cTitle = typeof c.title === "object" ? (c.title?.ar || c.title?.en || "") : (c.title || c.name || "");
-												if (offerTitle && cTitle && (cTitle.includes(offerTitle) || offerTitle.includes(cTitle))) return true;
-												return false;
-											});
-
-											if (matchedCat && matchedCat.slug && isNaN(Number(matchedCat.slug))) {
-												targetSlug = matchedCat.slug;
-											} else if (matchedCat && matchedCat.link && isNaN(Number(matchedCat.link))) {
-												targetSlug = matchedCat.link;
-											} else if (offer.slug && isNaN(Number(offer.slug))) {
-												targetSlug = offer.slug;
-											}
-										}
-
-										let link = "/products";
-										if (targetSlug && isNaN(Number(targetSlug))) {
-											link = `/category/${targetSlug}`;
-										} else if (offer.link && offer.link !== "https://qayemwraf.com" && offer.link !== "https://qayemwraf.com/" && !offer.link.startsWith("http")) {
-											link = offer.link.startsWith("/") ? offer.link : `/${offer.link}`;
-										} else if (offer.category_id || offer.category?.id) {
-											link = `/category/${offer.category_id || offer.category?.id}`;
-										} else if (offer.link && offer.link !== "https://qayemwraf.com" && offer.link !== "https://qayemwraf.com/") {
-											link = offer.link;
-										} else if (offer.url && offer.url !== "https://qayemwraf.com" && offer.url !== "https://qayemwraf.com/") {
-											link = offer.url;
-										}
-
-										const titleText = typeof offer.title === "object"
-											? (offer.title?.[language] || offer.title?.ar || offer.name || "")
-											: (offer.title || offer.name || "");
-
-										const descText = typeof offer.description === "object"
-											? (offer.description?.[language] || offer.description?.ar || "")
-											: (offer.description || "");
-
-										const imageUrl = offer.image || offer.category?.image;
-
-										return (
-											<div
-												key={offer.id || idx}
-												className="group relative flex flex-col bg-surface rounded-3xl border border-black/5 dark:border-white/5 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
-											>
-												{/* Banner Image */}
-												{imageUrl && (
-													<LocalizedLink to={link} className="block overflow-hidden relative min-h-[260px] sm:min-h-[320px] max-h-[400px] bg-slate-100 dark:bg-slate-900/60 flex items-center justify-center">
-														{/* Ambient glow matching the image */}
-														<div 
-															className="absolute inset-0 bg-cover bg-center filter blur-2xl opacity-20 scale-125 pointer-events-none"
-															style={{ backgroundImage: `url(${imageUrl})` }}
-														/>
-														<img
-															src={imageUrl}
-															alt={titleText || "Offer Banner"}
-															loading="lazy"
-															className="relative z-10 w-auto h-auto max-h-[360px] max-w-full object-contain p-2 transition-transform duration-700 group-hover:scale-105"
-														/>
-														<div className="absolute top-4 start-4 z-20">
-															<span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-danger text-white shadow-md">
-																<Tag className="w-3.5 h-3.5" />
-																{isRtl ? "عرض خاص" : "Special Offer"}
-															</span>
-														</div>
-													</LocalizedLink>
-												)}
-
-												{/* Banner Details & CTA */}
-												<div className="p-6 flex flex-col justify-between flex-grow gap-4">
-													<div>
-														<LocalizedLink to={link}>
-															<h3 className="text-lg sm:text-xl font-bold text-text group-hover:text-primary transition-colors">
-																{titleText}
-															</h3>
-														</LocalizedLink>
-														{descText && (
-															<p className="mt-2 text-sm text-text-secondary line-clamp-2">
-																{descText}
-															</p>
-														)}
-													</div>
-
-													<div className="pt-2 flex items-center justify-between border-t border-black/5 dark:border-white/5">
-														<LocalizedLink
-															to={link}
-															className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-hover group-hover:gap-3 transition-all"
-														>
-															<span>{isRtl ? "استعراض العرض والمنتجات" : "Explore Offer & Products"}</span>
-															<ArrowIcon className="w-4 h-4" />
-														</LocalizedLink>
-
-														{offer.category?.title && (
-															<span className="text-xs text-text-muted bg-background px-3 py-1 rounded-full border border-black/5 dark:border-white/5">
-																{typeof offer.category.title === "object" ? (offer.category.title[language] || offer.category.title.ar) : offer.category.title}
-															</span>
-														)}
-													</div>
-												</div>
-											</div>
-										);
-									})}
+								<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+									{displayOffers.map((offer, idx) => (
+										<OfferCard
+											key={offer.id || idx}
+											offer={offer}
+											variant={idx === 0 ? "featured" : "default"}
+										/>
+									))}
 								</div>
 							</Container>
 						</Section>
