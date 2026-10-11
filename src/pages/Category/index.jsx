@@ -23,8 +23,6 @@ import RecentlyViewed from "../Products/components/RecentlyViewed";
 // Hooks
 import useProductFilters from "@/components/products/hooks/useProductFilters";
 
-// Mock Data (Removed)
-
 const Category = ({ isOffersRoute = false }) => {
 	const params = useParams();
 	const { language } = useLanguage();
