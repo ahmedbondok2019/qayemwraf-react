@@ -1,6 +1,7 @@
 import React from "react";
 import { useLanguage } from "@/app/providers/I18nProvider";
 import { formatCurrency } from "@/components/ui/ProductCard/utils/product-card.helpers";
+import { ProductTaxBadge } from "@/components/ui/ProductCard";
 import { cn } from "@/lib/utils";
 
 export const PriceBox = ({ price, className }) => {
@@ -14,6 +15,13 @@ export const PriceBox = ({ price, className }) => {
 
 	const finalFormatted = formatCurrency(finalPrice, "EGP", language);
 	const originalFormatted = price.original ? formatCurrency(price.original, "EGP", language) : null;
+
+	// Resolve isTaxIncluded safely
+	const isTax = price.isTaxIncluded !== undefined 
+		? price.isTaxIncluded 
+		: (price.is_tax_included !== undefined ? price.is_tax_included : price.tax_included);
+	const hasTaxInfo = isTax !== undefined && isTax !== null;
+	const isIncluded = isTax === true || isTax === 1 || isTax === "1";
 
 	return (
 		<div className={cn("p-4 bg-surface rounded-2xl border border-border shadow-sm", className)}>
@@ -30,17 +38,32 @@ export const PriceBox = ({ price, className }) => {
 					</div>
 				)}
 				
-				{/* Main Price */}
-				<div className="flex items-baseline gap-1.5">
+				{/* Main Price & Tax Badge */}
+				<div className="flex items-center gap-2.5 flex-wrap">
 					<span className="text-2xl sm:text-3xl font-extrabold text-primary">
 						{finalFormatted}
 					</span>
+					{hasTaxInfo && (
+						<ProductTaxBadge 
+							isTaxIncluded={isIncluded} 
+							language={language}
+							size="sm"
+						/>
+					)}
 				</div>
 				
-				{/* VAT Info */}
-				<span className="text-xs text-text-secondary mt-2">
-					{isRtl ? "السعر يشمل ضريبة القيمة المضافة (VAT)" : "Price includes VAT"}
-				</span>
+				{/* VAT Info subtitle */}
+				{hasTaxInfo ? (
+					<span className="text-xs text-text-secondary mt-1">
+						{isIncluded
+							? (isRtl ? "السعر يشمل ضريبة القيمة المضافة (VAT)" : "Price includes Value Added Tax (VAT)")
+							: (isRtl ? "السعر لا يشمل ضريبة القيمة المضافة (تضاف عند الفاتورة)" : "Price excludes Value Added Tax (VAT)")}
+					</span>
+				) : (
+					<span className="text-xs text-text-secondary mt-1">
+						{isRtl ? "السعر يشمل ضريبة القيمة المضافة (VAT)" : "Price includes VAT"}
+					</span>
+				)}
 			</div>
 		</div>
 	);

@@ -28,6 +28,12 @@ export const MobileBottomBar = ({ price, onAddToCart, disabled = false, showThre
 	const finalPrice = hasDiscount ? price.current : price?.original || price?.current;
 	const finalFormatted = formatCurrency(finalPrice, "EGP", language);
 
+	const isTax = price?.isTaxIncluded !== undefined 
+		? price.isTaxIncluded 
+		: (price?.is_tax_included !== undefined ? price.is_tax_included : price?.tax_included);
+	const hasTaxInfo = isTax !== undefined && isTax !== null;
+	const isIncluded = isTax === true || isTax === 1 || isTax === "1";
+
 	return (
 		<div className="fixed bottom-0 left-0 right-0 z-50 lg:hidden transform transition-transform duration-300 translate-y-0">
 			<div className="bg-surface/90 backdrop-blur-md border-t border-border/60 shadow-[0_-4px_20px_rgba(0,0,0,0.05)] px-4 py-3 pb-safe">
@@ -38,8 +44,20 @@ export const MobileBottomBar = ({ price, onAddToCart, disabled = false, showThre
 						<span className="text-xs font-bold text-text-secondary">
 							{isRtl ? "السعر الإجمالي" : "Total Price"}
 						</span>
-						<div className="flex items-baseline gap-1">
+						<div className="flex items-baseline gap-1.5 flex-wrap">
 							<span className="text-xl font-extrabold text-primary">{finalFormatted}</span>
+							{hasTaxInfo && (
+								<span
+									className={cn(
+										"text-[10px] font-bold px-1.5 py-0.5 rounded border leading-none",
+										isIncluded
+											? "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20"
+											: "bg-amber-500/10 text-amber-700 dark:text-amber-400 border-amber-500/20"
+									)}
+								>
+									{isIncluded ? (isRtl ? "شامل" : "Incl.") : (isRtl ? "غير شامل" : "Excl.")}
+								</span>
+							)}
 						</div>
 					</div>
 

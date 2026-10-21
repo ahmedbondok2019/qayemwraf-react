@@ -86,7 +86,8 @@ const mapBackendProduct = (prod) => {
 		category: prod.category || [],
 		images: imageList,
 		image: primaryImage,
-		price: { current: unitPrice, original: originalPrice },
+		is_tax_included: prod.is_tax_included,
+		price: { current: unitPrice, original: originalPrice, isTaxIncluded: prod.is_tax_included },
 		reviews: {
 			rating: parsePrice(prod.rating !== undefined ? prod.rating : (prod.reviews?.rating || 0)),
 			count: parseInt(prod.rate_count !== undefined ? prod.rate_count : (prod.reviews?.count || prod.reviewsCount || 0), 10)
@@ -96,6 +97,7 @@ const mapBackendProduct = (prod) => {
 			inStock: prod.stock?.inStock !== undefined ? prod.stock.inStock : (prod.quantity > 0 || prod.ignore_quantity)
 		},
 		status: prod.status || "active",
+		_apiOriginal: prod
 	};
 };
 

@@ -98,20 +98,46 @@ const ProductCardDemo = () => {
 							</div>
 						</div>
 
-						{/* 3. Layout Variants */}
+						{/* 3. Tax Status Variants */}
 						<div>
-							<h2 className="text-xl font-bold mb-6 pb-2 border-b border-border">3. Structural Variants</h2>
+							<h2 className="text-xl font-bold mb-6 pb-2 border-b border-border">3. Tax Inclusion Status (is_tax_included)</h2>
+							<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+								{/* Tax Included */}
+								<div className="flex flex-col gap-2">
+									<span className="text-sm font-bold text-text-muted">Tax Included (شامل الضريبة)</span>
+									<ProductCard product={{
+										...mockBaseProduct,
+										id: "demo-tax-1",
+										is_tax_included: true
+									}} />
+								</div>
+								
+								{/* Tax Excluded */}
+								<div className="flex flex-col gap-2">
+									<span className="text-sm font-bold text-text-muted">Tax Excluded (غير شامل الضريبة)</span>
+									<ProductCard product={{
+										...mockBaseProduct,
+										id: "demo-tax-2",
+										is_tax_included: false
+									}} />
+								</div>
+							</div>
+						</div>
+
+						{/* 4. Layout Variants */}
+						<div>
+							<h2 className="text-xl font-bold mb-6 pb-2 border-b border-border">4. Structural Variants</h2>
 							<div className="flex flex-col gap-6">
 								{/* Compact */}
 								<div className="flex flex-col gap-2 w-full max-w-xs">
 									<span className="text-sm font-bold text-text-muted">Compact Variant (Wishlist/Sidebar)</span>
-									<ProductCard product={mockBaseProduct} variant={PRODUCT_CARD_VARIANTS.COMPACT} />
+									<ProductCard product={{...mockBaseProduct, is_tax_included: true}} variant={PRODUCT_CARD_VARIANTS.COMPACT} />
 								</div>
 								
 								{/* Horizontal */}
 								<div className="flex flex-col gap-2 w-full max-w-2xl">
 									<span className="text-sm font-bold text-text-muted">Horizontal Variant (List View)</span>
-									<ProductCard product={mockBaseProduct} variant={PRODUCT_CARD_VARIANTS.HORIZONTAL} />
+									<ProductCard product={{...mockBaseProduct, is_tax_included: false}} variant={PRODUCT_CARD_VARIANTS.HORIZONTAL} />
 								</div>
 							</div>
 						</div>

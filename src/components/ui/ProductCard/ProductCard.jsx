@@ -92,7 +92,19 @@ export const ProductCard = ({ product, variant = PRODUCT_CARD_VARIANTS.DEFAULT, 
 				)}
 				
 				<div className="mt-auto pt-3">
-					<ProductPrice price={product.price} language={language} />
+					<ProductPrice 
+						price={product.price} 
+						isTaxIncluded={
+							product.is_tax_included !== undefined
+								? product.is_tax_included
+								: (product.price?.isTaxIncluded !== undefined
+									? product.price.isTaxIncluded
+									: (product.price?.is_tax_included !== undefined
+										? product.price.is_tax_included
+										: product._apiOriginal?.is_tax_included))
+						} 
+						language={language} 
+					/>
 					{/* Status removed from here to maintain consistent card height */}
 					<ProductActions 
 						isOutOfStock={isOutOfStock} 

@@ -99,7 +99,14 @@ const ProductDetails = () => {
 						_realId: data.id,
 						title: resolveI18n(data.name || data.title, ""),
 						description: resolveI18n(data.description, ""),
-						price: { current: currentPrice, original: originalPrice, discount: discountVal },
+						is_tax_included: data.is_tax_included,
+						price: { 
+							current: currentPrice, 
+							original: originalPrice, 
+							discount: discountVal,
+							isTaxIncluded: data.is_tax_included,
+							is_tax_included: data.is_tax_included
+						},
 						images: images,
 						categories: [{ 
 							id: String(data.category_id || ""), 

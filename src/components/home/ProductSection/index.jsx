@@ -34,6 +34,9 @@ export const ProductSection = ({ title, subtitle, viewAllLink, variant = "defaul
 	// Map API products to match the expected format for ProductCard, so we don't need to change ProductCard.
 	const productsToDisplay = products && products.length > 0 ? products.map(apiProd => {
 		if (apiProd.price && typeof apiProd.price === 'object' && 'current' in apiProd.price) {
+			if (apiProd.is_tax_included === undefined && apiProd._apiOriginal?.is_tax_included !== undefined) {
+				apiProd.is_tax_included = apiProd._apiOriginal.is_tax_included;
+			}
 			return apiProd;
 		}
 		const price = apiProd.price || 0;
@@ -61,7 +64,8 @@ export const ProductSection = ({ title, subtitle, viewAllLink, variant = "defaul
 			category: { ...resolveI18n(apiProd.category, ""), id: String(apiProd.category_id || "") },
 			brand: apiProd.brand || "",
 			image: resolveImageUrl(apiProd.primary_image || apiProd.image, FALLBACK_IMAGES.PRODUCT),
-			price: { current: currentPrice, original: originalPrice },
+			is_tax_included: apiProd.is_tax_included,
+			price: { current: currentPrice, original: originalPrice, isTaxIncluded: apiProd.is_tax_included },
 			reviews: { rating: apiProd.rating || 0, count: apiProd.rate_count || 0 },
 			stock: { quantity: apiProd.quantity || 0 },
 			badges,
